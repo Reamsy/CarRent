@@ -7,7 +7,7 @@ html::-webkit-scrollbar {
     width: 0px;
 }
 
-/*Default settings*/
+/*Default settings*/ 
 :root{
     --clr-neon: #f74242;
     --clr-background: #f74242;
