@@ -1,3 +1,36 @@
+
+/*Menu Bar settings*/
+
+ul {
+  position: fixed;
+  width: 100%;
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   background-color: var(--clr-menuBG);
+ }
+ 
+ li {
+   padding-left: 1%;
+   padding-right: 1%;
+   float: left;
+ }
+ 
+ li a {
+   display: block;
+   color:var(--clr-menuText);
+   text-align: center;
+   padding: 14px 20px;
+   text-decoration: none;
+ }
+
+ li a:hover {
+   background-color:var(--clr-menuBGhover);
+   color: var(--clr-menuBG)
+ }
+
+
 /*Default settings*/ 
 :root{
     --clr-menuBG: #a80000;
@@ -10,21 +43,48 @@
 
 /*BODY SETTINGS*/
 body{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("../images/homePageBgImage.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover , auto;
 }
 
 /*CARDS SETTINGS*/
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 40%;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    text-align: center;
   }
   
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
   }
   
   .container {
     padding: 2px 16px;
+  }
+  img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+.card-columns {
+    column-count: 2;
+  }
+
+  /*SEPARATOR*/
+  hr.rounded {
+    border-top: 8px solid rgb(44, 44, 44);
+    border-radius: 5px;
   }
