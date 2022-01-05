@@ -14,43 +14,28 @@
 
     <title>CarRent</title>
 </head>
-    
-<body>
-<!--Menu bar
-    <header>
-        <ul>
-            <li><a href="../view/homePage.html" id="liHome">Home</a></li>
-            <li><a href="" id="liUs">Us</a></li>
-            <li><a href="" id="liVehicles">Vehicles</a></li>
-            <li><a href="" id="liDrivers">Drivers</a></li>
-            <li><a href="" id="liRateus">Rate Us</a></li>
-            
-            <li style="float: right; padding-right: 1%;"><a href="../view/starterPage.html" id="liLogout">Log out</a></li>
-            <li style="float: right; padding-right: 2%;"><a href="" id="liProfile">Profile</a></li>
-        </ul>
-    </header>
--->
-    
-<!--Page message-->
 
-    <div class="col-12 text-center">
+<body>
+
+    <!--Page message-->
+    <div class="col-12">
         <h3>Here Are our Drivers and Vehicles you can choose from!</h3>
     </div>
 
     <!--Line signs-->
-    <div class="col-12 text-center">
-        <p>Vehicles</p>
-        <p>Drivers</p>
+    <div class="row">
+        <div class="signs">
+            <p>Vehicles</p>
+            <p id="pDriver">Drivers</p>
+        </div>
     </div>
 
     <!--Cards for the products-->
-
     <!--vehicle1-->
     <div class="container">
         <div class="row">
-            
-            <div class="col-lg-6 mb-4">
-                <div class="card text-center" data-aos="fade-right" data-aos-delay="300">
+            <div class="col-12">
+                <div class="card" data-aos="fade-right" data-aos-delay="300" id="car">
                     <img src="../images/img_car.png" alt="car">
                     <div class="container">
                         <h4><b>Brand</b></h4>
@@ -61,71 +46,75 @@
             </div>
 
             <!--driver1-->
-            <div class="col-lg-6 mb-4">
-                <div class="card text-center" data-aos="fade-left" data-aos-delay="300">
+            <div class="col-12">
+                <div class="card" data-aos="fade-left" data-aos-delay="300" id="people">
                     <img src="../images/img_avatar.png" alt="Avatar">
                     <div class="container">
                         <h4><b>name</b></h4>
+                        <p>valami</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="rounded">
+
+    <!--vehicle2-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" data-aos="fade-right" data-aos-delay="300" id="car">
+                    <img src="../images/img_car.png" alt="car">
+                    <div class="container">
+                        <h4><b>Brand</b></h4>
+                        <p>fuel type</p>
                         <p></p>
                     </div>
                 </div>
             </div>
 
-            <hr class="rounded">
-
-            <!--vehicle2-->
-        <div class="col-lg-6 mb-4">
-            <div class="card text-center" data-aos="fade-right" data-aos-delay="300">
-                <img src="../images/img_car.png" id="car" alt="car">
-                <div class="container">
-                    <h4><b>Brand</b></h4>
-                    <p>fuel type</p>
-                    <p></p>
-                </div>
-            </div>
-        </div>
-
             <!--driver2-->
-        <div class="col-lg-6 mb-4">
-            <div class="card text-center" data-aos="fade-left" data-aos-delay="300">
-                <img src="../images/img_avatar.png" alt="Avatar">
-                <div class="container">
-                    <h4><b>name</b></h4>
-                    <p></p>
+            <div class="col-12">
+                <div class="card" data-aos="fade-left" data-aos-delay="300" id="people">
+                    <img src="../images/img_avatar.png" alt="Avatar">
+                    <div class="container">
+                        <h4><b>name</b></h4>
+                        <p>valami</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <hr class="rounded">
-
-            <!--vehicle3-->
-        <div class="col-lg-6 mb-4">
-            <div class="card text-center" data-aos="fade-right" data-aos-delay="300">
-                <img src="../images/img_car.png" alt="car">
-                <div class="container">
-                    <h4><b>Brand</b></h4>
-                    <p>fuel type</p>
-                    <p></p>
-                </div>
-            </div>
-        </div>
-            <!--driver3-->
-
-        <div class="col-lg-6 mb-4">
-            <div class="card text-center" data-aos="fade-left" data-aos-delay="300">
-                <img src="../images/img_avatar.png" alt="Avatar">
-                <div class="container">
-                    <h4><b>name</b></h4>
-                    <p></p>
-                </div>
-            </div>
-        </div>
-        
-        <hr class="rounded">
-
         </div>
     </div>
 
+    <hr class="rounded">
+
+    <!--vehicle3-->
+    <div class="container" id="bottomContainer">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" data-aos="fade-right" data-aos-delay="300" id="car">
+                    <img src="../images/img_car.png" alt="car">
+                    <div class="container">
+                        <h4><b>Brand</b></h4>
+                        <p>fuel type</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!--driver3-->
+            <div class="col-12">
+                <div class="card" data-aos="fade-left" data-aos-delay="300" id="people">
+                    <img src="../images/img_avatar.png" alt="Avatar">
+                    <div class="container">
+                        <h4><b>name</b></h4>
+                        <p>valami</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!--SRCIPTS-->

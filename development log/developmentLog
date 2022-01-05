@@ -55,3 +55,9 @@ HIBA: CSS félig van kész
     -2 kártya egymás mellette
     -homePageBg berakva háttérnek
 HIBA: CSS nincs teljesen kész
+
+2022.01.05. {18:00 - 19:25} (Szalanics Szabolcs):
+    -productPage CSS formázása
+    -elemek pozícionálása
+    -kártyák átméretezése
+HIBA: Felső <p> tag nem responziv és nincs középen
