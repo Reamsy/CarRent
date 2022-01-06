@@ -1,0 +1,50 @@
+/*Default color settings*/
+:root{
+    --prof_clr-bg: rgb(255, 0, 0);
+    --prof_clr-btn: rgb(61, 189, 248);
+}
+
+/*Body & Background settings*/
+body{
+    height: 100%;
+    width: 100%;
+
+    background-image: url("../images/homePageBgImage.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*Positioning*/
+#phoneRow{
+    padding-top: 7%
+}
+
+/*Text settings*/
+
+
+/*Image settings*/
+img{
+    height: 30%;
+    width: 30%;
+    border-radius: 50%;
+    
+    padding-top: 3%;
+    
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+/*Row settings*/
+ .row{
+     display: flex;
+     
+    
+ }
+ input{
+    
+ }
+

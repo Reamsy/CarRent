@@ -67,3 +67,8 @@ HIBA: Felső <p> tag nem responziv és nincs középen
     - <p> tag elhelyezése
     -homePage menubar szerkesztése (Driver-vehicle egyesítése)
 HIBA: Nem responziv card text
+
+2022.01.06. {10:35 - 12:05} (Szalanics Szabolcs): 
+    -profilePage HTML elkészítése
+    -CSS elkezdve
+HIBA: Kép nincs középen, inputok nincsenek beállítva
