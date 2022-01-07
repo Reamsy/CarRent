@@ -77,6 +77,7 @@ HIBA: Kép nincs középen, inputok nincsenek beállítva
     -adatbázis séma javítása, átgondolása
 HIBA:---------
 
-2022.01.07. {9:45 - 10:15} (Szalanics Szabolcs): 
+2022.01.07. {9:45 - 11:40} (Szalanics Szabolcs): 
     -profilPage újragondolása az új DB schema szerint
-HIBA:---------
+    -profilePage-en összes hiba javítva
+HIBA: DB alapján átírás szükséges

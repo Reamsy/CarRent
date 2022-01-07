@@ -1,7 +1,6 @@
 /*Default color settings*/
 :root{
-    --prof_clr-bg: rgb(255, 0, 0);
-    --prof_clr-btn: rgb(61, 189, 248);
+    --clr-submitBTNhover: #f74242;
 }
 
 /*Body & Background settings*/
@@ -15,29 +14,88 @@ body{
     background-size: cover;
 }
 
-/*Positioning*/
-#nameRow{
-    padding-top: 7%;
-}
-
 /*Text settings*/
 
 
 /*Image settings*/
 img{
+    width: 10%;
+
     border-radius: 50%;
     
     padding-top: 3%;
+    padding-bottom: 6%;
 }
 
-/*Row settings*/
- .leftInput{
-     float: left;
+/*Input & row settings*/
+ .container{
+    display: flex;
+    justify-content: space-evenly; 
  }
 
-/*Container settings*/
- .container{
+ .rightInput{
+    margin: 0;
+ }
+
+ .leftInput{
+     margin: 0;
+ }
+
+ input{
+     width: 100%;
+ }
+
+/*Top container settings*/
+ .container-base{
      display: flex;
      justify-content: center;
+ }
+
+ /*Save button settings*/
+ #saveBTN{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    background-color: unset;
+    border: var(--clr-submitBTNhover) 4px solid;
+    padding: 4px 17px;
+    border-radius: 6px;
+    
+    box-shadow: inset 0 0 3px var(--clr-submitBTNhover),
+                      0 0 0.5em var(--clr-submitBTNhover);
+
+    position: relative;
+
+    transition: background-color 100ms linear;
+}
+#saveBTN:hover {
+    background-color: var(--clr-submitBTNhover);
+    color: black;
+}
+#saveBTN::after{
+    content:"";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em 
+    var(--clr-submitBTNhover);
+    opacity: 0;
+    background-color: var(--clr-submitBTN);
+    z-index: -1;
+    transition: opacity 100ms linear;
+}
+#saveBTN:hover::after{
+    opacity: 1;
+}
+ 
+ .BTN{
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
 
