@@ -16,8 +16,8 @@ body{
 }
 
 /*Positioning*/
-#phoneRow{
-    padding-top: 7%
+#nameRow{
+    padding-top: 7%;
 }
 
 /*Text settings*/
@@ -25,26 +25,19 @@ body{
 
 /*Image settings*/
 img{
-    height: 30%;
-    width: 30%;
     border-radius: 50%;
     
     padding-top: 3%;
-    
-
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    
 }
 
 /*Row settings*/
- .row{
-     display: flex;
-     
-    
+ .leftInput{
+     float: left;
  }
- input{
-    
+
+/*Container settings*/
+ .container{
+     display: flex;
+     justify-content: center;
  }
 
