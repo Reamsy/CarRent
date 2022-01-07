@@ -1,6 +1,7 @@
 /*Default color settings*/
 :root{
     --clr-submitBTNhover: #f74242;
+    --clr-InpBG: lightgray;
 }
 
 /*Body & Background settings*/
@@ -15,10 +16,14 @@ body{
 }
 
 /*Text settings*/
-
+ h3{
+    font-size: 35px;
+    color: rgb(0, 0, 0);
+    font-weight: italic;
+ }
 
 /*Image settings*/
-img{
+ img{
     width: 10%;
 
     border-radius: 50%;
@@ -42,7 +47,8 @@ img{
  }
 
  input{
-     width: 100%;
+     width: 300px;
+     background-color: var(--clr-InpBG);
  }
 
 /*Top container settings*/

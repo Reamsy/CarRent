@@ -85,3 +85,10 @@ HIBA: DB alapján átírás szükséges
 2022.01.07. {11:30 - 11:40} (Szalanics Szabolcs):
     -profilePage inputok <h3> teg-e szerkesztve DB scheme alapján
 HIBA: Inputok hosszának igazítása
+
+2022.01.07. {12:30 - 13:10} (Szalanics Szabolcs):
+    -inputok hosszának beállítása
+    -input, h3 stilisztikai formázása
+    -starterPage HTML registration rész és CSS szerkesztése
+    -productPage card-on szereplő szöveg átírása DB Scheme szerint
+HIBA:---------

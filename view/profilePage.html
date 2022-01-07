@@ -44,7 +44,8 @@
         <div class="rightInput">
             <h3><b>Phone number:
                     <!--value-ba kerülnek a DB adatok-->
-                </b></h3> <input type="tel" value="">
+                </b></h3> <input type="tel" value="" placeholder="Form: 12-345-6789"
+                pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}" required>
         </div>
     </div>
 
@@ -70,14 +71,13 @@
         <div class="rightInput">
             <h3><b>License expirition:
                     <!--value-ba kerülnek a DB adatok-->
-                </b></h3> <input type="number" value="">
+                </b></h3> <input type="text" value="">
         </div>
     </div>
 
     <div class="BTN">
         <button id="saveBTN">Save</button>
     </div>
-
 
     <!--SCRIPTS-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
