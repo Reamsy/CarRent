@@ -12,12 +12,12 @@ body{
     background-image: url("../images/homePageBgImage.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover, auto;
 }
 
 /*Text settings*/
  h3{
-    font-size: 35px;
+    font-size: 30px;
     color: rgb(0, 0, 0);
     font-weight: italic;
  }
@@ -47,7 +47,8 @@ body{
  }
 
  input{
-     width: 300px;
+     
+     width: 105%;
      background-color: var(--clr-InpBG);
  }
 
