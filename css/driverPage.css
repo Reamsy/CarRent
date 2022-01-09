@@ -1,0 +1,164 @@
+/*Default color settings*/
+:root{
+    --clr-BTNcolor: #42cdf7;
+    --clr-calendarDefault: #929292;
+    --clr-workDays: rgb(2, 214, 2);
+    --clr-holydays: rgb(255, 0, 0);
+}
+
+/*Background & body settings*/
+body{
+    height: 100%;
+    width: 100%;
+
+    background-image: url("../images/homePageBgImage.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover, auto;
+}
+
+/*Text settings*/
+
+/*Row settings*/
+.row{
+    padding-left: 1%
+}
+
+
+/*Container settings*/
+.container{
+    text-align: center;
+    padding-top: 3%;
+}
+
+/*Calendar settings*/
+.containerCalendar{
+    padding-top: 3%;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.month{
+    list-style-type: none;
+    padding: 70px 25px;
+    width: 60%;
+    background: var(--clr-calendarDefault);
+    text-align: center;
+}
+
+.month ul{
+    padding-left: 0;
+}
+
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+.weekdays {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: 0;
+    padding: 10px 0;
+    background-color:rgb(194, 194, 194);
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.2%;
+    height: 10%;
+    color: var(--clr-calendarDefault);
+    text-align: center;
+}
+
+.days {
+    display: inline-block;
+    width: 60%;
+    height: 50%;
+    margin: 0;
+    padding: 8px 3px;
+    background-color:rgb(194, 194, 194);
+}
+
+.days li {
+    display: inline-block;
+    width: 13.2%;
+    margin: 12px 2px;
+    color: var(--clr-calendarDefault);
+    text-align: center;
+    padding: 0;
+}
+
+.days li:hover{
+    border-radius: 3%;
+    background-color: var(--clr-calendarDefault);
+    color: aliceblue;
+}
+
+/*Animated button settings*/
+.saveBTN {
+    border-radius: 4px;
+    background-color: var(--clr-BTNcolor);
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+  
+.saveBTN span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+.saveBTN span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+.saveBTN:hover span {
+    padding-right: 25px;
+}
+  
+.saveBTN:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/*Select button settings */
+.selectBTN{
+    align-items: flex-start;
+    border-radius: 4px;
+    background-color: rgb(151, 151, 151);
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    padding: 20px;
+    width: auto;
+    margin: 5px;
+    margin-right: 15%;
+}
+
+.selectBTN:hover{
+    background-color: var(--clr-workDays);
+}
+

@@ -97,3 +97,8 @@ HIBA:---------
     -inputok responzivitásának ellenőrzése
     -javított reszponzivitás
 HIBA:---------
+
+2022.01.09. {8:20 - 12:00} (Szalanics Szabolcs):
+    -driverPage HTML, CSS, BOOTStTAP, AOS megírása
+    -calendar hozzáadása (segítségül vett oldal: https://www.w3schools.com/howto/howto_css_calendar.asp)
+HIBA: Gombok pozícionálása szükséges
