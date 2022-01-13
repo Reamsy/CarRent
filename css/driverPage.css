@@ -28,12 +28,12 @@ body{
 /*Container settings*/
 .container{
     text-align: center;
-    padding-top: 3%;
+    padding-top: 2%;
 }
 
 /*Calendar settings*/
 .containerCalendar{
-    padding-top: 3%;
+    padding-top: 1%;
 }
 
 ul{
@@ -104,6 +104,15 @@ ul{
 }
 
 /*Animated button settings*/
+.buttons{
+    margin-bottom: 3%;
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
 .saveBTN {
     border-radius: 4px;
     background-color: var(--clr-BTNcolor);
