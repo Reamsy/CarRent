@@ -63,14 +63,13 @@ ul{
 }
 
 .weekdays {
-    display: flex;
-    justify-content: space-evenly;
+    display: inline-block;
+    text-align: center;
     width: 60%;
     margin: 0;
-    padding: 10px 0;
+    padding: 0;
     background-color:rgb(194, 194, 194);
 }
-
 .weekdays li {
     display: inline-block;
     width: 13.2%;
@@ -81,10 +80,9 @@ ul{
 
 .days {
     display: inline-block;
+    text-align: center;
     width: 60%;
     height: 50%;
-    margin: 0;
-    padding: 8px 3px;
     background-color:rgb(194, 194, 194);
 }
 

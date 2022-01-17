@@ -1,0 +1,36 @@
+<option value="calendar">
+                <dropdown>
+                    <div class="containerCalendar">
+                        <div class="month">
+                            <ul>
+                                <li class="prev">&#10094;</li>
+                                <li class="next">&#10095;</li>
+                                <!--a hónap, nap  és év automatikusan current date alapján működjön-->
+                                <li id="currentDateYear">1</li>
+                                <li id="currentDateMonth">1</li>
+                                <li id="currentDateDay">1</li>
+                            </ul>
+                        </div>
+
+                        <ul class="weekdays">
+                            <li>Mo</li>
+                            <li>Tu</li>
+                            <li>We</li>
+                            <li>Th</li>
+                            <li>Fr</li>
+                            <li>Sa</li>
+                            <li>Su</li>
+                        </ul>
+                        <!--pirossal a foglalt napok, zölddel a NEM foglalt napok (hétvége pirossal mert akkor nem dolgozunk)-->
+                        <div class="days" id="days">
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>6</li>
+                            <li>7</li>
+                        </div>
+                    </div>
+                </dropdown>
+            </option>

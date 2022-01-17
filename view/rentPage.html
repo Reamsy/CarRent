@@ -18,8 +18,9 @@
 <body>
     <!--Title for rent-->
     <div class="container">
-        <h3  data-aos="fade-up" data-aos-delay="300">Now, choose your vehicle, than choose your rent's start & end time</h3>
-        <p  data-aos="fade-up" data-aos-delay="300"> You only able to choose whole days</p>
+        <h3 data-aos="fade-up" data-aos-delay="300">Now, choose your vehicle, than choose your rent's start & end time
+        </h3>
+        <p data-aos="fade-up" data-aos-delay="300"> You only able to choose whole days</p>
     </div>
 
     <!--Form to choose date, car, driver-->
@@ -51,36 +52,20 @@
     </div>
 
     <!--Start/End date choosing-->
-    <p id="date-p" data-aos="fade-up" data-aos-delay="400">Choose your End Date</p>
+    <p id="date-p" data-aos="fade-up" data-aos-delay="400">Choose your Start & End date</p>
 
     <div class="container_date" data-aos="fade-up" data-aos-delay="400">
 
         <!--Start date-->
-        <select id="date" name="date">
-            <!--current date alapján jelenjen meg-->
-            <option value="currentdate" id="currentDay" selected>mai dátum</option>
-        </select>
+        <label for="start">Start date:</label>
+        <!--current date alapján jelenjen meg-->
+        <input type="date" id="startInput" name="start-date" value="">
+
 
         <!--End date-->
-        <select id="date" name="date">
-
-            <!--A kiválasztott nap alapértelmezettként mindig a maid dátum +1 nap legyen-->
-            <option value="currentdate" id="nextDay" selected>holnapi dátum</option>
-
-            <!--Calendar-->
-            <option value="calendar">
-                <ul class="weekdays">
-                    <li>Mo</li>
-                    <li>Tu</li>
-                    <li>We</li>
-                    <li>Th</li>
-                    <li>Fr</li>
-                    <li>Sa</li>
-                    <li>Su</li>
-                </ul>
-                <div class="days" id="days"></div>
-            </option>
-        </select>
+        <label for="end">End date:</label>
+        <!--A kiválasztott nap alapértelmezettként mindig a maid dátum +1 nap legyen-->
+        <input type="date" id="endInput" name="end-date" value="">
     </div>
 
     <!--Choosed Car & Driver card-->
@@ -99,6 +84,7 @@
         </div>
 
         <!--Driver-->
+        <!--Ha a vásárló nem kér sofőrt ne jelenjen meg se név se semmi, opacity: 0.4; -->
         <div class="card" data-aos="fade-in" data-aos-delay="500" id="car">
             <img src="../images/img_avatar.png">
             <div class="container">
