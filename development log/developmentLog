@@ -52,7 +52,7 @@ HIBA: CSS félig van kész
     -productPage CSS folytatása
     -példa képek hozzáadása
     -kártyák,szöveg és kép középre igazítása
-    -2 kártya egymás mellette
+    -2 kártya egymás mellett
     -homePageBg berakva háttérnek
 HIBA: CSS nincs teljesen kész
 
@@ -152,3 +152,8 @@ HIBA:---------
     -React lehúzása
     -redux, react-redux, react-thunk telepítése
 HIBA:---------
+
+2022.01.19. {20:40-21:30} (Vágner Dávid Zoltán):
+    -rateUs oldal elkezdése
+    -rateUs css elkezdése
+HIBA: menubar-ra racsuszik minden szöveg és kép
