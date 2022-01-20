@@ -157,3 +157,9 @@ HIBA:---------
     -rateUs oldal elkezdése
     -rateUs css elkezdése
 HIBA: menubar-ra racsuszik minden szöveg és kép
+
+2022.01.19. {16:00-16:30} (Szalanics Szabolcs):
+    -rate csillagok hozzáadása a rateusOage-hez
+    -menubar kijavítása
+    -AOS hozzáadása
+HIBA:--------
