@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import {menuBar} from './views/homePage/menuBar';
+import { homePage } from './views/homePage/homePage';
+
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <Switch>
           {/*Kezdőlap*/}
           <Router exact path="/">
-            <menuBar />
+            <homePagege />
           </Router>
 
         </Switch>
