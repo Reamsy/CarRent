@@ -1,6 +1,11 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Layout } from './views/layOut/layOut';
+import { HomePage } from './views/homePage/HomePage';
+
+//Import CSS 
 import './App.css';
-import { homePage } from './views/homePage/homePage';
+
 
 
 function App() {
@@ -8,13 +13,10 @@ function App() {
     <Router>
       {/*Sablon*/}
       <Layout>
-        <Switch>
-          {/*Kezdőlap*/}
-          <Router exact path="/">
-            <homePagege />
-          </Router>
-
-        </Switch>
+        {/*Kezdőlap*/}
+        <Route>
+          <HomePage />
+        </Route>
       </Layout>
     </Router>
   );

@@ -163,3 +163,9 @@ HIBA: menubar-ra racsuszik minden szöveg és kép
     -menubar kijavítása
     -AOS hozzáadása
 HIBA:--------
+
+2022.01.25. {22:00-23:45} (Szalanics Szabolcs):
+    -React Menu.js & Menu.css átalakítása HTML --> React
+    -Háttér beállítása 
+HIBA: HomePage nem jelenik meg, Switch nem deklarálható,
+        HomePage elemek nincsenek átírva (classname)

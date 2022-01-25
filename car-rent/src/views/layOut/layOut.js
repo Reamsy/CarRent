@@ -1,10 +1,10 @@
-import {menuBar} from '../menuBar/menuBar';
+import { MenuBar } from "../menuBar/menuBar";
 
-export function Layout({children}) {
+
+export function Layout() {
     return (
-        <div className="ui container">
-            <menuBar />
-            {children}
+        <div>
+            <MenuBar/>
         </div>
     )
 }

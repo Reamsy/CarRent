@@ -8,36 +8,6 @@
     --clr-background: #f74242;
 }
 
-/*Menu Bar settings*/
- ul {
-   position: fixed;
-   width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: var(--clr-menuBG);
-  }
-  
-  li {
-    padding-left: 1%;
-    padding-right: 1%;
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color:var(--clr-menuText);
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color:var(--clr-menuBGhover);
-    color: var(--clr-menuBG)
-  }
-
   /*Background settings*/
   body{
     width: 100%;
@@ -55,7 +25,7 @@
     padding-top: 20%;
   }
 
-  /*Setion settings*/
+  /*Section settings*/
   section{
     padding-top: 20%;
     text-align: center;

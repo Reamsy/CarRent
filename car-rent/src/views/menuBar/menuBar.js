@@ -1,19 +1,20 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-export function menuBar() {
+//Import CSS 
+import "./Menu.css";
+
+export function MenuBar() {
 
     return (
-        <div>
-            <header>
-                <ul>
-                    <li><a href="../view/homePage.html" id="liHome">Home</a></li>
-                    <li><a href="../view/productsPage.html" id="liVehicles">Vehicles & Drivers</a></li>
-                    <li><a href="../view/rateUs.html" id="liRateus">Rate Us</a></li>
+        //linkek
+        <nav className="ul">
+            <NavLink className="navLeft" exact to='/'>Home</NavLink>
+            <NavLink className="navLeft" to='/Products'>Products</NavLink>
+            <NavLink className="navLeft" to='/RateUs'>Rate Us</NavLink>
 
-                    <li style="float: right; padding-right: 1%;"><a href="../view/starterPage.html" id="liLogout">Log out</a></li>
-                    <li style="float: right; padding-right: 2%;"><a href="../view/profilePage.html" id="liProfile">Profile</a></li>
-                </ul>
-            </header>
-        </div>
+            <NavLink className="navLeft" to='/Profile'>Profile</NavLink>
+            <NavLink className="navRight" to='/StarterPage'>Logout</NavLink>
+        </nav>
     )
 }

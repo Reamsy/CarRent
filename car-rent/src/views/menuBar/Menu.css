@@ -1,0 +1,57 @@
+/*Default settings*/ 
+:root{
+    --clr-menuBG: #a80000;
+    --clr-menuText: #ffffff;
+    --clr-menuBGhover: #ffffff;
+    --clr-background2: #a80000;
+    --clr-neon: #f74242;
+    --clr-background: #f74242;
+}
+
+/*Menu Bar settings*/
+ .ul {
+   position: relative;
+   width: auto;
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   background-color: var(--clr-menuBG);
+  }
+  
+  .navLeft {
+    padding-left: 2%;
+    padding-right: 2%;
+    float: left;
+  }
+  
+  .navLeft {
+    display: block;
+    color:var(--clr-menuText);
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  .navLeft:hover {
+    background-color:var(--clr-menuBGhover);
+    color: var(--clr-menuBG)
+  }
+
+  .navRight{
+    padding-right: 5%;
+    float: right;
+  }
+
+  .navRight {
+    display: block;
+    color:var(--clr-menuText);
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  .navRight:hover {
+    background-color:var(--clr-menuBGhover);
+    color: var(--clr-menuBG)
+  }
