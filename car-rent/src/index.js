@@ -2,18 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Routes , Route} from "react-router-dom";
+import { Layout } from './views/layOut/layOut';
 
-
-const render = () =>
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Routes>
+      <Layout />
+        <Route exact path="/" element={<App />} />
+    </Routes>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-const start = async () => {
-  render();
-};
-
-start();
