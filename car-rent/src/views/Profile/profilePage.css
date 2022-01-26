@@ -8,8 +8,6 @@
 body{
     height: 100%;
     width: 100%;
-
-    background-image: url("../images/homePageBgImage.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover, auto;
@@ -47,9 +45,12 @@ body{
  }
 
  input{
-     
-     width: 105%;
-     background-color: var(--clr-InpBG);
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    height: 15%;
+    width: 105%;
+    background-color: var(--clr-InpBG);
  }
 
 /*Top container settings*/

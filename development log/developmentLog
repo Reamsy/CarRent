@@ -169,3 +169,17 @@ HIBA:--------
     -Háttér beállítása 
 HIBA: HomePage nem jelenik meg, Switch nem deklarálható,
         HomePage elemek nincsenek átírva (classname)
+
+2022.01.26. {9:30-11:05} (Szalanics Szabolcs):
+    -(HomePage nem jelenik meg) -javítva
+    -(Switch nem deklarálható) -javítva
+    -(HomePage elemek nincsenek átírva) -átírva
+    -Products.js átírás
+HIBA: Produjt.js nem jelenik meg + images error??
+
+2022.01.26. {16:00-18:00} (Szalanics Szabolcs):
+    -(Produjt.js nem jelenik meg + images error??) -kijavítva
+    -RateUs.js + CSS átírva
+    -Profile.js + CSS átírva
+    -Rent.js + CSS átírva
+HIBA: tanácskérés Ákostól hogy hogy oldjuk meg a loginPage-et!    

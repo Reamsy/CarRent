@@ -18,35 +18,29 @@ export function Products() {
 
         {/*Cards for the Products*/}
         {/*vehicle1*/}
-        <div className="container">
             <div className="row">
-                <div className="col-12">
-                    <div className="card" id="car">
-                        <img src={"../../images/img_car.png"} alt="car" />
-                        <div className="container">
-                            {/*ezeket adatbázisból kellene feltölteni*/}
-                            <h4><b>Brand</b></h4>
-                            <p>fuel type </p>
-                            <p>bérlési ár</p>
-                            <p>évjárat</p>
-                        </div>
-                    </div>
-
-                    {/*driver1*/}
-                    <div className="col-12">
-                        <div className="card" id="people">
-                            <img src={"../../images/avatar_car.png"} alt="avatar" />
-                            <div className="container">
-                                {/*ezeket adatbázisból kellene feltölteni*/}
-                                <h4><b>name</b></h4>
-                                <p>sex</p>
-                                <p>license category</p>
-                            </div>
-                        </div>
+                <div className="card" id="car">
+                    <img className="img" src={carIMG} alt="car" />
+                    <div className="container">
+                        {/*ezeket adatbázisból kellene feltölteni*/}
+                        <h4><b>Brand</b></h4>
+                        <p>fuel type </p>
+                        <p>bérlési ár</p>
+                        <p>évjárat</p>
                     </div>
                 </div>
+
+                {/*driver1*/}
+                    <div className="card" id="people">
+                        <img className="img" src={driverIMG} alt="avatar" />
+                        <div className="container">
+                            {/*ezeket adatbázisból kellene feltölteni*/}
+                            <h4><b>name</b></h4>
+                            <p>sex</p>
+                            <p>license category</p>
+                        </div>
+                    </div>
             </div>
-        </div>
 
         <hr className="rounded"></hr>
     </>);

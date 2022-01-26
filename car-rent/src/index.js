@@ -2,19 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './views/layOut/layOut';
 import { Products } from './views/Products/Products';
+import { RateUs } from './views/RateUs/RateUs';
+import { Profile } from './views/Profile/Profile';
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
+  <BrowserRouter>
       <Layout />
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/Products" component={Products} />
-      </Switch>
-    </Router>
-  </React.StrictMode>,
+        <Routes>
+          <Route exact path="/" element={<App />} />
+          <Route path="/Products" element={<Products />} />
+          <Route path="/RateUs" element={<RateUs />} /> 
+          <Route path="/Profile" element={<Profile />} /> 
+        </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );

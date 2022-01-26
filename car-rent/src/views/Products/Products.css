@@ -1,84 +1,99 @@
 /*Body settings*/
 body{
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    position: relative;
-  }
+  position: relative;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  #bottomContainer{
-    padding-bottom: 5%;
-  }
+#bottomContainer{
+  padding-bottom: 5%;
+}
 
 /*Texts settings*/
-  h4{
-    text-align: center;
-  }
-  
-  h3{
-    text-align: center;
-    padding-top: 7%;
-    padding-bottom: 7%;
-    font-size: 35px;
-    color: rgb(0, 0, 0);
-    font-weight: italic;
-  }
+h4{
+  text-align: center;
+}
 
- p{
-   text-align: center;
-   font-size: 20px;
-   color: rgb(0, 0, 0);
-   font-style: italic;
- }
+h3{
+  text-align: center;
+  padding-top: 7%;
+  padding-bottom: 7%;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  font-weight: italic;
+}
 
- /*Culomn signs settings*/
- .signs{
-   padding-bottom: 7%;
- }
+p{
+ text-align: center;
+ font-size: 20px;
+ color: rgb(0, 0, 0);
+ font-style: italic;
+}
 
- #culVehicle{
-   float: left;
-   padding-left: 21%;
- }
+/*Culomn signs settings*/
+.signs{
+ padding-bottom: 7%;
+}
 
- #culDriver{
-   float: right;
-   padding-right: 21%;
- }
+#culVehicle{
+ float: left;
+ padding-left: 15%;
+}
+
+#culDriver{
+ float: right;
+ padding-right: 15%;
+}
 
 /*Row settings*/
- .row{
-  width: auto;
- }
+.row{
+display: flex;
+justify-content: center;
+}
 
 /*Cards settings*/
+.img{
+  text-align: center;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+}
+
 .card {
-  block-size: auto;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  height: max-content;
-  width: 20%;
+margin-top: 3%;
+block-size: auto;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+height: max-content;
+width: 30%;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .container {
-  object-position: center;
-  padding: 2px 16px;
+object-position: center;
+padding: 2px 16px;
 }
 
 #car{
-  float: left;
+margin-right: 20%;
 }
 
 #people{
-  float: right;
+margin-left: 20%;
 }
 
 /*Separator*/
-  hr.rounded {
-    border-top: 8px solid rgb(44, 44, 44);
-    border-radius: 5px;
-  }
+hr.rounded {
+  margin-top: 3%;
+  border-top: 8px solid rgb(44, 44, 44);
+  border-radius: 5px;
+}

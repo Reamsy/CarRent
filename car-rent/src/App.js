@@ -6,7 +6,6 @@ import './App.css';
 
 //App alatt fut a HomePage
 function App() {
-
   return (<>
     <section>
         <a href="../view/rentPage.html" id="homePageMidBtn">Rent</a>
