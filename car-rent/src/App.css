@@ -20,13 +20,13 @@ body{
 }
 
 /*Footer settings*/
-.footer{
+footer{
   text-align: center;
-  padding-top: 20%;
+  padding-top: 15%;
 }
 
 /*Section settings*/
-.section{
+section{
   padding-top: 20%;
   text-align: center;
 }
@@ -37,7 +37,7 @@ p{
 }
 
 /*Miggle button settings */
-.homePageMidBtn{
+#homePageMidBtn{
   font-size: 20px;
   display: inline-block;
   text-decoration: none;
@@ -54,12 +54,12 @@ p{
   transition: background-color 100ms linear;
 }
 
-.homePageMidBtn:hover {
+#homePageMidBtn:hover {
   background-color: var(--clr-background);
   color: var(--clr-menuText);
 }
 
-.homePageMidBtn:after {
+#homePageMidBtn:after {
   content:"";
   position: absolute;
   top: 0;
@@ -74,6 +74,6 @@ p{
   transition: opacity 100ms linear;
 }
 
-.homePageMidBtn:hover::after{
+#homePageMidBtn:hover::after{
   opacity: 1;
 }
