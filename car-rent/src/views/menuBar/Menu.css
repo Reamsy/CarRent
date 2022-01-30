@@ -10,6 +10,7 @@
 
 /*Menu Bar settings*/
  .ul {
+   padding: 0;
    position: relative;
    width: auto;
    list-style-type: none;
