@@ -7,7 +7,8 @@ import { Layout } from './views/layOut/layOut';
 import { Products } from './views/Products/Products';
 import { RateUs } from './views/RateUs/RateUs';
 import { Profile } from './views/Profile/Profile';
-import { Admin } from './views/Admin/Admin';
+import { Login } from './views/Login/Login';
+
 
 
 
@@ -15,6 +16,7 @@ import { Admin } from './views/Admin/Admin';
 ReactDOM.render(
 
   <BrowserRouter>
+  <Login />
     <Layout />
     <Routes>
       <Route path="/" element={<App />} />

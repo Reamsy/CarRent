@@ -1,7 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Axios from 'axios';
 
 //Import CSS & Images
 import './starterpage.css';
+
+//Adatok kiolvasása az inputokból (Login)
+const [usernameLog, setUsernameLog] = useState('');
+const [passwordLog, setPasswordLog] = useState('');
+
+//Uncorrect or Coorect login state condescension
+const [loginCorrect, setLoginCorrect] = useState('');
+
+
+//Adatok kiolvasása az inputokból (Regisztráció)
+const [usernameReg, setUsernameReg] = useState('');
+const [passwordReg, setPasswordReg] = useState('');
+const [emailReg, setEmailReg] = useState('');
+
+
+
+//adatok elküldése 
+//A USERNAME ÉS A PASSWORDNEM EGYEZNIE KELL A BACKENDEN AZ INSERT ADATOKKAL
+//Backend-en install-álni kell a cors-t
+const registration = () => {
+
+    //localhostál állítsd be a portot amin fut majd a node 
+    Axios.post('http://localhost3001', {
+
+        //ennek kell egyeznie a backenddel-->> RegistrationUsername....
+        RegistrationUsername: usernameReg,
+        RegistrationPassword: passwordReg,
+        RegistrationEmail: emailReg
+    }).then((response) => {
+        console.log(response);
+    })
+}
+
+//Login adatok lekérdezése
+const login = () => {
+    Axios.post('http://localhost3001', {
+        //megváltozott a backenden lekérdezendő adat !!FIGYELJ!!
+        LoginUsername: usernameLog,
+        LoginPassword: passwordLog,
+    }).then((response) => {
+
+        if (response.data.message) {
+            setLoginCorrect(response.data.message)
+        }
+        //itt kell megadni hogy ha correct a user, dobja be a homepage-re,
+        //illetve selectálja hogy ez defaultUser, Driver vagy Admin
+        else {
+
+        }
+        console.log(response.data);
+    })
+}
+
 
 export function Login() {
     return (<>
@@ -25,13 +79,24 @@ export function Login() {
 
                 <h3 id="login-p">Login</h3>
 
+                {/*Error message on uncorrect user*/}
+                <p>{loginCorrect}</p>
+
                 <p>Username</p>
-                <input className='input' type="text" id="username" />
+                <input className='input' type="text" id="username"
+                    onChange={(e) => {
+                        setUsernameLog(e.target.value);
+                    }}
+                />
 
                 <p>Password</p>
-                <input className='input' type="password" id="password" />
+                <input className='input' type="password" id="password"
+                    onChange={(e) => {
+                        setPasswordLog(e.target.value);
+                    }}
+                />
 
-                <button id="submit-btn-for-login">Login</button>
+                <button id="submit-btn-for-login" onClick={login} >Login</button>
 
                 <a href="#registration" id="login-btn">I don't have any account</a>
                 <a href="#starting" id="home-btn">Home</a>
@@ -45,15 +110,27 @@ export function Login() {
                 <h3>Registration</h3>
 
                 <p>Username</p>
-                <input className='input' type="text" id="username" />
+                <input className='input' type="text" id="username"
+                    onChange={(e) => {
+                        setUsernameReg(e.target.value);
+                    }}
+                />
 
                 <p>Password</p>
-                <input className='input' type="text" id="password" />
+                <input className='input' type="text" id="password"
+                    onChange={(e) => {
+                        setPasswordReg(e.target.value);
+                    }}
+                />
 
                 <p>Email</p>
-                <input className='input' type="email" id="email" />
+                <input className='input' type="email" id="email"
+                    onChange={(e) => {
+                        setEmailReg(e.target.value);
+                    }}
+                />
 
-                <button id="submit-btn-for-register" type="submit">Registration</button>
+                <button id="submit-btn-for-register" type="submit" onClick={registration}>Registration</button>
 
                 <a href="#login" id="login-btn">I have an account, i'd like to log in</a>
                 <a href="#starting" id="home-btn">Home</a>
