@@ -31,7 +31,6 @@ body{
     width: 100%;
     height: 100%;
  
-    background-image: url("../images/homePageBgImage.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover , auto;
@@ -54,9 +53,20 @@ body{
 } 
 
 /*List settnigs*/
-#listBox{
+#name{
+    padding-left: 5%;
+}
+#car{
+    padding-left: 5%;
+}
+#listElement{
     padding: 0;
-    margin-top: 3%;
+    display: flex;
+    justify-content: space-around;
+}
+#listBox{
+    display: inline;
+    padding: 0;
     width: 75%;
     height: 30%;
     border: 2px solid var(--clr-border);
@@ -70,11 +80,8 @@ li{
 }
 
 p{
-    place-content: space;
-    padding-top: 3%;
-    margin: 1%;
-    margin-left: 10%;
-    margin-right: 10%;
+    text-align: center;
+    margin-bottom: 5%; 
 }
 
 /*Delete button settings*/
@@ -126,6 +133,7 @@ p{
     margin-bottom: 3%;
 
     text-decoration: none;
+    font-size: 20px;
     color: var(--clr-addBTN);
     border: var(--clr-addBTN) 4px solid;
     border-radius: 10%;

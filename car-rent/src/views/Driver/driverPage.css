@@ -11,7 +11,6 @@ body{
     height: 100%;
     width: 100%;
 
-    background-image: url("../images/homePageBgImage.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover, auto;
@@ -21,19 +20,24 @@ body{
 
 /*Row settings*/
 .row{
-    padding-left: 1%
+    padding: 0;
 }
 
 
 /*Container settings*/
 .container{
+    display: inline;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding-top: 2%;
 }
 
 /*Calendar settings*/
 .containerCalendar{
-    padding-top: 1%;
+    display: inline;
+    position: relative;
+    justify-content: center;
+    padding: 0;
 }
 
 ul{
@@ -41,9 +45,11 @@ ul{
 }
 
 .month{
+    display: inline-block;
+    text-align: center;
     list-style-type: none;
     padding: 70px 25px;
-    width: 60%;
+    width: 100%;
     background: var(--clr-calendarDefault);
     text-align: center;
 }
@@ -65,7 +71,7 @@ ul{
 .weekdays {
     display: inline-block;
     text-align: center;
-    width: 60%;
+    width: 117.5%;
     margin: 0;
     padding: 0;
     background-color:rgb(194, 194, 194);
@@ -81,14 +87,16 @@ ul{
 .days {
     display: inline-block;
     text-align: center;
-    width: 60%;
+    width: 117.5%;
     height: 50%;
     background-color:rgb(194, 194, 194);
 }
 
 .days li {
     display: inline-block;
-    width: 13.2%;
+    text-align: center;
+    vertical-align: center;
+    width: 12.3%;
     margin: 12px 2px;
     color: var(--clr-calendarDefault);
     text-align: center;
@@ -96,7 +104,7 @@ ul{
 }
 
 .days li:hover{
-    border-radius: 3%;
+    border-radius: 10%;
     background-color: var(--clr-calendarDefault);
     color: aliceblue;
 }
