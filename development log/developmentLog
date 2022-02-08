@@ -197,3 +197,9 @@ HIBA:---------
 2022.02.07. {15:45-16:50} (Szalanics Szabolcs):
     -Authentication Frontend (kész)
 HIBA:Login&Registration lekezelése Backend-en
+
+2022.02.07. {15:45-16:50} (Váradi szabolcs, Szalanics Szabolcs):
+    -Authentication Backend (kész)
+HIBA: Adatbázis elkészülése után TESZT
+      Egyszer felhasznált email cím újbóli beírása esetén hibaüzenetet kell hozzáírni!!!
+      Node index.js LoginUsername és az ehhez kapcsolódó adatok (NOT DEFINIED!!!!!?????)
