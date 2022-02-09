@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 //Import CSS & Images
 import './starterpage.css';
@@ -12,6 +13,7 @@ export function Login() {
 
     //Uncorrect or Coorect login state condescension
     const [loginCorrect, setLoginCorrect] = useState("");
+    const history = useHistory();
 
 
     //Adatok kiolvasása az inputokból (Regisztráció)
@@ -52,7 +54,7 @@ export function Login() {
             //itt kell megadni hogy ha correct a user, dobja be a homepage-re,
             //illetve selectálja hogy ez defaultUser, Driver vagy Admin
             else {
-
+                history.push("/");
             }
         });
     };
