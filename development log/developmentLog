@@ -203,3 +203,9 @@ HIBA:Login&Registration lekezelése Backend-en
 HIBA: Adatbázis elkészülése után TESZT
       Egyszer felhasznált email cím újbóli beírása esetén hibaüzenetet kell hozzáírni!!!
       Node index.js LoginUsername és az ehhez kapcsolódó adatok (NOT DEFINIED!!!!!?????)
+
+2022.02.10. {8:35-9:40} (Szalanics Szabolcs):
+    -Teszt adatbázis elkészítése után a szoftver login/registration rész működik, adatot küld és fogad az adatbázisból
+    -LoginUsername, LoginPassword undefined javítva
+HIBA: Egyszer felhasznált email cím újbóli beírása esetén hibaüzenetet kell hozzáírni!!!
+      LOGIN kiszervezése

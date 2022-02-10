@@ -19,7 +19,7 @@ ReactDOM.render(
   <Login />
     <Layout />
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route exact path="/" element={<App />} />
       <Route path="/Products" element={<Products />} />
       <Route path="/RateUs" element={<RateUs />} />
       <Route path="/Profile" element={<Profile />} />

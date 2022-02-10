@@ -16,14 +16,11 @@ const db = mysql.createConnection({
 });
 
 app.post('/registration', (req, res) => {
+    console.log(req);
+    const {RegistrationUsername, RegistrationPassword, RegistrationEmail} =req.body;
 
-    //helyi konstansban elhelyezett Frontend változók
-    const username = RegistrationUsername;
-    const password = RegistrationPassword;
-    const email = RegistrationEmail;
-
-    db.query("INSERT INTO Users (username, password, email) VALUES (? , ? , ?)",
-        [username, password, email],
+    db.query("INSERT INTO users (username, password, email) VALUES (? , ? , ?)",
+        [RegistrationUsername, RegistrationPassword, RegistrationEmail],
         (err, result) => {
             console.log(err)
         }
@@ -31,15 +28,14 @@ app.post('/registration', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    const username = LoginUsername
-    const password = LoginPassword
+    const {LoginUsername, LoginPassword} = req.body;
 
-    db.query("SELECT * FROM Users WHERE username = ? AND password = ?",
-        [username, password,],
+    db.query("SELECT * FROM users WHERE username = ? AND password = ?",
+        [LoginUsername, LoginPassword],
         (err, result) => {
             if (err) { 
                 console.log("nem helyes felhasználó");
-                //res.send({err: err})
+                res.send({err: err})
             }
             if(result.length > 0){
                 res.send(result);
