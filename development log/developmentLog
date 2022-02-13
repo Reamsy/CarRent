@@ -209,3 +209,12 @@ HIBA: Adatbázis elkészülése után TESZT
     -LoginUsername, LoginPassword undefined javítva
 HIBA: Egyszer felhasznált email cím újbóli beírása esetén hibaüzenetet kell hozzáírni!!!
       LOGIN kiszervezése
+      useNavigation nem működik
+
+2022.02.12. {22:11-23:30} (Szalanics Szabolcs):
+    -Route-ok pontos helyének megadása + Layout hozzáfűzése 
+    -Login kiszervezve
+    -useNavigation kijavítva (rossz volt az elérési út)
+HIBA: Egyszer felhasznált email cím újbóli beírása esetén hibaüzenetet kell hozzáírni!!!
+      Regisztráció után egyből dobjon a Homepage-registration
+      
