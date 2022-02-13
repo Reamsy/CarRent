@@ -1,4 +1,5 @@
 import React from 'react';
+import { Layout } from '../layOut/layOut';
 
 //Import CSS & Images
 import './rateUs.css';
@@ -7,8 +8,11 @@ import driverIMG from '../../images/img_avatar.png';
 
 export function RateUs() {
     return (<>
+
+        <Layout />
+
         {/*Page message*/}
-        <h3>Here you can rate our vehicles and drivers!</h3>
+        <h3 id="h3rate">Here you can rate our vehicles and drivers!</h3>
 
         <section>
             {/*Cards for the rate us*/}

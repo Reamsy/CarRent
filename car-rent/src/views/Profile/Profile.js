@@ -1,4 +1,5 @@
 import React from 'react';
+import { Layout } from '../layOut/layOut';
 
 //Import CSS & Images
 import './profilePage.css';
@@ -6,6 +7,9 @@ import driverIMG from '../../images/img_avatar.png';
 
 export function Profile() {
     return (<>
+
+        <Layout />
+
         {/*Avatar Picture */}
         <div className="container-base">
             <img src={driverIMG} alt="img_avatar" id="profileImage" />

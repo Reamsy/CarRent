@@ -55,89 +55,61 @@ export function Login() {
             //illetve selectálja hogy ez defaultUser, Driver vagy Admin
             else {
                 console.log("ja")
-                navigate("/");
+                navigate("/App");
                 console.log("fasz")
             }
         });
     };
     return (<>
+        <div className="welcome">
+            <h3>Wellcome to Car Rent</h3>
 
-        <div>
-            {/*FIXED PAGE*/}
-            <section id="starting">
-
-                <h3>Wellcome to Car Rent</h3>
-
-                <p id="home-p">Easiest way to rent your car</p>
-
-                <a href="#login" id="login-btn">Login</a>
-                <a href="#registration" id="registration-btn">Registration</a>
-
-            </section>
-            <br className="br" />
-
-            {/*LOGIN SECTION*/}
-            <section id="login">
-
-                <h3 id="login-p">Login</h3>
-
-                {/*Error message on uncorrect user*/}
-                <p>{loginCorrect}</p>
-
-                <p>Username</p>
-                <input className='input' type="text" id="username"
-                    onChange={(e) => {
-                        setUsernameLog(e.target.value);
-                    }}
-                />
-
-                <p>Password</p>
-                <input className='input' type="password" id="password"
-                    onChange={(e) => {
-                        setPasswordLog(e.target.value);
-                    }}
-                />
-
-                <button id="submit-btn-for-login" onClick={login} >Login</button>
-
-                <a href="#registration" id="login-btn">I don't have any account</a>
-                <a href="#starting" id="home-btn">Home</a>
-
-            </section>
-            <br className="br" />
-
-            {/*REGISTRATION SECTION */}
-            <section id="registration">
-
-                <h3>Registration</h3>
-
-                <p>Username</p>
-                <input className='input' type="text" id="username"
-                    onChange={(e) => {
-                        setUsernameReg(e.target.value);
-                    }}
-                />
-
-                <p>Password</p>
-                <input className='input' type="text" id="password"
-                    onChange={(e) => {
-                        setPasswordReg(e.target.value);
-                    }}
-                />
-
-                <p>Email</p>
-                <input className='input' type="email" id="email"
-                    onChange={(e) => {
-                        setEmailReg(e.target.value);
-                    }}
-                />
-
-                <button id="submit-btn-for-register" type="submit" onClick={registration}>Registration</button>
-
-                <a href="#login" id="login-btn">I have an account, i'd like to log in</a>
-                <a href="#starting" id="home-btn">Home</a>
-
-            </section>
+            <p id="home-p">Easiest way to rent your car</p>
         </div>
+        {/*Login*/}
+        <div className="Login">
+            <h3 id="login-p">Login</h3>
+
+            <input className='input' type="text" id="username" placeholder="Username"
+                onChange={(e) => {
+                    setUsernameLog(e.target.value);
+                }}
+            />
+
+            <input className='input' type="password" id="password" placeholder="Password"
+                onChange={(e) => {
+                    setPasswordLog(e.target.value);
+                }}
+            />
+
+            <p id="loginErr">{loginCorrect}</p>
+            <button id="submit-btn-for-login" onClick={login} >Login</button>
+        </div>
+
+        {/*Registration*/}
+        <div className="Registration">
+            <h3>Registration</h3>
+
+            <input className='input' type="text" id="username" placeholder="Username"
+                onChange={(e) => {
+                    setUsernameReg(e.target.value);
+                }}
+            />
+
+            <input className='input' type="text" id="password" placeholder="Password"
+                onChange={(e) => {
+                    setPasswordReg(e.target.value);
+                }}
+            />
+
+            <input className='input' type="email" id="email" placeholder="E-mail"
+                onChange={(e) => {
+                    setEmailReg(e.target.value);
+                }}
+            />
+
+            <button id="submit-btn-for-register" type="submit" onClick={registration}>Registration</button>
+        </div>
+
     </>)
 }

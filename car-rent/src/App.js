@@ -1,12 +1,19 @@
 import React from 'react';
+import { Layout } from './views/layOut/layOut';
 
 //Import CSS & AOS & background
 import './App.css';
 
 
+
+
 //App alatt fut a HomePage
 function App() {
+
   return (<>
+
+    <Layout />
+
     <section>
       <a href="" id="homePageMidBtn">Rent</a>
       <p>You can text us bellow</p>
