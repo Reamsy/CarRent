@@ -13,6 +13,7 @@ export function Login() {
 
     //Uncorrect or Coorect login state condescension
     const [loginCorrect, setLoginCorrect] = useState("");
+    const [registrationCorrect, setRegistrationCorrect] = useState("");
     const navigate = useNavigate();
 
 
@@ -36,7 +37,10 @@ export function Login() {
             RegistrationPassword: passwordReg,
             RegistrationEmail: emailReg
         }).then((response) => {
-            console.log(response);
+
+            if (response.data.message) {
+                setRegistrationCorrect(response.data.message)
+            }
         })
     }
 
@@ -66,6 +70,7 @@ export function Login() {
 
             <p id="home-p">Easiest way to rent your car</p>
         </div>
+
         {/*Login*/}
         <div className="Login">
             <h3 id="login-p">Login</h3>
@@ -107,6 +112,7 @@ export function Login() {
                     setEmailReg(e.target.value);
                 }}
             />
+            <p id="loginErr">{registrationCorrect}</p>
 
             <button id="submit-btn-for-register" type="submit" onClick={registration}>Registration</button>
         </div>
