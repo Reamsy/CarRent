@@ -23,6 +23,7 @@ app.post('/registration', async (req, res) => {
     //password hash
     const encryptPassword = await bcrypt.hash(RegistrationPassword, 10);
 
+    //request hogy egyedi-e a user
     db.query("SELECT * FROM users WHERE email = ? AND username = ?",
         [RegistrationEmail, RegistrationUsername],
         (err, result) => {
@@ -31,7 +32,6 @@ app.post('/registration', async (req, res) => {
                     [RegistrationUsername, encryptPassword, RegistrationEmail],
                     (err, result) => {
                         if (err) {
-                            console.log("nem helyes felhasználó");
                             res.send({ err: err })
                         }
                         
