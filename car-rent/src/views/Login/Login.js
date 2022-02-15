@@ -11,6 +11,7 @@ export function Login() {
     const [usernameLog, setUsernameLog] = useState("");
     const [passwordLog, setPasswordLog] = useState("");
 
+    
     //Uncorrect or Coorect login state condescension
     const [loginCorrect, setLoginCorrect] = useState("");
     const [registrationCorrect, setRegistrationCorrect] = useState("");
@@ -21,7 +22,6 @@ export function Login() {
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
     const [emailReg, setEmailReg] = useState("");
-
 
 
     //adatok elküldése 
@@ -105,7 +105,7 @@ export function Login() {
                 }}
             />
 
-            <input className='input' type="text" id="password" placeholder="Password"
+            <input className='input' type="password" id="password" placeholder="Password"
                 onChange={(e) => {
                     setPasswordReg(e.target.value);
                     setRegistrationCorrect("");
