@@ -37,9 +37,12 @@ export function Login() {
             RegistrationPassword: passwordReg,
             RegistrationEmail: emailReg
         }).then((response) => {
-
+            console.log(response);
             if (response.data.message) {
                 setRegistrationCorrect(response.data.message)
+            }
+            else {
+                navigate("/App");
             }
         })
     }
@@ -58,9 +61,7 @@ export function Login() {
             //itt kell megadni hogy ha correct a user, dobja be a homepage-re,
             //illetve selectálja hogy ez defaultUser, Driver vagy Admin
             else {
-                console.log("ja")
                 navigate("/App");
-                console.log("fasz")
             }
         });
     };
@@ -78,12 +79,14 @@ export function Login() {
             <input className='input' type="text" id="username" placeholder="Username"
                 onChange={(e) => {
                     setUsernameLog(e.target.value);
+                    setLoginCorrect("");
                 }}
             />
 
             <input className='input' type="password" id="password" placeholder="Password"
                 onChange={(e) => {
                     setPasswordLog(e.target.value);
+                    setLoginCorrect("");
                 }}
             />
 
@@ -98,18 +101,21 @@ export function Login() {
             <input className='input' type="text" id="username" placeholder="Username"
                 onChange={(e) => {
                     setUsernameReg(e.target.value);
+                    setRegistrationCorrect("");
                 }}
             />
 
             <input className='input' type="text" id="password" placeholder="Password"
                 onChange={(e) => {
                     setPasswordReg(e.target.value);
+                    setRegistrationCorrect("");
                 }}
             />
 
             <input className='input' type="email" id="email" placeholder="E-mail"
                 onChange={(e) => {
                     setEmailReg(e.target.value);
+                    setRegistrationCorrect("");
                 }}
             />
             <p id="loginErr">{registrationCorrect}</p>
