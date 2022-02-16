@@ -6,6 +6,11 @@ import carIMG from '../../images/img_car.png';
 import driverIMG from '../../images/img_avatar.png';
 
 export function Rent() {
+
+
+
+
+
     return (<>
         <div>
             {/*Title for rent*/}
@@ -23,7 +28,7 @@ export function Rent() {
 
             <div className="container_choose" >
                 {/*Cars*/}
-                <form action="">
+                <form>
                     <select id="cars" name="cars">
                         {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
                         <option value="car1" id="car1">BMW</option>
@@ -59,14 +64,14 @@ export function Rent() {
                     {/*End date*/}
                     <label for="end">End date:</label>
                     {/*A kiválasztott nap alapértelmezettként mindig a maid dátum +1 nap legyen*/}
-                    <input type="date" id="endInput" name="end-date" value="" />
+                    <input type="date" id="endInput" name="end-date" />
                 </div>
             </div>
 
             {/*Choosed Car & Driver card*/}
             <div className="container_cards">
 
-                <div className="cardPosition"> 
+                <div className="cardPosition">
                     {/*Car*/}
                     <div className="card" id="car">
                         <img className="img" src={carIMG} alt="car" />
@@ -76,17 +81,17 @@ export function Rent() {
                             <p id="startTime">start time</p>
                             <p id="endTime">end time</p>
                         </div>
-                        
+
                     </div>
                 </div>
 
                 <p id="total">total</p>
-                
+
                 <div >
                     {/*Driver*/}
                     {/*Ha a vásárló nem kér sofőrt ne jelenjen meg se név se semmi, opacity: 0.4;*/}
                     <div className="card" id="car">
-                        <img className="img"src={driverIMG} />
+                        <img className="img" src={driverIMG} />
                         <div className="container">
                             <h4 id="name"><b>Name</b></h4>
                             <p id="age">Age</p>

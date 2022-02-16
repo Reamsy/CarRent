@@ -6,7 +6,6 @@ import './App.css';
 
 
 
-
 //App alatt fut a HomePage
 function App() {
 
@@ -15,7 +14,7 @@ function App() {
     <Layout />
 
     <section>
-      <a href="" id="homePageMidBtn">Rent</a>
+      <a href="./Rent" id="homePageMidBtn">Rent</a>
       <p>You can text us bellow</p>
     </section>
     <footer>

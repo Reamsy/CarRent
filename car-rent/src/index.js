@@ -7,7 +7,7 @@ import { Products } from './views/Products/Products';
 import { RateUs } from './views/RateUs/RateUs';
 import { Profile } from './views/Profile/Profile';
 import { Login } from './views/Login/Login';
-
+import { Rent } from './views/Rent/Rent';
 
 
 
@@ -22,6 +22,7 @@ ReactDOM.render(
       <Route path="/Products" element={<Products />} />
       <Route path="/RateUs" element={<RateUs />} />
       <Route path="/Profile" element={<Profile />} />
+      <Route path="/Rent" element={<Rent />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')

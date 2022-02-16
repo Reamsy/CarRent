@@ -11,7 +11,7 @@ export function Login() {
     const [usernameLog, setUsernameLog] = useState("");
     const [passwordLog, setPasswordLog] = useState("");
 
-    
+
     //Uncorrect or Coorect login state condescension
     const [loginCorrect, setLoginCorrect] = useState("");
     const [registrationCorrect, setRegistrationCorrect] = useState("");
@@ -22,7 +22,7 @@ export function Login() {
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
     const [emailReg, setEmailReg] = useState("");
-
+    
 
     //adatok elküldése 
     //A USERNAME ÉS A PASSWORDNEM EGYEZNIE KELL A BACKENDEN AZ INSERT ADATOKKAL
