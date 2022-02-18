@@ -7,58 +7,62 @@ import './starterpage.css';
 
 
 export function Login() {
-    //Adatok kiolvasása az inputokból (Login)
-    const [usernameLog, setUsernameLog] = useState("");
-    const [passwordLog, setPasswordLog] = useState("");
-
-
-    //Uncorrect or Coorect login state condescension
-    const [loginCorrect, setLoginCorrect] = useState("");
-    const [registrationCorrect, setRegistrationCorrect] = useState("");
-    const navigate = useNavigate();
-
-
     //Adatok kiolvasása az inputokból (Regisztráció)
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
     const [emailReg, setEmailReg] = useState("");
     
+    //Adatok kiolvasása az inputokból (Login)
+    const [usernameLog, setUsernameLog] = useState("");
+    const [passwordLog, setPasswordLog] = useState("");
 
-    //adatok elküldése 
-    //A USERNAME ÉS A PASSWORDNEM EGYEZNIE KELL A BACKENDEN AZ INSERT ADATOKKAL
-    //Backend-en install-álni kell a cors-t
+    //Uncorrect or Coorect login state condescension (hibaüzenet lekezelése)
+    const [loginCorrect, setLoginCorrect] = useState("");
+    const [registrationCorrect, setRegistrationCorrect] = useState("");
+
+    //ez felel az odalk közötti navigálásért sikeres belépés esetén
+    const navigate = useNavigate();
+  
+
+    //adatok elküldése onClick={registration} meghívása után
     const registration = () => {
 
         //localhostál állítsd be a portot amin fut majd a node 
         Axios.post('http://localhost:3001/registration', {
 
-            //ennek kell egyeznie a backenddel-->> RegistrationUsername....
+            //ennek kell egyeznie a backenddel-->> RegistrationUsername.... mert ezt fogod átvenni frontendről req.body-val
             RegistrationUsername: usernameReg,
             RegistrationPassword: passwordReg,
             RegistrationEmail: emailReg
         }).then((response) => {
-            console.log(response);
+
+            //itt jön vissza a backend hibaüzenet (ha van)
             if (response.data.message) {
                 setRegistrationCorrect(response.data.message)
             }
             else {
-                navigate("/App");
+                //ha nincs nem történik semmi csak kiíratjuk konzolba
+                console.log(setRegistrationCorrect)
             }
         })
     }
 
     //Login adatok lekérdezése
     const login = () => {
+        
+        //node port egyezés szükséges
         Axios.post('http://localhost:3001/login', {
-            //megváltozott a backenden lekérdezendő adat !!FIGYELJ!!
+
+            //ennek kell egyeznie a backenddel-->> LoginUsername.... mert ezt fogod átvenni frontendről req.body-val
             LoginUsername: usernameLog,
             LoginPassword: passwordLog,
-        }).then((response) => {
+        }).then((response) => { 
 
+            //itt jön vissza a backend hibaüzenet (ha van)
             if (response.data.message) {
                 setLoginCorrect(response.data.message)
             }
-            //itt kell megadni hogy ha correct a user, dobja be a homepage-re,
+
             //illetve selectálja hogy ez defaultUser, Driver vagy Admin
             else {
                 navigate("/App");
@@ -78,7 +82,10 @@ export function Login() {
 
             <input className='input' type="text" id="username" placeholder="Username"
                 onChange={(e) => {
+                    //kiolvassuk a beírt adatokat
                     setUsernameLog(e.target.value);
+
+                    //ha hibás a felhasználónév akkor ha a user elkezd gépelni, kitörli a hibaüzenetet
                     setLoginCorrect("");
                 }}
             />
@@ -100,7 +107,10 @@ export function Login() {
 
             <input className='input' type="text" id="username" placeholder="Username"
                 onChange={(e) => {
+                    //kiolvassuk a beírt adatokat
                     setUsernameReg(e.target.value);
+
+                    //ha hiba jön vissza backendről, ha a user elkezd gépelni kitöli a hibaüzenetet
                     setRegistrationCorrect("");
                 }}
             />

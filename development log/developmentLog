@@ -236,3 +236,10 @@ HIBA:---------
     -Inputok adatainak kiolvasása és onClick metódus létrehozva
 HIBA: Megoldás arra, hogy a Rent page-re való navigálásnál frissítse a selecteket adatbázis alapján
       Default value-t nem biztos hogy felismer (KELL A BACKEND HOGY TESZTELNI LEHESSEN)!!!!!!!!
+
+2022.02.18. {13:30-14:20} (Szalanics Szabolcs):
+    -Részletes kommentelés a service index.js-ben
+    -Részletes kommentelés a car-rent Login.js-ben
+    -Részletes kommentelés a car-rent Rent.js-ben
+HIBA: Megoldás arra, hogy a Rent page-re való navigálásnál frissítse a selecteket adatbázis alapján
+      Default value-t nem biztos hogy felismer (KELL A BACKEND HOGY TESZTELNI LEHESSEN)!!!!!!!!

@@ -8,13 +8,13 @@ import './Rent.css';
 export function Rent() {
 
     //Date hooks for select
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(Date);
+    const [endDate, setEndDate] = useState(Date);
 
-    //Backend messages hook
+    //Backend error messages hook
     const [rentConfirmed, setRentConfirmed] = useState("Before you rent, CHECK AGAIN!");
 
-    //Option
+    //Options
     const [selectedCar, setselectedCar] = useState("");
     const [selectedDriver, setselectedDriver] = useState("");
 
@@ -23,18 +23,20 @@ export function Rent() {
         Axios.post('http://localhost:3001/rent', {
 
             //Kiszervezés ami át fog menni backendre
+            //Ezeket használd: RentStartDate, RentEndDate...
             RentStartDate: startDate,
             RentEndDate: endDate,
             RentCar: selectedCar,
             RentDriver: selectedDriver,
 
-            //és a válasz ami backendről fog jönni
         }).then((response) => {
-            console.log(response);
+
+            //és a válasz ami backendről fog jönni
             if (response.data.message) {
                 setRentConfirmed(response.data.message);
             }
             else {
+                //sikeres bérés esetén visszajelző alert
                 alert("Bérlését sikeresen rögzítettük!");
             }
         });
@@ -60,24 +62,28 @@ export function Rent() {
                 <form>
                     <select id="cars" name="cars"
                         onChange={(e) => {
-                            setselectedCar(e.target.value);
+                            const selectedCar = e.target.value;
+                            setselectedCar(selectedCar);
                         }} >
 
-
                         {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
+                        
+                        <option value="noCar">Choose your Car</option>
                         <option value="car1" id="car1" >BMW</option>
                         <option value="car2" id="car2">Nissan</option>
                         <option value="car3" id="car3">Honda</option>
                     </select>
+                    <></>
                 </form>
 
                 {/*Drivers*/}
                 <form action="">
                     <select id="cars" name="cars" onChange={(e) => {
-                        setselectedDriver(e.target.value);
+                        const selectedDriver = e.target.value;
+                        setselectedDriver(selectedDriver);
                     }}>
                         {/*feltöltése DB-ből mindig a kiválasztott sofőr információi jelenjenek meg a lenti card-ban*/}
-                        <option value="noDriver" id="noDriver">Nem kérek sofőrt!</option>
+                        <option value="noDriver" id="noDriver">Choose a driver</option>
                         <option value="driver1" id="driver1">Kiss István</option>
                         <option value="driver2" id="driver2">Bakos Zsombor</option>
                         <option value="driver3" id="driver3">Szakács Péter</option>
@@ -91,7 +97,6 @@ export function Rent() {
             <div className="dateChoose">
                 {/*Start date*/}
                 <input type="date"
-                    selected={startDate}
                     onChange={(e) => {
                         setStartDate(e.target.value);
                     }}
@@ -100,7 +105,6 @@ export function Rent() {
                 {/*End date*/}
                 <input type="date"
                     id="enddate"
-                    selected={endDate}
                     onChange={(e) => {
                         setEndDate(e.target.value);
                     }}
