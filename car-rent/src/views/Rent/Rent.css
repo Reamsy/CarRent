@@ -64,23 +64,17 @@ select{
 }
 
 /*Date choose settings*/
-#date-p{
+.dateChoose{
     display: flex;
-    justify-content: center;
-
-    padding-top: 8%;
+    position: relative;
+    justify-content: space-evenly;    
 }
-.container_date{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center; 
+input{
+    width: fit-content;
 }
 
-#startInput{
-    margin-right: 13%;
-}
 
-/*Cards settings*/
+/*Cards settings
 .container_cards{
     padding-left: auto;
     padding-right: auto;
@@ -117,7 +111,7 @@ select{
     height: 100%;
     width: 100%;
 }
-
+*/
 /*Rent button & rent container settings*/
 .container_button{
     display: inline flex;
