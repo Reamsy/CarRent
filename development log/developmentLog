@@ -243,3 +243,7 @@ HIBA: Megoldás arra, hogy a Rent page-re való navigálásnál frissítse a sel
     -Részletes kommentelés a car-rent Rent.js-ben
 HIBA: Megoldás arra, hogy a Rent page-re való navigálásnál frissítse a selecteket adatbázis alapján
       Default value-t nem biztos hogy felismer (KELL A BACKEND HOGY TESZTELNI LEHESSEN)!!!!!!!!
+
+2022.02.20. {15:20-15:30} (Szalanics Szabolcs):
+    -Data fetching megírásának elkezdése a Menu.js-ben 
+HIBA:---------

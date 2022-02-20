@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from './views/layOut/layOut';
+import { Layout } from '../layOut/layOut';
 
 //Import CSS & AOS & background
 import './App.css';
