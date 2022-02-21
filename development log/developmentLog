@@ -247,3 +247,7 @@ HIBA: Megoldás arra, hogy a Rent page-re való navigálásnál frissítse a sel
 2022.02.20. {15:20-15:30} (Szalanics Szabolcs):
     -Data fetching megírásának elkezdése a Menu.js-ben 
 HIBA:---------
+
+2022.02.21. {13:20-13:55} (Szalanics Szabolcs):
+    -Data fetching ártakása a products.js-be
+HIBA:---------(egyeztetni ákossal)
