@@ -251,3 +251,10 @@ HIBA:---------
 2022.02.21. {13:20-13:55} (Szalanics Szabolcs):
     -Data fetching ártakása a products.js-be
 HIBA:---------(egyeztetni ákossal)
+
+2022.02.21. {22:55-23:35} (Szalanics Szabolcs):
+    -Teszt adatbázis létrehozva
+    -Backend kérés megírva 
+    -frontend ellenőtizve https://jsonplaceholder.typicode.com/posts segítségével (Működik)
+HIBA: Initial server error (Error 500)????????????!!!!!!!!!!!!
+      A visszaküldött adat [object Object] de semmi sem jelenik meg a Products.js-ben

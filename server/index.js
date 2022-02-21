@@ -17,7 +17,7 @@ const db = mysql.createConnection({
     database: "users",
 });
 
-//Requests
+//Requests for registration
 app.post('/registration', async (req, res) => {
     const { RegistrationUsername, RegistrationPassword, RegistrationEmail } = req.body;
 
@@ -62,7 +62,7 @@ app.post('/registration', async (req, res) => {
     }
 });
 
-//login kérés
+//request for login
 app.post('/login', async (req, res) => {
 
     //frontendről érkező adat
@@ -99,6 +99,21 @@ app.post('/login', async (req, res) => {
         }
     );
 })
+
+//request for products
+app.get('/Products', (req, res) => {
+
+    db.query("SELECT * FROM products, id"), (err, result) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            console.log(result);
+            res.send(result);
+        }
+    }
+})
+
 
 app.listen(3001, (err) => {
     console.log("fut");

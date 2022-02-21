@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout } from '../layOut/layOut';
-import { withRouter } from 'react-router-dom';
+import Axios from 'axios';
 
 //import CSS & Images
 import './Products.css';
@@ -10,18 +10,21 @@ export function Products() {
 
     const [products, setProducts] = useState([]);
 
-    //Backenden lekérni hozzá az adatokat
     useEffect(() => {
         Axios.get('http://localhost:3001/Products')
-            //ide kell jönnie hogy mi történjen
+
+            //itt kezeljük le az backendről érkező adatokat
             .then((response) => {
-                setProducts(response.data);
-            })
-            //error (lehet popup window is vagy egy alert)
-            .catch(err => {
-                console.log(err);
-                alert("Produts not available right now")
-            })
+                if (response) {
+                    console.log(response);
+                    setProducts(response.data);
+                }
+                //hiba esetén alert
+                else {
+                    alert("Products not available right now!");
+                }
+            });
+
     }, []);
 
 
@@ -29,6 +32,9 @@ export function Products() {
     return (<>
 
         <Layout />
+        {/*{products.map(product =>
+             <li key={product.id}>{product.title}</li>
+        )}*/}
 
         {/*Page message*/}
         <h3 id="h3">Here Are our Drivers and Vehicles you can choose from!</h3>
@@ -47,9 +53,9 @@ export function Products() {
                 {/*Végigmegyünk a products-okon és minden egyed product id-nál kiíratjuk a hozzátartozó adatot*/}
                 {products.map(product =>
                     <>
-                        <img className="img" src={product.picture} alt="car"></img>
+                        <img key={product.id} className="img" src={product.picture} alt="car"></img>
                         <div className="container">
-                            <h4 key={product.id}><b>{product.brand}</b></h4>
+                            <h4><b>{product.title}</b></h4>
                             <p {...product.fuel}></p>
                             <p {...product.rentPrice}></p>
                             <p {...product.year}></p>
@@ -70,7 +76,7 @@ export function Products() {
 
             {/*driver1*/}
             <div className="card" id="people">
-                <img className="img" src={driverIMG} alt="avatar" />
+                <img className="img" src="" alt="avatar" />
                 <div className="container">
                     {/*ezeket adatbázisból kellene feltölteni*/}
                     <h4><b>name</b></h4>
@@ -83,4 +89,3 @@ export function Products() {
         <hr className="rounded"></hr>
     </>);
 }
-export default withRouter(Products);
