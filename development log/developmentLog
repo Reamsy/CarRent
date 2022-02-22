@@ -263,5 +263,9 @@ HIBA: Initial server error (Error 500)????????????!!!!!!!!!!!!
     -Products.js mostmár kiírja a db adatokat
     -Initial server error (megoldódott) (rossz helyre lettek rakva {products.fuel} stb.)
     -Úgy döntöttünk, hogy az egbevont Driver&Vehicle oldalt szétbontjuk, mivel egyszerűbb így a lekezelés
-HIBA:--------- 
-     
+HIBA:---------
+
+2022.02.22. {13:15-13:40} (Szalanics Szabolcs):
+    -Drivers.js pétrehozva
+    -CSS id/className unique mindenhol
+HIBA:---------
