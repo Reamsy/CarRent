@@ -252,6 +252,10 @@ HIBA:---------
     -Data fetching ártakása a products.js-be
 HIBA:---------(egyeztetni ákossal)
 
+2022.02.21. {20:00-23:00} (Váradi Szabolcs):
+    -MySQL Workbench megtanulása és az adatbázis elkészítése
+HIBA: Nem tudtam szinkronizálni a Workbenchet a Xampp-os PHP MyAdminnal (Segítség kérése)
+
 2022.02.21. {22:55-23:35} (Szalanics Szabolcs):
     -Teszt adatbázis létrehozva
     -Backend kérés megírva 
@@ -275,6 +279,12 @@ HIBA:---------
 HIBA: Each child in a list should have a unique "key" prop. (Rent.js 83.sor)
       server kérésnél, minden egyes kocsi után lekéri mégegyszer a drivert is hiába egy db van csak benne a driver table-be
       és annyiszor hozza ki a driver selectnél ahény car van 
+
+2022.02.22. {23:00-23:50} (Váradi Szabolcs:
+    - Az adatbázis PHP MyAdminba való betöltése
+    - Tesztsor írása minden táblába
+    - Az esetleges elgépelések vagy beállítási hibák javítása
+HIBA:---------
 
 2022.02.22. {20:35-23:30} (Szalanics Szabolcs):
     -Rent.js fetching error megoládsa (useEffect helyet useCallback)
