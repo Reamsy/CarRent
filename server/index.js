@@ -133,11 +133,11 @@ app.get('/drivers', (req, res) => {
 });
 
 //request for drivers@Cars
-app.get('/App/cars', async (req, res) => {   
+app.get('/rent', async (req, res) => {   
     console.log("1")
 
     //adatbázis select
-    db.query("SELECT * FROM products", (err, result) => {
+    db.query("SELECT * FROM products, drivers", (err, result) => {
         console.log("2")
         if (err) {
             //itt a hibát frontenden kezeltem le
@@ -152,20 +152,20 @@ app.get('/App/cars', async (req, res) => {
     });
 });
 
-app.get('/App/drivers', async (req, res) => {   
-    console.log("1")
+app.get('/rent', async (req, res) => {   
+    console.log("11")
 
     //adatbázis select
     db.query("SELECT * FROM drivers", (err, result) => {
-        console.log("2")
+        console.log("22")
         if (err) {
             //itt a hibát frontenden kezeltem le
-            console.log("3")
+            console.log("33")
             res.send(err);
         }
         else {
             //ha nincs hiba respons-al tér vissza
-            console.log("4")
+            console.log("44")
             res.send(result);
         }
     });

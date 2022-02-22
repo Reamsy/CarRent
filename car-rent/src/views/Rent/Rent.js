@@ -24,9 +24,9 @@ export function Rent() {
     const [selectedDriver, setselectedDriver] = useState("");
 
     //rent kérése elküldése
-    const rent = () => {
+    const Rent = () => {
         console.log(startDate, endDate, selectedCar, selectedDriver);
-        Axios.post('http://localhost:3001/rent', {
+        Axios.post('http://localhost:3001/Rent', {
             //Kiszervezés ami át fog menni backendre
             //Ezeket használd: RentStartDate, RentEndDate...
             RentStartDate: startDate,
@@ -48,40 +48,38 @@ export function Rent() {
     };
 
     //fetching Cars
-    const CheckCars = () => {
-        useEffect(() => {
-            Axios.get('http://localhost:3001/App/cars')
+    useEffect(() => {
+        Axios.get('http://localhost:3001/rent')
 
-                //itt kezeljük le az backendről érkező adatokat
-                .then((response) => {
-                    if (response) {
-                        setCars(response.data);
-                    }
-                    //alertbe kezeljük ha hiba történt
-                    else {
-                        alert("Vehicles currently unavailable!");
-                    }
-                });
-        }, []);
-    }
+            //itt kezeljük le az backendről érkező adatokat
+            .then((response) => {
+                console.log("response");
+                if (response) {
+                    setCars(response.data);
+                }
+                //alertbe kezeljük ha hiba történt
+                else {
+                    alert("Vehicles currently unavailable!");
+                }
+            });
+    }, []);
 
     //fetching Drivers
-    const CheckDrivers = () => {
-        useEffect(() => {
-            Axios.get('http://localhost:3001/App/drivers')
+    useEffect(() => {
+        Axios.get('http://localhost:3001/rent')
 
-                //itt kezeljük le az backendről érkező adatokat
-                .then((response) => {
-                    if (response) {
-                        setDrivers(response.data);
-                    }
-                    //alertbe kezeljük ha hiba történt
-                    else {
-                        alert("Drivers currently unavailable!");
-                    }
-                });
-        }, []);
-    }
+            //itt kezeljük le az backendről érkező adatokat
+            .then((response) => {
+                if (response) {
+                    setDrivers(response.data);
+                }
+                //alertbe kezeljük ha hiba történt
+                else {
+                    alert("Drivers currently unavailable!");
+                }
+            });
+    }, []);
+
 
     return (<>
 
@@ -97,6 +95,7 @@ export function Rent() {
 
             {/*Form to choose date, car, driver*/}
             <div className="container_choose" >
+
                 {/*Cars*/}
                 <form>
                     <select id="cars" name="cars"
@@ -105,9 +104,11 @@ export function Rent() {
                             setselectedCar(selectedCar);
                         }} >
                         {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
+                        <option value="0">Nincs autó kiválasztva</option>
                         {cars.map(car =>
                             <>
-                                <option key={car.id}>{car.brand}</option>
+                                key={car.id}
+                                <option value={car.id}>{car.brand}</option>
                             </>
                         )}
                     </select>
@@ -121,9 +122,11 @@ export function Rent() {
                             setselectedDriver(selectedDriver);
                         }} >
                         {/*feltöltése DB-ből mindig a kiválasztott sofőr információi jelenjenek meg a lenti card-ban*/}
+                        <option value="00">Nem kérek sofőrt</option>
                         {drivers.map(driver =>
                             <>
-                                <option key={driver.id}>{driver.name}</option>
+                                key={driver.id}
+                                <option value={driver.id}>{driver.name}</option>
                             </>
                         )}
                     </select>
@@ -153,7 +156,7 @@ export function Rent() {
             {/*Rent button*/}
             <div className="container_button" >
                 <p id="rent-p">{rentConfirmed}</p>
-                <button type="submit" id="finalRentBTN" onClick={rent}>Rent</button>
+                <button type="submit" id="finalRentBTN" onClick={Rent}>Rent</button>
             </div>
         </div>
     </>)
