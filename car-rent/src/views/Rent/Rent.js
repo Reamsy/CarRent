@@ -1,4 +1,4 @@
-import { React, useCallback, useEffect, useState } from 'react';
+import { React, useCallback, useState } from 'react';
 import Layout from '../layOut/layOut'
 import Axios from 'axios';
 
@@ -98,7 +98,7 @@ export function Rent() {
             <div className="container_choose" >
 
                 {/*Cars*/}
-                <form onClick={CheckCars}>
+                <form onMouseEnter={CheckCars}>
                     <select id="cars" name="cars"
                         onChange={(e) => {
                             const selectedCar = e.target.value;
@@ -113,7 +113,7 @@ export function Rent() {
                 </form>
 
                 {/*Drivers*/}
-                <form onClick={CheckDrivers}>
+                <form onMouseEnter={CheckDrivers}>
                     <select id="cars" name="cars"
                         onChange={(e) => {
                             const selectedDriver = e.target.value;
