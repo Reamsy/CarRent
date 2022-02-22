@@ -275,3 +275,10 @@ HIBA:---------
 HIBA: Each child in a list should have a unique "key" prop. (Rent.js 83.sor)
       server kérésnél, minden egyes kocsi után lekéri mégegyszer a drivert is hiába egy db van csak benne a driver table-be
       és annyiszor hozza ki a driver selectnél ahény car van 
+
+2022.02.22. {20:35-23:30} (Szalanics Szabolcs):
+    -Rent.js fetching error megoládsa (useEffect helyet useCallback)
+        [arra gondoltam, hogy lista frissítése ne az oldalal együtt történjen, hanem akkor mikor ráviszi a felhasználó a korzort a form-ra
+        ezt useEffect-tel nem tudtam megoldani hibát dobott (a fentit) mivel a useEffect-et nem tudom egy függvényként használni, de 
+        a useCallback-et igen és ugyan úgy le lehet vele kezelni a kívánt backend sql lekérdezéseket]
+HIBA:---------

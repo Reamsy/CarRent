@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useCallback, useEffect, useState } from 'react';
 import Layout from '../layOut/layOut'
 import Axios from 'axios';
 
@@ -48,25 +48,26 @@ export function Rent() {
     };
 
     //fetching Cars
-    useEffect(() => {
-        Axios.get('http://localhost:3001/rent')
+        const CheckCars = useCallback(() => {
+            Axios.get('http://localhost:3001/rentCars')
 
-            //itt kezeljük le az backendről érkező adatokat
-            .then((response) => {
-                console.log("response");
-                if (response) {
-                    setCars(response.data);
-                }
-                //alertbe kezeljük ha hiba történt
-                else {
-                    alert("Vehicles currently unavailable!");
-                }
-            });
-    }, []);
+                //itt kezeljük le az backendről érkező adatokat
+                .then((response) => {
+                    console.log("response");
+                    if (response) {
+                        setCars(response.data);
+                    }
+                    //alertbe kezeljük ha hiba történt
+                    else {
+                        alert("Vehicles currently unavailable!");
+                    }
+                });
+        }, []);
+    
 
     //fetching Drivers
-    useEffect(() => {
-        Axios.get('http://localhost:3001/rent')
+    const CheckDrivers = useCallback(() => {
+        Axios.get('http://localhost:3001/rentDrivers')
 
             //itt kezeljük le az backendről érkező adatokat
             .then((response) => {
@@ -97,7 +98,7 @@ export function Rent() {
             <div className="container_choose" >
 
                 {/*Cars*/}
-                <form>
+                <form onClick={CheckCars}>
                     <select id="cars" name="cars"
                         onChange={(e) => {
                             const selectedCar = e.target.value;
@@ -106,16 +107,13 @@ export function Rent() {
                         {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
                         <option value="0">Nincs autó kiválasztva</option>
                         {cars.map(car =>
-                            <>
-                                key={car.id}
-                                <option value={car.id}>{car.brand}</option>
-                            </>
+                            <option key={car.id} value={car.id}>{car.brand}</option>
                         )}
                     </select>
                 </form>
 
                 {/*Drivers*/}
-                <form>
+                <form onClick={CheckDrivers}>
                     <select id="cars" name="cars"
                         onChange={(e) => {
                             const selectedDriver = e.target.value;
@@ -124,10 +122,7 @@ export function Rent() {
                         {/*feltöltése DB-ből mindig a kiválasztott sofőr információi jelenjenek meg a lenti card-ban*/}
                         <option value="00">Nem kérek sofőrt</option>
                         {drivers.map(driver =>
-                            <>
-                                key={driver.id}
-                                <option value={driver.id}>{driver.name}</option>
-                            </>
+                            <option value={driver.id}>{driver.name}</option>
                         )}
                     </select>
                 </form>
