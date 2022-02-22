@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Layout } from '../layOut/layOut';
 
 //Import CSS & AOS & background
@@ -14,7 +15,7 @@ function App() {
     <Layout />
 
     <section>
-      <a href="./Rent" id="homePageMidBtnHome">Rent</a>
+      <Link to="./rent" id="homePageMidBtnHome">Rent</Link>
       <p>You can text us bellow</p>
     </section>
     <footer>

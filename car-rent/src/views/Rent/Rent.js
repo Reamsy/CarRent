@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import Layout from '../layOut/layOut'
 import Axios from 'axios';
 
@@ -6,6 +6,10 @@ import Axios from 'axios';
 import './Rent.css';
 
 export function Rent() {
+
+    //data fetching for cars and drivers
+    const [cars, setCars] = useState([]);
+    const [drivers, setDrivers] = useState([]);
 
     //Date hooks for select
     const [startDate, setStartDate] = useState(Date);
@@ -20,8 +24,8 @@ export function Rent() {
 
     //rent kérése elküldése
     const rent = () => {
+        console.log(startDate, endDate, selectedCar, selectedDriver);
         Axios.post('http://localhost:3001/rent', {
-
             //Kiszervezés ami át fog menni backendre
             //Ezeket használd: RentStartDate, RentEndDate...
             RentStartDate: startDate,
@@ -30,7 +34,7 @@ export function Rent() {
             RentDriver: selectedDriver,
 
         }).then((response) => {
-
+            
             //és a válasz ami backendről fog jönni
             if (response.data.message) {
                 setRentConfirmed(response.data.message);
@@ -40,10 +44,27 @@ export function Rent() {
                 alert("Bérlését sikeresen rögzítettük!");
             }
         });
+    };
+
+    //fetching drivers&Cars
+    useEffect(() => {
+        Axios.get('http://localhost:3001/App/rent')
+
+            //itt kezeljük le az backendről érkező adatokat
+            .then((response) => {
+                if (response) {
+                    setCars(response.data);
+                    setDrivers(response.data);
+                }
+                //alertbe kezeljük ha hiba történt
+                else {
+                    alert("Vehicles & Drivers currently unavailable!");
+                }
+            });
+
+    }, []);
 
 
-
-    }
     return (<>
 
         <Layout />
@@ -67,26 +88,28 @@ export function Rent() {
                         }} >
 
                         {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
-                        
-                        <option value="noCar">Choose your Car</option>
-                        <option value="car1" id="car1" >BMW</option>
-                        <option value="car2" id="car2">Nissan</option>
-                        <option value="car3" id="car3">Honda</option>
+                        {cars.map(car =>
+                            <>
+                                <option key={car.id}>{car.brand}</option>
+                            </>
+                        )}
                     </select>
-                    <></>
                 </form>
 
                 {/*Drivers*/}
-                <form action="">
-                    <select id="cars" name="cars" onChange={(e) => {
-                        const selectedDriver = e.target.value;
-                        setselectedDriver(selectedDriver);
-                    }}>
+                <form>
+                    <select id="cars" name="cars"
+                        onChange={(e) => {
+                            const selectedDriver = e.target.value;
+                            setselectedDriver(selectedDriver);
+                        }} >
+
                         {/*feltöltése DB-ből mindig a kiválasztott sofőr információi jelenjenek meg a lenti card-ban*/}
-                        <option value="noDriver" id="noDriver">Choose a driver</option>
-                        <option value="driver1" id="driver1">Kiss István</option>
-                        <option value="driver2" id="driver2">Bakos Zsombor</option>
-                        <option value="driver3" id="driver3">Szakács Péter</option>
+                        {drivers.map(driver =>
+                            <>
+                                <option key={driver.id}>{driver.name}</option>
+                            </>
+                        )}
                     </select>
                 </form>
             </div>

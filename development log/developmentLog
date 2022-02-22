@@ -269,3 +269,9 @@ HIBA:---------
     -Drivers.js pétrehozva
     -CSS id/className unique mindenhol
 HIBA:---------
+
+2022.02.22. {17:45-19:10} (Szalanics Szabolcs):
+    -Rent.js fetching products
+HIBA: Each child in a list should have a unique "key" prop. (Rent.js 83.sor)
+      server kérésnél, minden egyes kocsi után lekéri mégegyszer a drivert is hiába egy db van csak benne a driver table-be
+      és annyiszor hozza ki a driver selectnél ahény car van 

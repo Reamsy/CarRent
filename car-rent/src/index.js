@@ -24,7 +24,7 @@ ReactDOM.render(
       <Route path="/drivers" element={<Drivers />} />
       <Route path="/RateUs" element={<RateUs />} />
       <Route path="/Profile" element={<Profile />} />
-      <Route path="/Rent" element={<Rent />} />
+      <Route path="/App/rent" element={<Rent />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
