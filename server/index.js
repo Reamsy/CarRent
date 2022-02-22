@@ -133,11 +133,30 @@ app.get('/drivers', (req, res) => {
 });
 
 //request for drivers@Cars
-app.get('/App/rent', async (req, res) => {   
+app.get('/App/cars', async (req, res) => {   
     console.log("1")
 
     //adatbázis select
     db.query("SELECT * FROM products", (err, result) => {
+        console.log("2")
+        if (err) {
+            //itt a hibát frontenden kezeltem le
+            console.log("3")
+            res.send(err);
+        }
+        else {
+            //ha nincs hiba respons-al tér vissza
+            console.log("4")
+            res.send(result);
+        }
+    });
+});
+
+app.get('/App/drivers', async (req, res) => {   
+    console.log("1")
+
+    //adatbázis select
+    db.query("SELECT * FROM drivers", (err, result) => {
         console.log("2")
         if (err) {
             //itt a hibát frontenden kezeltem le

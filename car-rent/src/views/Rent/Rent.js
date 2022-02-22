@@ -8,6 +8,7 @@ import './Rent.css';
 export function Rent() {
 
     //data fetching for cars and drivers
+
     const [cars, setCars] = useState([]);
     const [drivers, setDrivers] = useState([]);
 
@@ -34,7 +35,7 @@ export function Rent() {
             RentDriver: selectedDriver,
 
         }).then((response) => {
-            
+
             //és a válasz ami backendről fog jönni
             if (response.data.message) {
                 setRentConfirmed(response.data.message);
@@ -46,24 +47,41 @@ export function Rent() {
         });
     };
 
-    //fetching drivers&Cars
-    useEffect(() => {
-        Axios.get('http://localhost:3001/App/rent')
+    //fetching Cars
+    const CheckCars = () => {
+        useEffect(() => {
+            Axios.get('http://localhost:3001/App/cars')
 
-            //itt kezeljük le az backendről érkező adatokat
-            .then((response) => {
-                if (response) {
-                    setCars(response.data);
-                    setDrivers(response.data);
-                }
-                //alertbe kezeljük ha hiba történt
-                else {
-                    alert("Vehicles & Drivers currently unavailable!");
-                }
-            });
+                //itt kezeljük le az backendről érkező adatokat
+                .then((response) => {
+                    if (response) {
+                        setCars(response.data);
+                    }
+                    //alertbe kezeljük ha hiba történt
+                    else {
+                        alert("Vehicles currently unavailable!");
+                    }
+                });
+        }, []);
+    }
 
-    }, []);
+    //fetching Drivers
+    const CheckDrivers = () => {
+        useEffect(() => {
+            Axios.get('http://localhost:3001/App/drivers')
 
+                //itt kezeljük le az backendről érkező adatokat
+                .then((response) => {
+                    if (response) {
+                        setDrivers(response.data);
+                    }
+                    //alertbe kezeljük ha hiba történt
+                    else {
+                        alert("Drivers currently unavailable!");
+                    }
+                });
+        }, []);
+    }
 
     return (<>
 
@@ -86,7 +104,6 @@ export function Rent() {
                             const selectedCar = e.target.value;
                             setselectedCar(selectedCar);
                         }} >
-
                         {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
                         {cars.map(car =>
                             <>
@@ -103,7 +120,6 @@ export function Rent() {
                             const selectedDriver = e.target.value;
                             setselectedDriver(selectedDriver);
                         }} >
-
                         {/*feltöltése DB-ből mindig a kiválasztott sofőr információi jelenjenek meg a lenti card-ban*/}
                         {drivers.map(driver =>
                             <>
