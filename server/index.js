@@ -101,17 +101,19 @@ app.post('/login', async (req, res) => {
 })
 
 //request for products
-app.get('/Products', (req, res) => {
+app.get('/products', (req, res) => {
 
-    db.query("SELECT * FROM products, id"), (err, result) => {
+    //adatbázis select
+    db.query("SELECT * FROM products", (err, result) => {
         if (err) {
+            //itt a hibát frontenden kezeltem le
             res.send(err);
         }
         else {
-            console.log(result);
+            //ha nincs hiba respons-al tér vissza
             res.send(result);
         }
-    }
+    })
 })
 
 

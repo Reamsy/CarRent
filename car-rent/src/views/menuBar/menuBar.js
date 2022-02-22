@@ -11,7 +11,7 @@ export function MenuBar() {
         //linkek
         <nav className="ul">
             <NavLink className="navLeft" exact to='/App'>Home</NavLink>
-            <NavLink className="navLeft" to='/Products'>Products</NavLink>
+            <NavLink className="navLeft" to='/products'>Products</NavLink>
             <NavLink className="navLeft" to='/RateUs'>Rate Us</NavLink>
             <NavLink className="navLeft" to='/Profile'>Profile</NavLink>
 

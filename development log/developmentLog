@@ -258,3 +258,10 @@ HIBA:---------(egyeztetni ákossal)
     -frontend ellenőtizve https://jsonplaceholder.typicode.com/posts segítségével (Működik)
 HIBA: Initial server error (Error 500)????????????!!!!!!!!!!!!
       A visszaküldött adat [object Object] de semmi sem jelenik meg a Products.js-ben
+
+2022.02.22. {10:25-11:15} (Szalanics Szabolcs):
+    -Products.js mostmár kiírja a db adatokat
+    -Initial server error (megoldódott) (rossz helyre lettek rakva {products.fuel} stb.)
+    -Úgy döntöttünk, hogy az egbevont Driver&Vehicle oldalt szétbontjuk, mivel egyszerűbb így a lekezelés
+HIBA:--------- 
+     
