@@ -1,11 +1,11 @@
 /*Default settings*/ 
 :root{
-  --clr-menuBG: #a80000;
-  --clr-menuText: #ffffff;
-  --clr-menuBGhover: #ffffff;
-  --clr-background2: #a80000;
-  --clr-neon: #f74242;
-  --clr-background: #f74242;
+  --clr-menuBGHome: #a80000;
+  --clr-menuTextHome: #ffffff;
+  --clr-menuBGhoverHome: #ffffff;
+  --clr-background2Home: #a80000;
+  --clr-neonHome: #f74242;
+  --clr-backgroundHome: #f74242;
 }
 
 /*Background settings*/
@@ -37,29 +37,29 @@ p{
 }
 
 /*Miggle button settings */
-#homePageMidBtn{
+#homePageMidBtnHome{
   font-size: 20px;
   display: inline-block;
   text-decoration: none;
-  color: var(--clr-neon);
-  border: var(--clr-neon) 4px solid;
+  color: var(--clr-neonHome);
+  border: var(--clr-neonHome) 4px solid;
   padding: 4px 17px;
   border-radius: 6px;
   
-  box-shadow: inset 0 0 3px var(--clr-neon),
-                    0 0 0.5em var(--clr-neon);
+  box-shadow: inset 0 0 3px var(--clr-neonHome),
+                    0 0 0.5em var(--clr-neonHome);
 
   position: relative;
 
   transition: background-color 100ms linear;
 }
 
-#homePageMidBtn:hover {
-  background-color: var(--clr-background);
-  color: var(--clr-menuText);
+#homePageMidBtnHome:hover {
+  background-color: var(--clr-backgroundHome);
+  color: var(--clr-menuTextHome);
 }
 
-#homePageMidBtn:after {
+#homePageMidBtnHome:after {
   content:"";
   position: absolute;
   top: 0;
@@ -67,13 +67,13 @@ p{
   left: 0;
   right: 0;
   box-shadow: 0 0 2em 0.5em 
-  var(--clr-neon);
+  var(--clr-neonHome);
   opacity: 0;
-  background-color: var(--clr-background);
+  background-color: var(--clr-background)Home;
   z-index: -1;
   transition: opacity 100ms linear;
 }
 
-#homePageMidBtn:hover::after{
+#homePageMidBtnHome:hover::after{
   opacity: 1;
 }

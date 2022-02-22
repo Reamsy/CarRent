@@ -18,7 +18,7 @@ h4{
   text-align: center;
 }
 
-#h3{
+#h3Driver{
   text-align: center;
   padding-top: 7%;
   padding-bottom: 7%;
@@ -35,26 +35,25 @@ p{
 }
 
 /*Culomn signs settings*/
-.signs{
+.signsDriver{
  padding-bottom: 7%;
 }
 
-#culVehicle{
+#culDriver{
   text-align: center;
 }
 
 /*Row settings*/
-.row{
+.rowDriver{
 padding-top: 3%;
 display: flex;
-object-position: center;
-text-align: center;
-
+justify-content: center;
+align-items: center;
 }
 
 /*Cards settings*/
 
-.img{
+.imgDriver{
   text-align: center;
   display: block;
   justify-content: center;
@@ -63,7 +62,7 @@ text-align: center;
   width: 100%;
 }
 
-.cardCar {
+.cardDriver {
 display: flex;
 justify-content: center;
 align-items: center;
@@ -73,14 +72,15 @@ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 transition: 0.3s;
 height: max-content;
 width: 40%;
+background-color: rgb(201, 201, 201);
 }
 
-.card:hover {
+.cardDriver:hover {
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 /*Separator*/
-hr.rounded {
+hr.roundedDriver {
   margin-top: 3%;
   border-top: 8px solid rgb(44, 44, 44);
   border-radius: 5px;

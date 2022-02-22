@@ -14,7 +14,7 @@ function App() {
     <Layout />
 
     <section>
-      <a href="./Rent" id="homePageMidBtn">Rent</a>
+      <a href="./Rent" id="homePageMidBtnHome">Rent</a>
       <p>You can text us bellow</p>
     </section>
     <footer>

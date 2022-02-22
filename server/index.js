@@ -116,6 +116,21 @@ app.get('/products', (req, res) => {
     })
 })
 
+//request for drivers
+app.get('/drivers', (req, res) => {
+
+    //adatbázis select
+    db.query("SELECT * FROM drivers", (err, result) => {
+        if (err) {
+            //itt a hibát frontenden kezeltem le
+            res.send(err);
+        }
+        else {
+            //ha nincs hiba respons-al tér vissza
+            res.send(result);
+        }
+    })
+})
 
 app.listen(3001, (err) => {
     console.log("fut");
