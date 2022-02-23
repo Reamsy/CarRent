@@ -51,7 +51,7 @@ export function Drivers() {
                         <img className="imgDriver" src={driver.image} alt="driver"></img>
                         <div className="containerDriver">
                             <h4><b>{driver.name}</b></h4>
-                            <p>Age: {driver.age}</p>
+                            <p>License category: {driver.licence_category}</p>
                             <p>KMs {driver.drivedKMs}</p>
                         </div>
                     </div>

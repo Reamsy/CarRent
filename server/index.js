@@ -14,7 +14,7 @@ const db = mysql.createConnection({
     user: "root",
     host: "localhost",
     password: "",
-    database: "carcheckdb",
+    database: "users",
 });
 
 //Requests for registration
@@ -104,7 +104,7 @@ app.post('/login', async (req, res) => {
 app.get('/products', (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM vehicle", (err, result) => {
+    db.query("SELECT * FROM products", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
@@ -120,7 +120,7 @@ app.get('/products', (req, res) => {
 app.get('/drivers', (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM driver", (err, result) => {
+    db.query("SELECT * FROM drivers", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
@@ -136,7 +136,7 @@ app.get('/drivers', (req, res) => {
 app.get('/rentCars', async (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM vehicle", (err, result) => {
+    db.query("SELECT * FROM products", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
@@ -151,7 +151,7 @@ app.get('/rentCars', async (req, res) => {
 app.get('/rentDrivers', async (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM driver", (err, result) => {
+    db.query("SELECT * FROM drivers", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
@@ -161,6 +161,40 @@ app.get('/rentDrivers', async (req, res) => {
             res.send(result);
         }
     });
+});
+
+//LE KELL MÉG KEZELNI AZ EGYEZÉSEKET!!!!!!!!!!!!!!!!!!!!!!!
+app.post('/Rent', async (req, res) => {
+    //frontendről érkező adat
+    const { RentStartDate, RentEndDate, RentCar, RentDriver } = req.body;
+    db.query("INSERT INTO rent (start_date, end_date, driver_id, car_id) VALUES (?, ?, ?, ?)",
+        [RentStartDate, RentEndDate, RentCar, RentDriver],
+        (err, result) => {
+            if (err) throw err;
+            if (result) {
+                res.send({ message: "Rendelés sikeresen megtörtén, az adott időpontban átveheti autóját" })
+            }
+            else {
+                res.send({ message: "Rendelés sikertelen!" })
+            }
+        }
+    );
+});
+
+//TOKEN bEÁLLÍTÁSA UTÁN LESZ JÓ
+//most csak kiíratjuk az adatokat
+app.get('/profile', async (req, res) => {
+    db.query("SELECT * FROM users, costumer WHERE users.email = costumer.email",
+        (err, result) => {
+            if (err) throw err;
+            if(result){
+                res.send(result);
+            }
+            else{
+                res.send({ message: "Failed to load profile datas!"})
+            }
+        }
+    );
 });
 
 app.listen(3001, (err) => {

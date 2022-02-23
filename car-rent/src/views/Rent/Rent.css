@@ -59,8 +59,8 @@ label{
     padding-top: 6%
 }
 select{
-    width: 150%;
-    height: 120%;
+    width: fit-content;
+    height: 130%;
 }
 
 /*Date choose settings*/

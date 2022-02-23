@@ -12,8 +12,10 @@ export function Rent() {
     const [drivers, setDrivers] = useState([]);
 
     //Date hooks for select
-    const [startDate, setStartDate] = useState(Date);
-    const [endDate, setEndDate] = useState(Date);
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
+
+    const currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
 
     //Backend error messages hook
     const [rentConfirmed, setRentConfirmed] = useState("Before you rent, CHECK AGAIN!");
@@ -47,22 +49,22 @@ export function Rent() {
     };
 
     //fetching Cars
-        const CheckCars = useCallback(() => {
-            Axios.get('http://localhost:3001/rentCars')
+    const CheckCars = useCallback(() => {
+        Axios.get('http://localhost:3001/rentCars')
 
-                //itt kezeljük le az backendről érkező adatokat
-                .then((response) => {
-                    console.log("response");
-                    if (response) {
-                        setCars(response.data);
-                    }
-                    //alertbe kezeljük ha hiba történt
-                    else {
-                        alert("Vehicles currently unavailable!");
-                    }
-                });
-        }, []);
-    
+            //itt kezeljük le az backendről érkező adatokat
+            .then((response) => {
+                console.log("response");
+                if (response) {
+                    setCars(response.data);
+                }
+                //alertbe kezeljük ha hiba történt
+                else {
+                    alert("Vehicles currently unavailable!");
+                }
+            });
+    }, []);
+
 
     //fetching Drivers
     const CheckDrivers = useCallback(() => {
