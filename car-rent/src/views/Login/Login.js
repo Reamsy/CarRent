@@ -26,7 +26,7 @@ export function Login() {
 
     //adatok elküldése onClick={registration} meghívása után
     const registration = () => {
-
+ 
         //localhostál állítsd be a portot amin fut majd a node 
         Axios.post('http://localhost:3001/registration', {
 

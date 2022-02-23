@@ -8,7 +8,6 @@ import './Rent.css';
 export function Rent() {
 
     //data fetching for cars and drivers
-
     const [cars, setCars] = useState([]);
     const [drivers, setDrivers] = useState([]);
 
@@ -23,7 +22,7 @@ export function Rent() {
     const [selectedCar, setselectedCar] = useState("");
     const [selectedDriver, setselectedDriver] = useState("");
 
-    //rent kérése elküldése
+    //rent kérése elküldése(NINCS LEKEZELVE!!!)
     const Rent = () => {
         console.log(startDate, endDate, selectedCar, selectedDriver);
         Axios.post('http://localhost:3001/Rent', {

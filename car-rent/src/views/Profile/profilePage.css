@@ -31,16 +31,16 @@ body{
 }
 
 /*Input & row settings*/
- .container{
+ .containerProfile{
     display: flex;
     justify-content: space-evenly; 
  }
 
- .rightInput{
+ .rightInputProfile{
     margin: 0;
  }
 
- .leftInput{
+ .leftInputProfile{
      margin: 0;
  }
 
@@ -54,13 +54,13 @@ body{
  }
 
 /*Top container settings*/
- .container-base{
+ .container-baseProfile{
      display: flex;
      justify-content: center;
  }
 
  /*Save button settings*/
- #saveBTN{
+ #saveBTNProfile{
     margin-top: 5%;
     margin-bottom: 10%;
     
@@ -79,11 +79,11 @@ body{
 
     transition: background-color 100ms linear;
 }
-#saveBTN:hover {
+#saveBTNProfile:hover {
     background-color: var(--clr-submitBTNhover);
     color: black;
 }
-#saveBTN::after{
+#saveBTNProfile::after{
     content:"";
     position: absolute;
     top: 0;
@@ -97,11 +97,11 @@ body{
     z-index: -1;
     transition: opacity 100ms linear;
 }
-#saveBTN:hover::after{
+#saveBTNProfile:hover::after{
     opacity: 1;
 }
  
- .BTN{
+ .BTNProfile{
     display: flex;
     justify-content: center;
     align-items: center;
