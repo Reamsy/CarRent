@@ -19,12 +19,12 @@ ReactDOM.render(
     
     <Routes>
       <Route exact path="/" element={<Login />} />
-      <Route path="/App" element={<App />}/>
-      <Route path="/Products" element={<Products />} />
-      <Route path="/drivers" element={<Drivers />} />
-      <Route path="/RateUs" element={<RateUs />} />
-      <Route path="/Profile" element={<Profile />} />
-      <Route path="/rent" element={<Rent />} />
+      <Route exact path="/app" element={<App />}/>
+      <Route exact path="/products" element={<Products />} />
+      <Route exact path="/drivers" element={<Drivers />} />
+      <Route exactpath="/rateUs" element={<RateUs />} />
+      <Route exact path="/profile" element={<Profile />} />
+      <Route exact path="/rent" element={<Rent />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')

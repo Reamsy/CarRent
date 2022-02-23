@@ -14,7 +14,7 @@ const db = mysql.createConnection({
     user: "root",
     host: "localhost",
     password: "",
-    database: "users",
+    database: "carcheckdb",
 });
 
 //Requests for registration
@@ -104,7 +104,7 @@ app.post('/login', async (req, res) => {
 app.get('/products', (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM products", (err, result) => {
+    db.query("SELECT * FROM vehicle", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
@@ -120,7 +120,7 @@ app.get('/products', (req, res) => {
 app.get('/drivers', (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM drivers", (err, result) => {
+    db.query("SELECT * FROM driver", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
@@ -136,7 +136,7 @@ app.get('/drivers', (req, res) => {
 app.get('/rentCars', async (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM products", (err, result) => {
+    db.query("SELECT * FROM vehicle", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
@@ -151,7 +151,7 @@ app.get('/rentCars', async (req, res) => {
 app.get('/rentDrivers', async (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM drivers", (err, result) => {
+    db.query("SELECT * FROM driver", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
