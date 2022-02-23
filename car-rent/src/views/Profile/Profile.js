@@ -69,7 +69,7 @@ export function Profile() {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Full Name</p>
-                        <input type="text" value={costumer.Fullname}
+                        <input type="text" placeholder={costumer.Fullname}
                             onChange={(e) => {
                                 setName(e.target.value);
 
@@ -79,7 +79,7 @@ export function Profile() {
 
                     <div className="rightInputProfile">
                         <p>E-mail</p>
-                        <input type="text" value={costumer.email}
+                        <input type="text" placeholder={costumer.email}
                             onChange={(e) => {
                                 setEmail(e.target.value);
                             }}
@@ -89,7 +89,7 @@ export function Profile() {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>License Category</p>
-                        <input type="text" value={costumer.License_category}
+                        <input type="text" placeholder={costumer.License_category}
                             onChange={(e) => {
                                 setLicenseCat(e.target.value);
 
@@ -99,7 +99,7 @@ export function Profile() {
 
                     <div className="rightInputProfile">
                         <p>License Expiration</p>
-                        <input type="text" format="YYYY-mm-dd" value={costumer.License_expiraton}
+                        <input type="text" format="YYYY-mm-dd" placeholder={costumer.License_expiraton}
                             onChange={(e) => {
                                 setLicenseExpiraton(e.target.value);
                             }}
@@ -110,7 +110,7 @@ export function Profile() {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Phone Number</p>
-                        <input type="text" value={costumer.Phone_number}
+                        <input type="text" placeholder={costumer.Phone_number}
                             onChange={(e) => {
                                 setPhone(e.target.value);
 
@@ -120,7 +120,7 @@ export function Profile() {
 
                     <div className="rightInputProfile">
                         <p>Address</p>
-                        <input type="text" value={costumer.address}
+                        <input type="text" placeholder={costumer.address}
                             onChange={(e) => {
                                 setAddress(e.target.value);
                             }}

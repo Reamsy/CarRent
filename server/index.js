@@ -14,7 +14,7 @@ const db = mysql.createConnection({
     user: "root",
     host: "localhost",
     password: "",
-    database: "users",
+    database: "carrentdb",
 });
 
 //Requests for registration
