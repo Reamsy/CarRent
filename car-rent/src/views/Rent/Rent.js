@@ -15,8 +15,6 @@ export function Rent() {
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
 
-    const currentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
-
     //Backend error messages hook
     const [rentConfirmed, setRentConfirmed] = useState("Before you rent, CHECK AGAIN!");
 

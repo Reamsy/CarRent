@@ -6,44 +6,37 @@ import Axios from 'axios';
 import './profilePage.css';
 import driverIMG from '../../images/img_avatar.png';
 
-export function Profile() {
-
-    //hooks for data
-    const [Name, setName] = useState("");
-    const [Email, setEmail] = useState("");
-    const [LicenseCat, setLicenseCat] = useState("");
-    const [LicenseExpiraton, setLicenseExpiraton] = useState("");
-    const [Phone, setPhone] = useState("");
-    const [Address, setAddress] = useState("");
+export function Profile({id}) {
 
     //hook for fetching
     const [costumers, setCostumers] = useState([]);
 
     //fetching data from db
     useEffect(() => {
-        Axios.get('http://localhost:3001/profile')
+        console.log(id)
+        Axios.get(`http://localhost:3001/profile?userId=${id}`)
             .then((response) => {
                 if (response) {
+                    console.log(response)
                     setCostumers(response.data);
                 }
                 else {
                     alert("Datas currently unavailable!")
                 }
             });
-    });
-
-
+    }, []);
 
     //sending inputs data to node
     const save = () => {
+        console.log(costumers)
         Axios.post('http://localhost:3001/save', {
 
-            ProfileFirstName: Name,
-            ProfileEmail: Email,
-            ProfileLicenseCat: LicenseCat,
-            ProfileLicenseExpiration: LicenseExpiraton,
-            ProfilePhone: Phone,
-            ProfileAddress: Address,
+            ProfileFirstName: costumers.Fullname,
+            ProfileEmail: costumers.Email,
+            ProfileLicenseCat: costumers.LicenseCat,
+            ProfileLicenseExpiration: costumers.LicenseExpiraton,
+            ProfilePhone: costumers.Phone,
+            ProfileAddress: costumers.Address,
 
         }).then((response) => {
             if (response.data.message) {
@@ -69,9 +62,9 @@ export function Profile() {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Full Name</p>
-                        <input type="text" placeholder={costumer.Fullname}
+                        <input type="text" name="Fullname" placeholder={!costumer.Fullname && "Adja meg az adatot"} 
                             onChange={(e) => {
-                                setName(e.target.value);
+                                setCostumers({...costumers,[e.target.name]:e.target.value});
 
                             }}
                         />
@@ -79,9 +72,9 @@ export function Profile() {
 
                     <div className="rightInputProfile">
                         <p>E-mail</p>
-                        <input type="text" placeholder={costumer.email}
+                        <input type="text" name="email" placeholder={!costumer.email && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setEmail(e.target.value);
+                                setCostumers({...costumers,[e.target.name]:e.target.value});
                             }}
                         />
                     </div>
@@ -89,9 +82,9 @@ export function Profile() {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>License Category</p>
-                        <input type="text" placeholder={costumer.License_category}
+                        <input type="text" name="License_category" placeholder={!costumer.License_category && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setLicenseCat(e.target.value);
+                                setCostumers({...costumers,[e.target.name]:e.target.value});
 
                             }}
                         />
@@ -99,9 +92,9 @@ export function Profile() {
 
                     <div className="rightInputProfile">
                         <p>License Expiration</p>
-                        <input type="text" format="YYYY-mm-dd" placeholder={costumer.License_expiraton}
+                        <input type="text" name="License_expiraton" format="YYYY-mm-dd" placeholder={!costumer.License_expiraton && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setLicenseExpiraton(e.target.value);
+                                setCostumers({...costumers,[e.target.name]:e.target.value});
                             }}
                         />
                     </div>
@@ -110,9 +103,9 @@ export function Profile() {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Phone Number</p>
-                        <input type="text" placeholder={costumer.Phone_number}
+                        <input type="text" name="Phone_number" placeholder={!costumer.Phone_number && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setPhone(e.target.value);
+                                setCostumers({...costumers,[e.target.name]:e.target.value});
 
                             }}
                         />
@@ -120,9 +113,9 @@ export function Profile() {
 
                     <div className="rightInputProfile">
                         <p>Address</p>
-                        <input type="text" placeholder={costumer.address}
+                        <input type="text" name="address" placeholder={!costumer.address && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setAddress(e.target.value);
+                                setCostumers({...costumers,[e.target.name]:e.target.value});
                             }}
                         />
                     </div>

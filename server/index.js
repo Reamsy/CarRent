@@ -80,10 +80,11 @@ app.post('/login', async (req, res) => {
             if (result.length > 0) {
 
                 //itt fejtjük vissza a jelszót
-                bcrypt.compare(LoginPassword, result[0].password, function (err, result) {
+                bcrypt.compare(LoginPassword, result[0].password, function (err, loginResult) {
                     if (err) throw err;
                     //ha van akkor a resultot visszaküldi a forntendnek és frontendről átnavigálunk a Homepage.js-re
-                    if (result) {
+                    if (loginResult) {
+                        console.log(result)
                         res.send(result);
                     }
                     //ha nem talált egyezést jelszó terén, akkor "Incorrect password-del tér vissza amit kiír a frontenden"
@@ -184,7 +185,10 @@ app.post('/Rent', async (req, res) => {
 //TOKEN bEÁLLÍTÁSA UTÁN LESZ JÓ
 //most csak kiíratjuk az adatokat
 app.get('/profile', async (req, res) => {
-    db.query("SELECT * FROM users, costumer WHERE users.email = costumer.email",
+    const userId = req.query.userId;
+    console.log(userId)
+    db.query("SELECT * FROM costumer WHERE costumer.user_id = ?",
+    [userId],
         (err, result) => {
             if (err) throw err;
             if(result){
