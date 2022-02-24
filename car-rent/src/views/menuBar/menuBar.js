@@ -13,8 +13,8 @@ export function MenuBar() {
             <NavLink className="navLeft" exact to='/App'>Home</NavLink>
             <NavLink className="navLeft" to='/products'>Vehicles</NavLink>
             <NavLink className="navLeft" to='/drivers'>Drivers</NavLink>
-            <NavLink className="navLeft" to='/RateUs'>Rate Us</NavLink>
-            <NavLink className="navLeft" to='/Profile'>Profile</NavLink>
+            <NavLink className="navLeft" to='/rateus'>Rate Us</NavLink>
+            <NavLink className="navLeft" to='/profile'>Profile</NavLink>
 
             <NavLink className="navRight" to='/'>Logout</NavLink>
         </nav>

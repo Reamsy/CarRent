@@ -65,7 +65,7 @@ export function Login({handleChangeId}) {
 
             //illetve selectálja hogy ez defaultUser, Driver vagy Admin
             else {
-                console.log(response.data[0].id);
+                console.log("login response id: " + response.data[0].id);
                 handleChangeId(response.data[0].id);
                 navigate("/App");
             }

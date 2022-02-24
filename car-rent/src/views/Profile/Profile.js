@@ -6,18 +6,18 @@ import Axios from 'axios';
 import './profilePage.css';
 import driverIMG from '../../images/img_avatar.png';
 
-export function Profile({id}) {
+export function Profile({ id }) {
 
     //hook for fetching
     const [costumers, setCostumers] = useState([]);
 
     //fetching data from db
     useEffect(() => {
-        console.log(id)
+        console.log("function Profile({id}): " + id)
         Axios.get(`http://localhost:3001/profile?userId=${id}`)
             .then((response) => {
                 if (response) {
-                    console.log(response)
+                    console.log("profile.js useEffect response: " + response)
                     setCostumers(response.data);
                 }
                 else {
@@ -62,9 +62,10 @@ export function Profile({id}) {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Full Name</p>
-                        <input type="text" name="Fullname" placeholder={!costumer.Fullname && "Adja meg az adatot"} 
+                        <input type="text" name="Fullname" placeholder={!costumer.Fullname && "Adja meg az adatot"}
+                            value={costumer.Fullname}
                             onChange={(e) => {
-                                setCostumers({...costumers,[e.target.name]:e.target.value});
+                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
 
                             }}
                         />
@@ -73,8 +74,9 @@ export function Profile({id}) {
                     <div className="rightInputProfile">
                         <p>E-mail</p>
                         <input type="text" name="email" placeholder={!costumer.email && "Adja meg az adatot"}
+                            value={costumer.email}
                             onChange={(e) => {
-                                setCostumers({...costumers,[e.target.name]:e.target.value});
+                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
                             }}
                         />
                     </div>
@@ -83,8 +85,9 @@ export function Profile({id}) {
                     <div className="leftInputProfile">
                         <p>License Category</p>
                         <input type="text" name="License_category" placeholder={!costumer.License_category && "Adja meg az adatot"}
+                            value={costumer.License_category}
                             onChange={(e) => {
-                                setCostumers({...costumers,[e.target.name]:e.target.value});
+                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
 
                             }}
                         />
@@ -93,8 +96,9 @@ export function Profile({id}) {
                     <div className="rightInputProfile">
                         <p>License Expiration</p>
                         <input type="text" name="License_expiraton" format="YYYY-mm-dd" placeholder={!costumer.License_expiraton && "Adja meg az adatot"}
+                            value={costumer.License_expiraton}
                             onChange={(e) => {
-                                setCostumers({...costumers,[e.target.name]:e.target.value});
+                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
                             }}
                         />
                     </div>
@@ -104,8 +108,9 @@ export function Profile({id}) {
                     <div className="leftInputProfile">
                         <p>Phone Number</p>
                         <input type="text" name="Phone_number" placeholder={!costumer.Phone_number && "Adja meg az adatot"}
+                            value={costumer.Phone_number}
                             onChange={(e) => {
-                                setCostumers({...costumers,[e.target.name]:e.target.value});
+                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
 
                             }}
                         />
@@ -114,8 +119,9 @@ export function Profile({id}) {
                     <div className="rightInputProfile">
                         <p>Address</p>
                         <input type="text" name="address" placeholder={!costumer.address && "Adja meg az adatot"}
+                            value={costumer.address}
                             onChange={(e) => {
-                                setCostumers({...costumers,[e.target.name]:e.target.value});
+                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
                             }}
                         />
                     </div>

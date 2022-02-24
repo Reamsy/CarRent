@@ -12,9 +12,11 @@ import { Drivers } from './views/Drivers/Drivers';
 
 
 let id = null;
+console.log("changeID előtti id: " + id)
 function changeID(newId) {
-  id = newId;
-  console.log(newId);
+  id= newId;
+  console.log("index.js newId: " + newId);
+  console.log("index.js id changeID-ban: " + id);
 }
 
 ReactDOM.render(
@@ -26,7 +28,7 @@ ReactDOM.render(
       <Route exact path="/app" element={<App />} />
       <Route exact path="/products" element={<Products />} />
       <Route exact path="/drivers" element={<Drivers />} />
-      <Route exactpath="/rateUs" element={<RateUs />} />
+      <Route exact path="/rateus" element={<RateUs />} />
       <Route exact path="/profile" element={<Profile id={id} />} />
       <Route exact path="/rent" element={<Rent />} />
     </Routes>

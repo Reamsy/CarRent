@@ -186,7 +186,7 @@ app.post('/Rent', async (req, res) => {
 //most csak kiíratjuk az adatokat
 app.get('/profile', async (req, res) => {
     const userId = req.query.userId;
-    console.log(userId)
+    console.log("backend profile id: " + userId);
     db.query("SELECT * FROM costumer WHERE costumer.user_id = ?",
     [userId],
         (err, result) => {
