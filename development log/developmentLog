@@ -299,3 +299,7 @@ HIBA:---------
     -Profile.js fetch (kész) 
 HIBA: Rent.js backend kérés nincs teljesen kész (nincs validálva)
       Profile.js inputok eltűnnek ha nincs db-ben adat
+
+2022.02.24. {9:30-23:45} (Szalanics Szabolcs):
+    -pass id a login.js-ből a Profile.js-be
+HIBA: Profile.js nem kapja meg a login után az id-t
