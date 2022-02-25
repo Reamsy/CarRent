@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import './starterpage.css';
 
 
-export function Login({handleChangeId}) {
+export function Login({getID}) {
+
     //Adatok kiolvasása az inputokból (Regisztráció)
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
@@ -63,11 +64,10 @@ export function Login({handleChangeId}) {
                 setLoginCorrect(response.data.message)
             }
 
-            //illetve selectálja hogy ez defaultUser, Driver vagy Admin
             else {
-                console.log("login response id: " + response.data[0].id);
-                handleChangeId(response.data[0].id);
-                navigate("/App");
+                console.log("got id from login: "+response.data[0].id)         
+                getID(response.data[0].id);
+                navigate('/home');
             }
         });
     };

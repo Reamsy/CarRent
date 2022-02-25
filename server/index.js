@@ -84,7 +84,6 @@ app.post('/login', async (req, res) => {
                     if (err) throw err;
                     //ha van akkor a resultot visszaküldi a forntendnek és frontendről átnavigálunk a Homepage.js-re
                     if (loginResult) {
-                        console.log(result)
                         res.send(result);
                     }
                     //ha nem talált egyezést jelszó terén, akkor "Incorrect password-del tér vissza amit kiír a frontenden"
@@ -182,23 +181,14 @@ app.post('/Rent', async (req, res) => {
     );
 });
 
-//TOKEN bEÁLLÍTÁSA UTÁN LESZ JÓ
-//most csak kiíratjuk az adatokat
-app.get('/profile', async (req, res) => {
-    const userId = req.query.userId;
-    console.log("backend profile id: " + userId);
-    db.query("SELECT * FROM costumer WHERE costumer.user_id = ?",
-    [userId],
-        (err, result) => {
-            if (err) throw err;
-            if(result){
-                res.send(result);
-            }
-            else{
-                res.send({ message: "Failed to load profile datas!"})
-            }
-        }
-    );
+
+app.get('/profile/:id', (req, res) => {
+    db.query("SELECT * FROM costumer WHERE user_id = ?", req.params.id, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+        console.log(result);
+        db.query('INSERT INTO costumer (user_id) VALUE (?)')
+    });
 });
 
 app.listen(3001, (err) => {

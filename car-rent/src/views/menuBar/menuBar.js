@@ -10,7 +10,7 @@ export function MenuBar() {
     return (
         //linkek
         <nav className="ul">
-            <NavLink className="navLeft" exact to='/App'>Home</NavLink>
+            <NavLink className="navLeft" to='/home'>Home</NavLink>
             <NavLink className="navLeft" to='/products'>Vehicles</NavLink>
             <NavLink className="navLeft" to='/drivers'>Drivers</NavLink>
             <NavLink className="navLeft" to='/rateus'>Rate Us</NavLink>

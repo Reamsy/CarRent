@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { Layout } from '../layOut/layOut';
 import Axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 //Import CSS & Images
 import './profilePage.css';
 import driverIMG from '../../images/img_avatar.png';
 
-export function Profile({ id }) {
+export function Profile({id}) {
 
     //hook for fetching
     const [costumers, setCostumers] = useState([]);
 
-    //fetching data from db
+    //fetching data from db by id
     useEffect(() => {
-        console.log("function Profile({id}): " + id)
-        Axios.get(`http://localhost:3001/profile?userId=${id}`)
+        Axios.get(`http://localhost:3001/profile/${id}`)
             .then((response) => {
                 if (response) {
-                    console.log("profile.js useEffect response: " + response)
                     setCostumers(response.data);
                 }
                 else {
-                    alert("Datas currently unavailable!")
+                    alert('hiba')
                 }
-            });
-    }, []);
+            })
+    }, [])
 
     //sending inputs data to node
     const save = () => {
-        console.log(costumers)
         Axios.post('http://localhost:3001/save', {
 
             ProfileFirstName: costumers.Fullname,
