@@ -303,3 +303,7 @@ HIBA: Rent.js backend kérés nincs teljesen kész (nincs validálva)
 2022.02.24. {9:30-23:45} (Szalanics Szabolcs):
     -pass id a login.js-ből a Profile.js-be
 HIBA: Profile.js nem kapja meg a login után az id-t
+
+2022.02.25. {15:10-17:10} (Szalanics Szabolcs):
+    -Profil.js megkapja az id-t mostmár (át kellett rendezni a komponenseket, és újraírni az app - index.js-t)
+HIBA: insertálni kell az id-t a costumer táblába
