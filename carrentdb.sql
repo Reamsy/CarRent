@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Feb 24. 00:30
+-- Létrehozás ideje: 2022. Feb 25. 10:51
 -- Kiszolgáló verziója: 10.4.22-MariaDB
 -- PHP verzió: 7.4.26
 
@@ -47,7 +47,7 @@ INSERT INTO `admin` (`id`, `user_id`) VALUES
 
 CREATE TABLE `costumer` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
+  `user_id` int(11) DEFAULT NULL,
   `Fullname` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `License_category` varchar(5) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `License_expiraton` date NOT NULL,
@@ -131,7 +131,6 @@ INSERT INTO `rent` (`id`, `start_date`, `end_date`, `car_id`, `driver_id`) VALUE
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
   `username` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `password` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL
@@ -141,8 +140,9 @@ CREATE TABLE `users` (
 -- A tábla adatainak kiíratása `users`
 --
 
-INSERT INTO `users` (`id`, `user_id`, `username`, `password`, `email`) VALUES
-(75, 0, 'asd', '$2b$10$rXw97hNAW4iEi6EhAetNouWWBIB0co5MmljocwN1tFskM.xgfUrRS', 'szalanics.szabolcs@gmail.com');
+INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
+(78, 'asd', '$2b$10$DqWUR4YsFlOICQq1ZmngjOwc1YiXmdOtoYKkejbkeMceYRqm0h5ie', 'szalanics.szabolcs@gmail.com'),
+(79, 'asdasd', '$2b$10$lujwOTaHOGpODEglAVky0eCXPWDpi9CW0ZDKRpEbwtpZzs7vSwXx.', 'asdasd@asd.com');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -198,7 +198,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT a táblához `costumer`
 --
 ALTER TABLE `costumer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `drivers`
@@ -222,7 +222,7 @@ ALTER TABLE `rent`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
