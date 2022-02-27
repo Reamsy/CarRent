@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import './profilePage.css';
 import driverIMG from '../../images/img_avatar.png';
 
-export function Profile({id}) {
+export function Profile({ id }) {
 
     //hooks for data
     const [Name, setName] = useState("");
@@ -64,13 +64,13 @@ export function Profile({id}) {
 
         {/*Info Section*/}
         {costumers.map(costumer =>
-            <div key={costumer.id}>
+            <div>
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Full Name</p>
                         <input type="text" name="Fullname" placeholder={!Name && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setName(e.target.value );
+                                setName(e.target.value);
 
                             }}
                         />
@@ -80,7 +80,7 @@ export function Profile({id}) {
                         <p>E-mail</p>
                         <input type="text" name="email" placeholder={!Email && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setEmail(e.target.value );
+                                setEmail(e.target.value);
                             }}
                         />
                     </div>
@@ -90,7 +90,7 @@ export function Profile({id}) {
                         <p>License Category</p>
                         <input type="text" name="License_category" placeholder={!LicenseCat && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setLicenseCat(e.target.value );
+                                setLicenseCat(e.target.value);
 
                             }}
                         />
@@ -119,10 +119,9 @@ export function Profile({id}) {
 
                     <div className="rightInputProfile">
                         <p>Address</p>
-                        <input type="text" name="address" placeholder={!costumer.address && "Adja meg az adatot"}
-                            value={costumer.address}
+                        <input type="text" name="address" placeholder={!Address && "Adja meg az adatot"}
                             onChange={(e) => {
-                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                                setAddress(e.target.value);
                             }}
                         />
                     </div>

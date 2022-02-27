@@ -311,3 +311,10 @@ HIBA: insertálni kell az id-t a costumer táblába
 2022.02.27. {19:30-20:50} (Szalanics Szabolcs):
     -insert a costumer táblába a home.js-re navigálás után (kész)
 HIBA: megoldani, hogy csak 1x vegye fel a táblába az id-t és hogy a db-ben lévő adatkat kiírja
+
+2022.02.27. {22:30-24:00} (Szalanics Szabolcs):
+    -user_id-t csak Egyszer veszi fel a costumer táblába
+    - profile.js adat save backend request megírva
+HIBA: db-ben lévő adatkat kiírja (TESZTELNI)
+      profile.js save frontend metódus nincs
+      hook a response message-nek nincs

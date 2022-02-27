@@ -189,21 +189,51 @@ app.get('/profile/:id', (req, res) => {
     });
 });
 
-//LE KELL KEZELNI HOGY CSAK EGYSER KÜLDJE EL
 //user id elküldése login után a costumer táblába, hogy a profile.js-nél legyen mit kiolvasni
 app.post('/home', async (req, res) => {
-    console.log("qwe")
     const { sendId } = req.body;
-    console.log("qwe")
-    db.query("INSERT INTO costumer (user_id) VALUES (?)",
+    //megnézzük van-e ilyen user_id
+    db.query("SELECT * FROM costumer WHERE user_id = ?",
         [sendId],
         (err, result) => {
             if (err) throw err;
-            if (result) {
-                res.send(result)
+            //ha nincs akkor insert
+            if (result.length == 0) {
+                const { sendId } = req.body;
+                db.query("INSERT INTO costumer (user_id) VALUES (?)",
+                    [sendId],
+                    (err, result) => {
+                        if (err) throw err;
+                        if (result) {
+                            res.send(result)
+                        }
+                        //hiba insert során
+                        else {
+                            console.log("hiba insert")
+                        }
+                    })
             }
+            //ha van egyező user_id akkor nem történik semmi
             else {
-                console.log("hiba")
+                console.log("hiba select")
+            }
+        }
+    )
+})
+
+
+//profil save request
+app.post('/save', async (req, res) => {
+    const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiration, ProfilePhone, ProfileAddress, } = req.body;
+    db.query("INSERT INTO costumer (Fullname, License_category, License_expiration, Phone_number, email, address) VALUES (?, ?, ?, ?, ?, ?)",
+        [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiration, ProfilePhone, ProfileEmail, ProfileAddress],
+        (err, result) => {
+            if (err) throw err;
+            if (result){
+                res.send({message: "Sikeres mentés!"})
+            }
+            else{
+                res.send({message: "Mentés sikertelen!"})
             }
         }
     )
