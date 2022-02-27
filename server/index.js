@@ -181,16 +181,33 @@ app.post('/Rent', async (req, res) => {
     );
 });
 
-
+//belépett személy id-jának lekérdezése
 app.get('/profile/:id', (req, res) => {
     db.query("SELECT * FROM costumer WHERE user_id = ?", req.params.id, (err, result) => {
         if (err) throw err;
         res.send(result);
-        console.log(result);
-        db.query('INSERT INTO costumer (user_id) VALUE (?)')
     });
 });
 
+//LE KELL KEZELNI HOGY CSAK EGYSER KÜLDJE EL
+//user id elküldése login után a costumer táblába, hogy a profile.js-nél legyen mit kiolvasni
+app.post('/home', async (req, res) => {
+    console.log("qwe")
+    const { sendId } = req.body;
+    console.log("qwe")
+    db.query("INSERT INTO costumer (user_id) VALUES (?)",
+        [sendId],
+        (err, result) => {
+            if (err) throw err;
+            if (result) {
+                res.send(result)
+            }
+            else {
+                console.log("hiba")
+            }
+        }
+    )
+})
 app.listen(3001, (err) => {
     console.log("fut");
     if (err) throw err;

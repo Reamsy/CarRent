@@ -1,4 +1,4 @@
-import  Axios  from 'axios';
+import Axios from 'axios';
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Layout } from '../layOut/layOut';
@@ -6,7 +6,20 @@ import { Layout } from '../layOut/layOut';
 
 import './App.css';
 
-export function Home() {
+export function Home({ id }) {
+
+    useEffect(() => {
+        Axios.post('http://localhost:3001/home', {
+            sendId: id,
+        }).then((response) => {
+            if (response) {
+                console.log("siker")
+            }
+            else {
+                console.log("hiba")
+            }
+        });
+    });
 
     return (<>
         <Layout />
