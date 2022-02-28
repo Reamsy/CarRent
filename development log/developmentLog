@@ -321,7 +321,14 @@ HIBA: db-ben lévő adatkat kiírja (TESZTELNI)
 
 2022.02.28. {12:30-13:50} (Szalanics Szabolcs):
     -profile.js save frontend metódus nincs
-    -hook a response message-nek nincs
 HIBA: db-ben lévő adatkat kiírja (NEM működik)
       save backend query rossz
+      hook a response message-nek nincs
+
+2022.02.28. {21:50-23:00} (Szalanics Szabolcs):
+    -db-ben lévő adatkat kiírja (KIJAVÍTVA)
+    -hook a response message-nek (KÉSZ)
+    save backend (KIJAVÍTVA) (nem volt olyan metódus, hogy update csak olyan, hogy put)
+HIBA: frontenden mikor változik a profile.js egyik inputjában egy adat, a többi is felülítódik
+      update-nél egyszer került be adat többször nem lehet update-et csinálni
       

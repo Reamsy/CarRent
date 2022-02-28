@@ -223,24 +223,17 @@ app.post('/home', async (req, res) => {
 
 
 //profil save request
-app.post('/save', async (req, res) => {
-    const { findId } = req.body;
-    db.query("SELECT * FROM costumer WHERE user_id = ?",
-        [findId],
+app.put('/save', async (req, res) => {
+    const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress, findId } = req.body;
+    db.query("UPDATE costumer SET Fullname = ?, License_category = ?, License_expiraton = ?, Phone_number = ?, email = ?, address = ?  WHERE 'costumer.user.id = ?'",
+        [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress, findId],
         (err, result) => {
-            if (result.length > 0) {
-                const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress } = req.body;
-                db.query("INSERT INTO costumer (Fullname, License_category, License_expiraton, Phone_number, email, address) VALUES (?, ?, ?, ?, ?, ?) WHERE user.id = ?"),
-                    [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress],
-                    (err, result) => {
-                        if (err) throw err;
-                        if (result) {
-                            res.send({ message: "Sikeres mentés!" })
-                        }
-                        else {
-                            res.send({ message: "Mentés sikertelen!" })
-                        }
-                    }
+            if (err) throw err;
+            if (result) {
+                res.send({ message: "Sikeres mentés!" })
+            }
+            else {
+                res.send({ message: "Mentés seikertelen!" })
             }
         }
     )
