@@ -318,3 +318,10 @@ HIBA: megoldani, hogy csak 1x vegye fel a táblába az id-t és hogy a db-ben l�
 HIBA: db-ben lévő adatkat kiírja (TESZTELNI)
       profile.js save frontend metódus nincs
       hook a response message-nek nincs
+
+2022.02.28. {12:30-13:50} (Szalanics Szabolcs):
+    -profile.js save frontend metódus nincs
+    -hook a response message-nek nincs
+HIBA: db-ben lévő adatkat kiírja (NEM működik)
+      save backend query rossz
+      

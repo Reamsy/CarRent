@@ -36,11 +36,11 @@ export function Profile({ id }) {
     //sending inputs data to node
     const save = () => {
         Axios.post('http://localhost:3001/save', {
-
+            findId: id,
             ProfileName: Name,
             ProfileEmail: Email,
             ProfileLicenseCat: LicenseCat,
-            ProfileLicenseExpiration: LicenseExpiraton,
+            ProfileLicenseExpiraton: LicenseExpiraton,
             ProfilePhone: Phone,
             ProfileAddress: Address,
 
@@ -64,7 +64,7 @@ export function Profile({ id }) {
 
         {/*Info Section*/}
         {costumers.map(costumer =>
-            <div>
+            <div key={costumer.id}>
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Full Name</p>

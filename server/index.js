@@ -224,16 +224,23 @@ app.post('/home', async (req, res) => {
 
 //profil save request
 app.post('/save', async (req, res) => {
-    const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiration, ProfilePhone, ProfileAddress, } = req.body;
-    db.query("INSERT INTO costumer (Fullname, License_category, License_expiration, Phone_number, email, address) VALUES (?, ?, ?, ?, ?, ?)",
-        [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiration, ProfilePhone, ProfileEmail, ProfileAddress],
+    const { findId } = req.body;
+    db.query("SELECT * FROM costumer WHERE user_id = ?",
+        [findId],
         (err, result) => {
-            if (err) throw err;
-            if (result){
-                res.send({message: "Sikeres mentés!"})
-            }
-            else{
-                res.send({message: "Mentés sikertelen!"})
+            if (result.length > 0) {
+                const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress } = req.body;
+                db.query("INSERT INTO costumer (Fullname, License_category, License_expiraton, Phone_number, email, address) VALUES (?, ?, ?, ?, ?, ?) WHERE user.id = ?"),
+                    [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress],
+                    (err, result) => {
+                        if (err) throw err;
+                        if (result) {
+                            res.send({ message: "Sikeres mentés!" })
+                        }
+                        else {
+                            res.send({ message: "Mentés sikertelen!" })
+                        }
+                    }
             }
         }
     )
