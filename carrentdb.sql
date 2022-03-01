@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Feb 25. 10:51
+-- Létrehozás ideje: 2022. Már 01. 22:54
 -- Kiszolgáló verziója: 10.4.22-MariaDB
 -- PHP verzió: 7.4.26
 
@@ -51,9 +51,8 @@ CREATE TABLE `costumer` (
   `Fullname` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `License_category` varchar(5) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `License_expiraton` date NOT NULL,
-  `Phone_number` int(100) NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `address` text COLLATE utf8mb4_hungarian_ci NOT NULL
+  `Phone_number` varchar(11) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -141,8 +140,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(78, 'asd', '$2b$10$DqWUR4YsFlOICQq1ZmngjOwc1YiXmdOtoYKkejbkeMceYRqm0h5ie', 'szalanics.szabolcs@gmail.com'),
-(79, 'asdasd', '$2b$10$lujwOTaHOGpODEglAVky0eCXPWDpi9CW0ZDKRpEbwtpZzs7vSwXx.', 'asdasd@asd.com');
+(83, 'asd', '$2b$10$Vzzsd0u7j2RBfc4IBueLGeIMh3xc4qOTtYD7tXw5Gg38ypwaIvi9K', 'szalanics12@gmail.com');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -198,7 +196,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT a táblához `costumer`
 --
 ALTER TABLE `costumer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT a táblához `drivers`
@@ -222,7 +220,7 @@ ALTER TABLE `rent`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
