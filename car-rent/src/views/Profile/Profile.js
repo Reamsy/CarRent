@@ -10,6 +10,11 @@ export function Profile({ id }) {
 
     //hook for fetching
     const [costumers, setCostumers] = useState([]);
+    const [Name, setName] = useState();
+    const [Email, setEmail] = useState();
+    const [LicenseCat, setLicenseCat] = useState();
+    const [LicenseExp, setLicenseExp] = useState();
+    const [Phone, setPhone] = useState();
 
     //fetching data from db by id
     useEffect(() => {
@@ -26,18 +31,16 @@ export function Profile({ id }) {
 
     //sending inputs data to node
     const save = () => {
-        Axios.put('http://localhost:3001/save', {
+        Axios.put(`http://localhost:3001/save/${id}`, {
             findId: id,
-            ProfileName: costumers.Fullname,
-            ProfileEmail: costumers.email,
-            ProfileLicenseCat: costumers.License_category,
-            ProfileLicenseExpiraton: costumers.License_expiraton,
-            ProfilePhone: costumers.Phone_number,
-            ProfileAddress: costumers.address,
+            ProfileName: Name,
+            ProfileEmail: Email,
+            ProfileLicenseCat: LicenseCat,
+            ProfileLicenseExp: LicenseExp,
+            ProfilePhone: Phone,
 
         }).then((response) => {
             if (response.data.message) {
-                console.log(response.data)
                 alert(response.data.message)
             }
             else {
@@ -52,67 +55,41 @@ export function Profile({ id }) {
         <div className="container-baseProfile">
             <img src={driverIMG} alt="img_avatar" id="profileImageProfile" />
         </div>
+        
         {/*Info Section*/}
         {costumers.map(costumer =>
             <div key={costumer.id}>
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Full Name</p>
-                        <input type="text" name='costumers.Fullname' placeholder={!costumer.Fullname && "Adja meg az adatot"}
-                            value={costumer.Fullname}
-                            onChange={(e) => {
-                                setCostumers([ e.target.value]);
-                            }}
-                        />
+                        <input type="text" placeholder={costumer.Fullname}
+                            onChange={(e) => { setName(e.target.value) }} />
+
                     </div>
                     <div className="rightInputProfile">
                         <p>E-mail</p>
-                        <input type="text" name='costumers.email' placeholder={!costumer.email && "Adja meg az adatot"}
-                            value={costumer.email}
-                            onChange={(e) => {
-                                setCostumers([ e.target.value ]);
-                            }}
-                        />
+                        <input type="text" placeholder={costumer.email}
+                            onChange={(e) => { setEmail(e.target.value) }} />
                     </div>
                 </div>
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>License Category</p>
-                        <input type="text" name='costumers.License_category' placeholder={!costumer.License_category && "Adja meg az adatot"}
-                            value={costumer.License_category}
-                            onChange={(e) => {
-                                setCostumers([ e.target.value ]);
-                            }}
-                        />
+                        <input type="text" placeholder={costumer.License_category}
+                            onChange={(e) => { setLicenseCat(e.target.value) }} />
+
                     </div>
                     <div className="rightInputProfile">
                         <p>License Expiration</p>
-                        <input type="text" name='costumers.License_expiraton' format="YYYY-mm-dd" placeholder={!costumer.License_expiraton && "Adja meg az adatot"}
-                            value={costumer.License_expiraton}
-                            onChange={(e) => {
-                                setCostumers([ e.target.value ]);
-                            }}
-                        />
+                        <input type="text" placeholder={costumer.License_expiraton}
+                            onChange={(e) => { setLicenseExp(e.target.value) }} />
                     </div>
                 </div>
                 <div className="containerProfile">
                     <div className="leftInputProfile">
-                        <p>Phone Number</p>
-                        <input type="text" name='costumers.Phone_number' placeholder={!costumer.Phone_number && "Adja meg az adatot"}
-                            value={costumer.Phone_number}
-                            onChange={(e) => {
-                                setCostumers([ e.target.value ]);
-                            }}
-                        />
-                    </div>
-                    <div className="rightInputProfile">
-                        <p>Address</p>
-                        <input type="text" name='costumers.address' placeholder={!costumer.address && "Adja meg az adatot"}
-                            value={costumer.address}
-                            onChange={(e) => {
-                                setCostumers([ e.target.value ]);
-                            }}
-                        />
+                        <p>Phone_number</p>
+                        <input type="tel" placeholder={costumer.Phone_number}
+                            onChange={(e) => { setPhone(e.target.value) }} />
                     </div>
                 </div>
             </div>

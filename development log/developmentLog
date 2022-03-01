@@ -332,7 +332,12 @@ HIBA: db-ben lévő adatkat kiírja (NEM működik)
 HIBA: frontenden mikor változik a profile.js egyik inputjában egy adat, a többi is felülítódik
       update-nél egyszer került be adat többször nem lehet update-et csinálni
       
-2022.02.28. {21:50-23:00} (Szalanics Szabolcs):
+2022.03.01. {18:50-19:30} (Szalanics Szabolcs):
     -frontenden mikor változik a profile.js egyik inputjában egy adat, a többi is felülítódik (KIJAVÍTVA)
-HIBA: update-nél a db-ben lévő adatokat kiírja de updatenél a db előre beállított adatait nullázza
+HIBA: Profile.js-nél a db-ben lévő adatokat kiírja de updatenél a db előre beállított adatait nullázza
+
+2022.03.01. {20:30-22:50} (Szalanics Szabolcs):
+    -Profile.js-nél a db-ben lévő adatokat kiírja
+    -Profile.js-nél update mostmár működik :)
+HIBA: Ha egy input üresen marad akkor a db adott adatait nullázza
       

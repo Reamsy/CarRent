@@ -221,15 +221,16 @@ app.post('/home', async (req, res) => {
     )
 })
 
-
+//NEM TARTJA MEG AZ ADATOKAT HA VALAMELYIK INPUT ÜRES MARAD!!!!!!!!!!!!!
 //profil save request
-app.put('/save', async (req, res) => {
-    const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress, findId } = req.body;
-    db.query("UPDATE costumer SET Fullname = ?, License_category = ?, License_expiraton = ?, Phone_number = ?, email = ?, address = ?  WHERE user_id = ?",
-        [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress, findId],
+app.put('/save/:id', async (req, res) => {
+    const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExp, ProfilePhone, findId} = req.body;
+    db.query("UPDATE costumer SET Fullname = ?, email = ?, License_category = ?, License_expiraton = ?, Phone_number = ?  WHERE user_id = ?",
+        [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExp, ProfilePhone, findId],
         (err, result) => {
             if (err) throw err;
             if (result) {
+                console.log(result)
                 res.send({ message: "Sikeres mentés!" })
             }
             else {
