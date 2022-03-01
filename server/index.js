@@ -225,7 +225,7 @@ app.post('/home', async (req, res) => {
 //profil save request
 app.put('/save', async (req, res) => {
     const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress, findId } = req.body;
-    db.query("UPDATE costumer SET Fullname = ?, License_category = ?, License_expiraton = ?, Phone_number = ?, email = ?, address = ?  WHERE 'costumer.user.id = ?'",
+    db.query("UPDATE costumer SET Fullname = ?, License_category = ?, License_expiraton = ?, Phone_number = ?, email = ?, address = ?  WHERE user_id = ?",
         [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExpiraton, ProfilePhone, ProfileAddress, findId],
         (err, result) => {
             if (err) throw err;

@@ -16,9 +16,7 @@ export function Profile({ id }) {
         Axios.get(`http://localhost:3001/profile/${id}`)
             .then((response) => {
                 if (response) {
-
                     setCostumers(response.data);
-                    console.log(costumers)
                 }
                 else {
                     alert('hiba')
@@ -39,6 +37,7 @@ export function Profile({ id }) {
 
         }).then((response) => {
             if (response.data.message) {
+                console.log(response.data)
                 alert(response.data.message)
             }
             else {
@@ -59,19 +58,19 @@ export function Profile({ id }) {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Full Name</p>
-                        <input type="text" name='Fullname' placeholder={!costumer.Fullname && "Adja meg az adatot"}
+                        <input type="text" name='costumers.Fullname' placeholder={!costumer.Fullname && "Adja meg az adatot"}
                             value={costumer.Fullname}
                             onChange={(e) => {
-                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                                setCostumers([ e.target.value]);
                             }}
                         />
                     </div>
                     <div className="rightInputProfile">
                         <p>E-mail</p>
-                        <input type="text" name='email' placeholder={!costumer.email && "Adja meg az adatot"}
+                        <input type="text" name='costumers.email' placeholder={!costumer.email && "Adja meg az adatot"}
                             value={costumer.email}
                             onChange={(e) => {
-                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                                setCostumers([ e.target.value ]);
                             }}
                         />
                     </div>
@@ -79,19 +78,19 @@ export function Profile({ id }) {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>License Category</p>
-                        <input type="text" name='License_category' placeholder={!costumer.License_category && "Adja meg az adatot"}
+                        <input type="text" name='costumers.License_category' placeholder={!costumer.License_category && "Adja meg az adatot"}
                             value={costumer.License_category}
                             onChange={(e) => {
-                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                                setCostumers([ e.target.value ]);
                             }}
                         />
                     </div>
                     <div className="rightInputProfile">
                         <p>License Expiration</p>
-                        <input type="text" name='License_expiraton' format="YYYY-mm-dd" placeholder={!costumer.License_expiraton && "Adja meg az adatot"}
+                        <input type="text" name='costumers.License_expiraton' format="YYYY-mm-dd" placeholder={!costumer.License_expiraton && "Adja meg az adatot"}
                             value={costumer.License_expiraton}
                             onChange={(e) => {
-                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                                setCostumers([ e.target.value ]);
                             }}
                         />
                     </div>
@@ -99,19 +98,19 @@ export function Profile({ id }) {
                 <div className="containerProfile">
                     <div className="leftInputProfile">
                         <p>Phone Number</p>
-                        <input type="text" name='Phone_number' placeholder={!costumer.Phone_number && "Adja meg az adatot"}
+                        <input type="text" name='costumers.Phone_number' placeholder={!costumer.Phone_number && "Adja meg az adatot"}
                             value={costumer.Phone_number}
                             onChange={(e) => {
-                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                                setCostumers([ e.target.value ]);
                             }}
                         />
                     </div>
                     <div className="rightInputProfile">
                         <p>Address</p>
-                        <input type="text" name='address' placeholder={!costumer.address && "Adja meg az adatot"}
+                        <input type="text" name='costumers.address' placeholder={!costumer.address && "Adja meg az adatot"}
                             value={costumer.address}
                             onChange={(e) => {
-                                setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                                setCostumers([ e.target.value ]);
                             }}
                         />
                     </div>
