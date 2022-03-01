@@ -16,8 +16,9 @@ export function Profile({ id }) {
         Axios.get(`http://localhost:3001/profile/${id}`)
             .then((response) => {
                 if (response) {
-                    console.log(response.data)
+
                     setCostumers(response.data);
+                    console.log(costumers)
                 }
                 else {
                     alert('hiba')
@@ -108,7 +109,7 @@ export function Profile({ id }) {
                     <div className="rightInputProfile">
                         <p>Address</p>
                         <input type="text" name='address' placeholder={!costumer.address && "Adja meg az adatot"}
-                            value={costumer.address} 
+                            value={costumer.address}
                             onChange={(e) => {
                                 setCostumers({ ...costumers, [e.target.name]: e.target.value });
                             }}

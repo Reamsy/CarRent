@@ -215,7 +215,7 @@ app.post('/home', async (req, res) => {
             }
             //ha van egyező user_id akkor nem történik semmi
             else {
-                console.log("hiba select")
+                console.log("van ilyen user")
             }
         }
     )
