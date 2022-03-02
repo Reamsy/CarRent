@@ -7,6 +7,7 @@ import { Login } from './views/Login/Login';
 import { Rent } from './views/Rent/Rent';
 import { Drivers } from './views/Drivers/Drivers';
 import { Home } from './views/Home/Home';
+import { Admin } from './views/Admin/Admin';
 
 function App() {
 const[id, setId] = React.useState(null);
@@ -24,6 +25,7 @@ const changeID = (newId) =>{
         <Route exact path="/rateus" element={<RateUs />} />
         <Route exact path="/profile" element={<Profile id={id}/>} />
         <Route exact path="/rent" element={<Rent />} />
+        <Route exact path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );

@@ -9,6 +9,7 @@
 
 /*Text settings*/
 #rent{
+    font-size: 30px;
     display: flex;
     justify-content: center;
     padding-bottom: 0;
@@ -48,11 +49,11 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 3%;
-    padding-bottom: 3%;
+    padding-top: 0,5%;
+    padding-bottom: 0,5%;
 } 
 
-/*List settnigs*/
+/*List settings*/
 #name{
     padding-left: 5%;
 }
@@ -60,9 +61,11 @@ body{
     padding-left: 5%;
 }
 #listElement{
+    width: 70%;
     padding: 0;
     display: flex;
     justify-content: space-around;
+    background-color: #bdbdbd;
 }
 #listBox{
     display: inline;

@@ -340,4 +340,10 @@ HIBA: Profile.js-nél a db-ben lévő adatokat kiírja de updatenél a db előre
     -Profile.js-nél a db-ben lévő adatokat kiírja
     -Profile.js-nél update mostmár működik :)
 HIBA: Ha egy input üresen marad akkor a db adott adatait nullázza
+
+2022.03.02. {10:45-13:15} (Szalanics Szabolcs):
+    -Admin.js útjának meghatározása id szerint 
+    -Admin.js rents.map(), vehicles.map(), drivers.mao()
+HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
+      Admin.js drivers.map() not a function
       

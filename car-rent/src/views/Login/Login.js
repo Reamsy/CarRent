@@ -63,7 +63,9 @@ export function Login({getID}) {
             if (response.data.message) {
                 setLoginCorrect(response.data.message)
             }
-
+            if (response.data[0].id === 1) {
+                navigate('/admin')
+            } 
             else {
                 console.log("got id from login: "+response.data[0].id)         
                 getID(response.data[0].id);

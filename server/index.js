@@ -224,9 +224,9 @@ app.post('/home', async (req, res) => {
 //NEM TARTJA MEG AZ ADATOKAT HA VALAMELYIK INPUT ÜRES MARAD!!!!!!!!!!!!!
 //profil save request
 app.put('/save/:id', async (req, res) => {
-    const { ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExp, ProfilePhone, findId} = req.body;
-    db.query("UPDATE costumer SET Fullname = ?, email = ?, License_category = ?, License_expiraton = ?, Phone_number = ?  WHERE user_id = ?",
-        [ProfileName, ProfileEmail, ProfileLicenseCat, ProfileLicenseExp, ProfilePhone, findId],
+    const { ProfileName, ProfileLicenseCat, ProfileLicenseExp, ProfilePhone, findId } = req.body;
+    db.query("UPDATE costumer SET Fullname = ?, License_category = ?, License_expiraton = ?, Phone_number = ?  WHERE user_id = ?",
+        [ProfileName, ProfileLicenseCat, ProfileLicenseExp, ProfilePhone, findId],
         (err, result) => {
             if (err) throw err;
             if (result) {
@@ -239,6 +239,44 @@ app.put('/save/:id', async (req, res) => {
         }
     )
 })
+
+//Admin rents request
+app.get('/AdminRents', (req, res) => {
+    db.query("SELECT * FROM rent", (err, result) => {
+        if (result) {
+            res.send(result);
+        }
+        else {
+            res.send({ message: "Lekérdezés sikertelen!" })
+        }
+    })
+})
+
+//Admin vehicles request
+app.get('/AdminVehicles', (req, res) => {
+    db.query("SELECT * FROM products", (err, result) => {
+        if (result) {
+            res.send(result);
+        }
+        else {
+            res.send({ message: "Lekérdezés sikertelen!" })
+        }
+    })
+})
+
+//Admin drivers request
+app.get('/AdminDrivers', (req, res) => {
+    db.query("SELECT * FROM driver", (err, result) => {
+        if (result) {
+            res.send(result);
+        }
+        else {
+            res.send({ message: "Lekérdezés sikertelen!" })
+        }
+    })
+})
+
+
 app.listen(3001, (err) => {
     console.log("fut");
     if (err) throw err;

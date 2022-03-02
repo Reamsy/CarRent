@@ -106,7 +106,7 @@ export function Rent() {
                         {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
                         <option value="0">Nincs autó kiválasztva</option>
                         {cars.map(car =>
-                            <option key={car.id} value={car.id}>{car.brand}</option>
+                            <option  value={car.brand}>{car.brand}</option>
                         )}
                     </select>
                 </form>
@@ -121,7 +121,7 @@ export function Rent() {
                         {/*feltöltése DB-ből mindig a kiválasztott sofőr információi jelenjenek meg a lenti card-ban*/}
                         <option value="00">Nem kérek sofőrt</option>
                         {drivers.map(driver =>
-                            <option value={driver.id}>{driver.name}</option>
+                            <option key={driver.id} value={driver.name}>{driver.name}</option>
                         )}
                     </select>
                 </form>

@@ -11,7 +11,6 @@ export function Profile({ id }) {
     //hook for fetching
     const [costumers, setCostumers] = useState([]);
     const [Name, setName] = useState();
-    const [Email, setEmail] = useState();
     const [LicenseCat, setLicenseCat] = useState();
     const [LicenseExp, setLicenseExp] = useState();
     const [Phone, setPhone] = useState();
@@ -34,7 +33,6 @@ export function Profile({ id }) {
         Axios.put(`http://localhost:3001/save/${id}`, {
             findId: id,
             ProfileName: Name,
-            ProfileEmail: Email,
             ProfileLicenseCat: LicenseCat,
             ProfileLicenseExp: LicenseExp,
             ProfilePhone: Phone,
@@ -55,7 +53,7 @@ export function Profile({ id }) {
         <div className="container-baseProfile">
             <img src={driverIMG} alt="img_avatar" id="profileImageProfile" />
         </div>
-        
+
         {/*Info Section*/}
         {costumers.map(costumer =>
             <div key={costumer.id}>
@@ -67,9 +65,9 @@ export function Profile({ id }) {
 
                     </div>
                     <div className="rightInputProfile">
-                        <p>E-mail</p>
-                        <input type="text" placeholder={costumer.email}
-                            onChange={(e) => { setEmail(e.target.value) }} />
+                        <p>Phone_number</p>
+                        <input type="tel" placeholder={costumer.Phone_number}
+                            onChange={(e) => { setPhone(e.target.value) }} />
                     </div>
                 </div>
                 <div className="containerProfile">
@@ -83,13 +81,6 @@ export function Profile({ id }) {
                         <p>License Expiration</p>
                         <input type="text" placeholder={costumer.License_expiraton}
                             onChange={(e) => { setLicenseExp(e.target.value) }} />
-                    </div>
-                </div>
-                <div className="containerProfile">
-                    <div className="leftInputProfile">
-                        <p>Phone_number</p>
-                        <input type="tel" placeholder={costumer.Phone_number}
-                            onChange={(e) => { setPhone(e.target.value) }} />
                     </div>
                 </div>
             </div>
