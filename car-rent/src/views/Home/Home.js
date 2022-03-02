@@ -26,8 +26,8 @@ export function Home({ id }) {
 
         <section>
             <NavLink to="/rent" id="homePageMidBtnHome">Rent</NavLink>
-            <p>At PROFILE menu option you can set your datas!</p>
-            <p>You can text us bellow</p>
+            <p id="home-p">At PROFILE menu option you can set your datas!</p>
+            <p id="home-p">You can text us bellow</p>
         </section>
         <footer>
             <address>

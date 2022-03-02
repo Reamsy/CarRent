@@ -53,7 +53,7 @@ export function Admin() {
     }, [])
 
     return (<>
-        <div>
+        <div >
             {/*Welcome message*/}
             <div className="container">
                 <h3>Here, you can manage your busines!</h3>
@@ -61,7 +61,7 @@ export function Admin() {
 
             {/*Listing of rents*/}
             <div>
-                <p id="rent">{!errorMessage && "Rents"}</p>
+                <p id="Admin-p" id="rent">{!errorMessage && "Rents"}</p>
             </div>
 
 
