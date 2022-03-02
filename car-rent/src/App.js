@@ -10,11 +10,13 @@ import { Home } from './views/Home/Home';
 import { Admin } from './views/Admin/Admin';
 
 function App() {
+
 const[id, setId] = React.useState(null);
-console.log("Router id: "+id)
+
 const changeID = (newId) =>{
   setId(newId);
 }
+
   return (
     <BrowserRouter>
       <Routes>

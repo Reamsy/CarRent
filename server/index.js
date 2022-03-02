@@ -266,7 +266,7 @@ app.get('/AdminVehicles', (req, res) => {
 
 //Admin drivers request
 app.get('/AdminDrivers', (req, res) => {
-    db.query("SELECT * FROM driver", (err, result) => {
+    db.query("SELECT * FROM drivers", (err, result) => {
         if (result) {
             res.send(result);
         }
@@ -276,7 +276,18 @@ app.get('/AdminDrivers', (req, res) => {
     })
 })
 
-
+//deleteRents
+app.delete('/RentDelete/:id'), async (req, res) => {
+    const { id } = req.params.id
+    db.query("DELETE FROM rent WHERE id = ?",
+        [id],
+        (err, result) => {
+            if (result) {
+                console.log(result[0])
+                res.send(result);
+            }
+        })
+}
 app.listen(3001, (err) => {
     console.log("fut");
     if (err) throw err;
