@@ -63,7 +63,13 @@ export function Admin() {
             <div>
                 <p id="Admin-p" id="rent">{!errorMessage && "Rents"}</p>
             </div>
-
+            <div id="tagline">
+                <p id="tagline-p">Bérlés kezdete</p>
+                <p id="tagline-p">Bérlés vége</p>
+                <p id="tagline-p">Választott autó</p>
+                <p id="tagline-p">Választott sofőr</p>
+                <p id="tagline-p">törlés</p>
+            </div>
 
             {rents.map(rent =>
                 <div key={rent.id}>
