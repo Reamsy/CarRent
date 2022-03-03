@@ -52,13 +52,26 @@ export function Admin() {
             })
     }, [])
 
-    //delete function
-    const DeleteRents = (id) => {
-        Axios.delete(`http://localhost:3001/RentDelete/${id}`)
+    //delete Rents
+    const DeleteRents = (RentId) => {
+        Axios.delete(`http://localhost:3001/admin/RentDelete/${RentId}`)
+            .then((response) => {
+                if (response) {
+                    alert("Sikeres Törlés")
+                    navigate("/admin");
+                }
+                else {
+                    console.log("törlési hiba")
+                }
+            })
+    }
+    //delete Vehicles
+    const DeleteVehicles = (CarId) => {
+        Axios.delete(`http://localhost:3001/admin/VehicleDelete/${CarId}`)
             .then((response) => {
                 if (response) {
                     console.log(response)
-                    alert("Sikeres Delete")
+                    alert("Sikeres Törlés")
                     navigate("/admin");
                 }
                 else {
@@ -67,6 +80,10 @@ export function Admin() {
             })
     }
 
+    //Adding car
+    const AddNewCar = () => {
+
+    }
     return (<>
         <div >
             {/*Welcome message*/}
@@ -76,7 +93,7 @@ export function Admin() {
 
             {/*Listing of rents*/}
             <div>
-                <p id="Admin-p" id="rent">{!errorMessage && "Rents"}</p>
+                <p id="rent">{!errorMessage && "Rents"}</p>
             </div>
 
 
@@ -90,7 +107,7 @@ export function Admin() {
                                 <p id="rent.end_date">{rent.end_date}</p>
                                 <p id="rent.car_id">{rent.car_id}</p>
                                 <p id="rent.car_id">{rent.driver_id}</p>
-                                <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
+                                <p><button id="deleteRent" onClick={DeleteRents.bind(rent.id)}>Delete</button></p>
                             </li>
                         </ul>
                     </div>
@@ -112,7 +129,7 @@ export function Admin() {
                                 <p id="vehicle.fuel">{vehicle.fuel}</p>
                                 <p id="vehicle.rentPrice">{vehicle.rentprice}</p>
                                 <p id="vehicle.year">{vehicle.year}</p>
-                                <p><button id="deleteRent">Delete</button></p>
+                                <p><button id="deleteRent" onClick={() => { DeleteVehicles(vehicle.id) }}>Delete</button></p>
                             </li>
                         </ul>
                     </div>
@@ -120,7 +137,7 @@ export function Admin() {
             )}
 
             <div>
-                <button id="add"> New Car</button>
+                <button id="add" onClick={AddNewCar}> New Car</button>
             </div>
 
             {/*Listing of Drivers*/}

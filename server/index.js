@@ -277,13 +277,25 @@ app.get('/AdminDrivers', (req, res) => {
 })
 
 //deleteRents
-app.delete('/RentDelete/:id'), async (req, res) => {
-    const { id } = req.params.id
-    db.query("DELETE FROM rent WHERE id = ?",
-        [id],
+app.delete('/admin/RentDelete/:RentId'), async (req, res) => {
+    db.query("DELETE FROM rent WHERE id = ?", req.params.RentId,
         (err, result) => {
+            console.log(err)
+            console.log(result)
             if (result) {
-                console.log(result[0])
+                console.log(result[0]);
+                res.send(result);
+            }
+        })
+}
+
+//deleteVehicles
+app.delete('/admin/VehicleDelete/:CarId'), async (req, res) => {
+    db.query("DELETE FROM products WHERE id = ?", req.params.CarId,
+        (err, result) => {
+            console.log(err)
+            console.log(result)
+            if (result) {
                 res.send(result);
             }
         })
