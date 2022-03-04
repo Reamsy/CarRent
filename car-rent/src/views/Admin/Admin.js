@@ -106,6 +106,7 @@ export function Admin() {
     const addNewDriver = () => {
         navigate("./addNewDriver");
     }
+    
     return (<>
         <div >
             {/*Welcome message*/}
