@@ -355,11 +355,12 @@ HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza
 
 2022.03.04. {7:40-12:00} (Szalanics Szabolcs):
     -Admin.js Delete method Error 404 (KIJAVÍTVA)
-    -Admin.js AddNewDriver (KÉSZ)
+    -Admin.js AddNewDriver megírása
     -Admin.js AddNewVehicle (KÉSZ)
 HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
       CSS nincs a két új "ADD" oldalhoz
       RENT ütközések lekezelése
+      -Admin.js AddNewDriver (Post error)
       
       
       

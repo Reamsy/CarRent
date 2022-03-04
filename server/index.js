@@ -322,7 +322,7 @@ app.post('/addNewCar', (req, res) => {
 //add new driver
 app.post('/addNewDriver', (req, res) => {
     const { Name, Sex, Email, LicenseCategory } = req.body;
-    db.query("INSERT INTO products (name, sex, email, licence_category) VALUES (?,?,?,?)",
+    db.query("INSERT INTO products ( driver_name, sex, email, licence_category) VALUES (?,?,?,?)",
         [Name, Sex, Email, LicenseCategory],
         (err, result) => {
             if (err) throw err;
