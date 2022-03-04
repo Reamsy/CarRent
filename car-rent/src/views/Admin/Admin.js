@@ -54,35 +54,57 @@ export function Admin() {
 
     //delete Rents
     const DeleteRents = (RentId) => {
-        Axios.delete(`http://localhost:3001/admin/RentDelete/${RentId}`)
+        Axios.delete(`http://localhost:3001/rentDelete/${RentId}`)
             .then((response) => {
                 if (response) {
+                    console.log(response.data)
                     alert("Sikeres Törlés")
                     navigate("/admin");
                 }
                 else {
                     console.log("törlési hiba")
                 }
-            })
+            }).catch(console.log)
     }
+
     //delete Vehicles
     const DeleteVehicles = (CarId) => {
-        Axios.delete(`http://localhost:3001/admin/VehicleDelete/${CarId}`)
+        Axios.delete(`http://localhost:3001/vehicleDelete/${CarId}`)
             .then((response) => {
                 if (response) {
-                    console.log(response)
+                    console.log(response.data)
                     alert("Sikeres Törlés")
                     navigate("/admin");
                 }
                 else {
                     console.log("törlési hiba")
                 }
-            })
+            }).catch(console.log);
+    }
+
+    //delete Drivers
+    const DeleteDrivers = (DriverId) => {
+        Axios.delete(`http://localhost:3001/driverDelete/${DriverId}`)
+            .then((response) => {
+                if (response) {
+                    console.log(response.data)
+                    alert("Sikeres Törlés")
+                    navigate("/admin");
+                }
+                else {
+                    console.log("törlési hiba")
+                }
+            }).catch(console.log);
     }
 
     //Adding car
-    const AddNewCar = () => {
+    const addNewCar = () => {
+        navigate("./addNewVehicle");
+    }
 
+    //Adding driver
+    const addNewDriver = () => {
+        navigate("./addNewDriver");
     }
     return (<>
         <div >
@@ -107,7 +129,7 @@ export function Admin() {
                                 <p id="rent.end_date">{rent.end_date}</p>
                                 <p id="rent.car_id">{rent.car_id}</p>
                                 <p id="rent.car_id">{rent.driver_id}</p>
-                                <p><button id="deleteRent" onClick={DeleteRents.bind(rent.id)}>Delete</button></p>
+                                <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
                             </li>
                         </ul>
                     </div>
@@ -137,7 +159,7 @@ export function Admin() {
             )}
 
             <div>
-                <button id="add" onClick={AddNewCar}> New Car</button>
+                <button id="add" onClick={addNewCar}> New Car</button>
             </div>
 
             {/*Listing of Drivers*/}
@@ -154,7 +176,7 @@ export function Admin() {
                                 <p id="driver.name">{driver.name}</p>
                                 <p id="driver.license_category">{driver.licence_category}</p>
                                 <p id="driver.drivedKMs">{driver.drivedKMs}</p>
-                                <p><button id="deleteRent">Delete</button></p>
+                                <p><button id="deleteRent" onClick={() => { DeleteDrivers(driver.id) }}>Delete</button></p>
                             </li>
                         </ul>
                     </div>
@@ -162,7 +184,7 @@ export function Admin() {
             )}
 
             <div className="drivers">
-                <button id="add"> New Driver</button>
+                <button id="add" onClick={addNewDriver}> New Driver</button>
             </div>
         </div>
     </>)

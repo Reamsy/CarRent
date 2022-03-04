@@ -347,7 +347,7 @@ HIBA: Ha egy input üresen marad akkor a db adott adatait nullázza
 HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
       Admin.js drivers.map() not a function
 
-2022.03.02. {19:30-22:30} (Szalanics Szabolcs):
+2022.03.03. {19:30-22:30} (Szalanics Szabolcs):
     -Admin.js drivers.map() not a function 
     -Admin.js Delete metho megírása
 HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 

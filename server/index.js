@@ -277,29 +277,61 @@ app.get('/AdminDrivers', (req, res) => {
 })
 
 //deleteRents
-app.delete('/admin/RentDelete/:RentId'), async (req, res) => {
-    db.query("DELETE FROM rent WHERE id = ?", req.params.RentId,
+app.delete('/rentDelete/:RentId', (req, res) => {
+    db.query(`DELETE FROM rent WHERE id = ${req.params.RentId}`,
         (err, result) => {
-            console.log(err)
-            console.log(result)
             if (result) {
-                console.log(result[0]);
                 res.send(result);
             }
         })
-}
+})
 
 //deleteVehicles
-app.delete('/admin/VehicleDelete/:CarId'), async (req, res) => {
-    db.query("DELETE FROM products WHERE id = ?", req.params.CarId,
+app.delete('/vehicleDelete/:CarId', (req, res) => {
+    db.query(`DELETE FROM products WHERE id = ${req.params.CarId}`,
         (err, result) => {
-            console.log(err)
-            console.log(result)
             if (result) {
                 res.send(result);
             }
         })
-}
+})
+
+//deleteDrivers
+app.delete('/driverDelete/:DriverId', (req, res) => {
+    db.query(`DELETE FROM drivers WHERE id = ${req.params.DriverId}`,
+        (err, result) => {
+            if (result) {
+                res.send(result);
+            }
+        })
+})
+
+//add new car
+app.post('/addNewCar', (req, res) => {
+    const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color } = req.body;
+    db.query("INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color) VALUES (?,?,?,?,?,?,?,?)",
+        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color],
+        (err, result) => {
+            if (err) throw err;
+            if (result) {
+                res.send(result);
+            }
+        })
+})
+
+//add new driver
+app.post('/addNewDriver', (req, res) => {
+    const { Name, Sex, Email, LicenseCategory } = req.body;
+    db.query("INSERT INTO products (name, sex, email, licence_category) VALUES (?,?,?,?)",
+        [Name, Sex, Email, LicenseCategory],
+        (err, result) => {
+            if (err) throw err;
+            if (result) {
+                res.send(result);
+            }
+        })
+})
+
 app.listen(3001, (err) => {
     console.log("fut");
     if (err) throw err;

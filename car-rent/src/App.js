@@ -8,26 +8,30 @@ import { Rent } from './views/Rent/Rent';
 import { Drivers } from './views/Drivers/Drivers';
 import { Home } from './views/Home/Home';
 import { Admin } from './views/Admin/Admin';
+import { AddNewCar } from './views/Admin/AddNewVehicle';
+import { AddNewDriver } from './views/Admin/AddNewDriver';
 
 function App() {
 
-const[id, setId] = React.useState(null);
+  const [id, setId] = React.useState(null);
 
-const changeID = (newId) =>{
-  setId(newId);
-}
+  const changeID = (newId) => {
+    setId(newId);
+  }
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Login getID={changeID}/>} />
-        <Route exact path="/home" element={<Home id={id}/>} />
+        <Route exact path="/" element={<Login getID={changeID} />} />
+        <Route exact path="/home" element={<Home id={id} />} />
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/drivers" element={<Drivers />} />
         <Route exact path="/rateus" element={<RateUs />} />
-        <Route exact path="/profile" element={<Profile id={id}/>} />
+        <Route exact path="/profile" element={<Profile id={id} />} />
         <Route exact path="/rent" element={<Rent />} />
         <Route exact path="/admin" element={<Admin />} />
+        <Route exact path='/admin/addNewVehicle' element={<AddNewCar />} />
+        <Route exact path='/admin/addNewDriver' element={<AddNewDriver />} />
       </Routes>
     </BrowserRouter>
   );
