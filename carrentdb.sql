@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 05. 00:10
+-- Létrehozás ideje: 2022. Már 07. 18:36
 -- Kiszolgáló verziója: 10.4.22-MariaDB
--- PHP verzió: 8.1.2
+-- PHP verzió: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,17 +51,15 @@ CREATE TABLE `costumer` (
   `Fullname` varchar(255) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `License_category` varchar(5) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `License_expiraton` date NOT NULL,
-  `Phone_number` varchar(11) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL
+  `Phone_number` varchar(11) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `costumer`
 --
 
-INSERT INTO `costumer` (`id`, `user_id`, `Fullname`, `License_category`, `License_expiraton`, `Phone_number`, `email`) VALUES
-(21, 83, 'vaak', 'B', '0000-00-00', '', ''),
-(22, 85, 'qweqeq', 'qweqe', '0000-00-00', 'qweqwe', '');
+INSERT INTO `costumer` (`id`, `user_id`, `Fullname`, `License_category`, `License_expiraton`, `Phone_number`) VALUES
+(26, 92, 'Szalanics Szabolcs', 'B', '2001-02-07', '54545655456');
 
 -- --------------------------------------------------------
 
@@ -74,8 +72,7 @@ CREATE TABLE `drivers` (
   `user_id` int(11) NOT NULL DEFAULT 2,
   `name` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `sex` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `licence_category` varchar(10) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL
+  `licence_category` varchar(10) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -101,7 +98,6 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `brand`, `model`, `chassisNumber`, `plateNumber`, `fuel`, `color`, `rentprice`, `year`) VALUES
-(7, 'qweqwqweqwe', 'qweqweqwe', 0, 'qweqwe', 'qweqewe', 'dqwddqwqd', 0, 0),
 (8, 'asd', 'sadasd', 0, '', '', '', 0, 0);
 
 -- --------------------------------------------------------
@@ -126,6 +122,7 @@ CREATE TABLE `rent` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `username` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `password` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL
@@ -135,9 +132,10 @@ CREATE TABLE `users` (
 -- A tábla adatainak kiíratása `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(83, 'asd', '$2b$10$Vzzsd0u7j2RBfc4IBueLGeIMh3xc4qOTtYD7tXw5Gg38ypwaIvi9K', 'szalanics12@gmail.com'),
-(85, 'qwe', '$2b$10$W/iPHpfsVMS0qYVYHm//iulH1ZVeLDLUlI9Zmny5T4K86drhO.kdq', 'szalanics.livia@gmail.com');
+INSERT INTO `users` (`id`, `user_id`, `username`, `password`, `email`) VALUES
+(87, 1, 'admin', '$2b$10$R/oBtSj17FIwbncpYJrSR.v1EjAlNOMsH50VsfZZuGQiOsai5VZHG', 'admin@admin.com'),
+(89, 2, 'driver', '$2b$10$VauM/12u3l/KDI5.3Z.sI.Onnii.M8IwCDQqin3a86duf0ck.ptdy', 'driver@driver.com'),
+(92, 3, 'user', '$2b$10$NO4IkwfNnUTdD0Om2Y6qLuXc7nJ5KTccOPBAgmSJ.rTxG31/pj8tu', 'user@user.com');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -193,7 +191,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT a táblához `costumer`
 --
 ALTER TABLE `costumer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT a táblához `drivers`
@@ -217,7 +215,7 @@ ALTER TABLE `rent`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
