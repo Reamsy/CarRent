@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import './starterpage.css';
 
 
-export function Login({getID}) {
+export function Login({ getID }) {
 
     //Adatok kiolvasása az inputokból (Regisztráció)
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
     const [emailReg, setEmailReg] = useState("");
-    
+
     //Adatok kiolvasása az inputokból (Login)
     const [usernameLog, setUsernameLog] = useState("");
     const [passwordLog, setPasswordLog] = useState("");
@@ -23,11 +23,11 @@ export function Login({getID}) {
 
     //ez felel az odalk közötti navigálásért sikeres belépés esetén
     const navigate = useNavigate();
-  
+
 
     //adatok elküldése onClick={registration} meghívása után
     const registration = () => {
- 
+
         //localhostál állítsd be a portot amin fut majd a node 
         Axios.post('http://localhost:3001/registration', {
 
@@ -50,24 +50,27 @@ export function Login({getID}) {
 
     //Login adatok lekérdezése
     const login = () => {
-        
+
         //node port egyezés szükséges
         Axios.post('http://localhost:3001/login', {
 
             //ennek kell egyeznie a backenddel-->> LoginUsername.... mert ezt fogod átvenni frontendről req.body-val
             LoginUsername: usernameLog,
             LoginPassword: passwordLog,
-        }).then((response) => { 
+        }).then((response) => {
 
             //itt jön vissza a backend hibaüzenet (ha van)
             if (response.data.message) {
                 setLoginCorrect(response.data.message)
             }
-            if (response.data[0].id === 1) {
+            if (response.data[0].user_id === 1) {
                 navigate('/admin')
-            } 
-            else {
-                console.log("got id from login: "+response.data[0].id)         
+            }
+            if (response.data[0].user_id === 2) {
+                navigate('/driverPrivate')
+            }
+            if (response.data[0].user_id === 3) {
+                console.log("got id from login: " + response.data[0].id)
                 getID(response.data[0].id);
                 navigate('/home');
             }

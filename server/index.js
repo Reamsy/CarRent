@@ -37,7 +37,7 @@ app.post('/registration', async (req, res) => {
                 if (result.length == 0) {
 
                     //insert az adatbázisba
-                    db.query("INSERT INTO users (username, password, email) VALUES (? , ? , ?)",
+                    db.query("INSERT INTO users (user_id, username, password, email) VALUES (3, ? , ? , ?)",
                         [RegistrationUsername, encryptPassword, RegistrationEmail],
                         (err, result) => {
                             if (err) {
@@ -321,15 +321,36 @@ app.post('/addNewCar', (req, res) => {
 
 //add new driver
 app.post('/addNewDriver', (req, res) => {
-    const { Name, Sex, Email, LicenseCategory } = req.body;
-    db.query("INSERT INTO products ( driver_name, sex, email, licence_category) VALUES (?,?,?,?)",
-        [Name, Sex, Email, LicenseCategory],
+    const { Name, Sex, LicenseCategory } = req.body;
+    db.query("INSERT INTO products ( name, sex, licence_category) VALUES (?,?,?)",
+        [Name, Sex, LicenseCategory],
         (err, result) => {
             if (err) throw err;
             if (result) {
                 res.send(result);
             }
         })
+})
+
+app.post('/driverLogin', async (req, res) => {
+    const { D_Username, D_Password, D_Email } = req.body;
+    //email validálás 
+    if (emailValidator.validate(D_Email)) {
+
+        //password hash
+        const DriverencryptPassword = await bcrypt.hash(D_Password, 10);
+        db.query("INSERT INTO users (user_id, username, password, email) VALUES (2,?,?,?)",
+            [D_Username, DriverencryptPassword, D_Email],
+            (err, result) => {
+                if (err) res.send({message: "Login creating error"});
+                if (result) {
+                    res.send({ message: "Login Parameters Created"});
+                }
+            })
+    }
+    else{
+        res.send({ message: "NOT Valid e-mail"})
+    }
 })
 
 app.listen(3001, (err) => {

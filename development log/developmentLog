@@ -362,5 +362,11 @@ HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza
       RENT ütközések lekezelése
       -Admin.js AddNewDriver (Post error)
       
-      
+2022.03.07. {17:00 - 19:00} (Szalanics Szabolcs):
+    -CSS megírása a AddNewDriver & AddNewVehicle js-hez (KÉSZ)
+    -addNewDriver szétszedve 2 oldalra a login paraméterek insertálása miatt (KÉSZ)
+HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
+      RENT ütközések lekezelése
+      -Admin.js AddNewDriver (Post error)
+      -users és drivers összekapcsolása kell (????)     
       

@@ -10,6 +10,8 @@ import { Home } from './views/Home/Home';
 import { Admin } from './views/Admin/Admin';
 import { AddNewCar } from './views/Admin/AddNewVehicle';
 import { AddNewDriver } from './views/Admin/AddNewDriver';
+import { CreateDriverLogin } from './views/Admin/DriverLoginCreate';
+import { Driver } from './views/DriverPriv/Driver';
 
 function App() {
 
@@ -30,8 +32,10 @@ function App() {
         <Route exact path="/profile" element={<Profile id={id} />} />
         <Route exact path="/rent" element={<Rent />} />
         <Route exact path="/admin" element={<Admin />} />
+        <Route exact path='/driverPrivate' element={<Driver />} />
         <Route exact path='/admin/addNewVehicle' element={<AddNewCar />} />
         <Route exact path='/admin/addNewDriver' element={<AddNewDriver />} />
+        <Route exact path='/createDriverLogin' element={<CreateDriverLogin />} />
       </Routes>
     </BrowserRouter>
   );

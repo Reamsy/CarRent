@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 
+import './add.css';
 
 export function AddNewCar() {
 
@@ -37,24 +38,24 @@ export function AddNewCar() {
             <h1>Add New Cars</h1>
         </div>
         <div className='addCarInput'>
-            <input onChange={(e) => { setBrand(e.target.value) }} placeholder='Enter the Brand of the vehicle' />
-            <input onChange={(e) => { setModel(e.target.value) }} placeholder='Enter the Model of the vehicle ' />
+            <input onChange={(e) => { setBrand(e.target.value) }} placeholder='Enter the Brand' />
+            <input onChange={(e) => { setModel(e.target.value) }} placeholder='Enter the Model' />
         </div>
         <div className='addCarInput'>
-            <input onChange={(e) => { setYear(e.target.value) }} placeholder='Enter the Year of the vehicle' />
-            <input onChange={(e) => { setChassisNumber(e.target.value) }} placeholder='Enter the ChassisNumber of the vehicle' />
+            <input onChange={(e) => { setYear(e.target.value) }} placeholder='Enter the Year' />
+            <input onChange={(e) => { setChassisNumber(e.target.value) }} placeholder='Enter the ChassisNumber' />
         </div>
         <div className='addCarInput'>
-            <input onChange={(e) => { setPrice(e.target.value) }} placeholder='Enter the Price/day of the vehicle' />
-            <input onChange={(e) => { setFule(e.target.value) }} placeholder='Enter the Fuel type of the vehicle' />
+            <input onChange={(e) => { setPrice(e.target.value) }} placeholder='Enter the Price/day' />
+            <input onChange={(e) => { setFule(e.target.value) }} placeholder='Enter the Fuel type' />
         </div>
         <div className='addCarInput'>
-            <input onChange={(e) => { setPlateNumber(e.target.value) }} placeholder='Enter the Plate number of the vehicle' />
-            <input onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color of the vehicle' />
+            <input onChange={(e) => { setPlateNumber(e.target.value) }} placeholder='Enter the Plate number' />
+            <input onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
         </div>
 
-        <div className='addCarButtn'>
-            <button onClick={addCar}>Add</button>
+        <div className='addCarButton'>
+            <button id='addCarButton' onClick={addCar}>Add</button>
         </div>
     </>)
 }
