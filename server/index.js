@@ -28,8 +28,8 @@ app.post('/registration', async (req, res) => {
         const encryptPassword = await bcrypt.hash(RegistrationPassword, 10);
 
         //keresés adatbázisban, hogy a frontendről elküldött email és user megtalálható-e
-        db.query("SELECT * FROM users WHERE email = ? AND username = ?",
-            [RegistrationEmail, RegistrationUsername],
+        db.query("SELECT * FROM users WHERE email = ?",
+            [RegistrationEmail],
             (err, result) => {
                 if (err) return err;
 
@@ -51,7 +51,7 @@ app.post('/registration', async (req, res) => {
                 }
                 else {
                     //ha a result.length nem 0 azaz van ilyen username + email kombináció, akkor "User already in exist!" üzenettel tér vissza és nem kreálja le az új usert
-                    res.send({ message: "User already in exist!" });
+                    res.send({ message: "E-mail already in exist!" });
                 }
             }
         )
@@ -167,7 +167,7 @@ app.get('/rentDrivers', async (req, res) => {
 app.post('/Rent', async (req, res) => {
     //frontendről érkező adat
     const { RentStartDate, RentEndDate, RentCar, RentDriver } = req.body;
-    db.query("INSERT INTO rent (start_date, end_date, driver_id, car_id) VALUES (?, ?, ?, ?)",
+    db.query("INSERT INTO rent (start_date, end_date, car_id, driver_id) VALUES (?, ?, ?, ?)",
         [RentStartDate, RentEndDate, RentCar, RentDriver],
         (err, result) => {
             if (err) throw err;
@@ -322,7 +322,7 @@ app.post('/addNewCar', (req, res) => {
 //add new driver
 app.post('/addNewDriver', (req, res) => {
     const { Name, Sex, LicenseCategory } = req.body;
-    db.query("INSERT INTO products ( name, sex, licence_category) VALUES (?,?,?)",
+    db.query("INSERT INTO drivers ( name, sex, licence_category) VALUES (?,?,?)",
         [Name, Sex, LicenseCategory],
         (err, result) => {
             if (err) throw err;
@@ -342,14 +342,14 @@ app.post('/driverLogin', async (req, res) => {
         db.query("INSERT INTO users (user_id, username, password, email) VALUES (2,?,?,?)",
             [D_Username, DriverencryptPassword, D_Email],
             (err, result) => {
-                if (err) res.send({message: "Login creating error"});
+                if (err) res.send({ message: "Login creating error" });
                 if (result) {
-                    res.send({ message: "Login Parameters Created"});
+                    res.send({ message: "Login Parameters Created" });
                 }
             })
     }
-    else{
-        res.send({ message: "NOT Valid e-mail"})
+    else {
+        res.send({ message: "NOT Valid e-mail" })
     }
 })
 

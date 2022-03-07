@@ -6,7 +6,7 @@ import './driverPage.css';
 export function Driver(){
     return(<>
         {/*Info texts*/}
-    <div className="container">
+    <div className="containerDriver">
         <h3 data-aos="fade-up" data-aos-delay="300">Check out your working days!</h3>
         <p data-aos="fade-up" data-aos-delay="400"> You can decide when you want to work, but on a day, when you get
             Rented, you can't go on vacation!</p>

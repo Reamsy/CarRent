@@ -54,8 +54,8 @@ export function AddNewCar() {
             <input onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
         </div>
 
-        <div className='addCarButton'>
-            <button id='addCarButton' onClick={addCar}>Add</button>
+        <div className='RentButton'>
+            <button id='RentButton' onClick={addCar}>Add</button>
         </div>
     </>)
 }

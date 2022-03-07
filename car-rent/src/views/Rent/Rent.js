@@ -86,14 +86,14 @@ export function Rent() {
 
         <div>
             {/*Title for rent*/}
-            <div className="container">
+            <div className="containerRent">
                 <h3 >Now, choose your vehicle, than choose your rent's start & end time
                 </h3>
                 <p > You only able to choose whole days</p>
             </div>
 
             {/*Form to choose date, car, driver*/}
-            <div className="container_choose" >
+            <div className="container_chooseRent" >
 
                 {/*Cars*/}
                 <form onMouseEnter={CheckCars}>
@@ -105,7 +105,7 @@ export function Rent() {
                         {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
                         <option value="0">Nincs autó kiválasztva</option>
                         {cars.map(car =>
-                            <option key={car.id} value={car.id}>{car.brand}</option>
+                            <option key={car.id} value={car.brand}>{car.brand}</option>
                         )}
                     </select>
                 </form>
@@ -120,7 +120,7 @@ export function Rent() {
                         {/*feltöltése DB-ből mindig a kiválasztott sofőr információi jelenjenek meg a lenti card-ban*/}
                         <option value="00">Nem kérek sofőrt</option>
                         {drivers.map(driver =>
-                            <option key={driver.id} value={driver.id}>{driver.name}</option>
+                            <option key={driver.id} value={driver.name}>{driver.name}</option>
                         )}
                     </select>
                 </form>
@@ -129,7 +129,7 @@ export function Rent() {
             {/*Start/End date choosing*/}
             <p id="date-p" >Choose your Start and End date</p>
 
-            <div className="dateChoose">
+            <div className="dateChooseRent">
                 {/*Start date*/}
                 <input type="date"
                     onChange={(e) => {

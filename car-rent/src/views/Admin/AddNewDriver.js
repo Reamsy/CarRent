@@ -10,19 +10,17 @@ export function AddNewDriver() {
 
     const [Name, setName] = useState("");
     const [Sex, setSex] = useState("");
-    const [Email, setEmail] = useState("");
     const [LicenseCategory, setLicenseCategory] = useState("");
 
     const addDriver = () => {
         axios.post('http://localhost:3001/addNewDriver', {
             Name,
             Sex,
-            Email,
             LicenseCategory,
         }).then((result) => {
             if (result) {
                 alert("Sofőr hozzáadva");
-                navigate("/DriverCreateLogin")
+                navigate("/createDriverLogin")
             }
             else {
                 alert("Hozzáadás sikertelen");
@@ -41,8 +39,8 @@ export function AddNewDriver() {
             <input onChange={(e) => { setLicenseCategory(e.target.value) }} placeholder='Enter License category' />
         </div>
 
-        <div className='addCarButton'>
-            <button id='addCarButton' onClick={addDriver}>Add</button>
+        <div className='RentButton'>
+            <button id='RentButton' onClick={addDriver}>Add</button>
         </div>
     </>)
 }

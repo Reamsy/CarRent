@@ -43,7 +43,7 @@ label{
 }
 
 /*Top tittle settings*/
-.container{
+.containerRent{
   display: inline;
   position: relative;
   text-align: center;
@@ -52,7 +52,7 @@ label{
 }
 
 /*Choose option settings*/
-.container_choose{
+.container_chooseRent{
     display: flex;
     justify-content: space-around;
 
@@ -64,7 +64,7 @@ select{
 }
 
 /*Date choose settings*/
-.dateChoose{
+.dateChooseRent{
     display: flex;
     position: relative;
     justify-content: space-evenly;    

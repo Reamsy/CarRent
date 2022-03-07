@@ -8,12 +8,12 @@
     justify-content: space-evenly;
 }
 
-button{
+#RentButton{
     margin-top: 7%;
     margin-left: 47.5%;
 }
 
-#addCarButton{
+#RentButton{
     font-size: 20px;
     display: inline-block;
     text-decoration: none;
@@ -30,12 +30,12 @@ button{
     transition: background-color 100ms linear;
 }
 
-#addCarButton:hover {
+#RentButton:hover {
     background-color: var(--clr-background);
     color: var(--clr-menuText);
 }
 
-#addCarButton:after {
+#RentButton:after {
     content:"";
     position: absolute;
     top: 0;
@@ -50,7 +50,7 @@ button{
     transition: opacity 100ms linear;
 }
 
-#addCarButton:hover::after{
+#RentButton:hover::after{
     opacity: 1;
 }
 

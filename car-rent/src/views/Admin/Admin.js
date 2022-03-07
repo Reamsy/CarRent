@@ -59,7 +59,6 @@ export function Admin() {
                 if (response) {
                     console.log(response.data)
                     alert("Sikeres Törlés")
-                    navigate("/admin");
                 }
                 else {
                     console.log("törlési hiba")
@@ -72,9 +71,8 @@ export function Admin() {
         Axios.delete(`http://localhost:3001/vehicleDelete/${CarId}`)
             .then((response) => {
                 if (response) {
+                    alert("Sikeres törlés")
                     console.log(response.data)
-                    alert("Sikeres Törlés")
-                    navigate("/admin");
                 }
                 else {
                     console.log("törlési hiba")
@@ -106,7 +104,7 @@ export function Admin() {
     const addNewDriver = () => {
         navigate("./addNewDriver");
     }
-    
+
     return (<>
         <div >
             {/*Welcome message*/}
@@ -129,7 +127,7 @@ export function Admin() {
                                 <p id="rent.start_date">{rent.start_date}</p>
                                 <p id="rent.end_date">{rent.end_date}</p>
                                 <p id="rent.car_id">{rent.car_id}</p>
-                                <p id="rent.car_id">{rent.driver_id}</p>
+                                <p id="rent.car_id">{!rent.driver_id && "----"}</p>
                                 <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
                             </li>
                         </ul>
