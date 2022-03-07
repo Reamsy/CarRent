@@ -378,6 +378,7 @@ HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza
     -Admin.js a rebdelések kiírásánál fel volt cserélve a sofőr és a kocsi + az id helyet már nevet és kocsimárkát ír ki
     -új sofőr esetén "field" error (KIJAVÍTVA) (nem a driverbe akarta insertálni hanem a products-okhoz és ott nem volt table egyezés)
     -DriverLogin.js hibaüzenetek szerkesztése
+    -DB update
 HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
       RENT ütközések lekezelése
       users és drivers táblák összekapcsolása kell (????)
