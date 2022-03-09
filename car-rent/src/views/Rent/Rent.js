@@ -5,8 +5,9 @@ import Axios from 'axios';
 //Import CSS & Images
 import './Rent.css';
 
-export function Rent() {
-
+export function Rent({ userId }) {
+    //id from login
+    const userRentId = userId;
     //data fetching for cars and drivers
     const [cars, setCars] = useState([]);
     const [drivers, setDrivers] = useState([]);
@@ -24,10 +25,11 @@ export function Rent() {
 
     //rent kérése elküldése(NINCS LEKEZELVE!!!)
     const Rent = () => {
-        console.log(startDate, endDate, selectedCar, selectedDriver);
+        console.log(userId, startDate, endDate, selectedCar, selectedDriver);
         Axios.post('http://localhost:3001/Rent', {
             //Kiszervezés ami át fog menni backendre
             //Ezeket használd: RentStartDate, RentEndDate...
+            userRentId,
             RentStartDate: startDate,
             RentEndDate: endDate,
             RentCar: selectedCar,

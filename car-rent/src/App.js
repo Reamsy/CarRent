@@ -36,7 +36,7 @@ function App() {
         <Route exact path="/drivers" element={<Drivers />} />
         <Route exact path="/rateus" element={<RateUs />} />
         <Route exact path="/profile" element={<Profile id={id} />} />
-        <Route exact path="/rent" element={<Rent />} />
+        <Route exact path="/rent" element={<Rent userId={id} />} />
         <Route exact path="/admin" element={<Admin />} />
         <Route exact path='/driverPrivate' element={<Driver />} />
         <Route exact path='/addNewVehicle' element={<AddNewCar />} />

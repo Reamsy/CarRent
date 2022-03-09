@@ -58,9 +58,9 @@ label{
 
     padding-top: 6%
 }
-select{
+#cars{
     width: fit-content;
-    height: 130%;
+    height: 70%;
 }
 
 /*Date choose settings*/

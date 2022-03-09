@@ -50,7 +50,7 @@ export function Products() {
                     <div key={product.id}>
                         <img className="img" src={product.image} alt="car"></img>
                         <div className="container">
-                            <h4><b>{product.brand}</b></h4>
+                            <h4><b>{product.brand} - {product.model}</b></h4>
                             <p>Fuel-type: {product.fuel}</p>
                             <p>Price / day: {product.rentprice}Huf</p>
                             <p>Year: {product.year}</p>

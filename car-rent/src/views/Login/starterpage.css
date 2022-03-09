@@ -41,6 +41,10 @@ input{
 }
 
 /*Texts settings*/
+#home-p{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 p{
     font-size: 20px;
     color: white;

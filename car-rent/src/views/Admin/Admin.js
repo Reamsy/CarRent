@@ -107,7 +107,7 @@ export function Admin() {
     return (<>
         <div >
             {/*Welcome message*/}
-            <div className="container">
+            <div className="containerAdmin">
                 <h3>Here, you can manage your busines!</h3>
             </div>
 
@@ -119,7 +119,7 @@ export function Admin() {
 
             {rents.map(rent =>
                 <div key={rent.id}>
-                    <div className="container">
+                    <div className="containerAdmin">
                         <ul id="listBox">
                             <li id="listElement">
                                 <p id="rent.id">{rent.id}</p>
@@ -141,7 +141,7 @@ export function Admin() {
 
             {vehicles.map(vehicle =>
                 <div key={vehicle.id}>
-                    <div className="container">
+                    <div className="containerAdmin">
                         <ul id="listBox">
                             <li id="listElement">
                                 <p id="vehicle.id">{vehicle.id}</p>
@@ -167,7 +167,7 @@ export function Admin() {
 
             {drivers.map(driver =>
                 <div key={driver.id}>
-                    <div className="container">
+                    <div className="containerAdmin">
                         <ul id="listBox">
                             <li id="listElement">
                                 <p id="driver.id">{driver.id}</p>

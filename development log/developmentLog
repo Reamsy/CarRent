@@ -388,6 +388,16 @@ HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza
     -addNewDriver select-ek hozzáadva
     - AddNewDriver.js & CreateDriverLogin.js input empty error hozzáadva (ha nincs egy inputban adat akkor hibát dob)
 HIBA: Profile.js, AddNewDriver.js inputokra empty error KELL!!
+      backend-en nem kapja meg a friver id-t mikor insertálja az adatokat
+      Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
+      RENT ütközések lekezelése
+
+2022.03.09. {12:45 - 13:25} (Szalanics Szabolcs):
+    -AddNewDriver.js input empty error (HOZZÁADVA)
+    -backend-en nem kapja meg a friver id-t mikor insertálja az adatokat(KIJAVÍTVA)
+    -Login.js, Driver.js CSS minimális igazítása
+    -DB update
+HIBA: Profile.js inputokra empty error KELL!!
       Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
       RENT ütközések lekezelése
       

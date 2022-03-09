@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 07. 23:18
+-- Létrehozás ideje: 2022. Már 09. 13:20
 -- Kiszolgáló verziója: 10.4.22-MariaDB
 -- PHP verzió: 7.4.26
 
@@ -41,7 +41,7 @@ CREATE TABLE `costumer` (
 --
 
 INSERT INTO `costumer` (`id`, `user_id`, `Fullname`, `License_category`, `License_expiraton`, `Phone_number`) VALUES
-(32, 92, '', '', '0000-00-00', '');
+(33, 128, '', '', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -51,11 +51,18 @@ INSERT INTO `costumer` (`id`, `user_id`, `Fullname`, `License_category`, `Licens
 
 CREATE TABLE `drivers` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 2,
+  `user_id` int(11) DEFAULT NULL,
   `name` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `sex` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `licence_category` varchar(10) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `drivers`
+--
+
+INSERT INTO `drivers` (`id`, `user_id`, `name`, `sex`, `licence_category`) VALUES
+(14, 127, 'Szalanics Szabolcs', 'férfi', 'B');
 
 -- --------------------------------------------------------
 
@@ -67,7 +74,7 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `brand` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `model` varchar(100) COLLATE utf8mb4_hungarian_ci NOT NULL,
-  `chassisNumber` int(50) NOT NULL,
+  `chassisNumber` text COLLATE utf8mb4_hungarian_ci NOT NULL,
   `plateNumber` text COLLATE utf8mb4_hungarian_ci NOT NULL,
   `fuel` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `color` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
@@ -80,7 +87,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `brand`, `model`, `chassisNumber`, `plateNumber`, `fuel`, `color`, `rentprice`, `year`) VALUES
-(15, 'asdada', 'asdasda', 0, 'asdasd', 'asdasd', 'asdasd', 0, 0);
+(15, 'asdada', 'asdasda', '0', 'asdasd', 'asdasd', 'asdasd', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -90,6 +97,7 @@ INSERT INTO `products` (`id`, `brand`, `model`, `chassisNumber`, `plateNumber`, 
 
 CREATE TABLE `rent` (
   `id` int(11) NOT NULL,
+  `user_rent_id` int(11) NOT NULL,
   `start_date` text COLLATE utf8mb4_hungarian_ci NOT NULL,
   `end_date` text COLLATE utf8mb4_hungarian_ci NOT NULL,
   `car_id` text COLLATE utf8mb4_hungarian_ci NOT NULL,
@@ -100,8 +108,9 @@ CREATE TABLE `rent` (
 -- A tábla adatainak kiíratása `rent`
 --
 
-INSERT INTO `rent` (`id`, `start_date`, `end_date`, `car_id`, `driver_id`) VALUES
-(23, '2022-03-07', '2022-03-08', 'asdada', '');
+INSERT INTO `rent` (`id`, `user_rent_id`, `start_date`, `end_date`, `car_id`, `driver_id`) VALUES
+(23, 0, '2022-03-07', '2022-03-08', 'asdada', ''),
+(24, 128, '2022-03-10', '2022-03-11', 'asdada', '');
 
 -- --------------------------------------------------------
 
@@ -123,8 +132,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `user_id`, `username`, `password`, `email`) VALUES
 (87, 1, 'admin', '$2b$10$R/oBtSj17FIwbncpYJrSR.v1EjAlNOMsH50VsfZZuGQiOsai5VZHG', 'admin@admin.com'),
-(89, 2, 'driver', '$2b$10$VauM/12u3l/KDI5.3Z.sI.Onnii.M8IwCDQqin3a86duf0ck.ptdy', 'driver@driver.com'),
-(92, 3, 'user', '$2b$10$NO4IkwfNnUTdD0Om2Y6qLuXc7nJ5KTccOPBAgmSJ.rTxG31/pj8tu', 'user@user.com');
+(127, 2, 'driver', '$2b$10$yUumEhlqS.6qKallZB/Vb.MrOABJRlr6SZWn9ugWNwVaGzOs4vdQm', 'driver@driver.com'),
+(128, 3, 'user', '$2b$10$yeC/MrdW.SWiUyiwCYubv.JJ7WbgYAgwkJLeZsCU53uhqDXqjW8d.', 'user@user.com');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -168,13 +177,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `costumer`
 --
 ALTER TABLE `costumer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT a táblához `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT a táblához `products`
@@ -186,13 +195,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT a táblához `rent`
 --
 ALTER TABLE `rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

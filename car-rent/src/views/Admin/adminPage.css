@@ -46,7 +46,7 @@ body{
 }
 
 /*Container settings*/
-.container{
+.containerAdmin{
     padding: 0;
     width: 100%;
     display: flex;

@@ -52,7 +52,6 @@ export function Drivers() {
                         <div className="containerDriver">
                             <h4><b>{driver.name}</b></h4>
                             <p>License category: {driver.licence_category}</p>
-                            <p>KMs {driver.drivedKMs}</p>
                         </div>
                     </div>
 
