@@ -9,17 +9,23 @@ import { Drivers } from './views/Drivers/Drivers';
 import { Home } from './views/Home/Home';
 import { Admin } from './views/Admin/Admin';
 import { AddNewCar } from './views/Admin/AddNewVehicle';
-import { AddNewDriver } from './views/Admin/AddNewDriver';
-import { CreateDriverLogin } from './views/Admin/DriverLoginCreate';
+import { CreateDriverLogin } from './views/Admin/CreateDriverLogin';
+import { AddNewDriver } from './views/Admin/AddNewDrivers';
 import { Driver } from './views/DriverPriv/Driver';
 
 function App() {
 
   const [id, setId] = React.useState(null);
+  const [pushed_driver_id, setDriverID] = React.useState(null);
 
   const changeID = (newId) => {
     setId(newId);
   }
+
+  const D_login_id = (gotId) => {
+    setDriverID(gotId);
+  }
+
 
   return (
     <BrowserRouter>
@@ -33,9 +39,9 @@ function App() {
         <Route exact path="/rent" element={<Rent />} />
         <Route exact path="/admin" element={<Admin />} />
         <Route exact path='/driverPrivate' element={<Driver />} />
-        <Route exact path='/admin/addNewVehicle' element={<AddNewCar />} />
-        <Route exact path='/admin/addNewDriver' element={<AddNewDriver />} />
-        <Route exact path='/createDriverLogin' element={<CreateDriverLogin />} />
+        <Route exact path='/addNewVehicle' element={<AddNewCar />} />
+        <Route exact path='/addNewDriver' element={<AddNewDriver pushedId={pushed_driver_id}/>} />
+        <Route exact path='/createDriverLogin' element={<CreateDriverLogin  DriverId={D_login_id}/>} />
       </Routes>
     </BrowserRouter>
   );

@@ -383,4 +383,12 @@ HIBA: Profile.js ha egy input üresen marad akkor a db adott adatait nullázza
       RENT ütközések lekezelése
       users és drivers táblák összekapcsolása kell (????)
 
+2022.03.09. {10:25 - 11:55} (Szalanics Szabolcs):
+    -users és drivers táblák összekapcsolása kell (Nem kpacsoltuk hanem a loginnál használt id-s modelt haszáltam az egyszerűbb és gyorsabb megoldás miatt)
+    -addNewDriver select-ek hozzáadva
+    - AddNewDriver.js & CreateDriverLogin.js input empty error hozzáadva (ha nincs egy inputban adat akkor hibát dob)
+HIBA: Profile.js, AddNewDriver.js inputokra empty error KELL!!
+      Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
+      RENT ütközések lekezelése
+      
       

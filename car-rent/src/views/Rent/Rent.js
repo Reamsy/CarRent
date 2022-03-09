@@ -102,7 +102,6 @@ export function Rent() {
                             const selectedCar = e.target.value;
                             setselectedCar(selectedCar);
                         }} >
-                        {/*feltöltése DB-ből mindig a kiválasztott autó információi jelenjenek meg a lenti card-ban*/}
                         <option value="0">Nincs autó kiválasztva</option>
                         {cars.map(car =>
                             <option key={car.id} value={car.brand}>{car.brand}</option>
@@ -117,7 +116,6 @@ export function Rent() {
                             const selectedDriver = e.target.value;
                             setselectedDriver(selectedDriver);
                         }} >
-                        {/*feltöltése DB-ből mindig a kiválasztott sofőr információi jelenjenek meg a lenti card-ban*/}
                         <option value="00">Nem kérek sofőrt</option>
                         {drivers.map(driver =>
                             <option key={driver.id} value={driver.name}>{driver.name}</option>

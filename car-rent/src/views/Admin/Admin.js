@@ -87,7 +87,6 @@ export function Admin() {
                 if (response) {
                     console.log(response.data)
                     alert("Sikeres Törlés")
-                    navigate("/admin");
                 }
                 else {
                     console.log("törlési hiba")
@@ -97,12 +96,12 @@ export function Admin() {
 
     //Adding car
     const addNewCar = () => {
-        navigate("./addNewVehicle");
+        navigate("/addNewVehicle");
     }
 
     //Adding driver
     const addNewDriver = () => {
-        navigate("./addNewDriver");
+        navigate("/createDriverLogin");
     }
 
     return (<>

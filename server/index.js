@@ -321,9 +321,9 @@ app.post('/addNewCar', (req, res) => {
 
 //add new driver
 app.post('/addNewDriver', (req, res) => {
-    const { Name, Sex, LicenseCategory } = req.body;
-    db.query("INSERT INTO drivers ( name, sex, licence_category) VALUES (?,?,?)",
-        [Name, Sex, LicenseCategory],
+    const { driverId, Name, Sex, LicenseCategory } = req.body;
+    db.query("INSERT INTO drivers ( user_id, name, sex, licence_category) VALUES (?, ?, ?, ?)",
+        [driverId, Name, Sex, LicenseCategory],
         (err, result) => {
             if (err) throw err;
             if (result) {
@@ -344,7 +344,7 @@ app.post('/driverLogin', async (req, res) => {
             (err, result) => {
                 if (err) res.send({ message: "Login creating error" });
                 if (result) {
-                    res.send({ message: "Login Parameters Created" });
+                    res.send(result);
                 }
             })
     }
