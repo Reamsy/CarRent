@@ -10,17 +10,14 @@ export function Profile({ id }) {
 
     //hook for fetching
     const [costumers, setCostumers] = useState([]);
-    const [Name, setName] = useState();
-    const [LicenseCat, setLicenseCat] = useState();
-    const [LicenseExp, setLicenseExp] = useState();
-    const [Phone, setPhone] = useState();
 
-    //fetching data from db by id
+    //fetching data from db by id 
+    console.log(costumers.Fullname)
     useEffect(() => {
         Axios.get(`http://localhost:3001/profile/${id}`)
             .then((response) => {
                 if (response) {
-                    setCostumers(response.data);
+                    setCostumers(response.data[0]);
                 }
                 else {
                     alert('hiba')
@@ -30,21 +27,27 @@ export function Profile({ id }) {
 
     //sending inputs data to node
     const save = () => {
-        Axios.put(`http://localhost:3001/save/${id}`, {
-            findId: id,
-            ProfileName: Name,
-            ProfileLicenseCat: LicenseCat,
-            ProfileLicenseExp: LicenseExp,
-            ProfilePhone: Phone,
-
-        }).then((response) => {
-            if (response.data.message) {
-                alert(response.data.message)
-            }
-            else {
-                alert("Mentés sikeresen megtörtént!")
-            }
-        })
+        let hiba = false;
+        for (const item of document.getElementsByClassName("input")) {
+            if (item.value.trim() === "")
+                hiba = true;
+        }
+        if (!hiba) {
+            Axios.put(`http://localhost:3001/save/${id}`, {
+                findId: id,
+                ...costumers
+            }).then((response) => {
+                if (response.data.message) {
+                    alert(response.data.message);
+                }
+                else {
+                    alert("Mentés sikeresen megtörtént!");
+                }
+            })
+        }
+        else {
+            alert("Fill every lines");
+        }
     }
 
     return (<>
@@ -55,37 +58,47 @@ export function Profile({ id }) {
         </div>
 
         {/*Info Section*/}
-        {costumers.map(costumer =>
-            <div key={costumer.id}>
-                <div className="containerProfile">
-                    <div className="leftInputProfile">
-                        <p>Full Name</p>
-                        <input type="text" placeholder={costumer.Fullname}
-                            onChange={(e) => { setName(e.target.value) }} />
-
-                    </div>
-                    <div className="rightInputProfile">
-                        <p>Phone_number</p>
-                        <input type="tel" placeholder={costumer.Phone_number}
-                            onChange={(e) => { setPhone(e.target.value) }} />
-                    </div>
-                </div>
-                <div className="containerProfile">
-                    <div className="leftInputProfile">
-                        <p>License Category</p>
-                        <input type="text" placeholder={costumer.License_category}
-                            onChange={(e) => { setLicenseCat(e.target.value) }} />
-
-                    </div>
-                    <div className="rightInputProfile">
-                        <p>License Expiration</p>
-                        <input type="text" placeholder={costumer.License_expiraton}
-                            onChange={(e) => { setLicenseExp(e.target.value) }} />
-                    </div>
-                </div>
+        <div className="containerProfile">
+            <div className="leftInputProfile">
+                <p>Full Name</p>
+                <input className='input' type="text" name="Fullname" placeholder={!costumers.Fullname && "Adja meg az adatot"}
+                    value={costumers.Fullname}
+                    onChange={(e) => {
+                        setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                    }}
+                />
             </div>
-        )
-        }
+            <div className="rightInputProfile">
+                <p>Phone_number</p>
+                <input className='input' type="tel" name="Phone_number" placeholder={!costumers.Phone_number && "Adja meg az adatot"}
+                    value={costumers.Phone_number}
+                    onChange={(e) => {
+                        setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                    }}
+                />
+            </div>
+        </div>
+        <div className="containerProfile">
+            <div className="leftInputProfile">
+                <p>License Category</p>
+                <input className='input' type="text" name="License_category" placeholder={!costumers.License_category && "Adja meg az adatot"}
+                    value={costumers.License_category}
+                    onChange={(e) => {
+                        setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                    }}
+                />
+            </div>
+            <div className="rightInputProfile">
+                <p>License Expiration</p>
+                <input className='input' type="text" name="License_expiraton" format="YYYY-mm-dd" placeholder={!costumers.License_expiraton && "Adja meg az adatot"}
+                    value={costumers.License_expiraton}
+                    onChange={(e) => {
+                        setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                    }}
+                />
+            </div>
+        </div>
+
         <div className="BTNProfile">
             <button id="saveBTNProfile" onClick={save}>Save</button>
         </div>

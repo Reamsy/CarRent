@@ -26,22 +26,26 @@ function App() {
     setDriverID(gotId);
   }
 
+  const isLoggedIn = !!window.localStorage.getItem('user')
+
 
   return (
     <BrowserRouter>
       <Routes>
+        {isLoggedIn && <>
+          <Route exact path="/home" element={<Home id={id} />} />
+          <Route exact path="/products" element={<Products />} />
+          <Route exact path="/drivers" element={<Drivers />} />
+          <Route exact path="/rateus" element={<RateUs />} />
+          <Route exact path="/profile" element={<Profile id={id} />} />
+          <Route exact path="/rent" element={<Rent userId={id} />} />
+          <Route exact path="/admin" element={<Admin />} />
+          <Route exact path='/driverPrivate' element={<Driver />} />
+          <Route exact path='/addNewVehicle' element={<AddNewCar />} />
+          <Route exact path='/addNewDriver' element={<AddNewDriver pushedId={pushed_driver_id} />} />
+          <Route exact path='/createDriverLogin' element={<CreateDriverLogin DriverId={D_login_id} />} />
+        </>}
         <Route exact path="/" element={<Login getID={changeID} />} />
-        <Route exact path="/home" element={<Home id={id} />} />
-        <Route exact path="/products" element={<Products />} />
-        <Route exact path="/drivers" element={<Drivers />} />
-        <Route exact path="/rateus" element={<RateUs />} />
-        <Route exact path="/profile" element={<Profile id={id} />} />
-        <Route exact path="/rent" element={<Rent userId={id} />} />
-        <Route exact path="/admin" element={<Admin />} />
-        <Route exact path='/driverPrivate' element={<Driver />} />
-        <Route exact path='/addNewVehicle' element={<AddNewCar />} />
-        <Route exact path='/addNewDriver' element={<AddNewDriver pushedId={pushed_driver_id}/>} />
-        <Route exact path='/createDriverLogin' element={<CreateDriverLogin  DriverId={D_login_id}/>} />
       </Routes>
     </BrowserRouter>
   );

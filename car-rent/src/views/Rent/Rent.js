@@ -1,4 +1,4 @@
-import { React, useCallback, useState } from 'react';
+import { React, useCallback, useEffect, useState } from 'react';
 import Layout from '../layOut/layOut'
 import Axios from 'axios';
 
@@ -49,7 +49,7 @@ export function Rent({ userId }) {
     };
 
     //fetching Cars
-    const CheckCars = useCallback(() => {
+    useEffect(() => {
         Axios.get('http://localhost:3001/rentCars')
 
             //itt kezeljük le az backendről érkező adatokat
@@ -66,7 +66,7 @@ export function Rent({ userId }) {
 
 
     //fetching Drivers
-    const CheckDrivers = useCallback(() => {
+    useEffect(() => {
         Axios.get('http://localhost:3001/rentDrivers')
 
             //itt kezeljük le az backendről érkező adatokat
@@ -98,32 +98,29 @@ export function Rent({ userId }) {
             <div className="container_chooseRent" >
 
                 {/*Cars*/}
-                <form onMouseEnter={CheckCars}>
-                    <select id="cars" name="cars"
-                        onChange={(e) => {
-                            const selectedCar = e.target.value;
-                            setselectedCar(selectedCar);
-                        }} >
-                        <option value="0">Nincs autó kiválasztva</option>
-                        {cars.map(car =>
-                            <option key={car.id} value={car.brand}>{car.brand}</option>
-                        )}
-                    </select>
-                </form>
+                <select id="cars" name="cars"
+                    onChange={(e) => {
+                        const selectedCar = e.target.value;
+                        setselectedCar(selectedCar);
+                    }} >
+                    <option value="0">Nincs autó kiválasztva</option>
+                    {cars.map(car =>
+                        <option key={car.id} value={car.brand}>{car.brand}</option>
+                    )}
+                </select>
+
 
                 {/*Drivers*/}
-                <form onMouseEnter={CheckDrivers}>
-                    <select id="cars" name="cars"
-                        onChange={(e) => {
-                            const selectedDriver = e.target.value;
-                            setselectedDriver(selectedDriver);
-                        }} >
-                        <option value="00">Nem kérek sofőrt</option>
-                        {drivers.map(driver =>
-                            <option key={driver.id} value={driver.name}>{driver.name}</option>
-                        )}
-                    </select>
-                </form>
+                <select id="cars" name="cars"
+                    onChange={(e) => {
+                        const selectedDriver = e.target.value;
+                        setselectedDriver(selectedDriver);
+                    }} >
+                    <option value="00">Nem kérek sofőrt</option>
+                    {drivers.map(driver =>
+                        <option key={driver.id} value={driver.name}>{driver.name}</option>
+                    )}
+                </select>
             </div>
 
             {/*Start/End date choosing*/}

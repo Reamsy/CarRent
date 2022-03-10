@@ -8,6 +8,7 @@ import './starterpage.css';
 
 export function Login({ getID }) {
 
+
     //Adatok kiolvasása az inputokból (Regisztráció)
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
@@ -63,6 +64,8 @@ export function Login({ getID }) {
             if (response.data.message) {
                 setLoginCorrect(response.data.message)
             }
+            window.localStorage.setItem('user', response.data[0])
+            
             if (response.data[0].user_id === 1) {
                 navigate('/admin')
             }

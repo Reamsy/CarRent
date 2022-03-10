@@ -400,5 +400,12 @@ HIBA: Profile.js, AddNewDriver.js inputokra empty error KELL!!
 HIBA: Profile.js inputokra empty error KELL!!
       Profile.js ha egy input üresen marad akkor a db adott adatait nullázza 
       RENT ütközések lekezelése
+
+2022.03.10. {8:45 - 10:05} (Szalanics Szabolcs):
+    -Profile.js ha egy input üresen marad akkor a db adott adatait nullázza (KÉSZ)
+    -Profile.js inputokra empty error KELL!! (KÉSZ)
+HIBA: RENT ütközések lekezelése
+      isLoggedIn error
+      
       
       

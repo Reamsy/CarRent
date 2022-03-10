@@ -168,7 +168,7 @@ app.post('/Rent', async (req, res) => {
     //frontendről érkező adat
     const { userRentId, RentStartDate, RentEndDate, RentCar, RentDriver } = req.body;
     db.query("INSERT INTO rent (user_rent_id, start_date, end_date, car_id, driver_id) VALUES (?, ?, ?, ?, ?)",
-        [userRentId,  RentStartDate, RentEndDate, RentCar, RentDriver],
+        [userRentId, RentStartDate, RentEndDate, RentCar, RentDriver],
         (err, result) => {
             if (err) throw err;
             if (result) {
@@ -221,12 +221,24 @@ app.post('/home', async (req, res) => {
     )
 })
 
+app.get('/checkProfile/:id', (req, res) => {
+    db.query("SELECT * FROM costumer WHERE user_id = ?", req.params.id, (err, result) => {
+        if (result) {
+            res.send(result);
+        }
+        else {
+            res.send(err);
+        }
+    })
+})
+
 //NEM TARTJA MEG AZ ADATOKAT HA VALAMELYIK INPUT ÜRES MARAD!!!!!!!!!!!!!
 //profil save request
 app.put('/save/:id', async (req, res) => {
-    const { ProfileName, ProfileLicenseCat, ProfileLicenseExp, ProfilePhone, findId } = req.body;
+    const { Fullname, License_category, License_expiraton, Phone_number, findId } = req.body;
+    console.log(req.body)
     db.query("UPDATE costumer SET Fullname = ?, License_category = ?, License_expiraton = ?, Phone_number = ?  WHERE user_id = ?",
-        [ProfileName, ProfileLicenseCat, ProfileLicenseExp, ProfilePhone, findId],
+        [Fullname, License_category, License_expiraton, Phone_number, findId],
         (err, result) => {
             if (err) throw err;
             if (result) {
