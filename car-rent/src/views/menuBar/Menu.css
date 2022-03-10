@@ -47,6 +47,8 @@
   .navRight {
     display: block;
     color:var(--clr-menuText);
+    background-color: var(--clr-menuBG);
+    border-color: var(--clr-menuBG);
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
@@ -55,4 +57,9 @@
   .navRight:hover {
     background-color:var(--clr-menuBGhover);
     color: var(--clr-menuBG)
+  }
+
+  #navButton{
+    text-align: center;
+    font-size: 15px;
   }

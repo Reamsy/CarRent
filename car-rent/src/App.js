@@ -32,7 +32,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {isLoggedIn && <>
+        <Route exact path="/" element={<Login getID={changeID} />} />
+        {isLoggedIn ? <>
           <Route exact path="/home" element={<Home id={id} />} />
           <Route exact path="/products" element={<Products />} />
           <Route exact path="/drivers" element={<Drivers />} />
@@ -44,8 +45,8 @@ function App() {
           <Route exact path='/addNewVehicle' element={<AddNewCar />} />
           <Route exact path='/addNewDriver' element={<AddNewDriver pushedId={pushed_driver_id} />} />
           <Route exact path='/createDriverLogin' element={<CreateDriverLogin DriverId={D_login_id} />} />
-        </>}
-        <Route exact path="/" element={<Login getID={changeID} />} />
+        </> : null}
+
       </Routes>
     </BrowserRouter>
   );

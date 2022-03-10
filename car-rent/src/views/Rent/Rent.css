@@ -21,7 +21,7 @@ body{
     text-align: center;
     margin-top: 45%;
 }
-p{
+#rentUpper-p{
     font-size: 20px;
     font-style: italic;
     padding: 0;
@@ -55,12 +55,11 @@ label{
 .container_chooseRent{
     display: flex;
     justify-content: space-around;
-
-    padding-top: 6%
 }
 #cars{
-    width: fit-content;
-    height: 70%;
+    width: 12%;
+    font-size: 17px;
+    text-align: center;
 }
 
 /*Date choose settings*/

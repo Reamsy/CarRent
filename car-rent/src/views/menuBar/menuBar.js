@@ -25,7 +25,7 @@ export function MenuBar() {
             <NavLink className="navLeft" to='/rateus'>Rate Us</NavLink>
             <NavLink className="navLeft" to='/profile'>Profile</NavLink>
 
-            <button className="navRight" onClick={handleLogout}>Logout</button></>
+            <button className="navRight" id="navButton" onClick={handleLogout}>Logout</button></>
             :null}
         </nav>
     )

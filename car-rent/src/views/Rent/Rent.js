@@ -1,4 +1,4 @@
-import { React, useCallback, useEffect, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import Layout from '../layOut/layOut'
 import Axios from 'axios';
 
@@ -25,28 +25,37 @@ export function Rent({ userId }) {
 
     //rent kérése elküldése(NINCS LEKEZELVE!!!)
     const Rent = () => {
-        console.log(userId, startDate, endDate, selectedCar, selectedDriver);
-        Axios.post('http://localhost:3001/Rent', {
-            //Kiszervezés ami át fog menni backendre
-            //Ezeket használd: RentStartDate, RentEndDate...
-            userRentId,
-            RentStartDate: startDate,
-            RentEndDate: endDate,
-            RentCar: selectedCar,
-            RentDriver: selectedDriver,
+        let hiba = false;
+        for (const item of document.getElementsByClassName("input")) {
+            if (item.value === null)
+                hiba = true;
+        }
+        if (!hiba) {
+            Axios.post('http://localhost:3001/Rent', {
+                //Kiszervezés ami át fog menni backendre
+                //Ezeket használd: RentStartDate, RentEndDate...
+                userRentId,
+                RentStartDate: startDate,
+                RentEndDate: endDate,
+                RentCar: selectedCar,
+                RentDriver: selectedDriver,
 
-        }).then((response) => {
+            }).then((response) => {
 
-            //és a válasz ami backendről fog jönni
-            if (response.data.message) {
-                setRentConfirmed(response.data.message);
-            }
-            else {
-                //sikeres bérés esetén visszajelző alert
-                alert("Bérlését sikeresen rögzítettük!");
-            }
-        });
-    };
+                //és a válasz ami backendről fog jönni
+                if (response.data.message) {
+                    setRentConfirmed(response.data.message);
+                }
+                else {
+                    //sikeres bérés esetén visszajelző alert
+                    alert("Bérlését sikeresen rögzítettük!");
+                }
+            });
+        }
+        else {
+            alert("To rent, you must choose your car, start & end date")
+        }
+    }
 
     //fetching Cars
     useEffect(() => {
@@ -91,19 +100,19 @@ export function Rent({ userId }) {
             <div className="containerRent">
                 <h3 >Now, choose your vehicle, than choose your rent's start & end time
                 </h3>
-                <p > You only able to choose whole days</p>
+                <p id="rentUpper-p"> You only able to choose whole days</p>
             </div>
 
             {/*Form to choose date, car, driver*/}
             <div className="container_chooseRent" >
 
                 {/*Cars*/}
-                <select id="cars" name="cars"
+                <select className="input" id="cars" name="cars"
                     onChange={(e) => {
                         const selectedCar = e.target.value;
                         setselectedCar(selectedCar);
                     }} >
-                    <option value="0">Nincs autó kiválasztva</option>
+                    <option value="0">Nincs autó kiválasztva!</option>
                     {cars.map(car =>
                         <option key={car.id} value={car.brand}>{car.brand}</option>
                     )}
@@ -116,7 +125,7 @@ export function Rent({ userId }) {
                         const selectedDriver = e.target.value;
                         setselectedDriver(selectedDriver);
                     }} >
-                    <option value="00">Nem kérek sofőrt</option>
+                    <option value="00">Nem kérek sofőrt!</option>
                     {drivers.map(driver =>
                         <option key={driver.id} value={driver.name}>{driver.name}</option>
                     )}

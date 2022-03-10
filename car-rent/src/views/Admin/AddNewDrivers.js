@@ -47,7 +47,7 @@ export function AddNewDriver({ pushedId }) {
         </div>
         <div className='addCarInput'>
             <input className="input" onChange={(e) => { setName(e.target.value) }} placeholder='Enter Fullname' />
-            <select className="input"
+            <select id="select" className="input"
                 onChange={(e) => {
                     const Sex = e.target.value;
                     setSex(Sex);
@@ -59,7 +59,7 @@ export function AddNewDriver({ pushedId }) {
             </select>
         </div>
         <div className='addCarInput'>
-            <select className="input"
+            <select id="select" className="input"
                 onChange={(e) => {
                     const LicenseCategory = e.target.value;
                     setLicenseCategory(LicenseCategory);
