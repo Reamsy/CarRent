@@ -12,7 +12,6 @@ export function Profile({ id }) {
     const [costumers, setCostumers] = useState([]);
 
     //fetching data from db by id 
-    console.log(costumers.Fullname)
     useEffect(() => {
         Axios.get(`http://localhost:3001/profile/${id}`)
             .then((response) => {

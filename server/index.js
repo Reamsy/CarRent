@@ -365,6 +365,18 @@ app.post('/driverLogin', async (req, res) => {
     }
 })
 
+app.get('/driversPrivate/:id', (req, res) => {
+    db.query("SELECT * FROM rents WHERE driver_id = ?", req.params.id,
+        (err, result) => {
+            if(result){
+                res.send(result)
+            }
+            else{
+                console.log(err)
+            }
+        })
+})
+
 app.listen(3001, (err) => {
     console.log("fut");
     if (err) throw err;

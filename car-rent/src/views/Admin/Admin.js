@@ -57,11 +57,10 @@ export function Admin() {
         Axios.delete(`http://localhost:3001/rentDelete/${RentId}`)
             .then((response) => {
                 if (response) {
-                    console.log(response.data)
                     alert("Sikeres Törlés")
                 }
                 else {
-                    console.log("törlési hiba")
+                    alert("törlési hiba")
                 }
             }).catch(console.log)
     }
@@ -72,10 +71,9 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     alert("Sikeres törlés")
-                    console.log(response.data)
                 }
                 else {
-                    console.log("törlési hiba")
+                    alert("törlési hiba")
                 }
             }).catch(console.log);
     }
@@ -89,7 +87,7 @@ export function Admin() {
                     alert("Sikeres Törlés")
                 }
                 else {
-                    console.log("törlési hiba")
+                    alert("törlési hiba")
                 }
             }).catch(console.log);
     }

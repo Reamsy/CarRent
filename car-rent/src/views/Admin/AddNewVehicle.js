@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 import './add.css';
 
 export function AddNewCar() {
+
+    const navigate = useNavigate();
 
     const [Brand, setBrand] = useState("");
     const [Model, setModel] = useState("");
@@ -33,6 +36,7 @@ export function AddNewCar() {
             }).then((result) => {
                 if (result) {
                     alert("Jármű hozzáava");
+                    navigate('/admin');
                 }
                 else {
                     alert("Hozzáadás sikertelen");

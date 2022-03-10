@@ -11,17 +11,20 @@ export function Home({ id }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        Axios.post('http://localhost:3001/home', {
-            sendId: id,
-        }).then((response) => {
-            if (response) {
-                console.log("siker")
-            }
-            else {
-                console.log("hiba")
-            }
-        });
+        if (id != null) {
+            Axios.post('http://localhost:3001/home', {
+                sendId: id,
+            }).then((response) => {
+                if (response) {
+                    console.log("siker")
+                }
+                else {
+                    console.log("hiba")
+                }
+            });
+        }
     });
+
 
     const checkProfile = () => {
         let hiba = false;

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './starterpage.css';
 
 
-export function Login({ getID }) {
+export function Login({ getID }, { getDriverLoginId }) {
 
 
     //Adatok kiolvasása az inputokból (Regisztráció)
@@ -64,16 +64,17 @@ export function Login({ getID }) {
             if (response.data.message) {
                 setLoginCorrect(response.data.message)
             }
+
             window.localStorage.setItem('user', response.data[0])
-            
+
             if (response.data[0].user_id === 1) {
                 navigate('/admin')
             }
             if (response.data[0].user_id === 2) {
+                getDriverLoginId(response.data[0].id)
                 navigate('/driverPrivate')
             }
             if (response.data[0].user_id === 3) {
-                console.log("got id from login: " + response.data[0].id)
                 getID(response.data[0].id);
                 navigate('/home');
             }

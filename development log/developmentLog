@@ -408,9 +408,13 @@ HIBA: RENT ütközések lekezelése
       isLoggedIn error
 
 2022.03.10. {12:30 - 13:10} (Szalanics Szabolcs):
-    -isLoggedIn error (KÉSZ)
+    -isLoggedIn error (KIJAVÍTVA)
+    driverPriv.js (elkezdve)
 HIBA: RENT ütközések lekezelése
       user tud az adminpage-re navigálnni
+      driverPriv.js rents.map kell
+      index.js driver_id undefined 
+
       
       
       
