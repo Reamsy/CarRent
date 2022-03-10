@@ -103,7 +103,7 @@ export function Admin() {
     }
 
     return (<>
-        <div >
+        <div>
             {/*Welcome message*/}
             <div className="containerAdmin">
                 <h3>Here, you can manage your busines!</h3>

@@ -415,6 +415,17 @@ HIBA: RENT ütközések lekezelése
       driverPriv.js rents.map kell
       index.js driver_id undefined 
 
+2022.03.10. {20:00 - 22:00} (Szalanics Szabolcs):
+    -driverPriv.js rents.map kell (KÉSZ)
+    -index.js driver_id undefined (KIJAVÍTVA)
+    -driverPriv.js CSS szerkesztése
+HIBA: driverPriv.js map [Object object-et] kap ha driver_id alapján van a lekérdezás bakcenden
+      RENT ütközések lekezelése
+      user tud az adminpage-re navigálnni
+      driver holiday set
+     
+
+
       
       
       

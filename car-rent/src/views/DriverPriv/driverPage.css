@@ -16,108 +16,47 @@ body{
     background-size: cover, auto;
 }
 
-/*Text settings*/
+/*map settings*/
+.jobsContainerText{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    margin-top: 0;
+}
 
-/*Row settings*/
-.row{
-    padding: 0;
+.jobsContainer{
+    margin-top: 2%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#jobsContainer-p{
+    padding-left: 5%;
+    padding-right: 5%;
+    border-bottom: 1px solid var(--clr-border);
+    border-top: 1px solid var(--clr-border);
+    border-right: 1px solid var(--clr-border);
 }
 
 
 /*Container settings*/
 .containerDriver{
+    margin-top: 0;
+    padding-top: 0;
     display: inline;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-/*Calendar settings*/
-.containerCalendar{
-    display: inline;
-    position: relative;
-    justify-content: center;
-    padding: 0;
-}
-
-ul{
-    list-style-type: none;
-}
-
-.month{
-    display: inline-block;
-    text-align: center;
-    list-style-type: none;
-    padding: 70px 25px;
-    width: 100%;
-    background: var(--clr-calendarDefault);
-    text-align: center;
-}
-
-.month ul{
-    padding-left: 0;
-}
-
-.month .prev {
-    float: left;
-    padding-top: 10px;
-}
-
-.month .next {
-    float: right;
-    padding-top: 10px;
-}
-
-.weekdays {
-    display: inline-block;
-    text-align: center;
-    width: 117.5%;
-    margin: 0;
-    padding: 0;
-    background-color:rgb(194, 194, 194);
-}
-.weekdays li {
-    display: inline-block;
-    width: 13.2%;
-    height: 10%;
-    color: var(--clr-calendarDefault);
-    text-align: center;
-}
-
-.days {
-    display: inline-block;
-    text-align: center;
-    width: 117.5%;
-    height: 50%;
-    background-color:rgb(194, 194, 194);
-}
-
-.days li {
-    display: inline-block;
-    text-align: center;
-    vertical-align: center;
-    width: 12.3%;
-    margin: 12px 2px;
-    color: var(--clr-calendarDefault);
-    text-align: center;
-    padding: 0;
-}
-
-.days li:hover{
-    border-radius: 10%;
-    background-color: var(--clr-calendarDefault);
-    color: aliceblue;
-}
-
 /*Animated button settings*/
 .buttons{
     margin-bottom: 3%;
-    margin-top: 15%;
+    margin-top: 7%;
     display: flex;
     justify-content: center;
     position: relative;
 }
-
 
 .saveBTN {
     border-radius: 4px;

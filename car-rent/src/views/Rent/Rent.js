@@ -114,7 +114,7 @@ export function Rent({ userId }) {
                     }} >
                     <option value="0">Nincs autó kiválasztva!</option>
                     {cars.map(car =>
-                        <option key={car.id} value={car.brand}>{car.brand}</option>
+                        <option key={car.id} value={car.id}>{car.brand}</option>
                     )}
                 </select>
 
@@ -127,7 +127,7 @@ export function Rent({ userId }) {
                     }} >
                     <option value="00">Nem kérek sofőrt!</option>
                     {drivers.map(driver =>
-                        <option key={driver.id} value={driver.name}>{driver.name}</option>
+                        <option key={driver.id} value={driver.user_id}>{driver.name}</option>
                     )}
                 </select>
             </div>

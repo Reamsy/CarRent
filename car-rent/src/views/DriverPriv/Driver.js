@@ -4,15 +4,23 @@ import React, { useEffect, useState } from 'react';
 //Import CSS
 import './driverPage.css';
 
-export function Driver({ loginDriverId }) {
+export function Driver({ id }) {
 
-    const [drivers, setDirvers] = useState();
+    const [driverPrivjobs, setJobs] = useState([]);
+
+    console.log("hook: "+driverPrivjobs)
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/driversPrivate/${loginDriverId}`)
+        //Rendelések lekérése
+        axios.get(`http://localhost:3001/getDriverRents/${id}`)
             .then((response) => {
                 if (response) {
-                    setDirvers(response.data[0]);
+                    const data = [response.data[0]];
+                    setJobs(data);
+                    console.log("data: "+ response.data[0] )
+                }
+                else {
+                    alert(response.data.message);
                 }
             })
     }, [])
@@ -21,19 +29,34 @@ export function Driver({ loginDriverId }) {
         <div>
             {/*Info texts*/}
             <div className="containerDriver">
-                <h3 data-aos="fade-up" data-aos-delay="300">Check out your working days!</h3>
-                <p data-aos="fade-up" data-aos-delay="600" id="infoP">Below you can choos your holidays.</p>
-                <p data-aos="fade-up" data-aos-delay="700" id="infoPlittle">In a month ONLY 3 days besides weekends.</p>
+                <h3 id="driver-h3">Check out your working days!</h3>
+                <p id="infoP">Below you can choos your holidays.</p>
+                <p id="infoPlittle">In a month ONLY 3 days besides weekends.</p>
             </div>
+
+            {/*Drives and holidays*/}
+            <div className="jobsContainerText">
+                <p id='jobsContainer-p'>Start of driver</p>
+                <p id='jobsContainer-p'>End of drive</p>
+                <p id='jobsContainer-p'>Car</p>
+            </div>
+            {driverPrivjobs.map(rent =>
+                <div className="jobsContainer" key={rent.id}>
+                    <p id='jobsContainer-p'>{rent.start_date}</p>
+                    <p id='jobsContainer-p'>{rent.end_date}</p>
+                    <p id='jobsContainer-p'>{rent.car_id}</p>
+                </div>
+            )}
+
+
+
 
             <div className="buttons">
                 {/*amely napokon az adott sofőr ki lett bérelve, azok a napok zölddel jelölődjenek
             ahol a sofőr kivett szabadságot (havi 3) ott a napok pirossal legyenek jelölve,
             és ne lehessen arra a napra bérelni a sofőrt*/}
-                <button className="selectBTN" id="setButton" data-aos="fade-up" data-aos-delay="800">SET HOLIDAY</button>
-
                 {/*Save button*/}
-                <button className="saveBTN" data-aos="fade-up" data-aos-delay="900"><span>SAVE </span></button>
+                <button className="saveBTN"><span>SAVE</span></button>
             </div>
         </div>
     </>)

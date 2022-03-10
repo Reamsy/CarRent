@@ -71,7 +71,7 @@ export function Login({ getID }, { getDriverLoginId }) {
                 navigate('/admin')
             }
             if (response.data[0].user_id === 2) {
-                getDriverLoginId(response.data[0].id)
+                getID(response.data[0].id);
                 navigate('/driverPrivate')
             }
             if (response.data[0].user_id === 3) {

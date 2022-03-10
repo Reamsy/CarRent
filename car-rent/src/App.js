@@ -17,10 +17,9 @@ function App() {
 
   const [id, setId] = React.useState(null);
   const [pushed_driver_id, setDriverID] = React.useState(null);
-  const [driverLoginId, setDriverLoginId] = React.useState(null);
 
 
-  //id átadás a loginból costumer DB adat feltöltés miatt
+  //id átadás a loginból
   const changeID = (newId) => {
     setId(newId);
   }
@@ -30,11 +29,6 @@ function App() {
     setDriverID(gotId);
   }
 
-  //id kiszedése driver-nél és átadása a driverPrig.js-nek
-  const driverIdManage = (DriverPrivId) => {
-    setDriverLoginId(DriverPrivId);
-  }
-
   //megnézzük hogy a localstorage-be bekerült e a user azaz be van e lépve
   const userIsLoggedIn = !!window.localStorage.getItem('user')
 
@@ -42,7 +36,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Login getID={changeID} getDriverLoginId={driverIdManage} />} />
+        <Route exact path="/" element={<Login getID={changeID} />} />
         {userIsLoggedIn ? <>
           <Route exact path="/home" element={<Home id={id} />} />
           <Route exact path="/products" element={<Products />} />
@@ -51,7 +45,7 @@ function App() {
           <Route exact path="/profile" element={<Profile id={id} />} />
           <Route exact path="/rent" element={<Rent userId={id} />} />
           <Route exact path="/admin" element={<Admin />} />
-          <Route exact path='/driverPrivate' element={<Driver id={driverLoginId}/>} />
+          <Route exact path='/driverPrivate' element={<Driver id={id}/>} />
           <Route exact path='/addNewVehicle' element={<AddNewCar />} />
           <Route exact path='/addNewDriver' element={<AddNewDriver pushedId={pushed_driver_id} />} />
           <Route exact path='/createDriverLogin' element={<CreateDriverLogin DriverId={D_login_id} />} />
