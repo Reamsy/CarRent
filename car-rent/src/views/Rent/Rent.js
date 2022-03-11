@@ -111,6 +111,7 @@ export function Rent({ userId }) {
                     onChange={(e) => {
                         const selectedCar = e.target.value;
                         setselectedCar(selectedCar);
+                        setRentConfirmed("Before you rent, CHECK AGAIN!")
                     }} >
                     <option value="0">Nincs autó kiválasztva!</option>
                     {cars.map(car =>
@@ -124,6 +125,7 @@ export function Rent({ userId }) {
                     onChange={(e) => {
                         const selectedDriver = e.target.value;
                         setselectedDriver(selectedDriver);
+                        setRentConfirmed("Before you rent, CHECK AGAIN!")
                     }} >
                     <option value="00">Nem kérek sofőrt!</option>
                     {drivers.map(driver =>
@@ -140,6 +142,7 @@ export function Rent({ userId }) {
                 <input type="date"
                     onChange={(e) => {
                         setStartDate(e.target.value);
+                        setRentConfirmed("Before you rent, CHECK AGAIN!")
                     }}
                 />
 
@@ -148,6 +151,7 @@ export function Rent({ userId }) {
                     id="enddate"
                     onChange={(e) => {
                         setEndDate(e.target.value);
+                        setRentConfirmed("Before you rent, CHECK AGAIN!")
                     }}
                 />
             </div>

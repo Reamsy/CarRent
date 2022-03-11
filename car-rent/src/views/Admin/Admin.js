@@ -19,8 +19,7 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     setRents(response.data);
-                }
-                else {
+                } else {
                     setErrorMessage(response.data.message);
                 }
             })
@@ -32,8 +31,7 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     setVehicles(response.data);
-                }
-                else {
+                } else {
                     setErrorMessage(response.data.message);
                 }
             })
@@ -45,8 +43,7 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     setDrivers(response.data);
-                }
-                else {
+                } else {
                     setErrorMessage(response.data.message);
                 }
             })
@@ -58,8 +55,8 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     alert("Sikeres Törlés")
-                }
-                else {
+                    window.location.reload(false)
+                } else {
                     alert("törlési hiba")
                 }
             }).catch(console.log)
@@ -71,8 +68,8 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     alert("Sikeres törlés")
-                }
-                else {
+                    window.location.reload(false)
+                } else {
                     alert("törlési hiba")
                 }
             }).catch(console.log);
@@ -83,8 +80,8 @@ export function Admin() {
         Axios.delete(`http://localhost:3001/driverDelete/${DriverId}`)
             .then((response) => {
                 if (response) {
-                    console.log(response.data)
                     alert("Sikeres Törlés")
+                    window.location.reload(false)
                 }
                 else {
                     alert("törlési hiba")
@@ -92,96 +89,111 @@ export function Admin() {
             }).catch(console.log);
     }
 
-    //Adding car
+//Adding car
     const addNewCar = () => {
         navigate("/addNewVehicle");
     }
 
-    //Adding driver
+//Adding driver
     const addNewDriver = () => {
         navigate("/createDriverLogin");
     }
 
     return (<>
         <div>
-            {/*Welcome message*/}
+{/*Welcome message*/}
             <div className="containerAdmin">
-                <h3>Here, you can manage your busines!</h3>
+                <h3 id='admin-h3'>Here, you can manage your busines!</h3>
             </div>
 
-            {/*Listing of rents*/}
+{/*Listing of rents*/}
             <div>
                 <p id="rent">{!errorMessage && "Rents"}</p>
             </div>
+            <div className="adminContainerText">
+                <div id='adminContainerText-p'>Rent num.</div>
+                <div id='adminContainerText-p'>Start of rent</div>
+                <div id='adminContainerText-p'>End of rent</div>
+                <div id='adminContainerText-p'>Car</div>
+                <div id='adminContainerText-p'>Driver</div>
+            </div>
 
-
+{/*Map of rents*/}
             {rents.map(rent =>
                 <div key={rent.id}>
                     <div className="containerAdmin">
-                        <ul id="listBox">
-                            <li id="listElement">
-                                <p id="rent.id">{rent.id}</p>
-                                <p id="rent.start_date">{rent.start_date}</p>
-                                <p id="rent.end_date">{rent.end_date}</p>
-                                <p id="rent.car_id">{rent.car_id}</p>
-                                <p id="rent.car_id">{!rent.driver_id && "----"}</p>
-                                <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
-                            </li>
-                        </ul>
+                        <p id="adminContainer-p">{rent.id}</p>
+                        <p id="adminContainer-p">{rent.start_date}</p>
+                        <p id="adminContainer-p">{rent.end_date}</p>
+                        <p id="adminContainer-p">{rent.car_id}</p>
+                        <p id="adminContainer-p">{rent.driver_id || "----"}</p>
+                        <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
                     </div>
                 </div>
             )}
 
-            {/*Listing of vehicles*/}
+{/*Listing of vehicles*/}
             <div>
                 <p id="rent">{!errorMessage && "Vehicles"}</p>
             </div>
+            <div className="adminContainerText">
+                <div id='adminContainerText-p'>Brand</div>
+                <div id='adminContainerText-p'>Model</div>
+                <div id='adminContainerText-p'>Plate num.</div>
+                <div id='adminContainerText-p'>Price / day</div>
+                <div id='adminContainerText-p'>Year</div>
+            </div>
 
+{/*Map of vehicles*/}
             {vehicles.map(vehicle =>
                 <div key={vehicle.id}>
                     <div className="containerAdmin">
-                        <ul id="listBox">
-                            <li id="listElement">
-                                <p id="vehicle.id">{vehicle.id}</p>
-                                <p id="vehicle.brand">{vehicle.brand}</p>
-                                <p id="vehicle.fuel">{vehicle.fuel}</p>
-                                <p id="vehicle.rentPrice">{vehicle.rentprice}</p>
-                                <p id="vehicle.year">{vehicle.year}</p>
-                                <p><button id="deleteRent" onClick={() => { DeleteVehicles(vehicle.id) }}>Delete</button></p>
-                            </li>
-                        </ul>
+                        <p id="adminContainer-p">{vehicle.brand}</p>
+                        <p id="adminContainer-p">{vehicle.model}</p>
+                        <p id="adminContainer-p">{vehicle.plateNumber}</p>
+                        <p id="adminContainer-p">{vehicle.rentprice}</p>
+                        <p id="adminContainer-p">{vehicle.year}</p>
+                        <p><button id="deleteRent" onClick={() => { DeleteVehicles(vehicle.id) }}>Delete</button></p>
                     </div>
                 </div>
             )}
 
+{/*Add new vehicle button*/}
             <div>
                 <button id="add" onClick={addNewCar}> New Car</button>
             </div>
 
-            {/*Listing of Drivers*/}
+{/*Listing of Drivers*/}
             < div >
                 <p id="rent">{!errorMessage && "Drivers"}</p>
             </div>
+            <div className="adminContainerText">
+                <div id='adminContainerText-p'>id</div>
+                <div id='adminContainerText-p'>User id</div>
+                <div id='adminContainerText-p'>Name</div>
+                <div id='adminContainerText-p'>Sex</div>
+                <div id='adminContainerText-p'>Licence cat.</div>
+            </div>
 
+{/*Map of Drivers*/}
             {drivers.map(driver =>
                 <div key={driver.id}>
                     <div className="containerAdmin">
-                        <ul id="listBox">
-                            <li id="listElement">
-                                <p id="driver.id">{driver.id}</p>
-                                <p id="driver.name">{driver.name}</p>
-                                <p id="driver.license_category">{driver.licence_category}</p>
-                                <p id="driver.drivedKMs">{driver.drivedKMs}</p>
-                                <p><button id="deleteRent" onClick={() => { DeleteDrivers(driver.id) }}>Delete</button></p>
-                            </li>
-                        </ul>
+                        <p id="adminContainer-p">{driver.id}</p>
+                        <p id="adminContainer-p">{driver.user_id}</p>
+                        <p id="adminContainer-p">{driver.name}</p>
+                        <p id="adminContainer-p">{driver.sex}</p>
+                        <p id="adminContainer-p">{driver.licence_category}</p>
+                        <p><button id="deleteRent" onClick={() => { DeleteDrivers(driver.id) }}>Delete</button></p>
                     </div>
                 </div>
-            )}
+            )
+            }
 
+{/*Add new Drivers button*/}
             <div className="drivers">
                 <button id="add" onClick={addNewDriver}> New Driver</button>
             </div>
-        </div>
+        </div >
     </>)
 }

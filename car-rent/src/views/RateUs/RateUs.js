@@ -44,7 +44,7 @@ export function RateUs() {
                                 {/*ezeket adatbázisból kellene feltölteni*/}
                                 <h4><b>name</b></h4>
                                 {/*Értékelés*/}
-                                <p>Értékelje a csillagok segítségével játművünket</p>
+                                <p id='rate-p'>Értékelje a csillagok segítségével játművünket</p>
                                 <span className="fa fa-star"></span>
                                 <span className="fa fa-star"></span>
                                 <span className="fa fa-star"></span>

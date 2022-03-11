@@ -16,33 +16,53 @@ body{
     background-size: cover, auto;
 }
 
+/*Text settings*/
+#driver-h3{
+    margin-top: 1%;
+}
+#driver-p{
+    margin-top: 5%;
+    margin-bottom: 6%;
+}
+
 /*map settings*/
 .jobsContainerText{
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 0;
-    margin-top: 0;
+    justify-content: center;
+    margin-bottom: 2%;
 }
 
 .jobsContainer{
-    margin-top: 2%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    margin-bottom: 0.5%;
 }
 
 #jobsContainer-p{
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
     border-bottom: 1px solid var(--clr-border);
     border-top: 1px solid var(--clr-border);
     border-right: 1px solid var(--clr-border);
+    border-left: 1px solid var(--clr-border);
+    width: 12%;
+    height: fit-content;
+    text-align: center;
 }
-
+#jobsContainerText-p{
+    padding-left: 3%;
+    padding-right: 3%;
+    border-bottom: 2px solid var(--clr-border);
+    border-top: 2px solid var(--clr-border);
+    border-right: 2px solid var(--clr-border);
+    border-left: 2px solid var(--clr-border);
+    width: 12%;
+    height: fit-content;
+    text-align: center;
+}
 
 /*Container settings*/
 .containerDriver{
-    margin-top: 0;
-    padding-top: 0;
     display: inline;
     justify-content: center;
     align-items: center;
@@ -60,7 +80,7 @@ body{
 
 .saveBTN {
     border-radius: 4px;
-    background-color: var(--clr-BTNcolor);
+    background-color: rgb(43, 255, 0);
     border: none;
     color: white;
     text-align: center;
@@ -98,21 +118,21 @@ body{
 }
 
 /*Select button settings */
-.selectBTN{
+#driverLogoutBTN{
     align-items: flex-start;
     border-radius: 4px;
     background-color: rgb(151, 151, 151);
     border: none;
     color: white;
     text-align: center;
-    font-size: 22px;
-    padding: 20px;
+    font-size: 20px;
     width: auto;
-    margin: 5px;
-    margin-right: 15%;
+    margin-left: 2px;
+    margin-right: 1%;
+    float: right;
 }
 
-.selectBTN:hover{
-    background-color: var(--clr-workDays);
+#driverLogoutBTN:hover{
+    background-color: red;
 }
 

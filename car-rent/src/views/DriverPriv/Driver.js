@@ -1,23 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //Import CSS
 import './driverPage.css';
 
 export function Driver({ id }) {
 
+    const navigate = useNavigate();
     const [driverPrivjobs, setJobs] = useState([]);
 
-    console.log("hook: "+driverPrivjobs)
+    console.log("hook: " + driverPrivjobs)
 
     useEffect(() => {
         //Rendelések lekérése
         axios.get(`http://localhost:3001/getDriverRents/${id}`)
             .then((response) => {
                 if (response) {
-                    const data = [response.data[0]];
-                    setJobs(data);
-                    console.log("data: "+ response.data[0] )
+                    setJobs(response.data);
                 }
                 else {
                     alert(response.data.message);
@@ -25,28 +25,36 @@ export function Driver({ id }) {
             })
     }, [])
 
+    const handleLogout = () =>{
+        window.localStorage.removeItem('user')
+        navigate("/")
+    }
+
     return (<>
         <div>
             {/*Info texts*/}
             <div className="containerDriver">
+                <button id='driverLogoutBTN' onClick={handleLogout}>Logout</button>
                 <h3 id="driver-h3">Check out your working days!</h3>
-                <p id="infoP">Below you can choos your holidays.</p>
-                <p id="infoPlittle">In a month ONLY 3 days besides weekends.</p>
+                <p id="driver-p">Below you can choos your holidays.</p>
             </div>
 
             {/*Drives and holidays*/}
             <div className="jobsContainerText">
-                <p id='jobsContainer-p'>Start of driver</p>
-                <p id='jobsContainer-p'>End of drive</p>
-                <p id='jobsContainer-p'>Car</p>
+                <div id='jobsContainerText-p'>Start of driver</div>
+                <div id='jobsContainerText-p'>End of drive</div>
+                <div id='jobsContainerText-p'>Car</div>
             </div>
+
             {driverPrivjobs.map(rent =>
                 <div className="jobsContainer" key={rent.id}>
-                    <p id='jobsContainer-p'>{rent.start_date}</p>
-                    <p id='jobsContainer-p'>{rent.end_date}</p>
-                    <p id='jobsContainer-p'>{rent.car_id}</p>
+                    <div id='jobsContainer-p'>{rent.start_date}</div>
+                    <div id='jobsContainer-p'>{rent.end_date}</div>
+                    <div id='jobsContainer-p'>{rent.car_id}</div>
                 </div>
             )}
+
+
 
 
 
