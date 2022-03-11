@@ -424,6 +424,13 @@ HIBA: driverPriv.js map [Object object-et] kap ha driver_id alapján van a leké
       user tud az adminpage-re navigálnni
       driver holiday set
      
+2022.03.11. {7:30 - 10:10} (Szalanics Szabolcs):
+    -driverPriv.js map [Object object-et] kap ha driver_id alapján van a lekérdezás bakcenden (KIJAVÍTVA)
+    -CSS formázás
+HIBA: RENT ütközések lekezelése
+      user tud az adminpage-re navigálni
+      driver holiday set
+      
 
 
       
