@@ -6,7 +6,7 @@ import Axios from 'axios';
 import './Rent.css';
 
 export function Rent({ userId }) {
-    
+
     //id from login
     const userRentId = userId;
 
@@ -17,9 +17,6 @@ export function Rent({ userId }) {
     //Date hooks for select
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
-
-    //Backend error messages hook
-    const [rentConfirmed, setRentConfirmed] = useState("Before you rent, CHECK AGAIN!");
 
     //Options
     const [selectedCar, setselectedCar] = useState("");
@@ -46,7 +43,7 @@ export function Rent({ userId }) {
 
                 //és a válasz ami backendről fog jönni
                 if (response.data.message) {
-                    setRentConfirmed(response.data.message);
+                    alert(response.data.message);
                 }
                 else {
                     //sikeres bérés esetén visszajelző alert
@@ -109,11 +106,10 @@ export function Rent({ userId }) {
             <div className="container_chooseRent" >
 
                 {/*Cars*/}
-                <select className="input" id="cars" name="cars"
+                <select className='input' id="cars" name="cars"
                     onChange={(e) => {
                         const selectedCar = e.target.value;
                         setselectedCar(selectedCar);
-                        setRentConfirmed("Before you rent, CHECK AGAIN!")
                     }} >
                     <option value="0">Nincs autó kiválasztva!</option>
                     {cars.map(car =>
@@ -127,7 +123,6 @@ export function Rent({ userId }) {
                     onChange={(e) => {
                         const selectedDriver = e.target.value;
                         setselectedDriver(selectedDriver);
-                        setRentConfirmed("Before you rent, CHECK AGAIN!")
                     }} >
                     <option value="00">Nem kérek sofőrt!</option>
                     {drivers.map(driver =>
@@ -141,26 +136,24 @@ export function Rent({ userId }) {
 
             <div className="dateChooseRent">
                 {/*Start date*/}
-                <input type="date"
+                <input className='input' type="date"
                     onChange={(e) => {
                         setStartDate(e.target.value);
-                        setRentConfirmed("Before you rent, CHECK AGAIN!")
                     }}
                 />
 
                 {/*End date*/}
-                <input type="date"
+                <input className='input' type="date"
                     id="enddate"
                     onChange={(e) => {
                         setEndDate(e.target.value);
-                        setRentConfirmed("Before you rent, CHECK AGAIN!")
                     }}
                 />
             </div>
 
             {/*Rent button*/}
             <div className="container_button" >
-                <p id="rent-p">{rentConfirmed}</p>
+                <p id="rent-p">Before you rent, check again!</p>
                 <button type="submit" id="finalRentBTN" onClick={Rent}>Rent</button>
             </div>
         </div>

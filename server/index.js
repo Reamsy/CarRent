@@ -164,18 +164,47 @@ app.get('/rentDrivers', async (req, res) => {
 });
 
 //LE KELL MÉG KEZELNI AZ EGYEZÉSEKET!!!!!!!!!!!!!!!!!!!!!!!
-app.post('/Rent', async (req, res) => {
+app.post('/Rent', (req, res) => {
+
     //frontendről érkező adat
     const { userRentId, RentStartDate, RentEndDate, RentCar, RentDriver } = req.body;
-    db.query("SELECT start_date, end_date, driver_id FROM rent WHERE car_id = ?", [RentCar],
+    const car = db.query("SELECT * FROM rent WHERE start_date = ? AND end_date = ? AND car_id = ?",
+        [RentStartDate, RentEndDate, RentCar],
         (err, result) => {
             if (err) throw err;
-            console.log(result)
-            if(result[0].start_date){
-
+            console.log("car: " + result.length)
+            if (result.length > 0) {
+                car = false;
+            }
+            else {
+                car = true;
             }
         }
     )
+    const driver = db.query("SELECT * FROM rent WHERE start_date = ? AND end_date = ? AND driver_id = ?",
+        [RentStartDate, RentEndDate, RentDriver],
+        (err, result) => {
+            if (err) throw err;
+            console.log("drive: " + result.length)
+            if (result.length > 0) {
+                driver = false;
+            }
+            else {
+                driver = true;
+            }
+        }
+    )
+
+    if (car && driver) {
+        db.query("INSERT INTO rent (user_rent_id, start_date, end_date, car_id, driver_id) VALUES (?, ?, ?, ?, ?)",
+            [userRentId, RentStartDate, RentEndDate, RentCar, RentDriver],
+            (err, result) => {
+                if (err) throw err;
+                if (result) {
+                    res.send({ message: "Sikeres rendelés" })
+                }
+            })
+    }
 });
 
 //belépett személy id-jának lekérdezése
