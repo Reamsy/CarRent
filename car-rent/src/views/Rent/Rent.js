@@ -6,8 +6,10 @@ import Axios from 'axios';
 import './Rent.css';
 
 export function Rent({ userId }) {
+    
     //id from login
     const userRentId = userId;
+
     //data fetching for cars and drivers
     const [cars, setCars] = useState([]);
     const [drivers, setDrivers] = useState([]);

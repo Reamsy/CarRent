@@ -167,18 +167,15 @@ app.get('/rentDrivers', async (req, res) => {
 app.post('/Rent', async (req, res) => {
     //frontendről érkező adat
     const { userRentId, RentStartDate, RentEndDate, RentCar, RentDriver } = req.body;
-    db.query("INSERT INTO rent (user_rent_id, start_date, end_date, car_id, driver_id) VALUES (?, ?, ?, ?, ?)",
-        [userRentId, RentStartDate, RentEndDate, RentCar, RentDriver],
+    db.query("SELECT start_date, end_date, driver_id FROM rent WHERE car_id = ?", [RentCar],
         (err, result) => {
             if (err) throw err;
-            if (result) {
-                res.send({ message: "Rendelés sikeresen megtörtén, az adott időpontban átveheti autóját" })
-            }
-            else {
-                res.send({ message: "Rendelés sikertelen!" })
+            console.log(result)
+            if(result[0].start_date){
+
             }
         }
-    );
+    )
 });
 
 //belépett személy id-jának lekérdezése
@@ -369,7 +366,7 @@ app.get('/getDriverRents/:id', (req, res) => {
     db.query(`SELECT * FROM rent WHERE driver_id = ${req.params.id}`,
         (err, result) => {
             if (result) {
-                console.log(result) 
+                console.log(result)
                 res.send(result);
             }
             else {

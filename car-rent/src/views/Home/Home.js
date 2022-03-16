@@ -36,7 +36,6 @@ export function Home({ id }) {
                         hiba = true;
                     }
                 if (!hiba) {
-                    console.log("asdasdasddas")
                     navigate('/rent');
                 }
                 else {
