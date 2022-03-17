@@ -47,6 +47,7 @@ export function Rent({ userId }) {
                 }
                 else {
                     //sikeres bérés esetén visszajelző alert
+                    console.log(response)
                     alert("Bérlését sikeresen rögzítettük!");
                 }
             });

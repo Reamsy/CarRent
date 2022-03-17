@@ -168,43 +168,29 @@ app.post('/Rent', (req, res) => {
 
     //frontendről érkező adat
     const { userRentId, RentStartDate, RentEndDate, RentCar, RentDriver } = req.body;
-    const car = db.query("SELECT * FROM rent WHERE start_date = ? AND end_date = ? AND car_id = ?",
-        [RentStartDate, RentEndDate, RentCar],
-        (err, result) => {
+    db.query("SELECT start_date, end_date FROM rent WHERE car_id = ? AND end_date >= ? AND start_date <= ?",
+        [RentCar, RentStartDate, RentEndDate],
+        (err, matchResult) => {
             if (err) throw err;
-            console.log("car: " + result.length)
-            if (result.length > 0) {
-                car = false;
+            console.log(matchResult)
+            if (matchResult.length == 0) {
+                db.query("INSERT INTO rent (user_rent_id, start_date, end_date, car_id, driver_id) VALUES (?,?,?,?,?)",
+                    [userRentId, RentStartDate, RentEndDate, RentCar, RentDriver],
+                    (err, result) => {
+                        if (err) throw err;
+                        if (result) {
+                            res.send({ message: "Rent Success" });
+                        }
+                        else {
+                            res.send({ message: "Rent Failure" });
+                        }
+                    })
             }
             else {
-                car = true;
+                res.send({ message: "Car already on road" })
             }
         }
     )
-    const driver = db.query("SELECT * FROM rent WHERE start_date = ? AND end_date = ? AND driver_id = ?",
-        [RentStartDate, RentEndDate, RentDriver],
-        (err, result) => {
-            if (err) throw err;
-            console.log("drive: " + result.length)
-            if (result.length > 0) {
-                driver = false;
-            }
-            else {
-                driver = true;
-            }
-        }
-    )
-
-    if (car && driver) {
-        db.query("INSERT INTO rent (user_rent_id, start_date, end_date, car_id, driver_id) VALUES (?, ?, ?, ?, ?)",
-            [userRentId, RentStartDate, RentEndDate, RentCar, RentDriver],
-            (err, result) => {
-                if (err) throw err;
-                if (result) {
-                    res.send({ message: "Sikeres rendelés" })
-                }
-            })
-    }
 });
 
 //belépett személy id-jának lekérdezése
