@@ -26,7 +26,7 @@ export function Rent({ userId }) {
     const Rent = () => {
         let hiba = false;
         for (const item of document.getElementsByClassName("input")) {
-            if (item.value === null)
+            if (item.value === null || item.value === "")
                 hiba = true;
         }
         if (!hiba) {
@@ -44,11 +44,6 @@ export function Rent({ userId }) {
                 //és a válasz ami backendről fog jönni
                 if (response.data.message) {
                     alert(response.data.message);
-                }
-                else {
-                    //sikeres bérés esetén visszajelző alert
-                    console.log(response)
-                    alert("Bérlését sikeresen rögzítettük!");
                 }
             });
         }
@@ -107,7 +102,7 @@ export function Rent({ userId }) {
             <div className="container_chooseRent" >
 
                 {/*Cars*/}
-                <select className='input' id="cars" name="cars"
+                <select className="input" id="cars" name="cars"
                     onChange={(e) => {
                         const selectedCar = e.target.value;
                         setselectedCar(selectedCar);
@@ -125,7 +120,7 @@ export function Rent({ userId }) {
                         const selectedDriver = e.target.value;
                         setselectedDriver(selectedDriver);
                     }} >
-                    <option value="00">Nem kérek sofőrt!</option>
+                    <option>Nem kérek sofőrt!</option>
                     {drivers.map(driver =>
                         <option key={driver.id} value={driver.user_id}>{driver.name}</option>
                     )}
@@ -137,14 +132,14 @@ export function Rent({ userId }) {
 
             <div className="dateChooseRent">
                 {/*Start date*/}
-                <input className='input' type="date"
+                <input className="input" type="date"
                     onChange={(e) => {
                         setStartDate(e.target.value);
                     }}
                 />
 
                 {/*End date*/}
-                <input className='input' type="date"
+                <input className="input" type="date"
                     id="enddate"
                     onChange={(e) => {
                         setEndDate(e.target.value);

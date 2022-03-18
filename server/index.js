@@ -172,26 +172,31 @@ app.post('/Rent', (req, res) => {
         [RentCar, RentStartDate, RentEndDate],
         (err, matchResult) => {
             if (err) throw err;
-            console.log(matchResult)
             if (matchResult.length == 0) {
-                db.query("INSERT INTO rent (user_rent_id, start_date, end_date, car_id, driver_id) VALUES (?,?,?,?,?)",
-                    [userRentId, RentStartDate, RentEndDate, RentCar, RentDriver],
-                    (err, result) => {
-                        if (err) throw err;
-                        if (result) {
-                            res.send({ message: "Rent Success" });
+                db.query("SELECT start_date, end_date FROM rent WHERE driver_id = ? AND end_date >= ? AND start_date <= ?",
+                    [RentDriver, RentStartDate, RentEndDate],
+                    (err, EndResult) => {
+                        if (err) throw err
+                        if (EndResult.length == 0) {
+                            db.query("INSERT INTO rent (user_rent_id, start_date, end_date, car_id, driver_id) VALUES (?,?,?,?,?)",
+                                [userRentId, RentStartDate, RentEndDate, RentCar, RentDriver],
+                                (err, result) => {
+                                    if (err) throw err;
+                                    if (result) {
+                                        res.send({ message: "Rent Success" });
+                                    }
+                                })
                         }
                         else {
-                            res.send({ message: "Rent Failure" });
+                            res.send({ message: "Driver already on road" })
                         }
                     })
             }
             else {
                 res.send({ message: "Car already on road" })
             }
-        }
-    )
-});
+        })
+})
 
 //belépett személy id-jának lekérdezése
 app.get('/profile/:id', (req, res) => {

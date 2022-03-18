@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './starterpage.css';
 
 
-export function Login({ getID }, { getDriverLoginId }) {
+export function Login({ getID }) {
 
 
     //Adatok kiolvasása az inputokból (Regisztráció)
@@ -58,21 +58,19 @@ export function Login({ getID }, { getDriverLoginId }) {
             //ennek kell egyeznie a backenddel-->> LoginUsername.... mert ezt fogod átvenni frontendről req.body-val
             LoginUsername: usernameLog,
             LoginPassword: passwordLog,
-        }).then((response) => {
 
+        }).then((response) => {
             //itt jön vissza a backend hibaüzenet (ha van)
             if (response.data.message) {
                 setLoginCorrect(response.data.message)
             }
 
-            window.localStorage.setItem('user', response.data[0])
-
             if (response.data[0].user_id === 1) {
-                navigate('/admin')
+                navigate('/admin');
             }
             if (response.data[0].user_id === 2) {
                 getID(response.data[0].id);
-                navigate('/driverPrivate')
+                navigate('/driverPrivate');
             }
             if (response.data[0].user_id === 3) {
                 getID(response.data[0].id);
@@ -80,14 +78,16 @@ export function Login({ getID }, { getDriverLoginId }) {
             }
         });
     };
+
+
     return (<>
-{/*Top message*/}
+        {/*Top message*/}
         <div className="welcome">
             <h3>Wellcome to Car Rent</h3>
             <p id="home-p">Easiest way to rent your car</p>
         </div>
 
-{/*Login*/}
+        {/*Login*/}
         <div className='loginContainer'>
             <div className="Login">
                 <h3 id="login-p">Login</h3>
@@ -112,7 +112,7 @@ export function Login({ getID }, { getDriverLoginId }) {
                 <button id="submit-btn-for-login" onClick={login} >Login</button>
             </div>
 
-{/*Registration*/}
+            {/*Registration*/}
             <div className="Registration">
                 <h3 id='registration-p'>Registration</h3>
 
@@ -138,7 +138,7 @@ export function Login({ getID }, { getDriverLoginId }) {
                         setRegistrationCorrect("");
                     }}
                 />
-                
+
                 <p id="loginErr">{registrationCorrect}</p>
                 <button id="submit-btn-for-register" type="submit" onClick={registration}>Registration</button>
             </div>

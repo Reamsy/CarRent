@@ -51,8 +51,8 @@ export function CreateDriverLogin({ DriverId }) {
         <div className='addCarInput'>
             <input className="input" onChange={(e) => { setDriverEmail(e.target.value) }} placeholder='Enter the Email' />
         </div>
-        <div className='addCarButton'>
-            <button id='addCarButton' onClick={addDriverLogin}>Add</button>
+        <div className='RentButton'>
+            <button id='RentButton' onClick={addDriverLogin}>Add</button>
         </div>
     </>)
 }

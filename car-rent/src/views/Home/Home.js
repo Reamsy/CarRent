@@ -30,7 +30,6 @@ export function Home({ id }) {
         let hiba = false;
         Axios.get(`http://localhost:3001/checkProfile/${id}`)
             .then((response) => {
-                console.log(response.data[0])
                 for (const value of Object.values(response.data[0]))
                     if (value === null) {
                         hiba = true;
