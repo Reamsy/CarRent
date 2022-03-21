@@ -89,24 +89,25 @@ export function Admin() {
             }).catch(console.log);
     }
 
-//Adding car
+    //Adding car
     const addNewCar = () => {
         navigate("/addNewVehicle");
     }
 
-//Adding driver
+    //Adding driver
     const addNewDriver = () => {
         navigate("/createDriverLogin");
     }
 
+
     return (<>
         <div>
-{/*Welcome message*/}
+            {/*Welcome message*/}
             <div className="containerAdmin">
                 <h3 id='admin-h3'>Here, you can manage your busines!</h3>
             </div>
 
-{/*Listing of rents*/}
+            {/*Listing of rents*/}
             <div>
                 <p id="rent">{!errorMessage && "Rents"}</p>
             </div>
@@ -118,13 +119,13 @@ export function Admin() {
                 <div id='adminContainerText-p'>Driver</div>
             </div>
 
-{/*Map of rents*/}
+            {/*Map of rents*/}
             {rents.map(rent =>
                 <div key={rent.id}>
                     <div className="containerAdmin">
                         <p id="adminContainer-p">{rent.id}</p>
-                        <p id="adminContainer-p">{rent.start_date}</p>
-                        <p id="adminContainer-p">{rent.end_date}</p>
+                        <p id="adminContainer-p">{new Date(rent.start_date).toLocaleDateString()}</p>
+                        <p id="adminContainer-p">{new Date(rent.end_date).toLocaleDateString()}</p>
                         <p id="adminContainer-p">{rent.car_id}</p>
                         <p id="adminContainer-p">{rent.driver_id || "----"}</p>
                         <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
@@ -132,11 +133,12 @@ export function Admin() {
                 </div>
             )}
 
-{/*Listing of vehicles*/}
+            {/*Listing of vehicles*/}
             <div>
                 <p id="rent">{!errorMessage && "Vehicles"}</p>
             </div>
             <div className="adminContainerText">
+                <div id='adminContainerText-p'>id</div>
                 <div id='adminContainerText-p'>Brand</div>
                 <div id='adminContainerText-p'>Model</div>
                 <div id='adminContainerText-p'>Plate num.</div>
@@ -144,10 +146,11 @@ export function Admin() {
                 <div id='adminContainerText-p'>Year</div>
             </div>
 
-{/*Map of vehicles*/}
+            {/*Map of vehicles*/}
             {vehicles.map(vehicle =>
                 <div key={vehicle.id}>
                     <div className="containerAdmin">
+                        <p id="adminContainer-p">{vehicle.id}</p>
                         <p id="adminContainer-p">{vehicle.brand}</p>
                         <p id="adminContainer-p">{vehicle.model}</p>
                         <p id="adminContainer-p">{vehicle.plateNumber}</p>
@@ -158,12 +161,12 @@ export function Admin() {
                 </div>
             )}
 
-{/*Add new vehicle button*/}
+            {/*Add new vehicle button*/}
             <div>
                 <button id="add" onClick={addNewCar}> New Car</button>
             </div>
 
-{/*Listing of Drivers*/}
+            {/*Listing of Drivers*/}
             < div >
                 <p id="rent">{!errorMessage && "Drivers"}</p>
             </div>
@@ -175,7 +178,7 @@ export function Admin() {
                 <div id='adminContainerText-p'>Licence cat.</div>
             </div>
 
-{/*Map of Drivers*/}
+            {/*Map of Drivers*/}
             {drivers.map(driver =>
                 <div key={driver.id}>
                     <div className="containerAdmin">
@@ -190,7 +193,7 @@ export function Admin() {
             )
             }
 
-{/*Add new Drivers button*/}
+            {/*Add new Drivers button*/}
             <div className="drivers">
                 <button id="add" onClick={addNewDriver}> New Driver</button>
             </div>

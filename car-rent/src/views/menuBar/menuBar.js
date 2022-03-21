@@ -8,25 +8,25 @@ export function MenuBar() {
 
     const navigate = useNavigate();
 
-    const handleLogout = () =>{
+    const handleLogout = () => {
         window.localStorage.removeItem('user')
         navigate("/")
     }
-    
-    const isLoggedIn = !!window.localStorage.getItem('user')
+
+
 
     return (
         //linkek
         <nav className="ul">
-            {isLoggedIn ? <>
+
             <NavLink className="navLeft" to='/home'>Home</NavLink>
             <NavLink className="navLeft" to='/products'>Vehicles</NavLink>
             <NavLink className="navLeft" to='/drivers'>Drivers</NavLink>
             <NavLink className="navLeft" to='/rateus'>Rate Us</NavLink>
             <NavLink className="navLeft" to='/profile'>Profile</NavLink>
 
-            <button className="navRight" id="navButton" onClick={handleLogout}>Logout</button></>
-            :null}
+            <button className="navRight" id="navButton" onClick={handleLogout}>Logout</button>
+
         </nav>
     )
 }

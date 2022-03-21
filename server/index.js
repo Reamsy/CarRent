@@ -206,6 +206,15 @@ app.get('/profile/:id', (req, res) => {
     });
 });
 
+//rent-ek lekérése a profilnál
+app.get('/getRents/:id', (req, res) => {
+    db.query("SELECT * FROM rent WHERE user_rent_id = ?", req.params.id, (err, result) => {
+        if (err) throw err;
+        console.log(result)
+        res.send(result);
+    })
+})
+
 //user id elküldése login után a costumer táblába, hogy a profile.js-nél legyen mit kiolvasni
 app.post('/home', async (req, res) => {
     const { sendId } = req.body;

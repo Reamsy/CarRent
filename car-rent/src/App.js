@@ -44,8 +44,8 @@ function App() {
         <Route exact path='/addNewVehicle' element={<AddNewCar />} />
         <Route exact path='/addNewDriver' element={<AddNewDriver pushedId={pushed_driver_id} />} />
         <Route exact path='/createDriverLogin' element={<CreateDriverLogin DriverId={D_login_id} />} />
-      </Routes>
-    </BrowserRouter>
+      </Routes >
+    </BrowserRouter >
   );
 }
 

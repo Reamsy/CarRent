@@ -439,5 +439,18 @@ HIBA: date ütközések lekezelése
 
 2022.03.18. {8:20 - 10:15} (Szalanics Szabolcs):
     -Rent driver ütközések lekezelése
+HIBA: Profile.js-nél írja ki a rendeléseket
+      user tud az adminpage-re navigálni
+      driver holiday set
+      képek a DB-be
+      TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)
+
+2022.03.21. {8:05 - 10:15} (Szalanics Szabolcs):
+    -Date format beállítása Date segítségével
+    -Profile.js rendelések kiíratása
 HIBA: user tud az adminpage-re navigálni
       driver holiday set
+      képek a DB-be
+      TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)  

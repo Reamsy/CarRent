@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Layout } from '../layOut/layOut';
 import Axios from 'axios';
+import Select from 'react-select'
 
 //Import CSS & Images
 import './profilePage.css';
 import driverIMG from '../../images/img_avatar.png';
+import axios from 'axios';
 
 export function Profile({ id }) {
 
-    //hook for fetching
+    //hook for fetching costumer data
     const [costumers, setCostumers] = useState([]);
+
+    //hooks for fetching costumer rents and error messages
+    const [personalRents, setPrersonalRents] = useState([]);
+    const [rentError, setRentsError] = useState();
 
     //fetching data from db by id 
     useEffect(() => {
@@ -48,6 +54,20 @@ export function Profile({ id }) {
             alert("Fill every lines");
         }
     }
+
+    useEffect(() => {
+        axios.get(`http://localhost:3001/getRents/${id}`)
+            .then((response) => {
+                if (response) {
+                    setPrersonalRents([response.data[0]])
+
+                }
+                else {
+                    setRentsError(response.data.message);
+                }
+            })
+    }, [])
+
 
     return (<>
         <Layout />
@@ -101,5 +121,24 @@ export function Profile({ id }) {
         <div className="BTNProfile">
             <button id="saveBTNProfile" onClick={save}>Save</button>
         </div>
+
+        {/*List of rents*/}
+        <div className="profileRentTitle">
+            <div id='adminContainerText-p'>Start of rent</div>
+            <div id='adminContainerText-p'>End of rent</div>
+            <div id='adminContainerText-p'>Car</div>
+            <div id='adminContainerText-p'>Driver</div>
+        </div>
+
+        {personalRents.map(rents =>
+            <div key={rents.id}>
+                <div className="containerAdmin">
+                    <p id="adminContainer-p">{new Date(rents.start_date).toLocaleDateString()}</p>
+                    <p id="adminContainer-p">{new Date(rents.end_date).toLocaleDateString()}</p>
+                    <p id="adminContainer-p">{rents.car_id}</p>
+                    <p id="adminContainer-p">{rents.driver_id || "----"}</p>
+                </div>
+            </div>
+        )}
     </>)
 }
