@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Layout } from '../layOut/layOut';
-import Axios from 'axios';
-import Select from 'react-select'
+import axios from 'axios';
+
 
 //Import CSS & Images
 import './profilePage.css';
 import driverIMG from '../../images/img_avatar.png';
-import axios from 'axios';
 
 export function Profile({ id }) {
 
@@ -19,7 +18,7 @@ export function Profile({ id }) {
 
     //fetching data from db by id 
     useEffect(() => {
-        Axios.get(`http://localhost:3001/profile/${id}`)
+        axios.get(`http://localhost:3001/profile/${id}`)
             .then((response) => {
                 if (response) {
                     setCostumers(response.data[0]);

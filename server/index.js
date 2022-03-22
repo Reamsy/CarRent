@@ -210,7 +210,6 @@ app.get('/profile/:id', (req, res) => {
 app.get('/getRents/:id', (req, res) => {
     db.query("SELECT * FROM rent WHERE user_rent_id = ?", req.params.id, (err, result) => {
         if (err) throw err;
-        console.log(result)
         res.send(result);
     })
 })
