@@ -37,7 +37,7 @@ export function Profile({ id }) {
                 hiba = true;
         }
         if (!hiba) {
-            Axios.put(`http://localhost:3001/save/${id}`, {
+            axios.put(`http://localhost:3001/save/${id}`, {
                 findId: id,
                 ...costumers
             }).then((response) => {
