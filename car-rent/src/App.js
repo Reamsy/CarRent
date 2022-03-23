@@ -5,7 +5,6 @@ import { AppRoutes } from './views/AppRoutes';
 export const UserContext = React.createContext({});
 
 function App() {
-  console.log(UserContext);
 
   const userState = useState(() => {
     const userInlocalStorage = localStorage.getItem('user');
@@ -13,7 +12,6 @@ function App() {
   })
 
   useEffect(() => {
-    console.log(userState[0]);
     localStorage.setItem('user', JSON.stringify(userState[0]))
   }, [userState]);
 

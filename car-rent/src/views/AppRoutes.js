@@ -35,7 +35,6 @@ export function AppRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-
                 <Route exact path="/" element={<Login />} />
 
                 {isUser && (<>
@@ -57,7 +56,6 @@ export function AppRoutes() {
                 {isDriver && (<>
                     <Route exact path='/driverPrivate' element={<Driver />} />
                 </>)} <Route exact path='*' element={<ErrorPage />} />
-
             </Routes >
         </BrowserRouter >
     )
