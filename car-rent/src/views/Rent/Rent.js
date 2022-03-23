@@ -1,14 +1,15 @@
-import { React, useEffect, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import Layout from '../layOut/layOut'
 import Axios from 'axios';
 
 //Import CSS & Images
 import './Rent.css';
+import { UserContext } from '../../App';
 
-export function Rent({ userId }) {
+export function Rent() {
 
     //id from login
-    const userRentId = userId;
+    const {user} = useContext(UserContext);
 
     //data fetching for cars and drivers
     const [cars, setCars] = useState([]);
@@ -33,7 +34,7 @@ export function Rent({ userId }) {
             Axios.post('http://localhost:3001/Rent', {
                 //Kiszervezés ami át fog menni backendre
                 //Ezeket használd: RentStartDate, RentEndDate...
-                userRentId,
+                userRentId: user.id,
                 RentStartDate: startDate,
                 RentEndDate: endDate,
                 RentCar: selectedCar,
@@ -107,7 +108,7 @@ export function Rent({ userId }) {
                         const selectedCar = e.target.value;
                         setselectedCar(selectedCar);
                     }} >
-                    <option value="0">Nincs autó kiválasztva!</option>
+                    <option value="">Nincs autó kiválasztva!</option>
                     {cars.map(car =>
                         <option key={car.id} value={car.id}>{car.brand}</option>
                     )}

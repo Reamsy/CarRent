@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Layout } from '../layOut/layOut';
 import axios from 'axios';
 
@@ -6,19 +6,22 @@ import axios from 'axios';
 //Import CSS & Images
 import './profilePage.css';
 import driverIMG from '../../images/img_avatar.png';
+import { UserContext } from '../../App';
 
-export function Profile({ id }) {
+export function Profile() {
+
+    //user lekérése
+    const { user } = useContext(UserContext);
 
     //hook for fetching costumer data
     const [costumers, setCostumers] = useState([]);
 
     //hooks for fetching costumer rents and error messages
     const [personalRents, setPrersonalRents] = useState([]);
-    const [rentError, setRentsError] = useState();
 
     //fetching data from db by id 
     useEffect(() => {
-        axios.get(`http://localhost:3001/profile/${id}`)
+        axios.get(`http://localhost:3001/profile/${user.id}`)
             .then((response) => {
                 if (response) {
                     setCostumers(response.data[0]);
@@ -37,8 +40,8 @@ export function Profile({ id }) {
                 hiba = true;
         }
         if (!hiba) {
-            axios.put(`http://localhost:3001/save/${id}`, {
-                findId: id,
+            axios.put(`http://localhost:3001/save/${user.id}`, {
+                findId: user.id,
                 ...costumers
             }).then((response) => {
                 if (response.data.message) {
@@ -55,14 +58,14 @@ export function Profile({ id }) {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/getRents/${id}`)
+        axios.get(`http://localhost:3001/getRents/${user.id}`)
             .then((response) => {
                 if (response) {
                     setPrersonalRents([response.data[0]])
 
                 }
                 else {
-                    setRentsError(response.data.message);
+                    alert(response.data.message);
                 }
             })
     }, [])

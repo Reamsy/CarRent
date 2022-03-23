@@ -454,3 +454,15 @@ HIBA: user tud az adminpage-re navigálni
       képek a DB-be
       TESZTELÉS
       DOKUMENTÁCIÓ (fejlesztői, felhasználói)  
+
+2022.03.23. {8:35 - 11:45} (Szalanics Szabolcs):
+    -Egész app.js és id kezelés átírása --> useContext használata (azért mert a rég id-s módszerrel nem működött a localStorage)
+    -Új file AppRoutes.js a jobb átláthatóság miatt
+    -Új file roleDecide.js a jogosultság eldöntésének lekezelése miatt
+    -Új file ErrorPage.js ez az oldal tölt be ha pl: a user az admin.js-re szeretne navigálni
+    -user tud az adminpage-re navigálni (KIJAVÍTVA)
+    -driverPrivate.js sofőr nevének kiíratása
+HIBA: driver holiday set
+      képek a DB-be
+      TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)  

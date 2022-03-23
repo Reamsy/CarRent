@@ -99,9 +99,14 @@ export function Admin() {
         navigate("/createDriverLogin");
     }
 
+    const handleLogout = () => {
+        window.localStorage.removeItem('user')
+        navigate("/")
+    }
 
     return (<>
         <div>
+            <button id='driverLogoutBTN' onClick={handleLogout}>Logout</button>
             {/*Welcome message*/}
             <div className="containerAdmin">
                 <h3 id='admin-h3'>Here, you can manage your busines!</h3>

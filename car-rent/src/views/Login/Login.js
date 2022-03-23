@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 //Import CSS & Images
 import './starterpage.css';
 
 
-export function Login({ getID }) {
 
+export function Login() {
+
+    //useContext
+    const { setUser } = useContext(UserContext);
 
     //Adatok kiolvasása az inputokból (Regisztráció)
     const [usernameReg, setUsernameReg] = useState("");
@@ -65,17 +69,20 @@ export function Login({ getID }) {
                 setLoginCorrect(response.data.message)
             }
 
-            if (response.data[0].user_id === 1) {
-                navigate('/admin');
+            else if (response.data[0].user_id === 1) {
+                setUser(response.data[0]); //ez tér fissza: id, user_id(role), username, hashedPassword, email
+
+                navigate('/admin')
             }
-            if (response.data[0].user_id === 2) {
-                getID(response.data[0].id);
-                navigate('/driverPrivate');
+            else if (response.data[0].user_id === 2) {
+                setUser(response.data[0]);
+                navigate('/driverPrivate')
             }
-            if (response.data[0].user_id === 3) {
-                getID(response.data[0].id);
-                navigate('/home');
+            else if (response.data[0].user_id === 3) {
+                setUser(response.data[0]);
+                navigate('/home')
             }
+
         });
     };
 

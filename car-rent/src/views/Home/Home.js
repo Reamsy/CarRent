@@ -1,19 +1,23 @@
 import Axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../App';
 import { Layout } from '../layOut/layOut';
 
 
 import './App.css';
 
-export function Home({ id }) {
+export function Home() {
+
+    //user lekérése
+    const { user } = useContext(UserContext);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (id != null) {
+        if (user.id != null) {
             Axios.post('http://localhost:3001/home', {
-                sendId: id,
+                sendId: user.id,
             }).then((response) => {
                 if (response) {
                     console.log("siker")
@@ -28,7 +32,7 @@ export function Home({ id }) {
 
     const checkProfile = () => {
         let hiba = false;
-        Axios.get(`http://localhost:3001/checkProfile/${id}`)
+        Axios.get(`http://localhost:3001/checkProfile/${user.id}`)
             .then((response) => {
                 for (const value of Object.values(response.data[0]))
                     if (value === null) {
