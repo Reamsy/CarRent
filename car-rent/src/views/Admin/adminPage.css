@@ -148,3 +148,7 @@ body {
 #add:hover::after {
     opacity: 1;
 }
+
+#driverLogoutBTN{
+    margin-top: 1%;
+}
