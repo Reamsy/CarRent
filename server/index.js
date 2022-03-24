@@ -417,6 +417,31 @@ app.get('/getDriverRents/:id', (req, res) => {
         })
 })
 
+app.get('/getCarsForRate/:id', (req, res) => {
+    db.query(`SELECT * FROM rent WHERE user_rent_id = ${req.params.id}`,
+        (err, result) => {
+            if (err) throw err;
+            if (result) {
+                res.send(result);
+            }
+        })
+})
+
+app.post('/sendRating', (req, res) => {
+    const { userId, carId, carRating, driverId, driverRating } = req.body;
+    db.query('INSERT INTO rate (user_id, car_id, car_rate, driver_id, driver_rate) VALUES (?, ?, ?, ?, ?)',
+        [userId, carId, carRating, driverId, driverRating],
+        (err, result) => {
+            if (err) throw err;
+            if(result){
+                res.send(result);
+            }
+            else{
+                res.send({message: "Rating went fail!"})
+            }
+        })
+})
+
 app.listen(3001, (err) => {
     console.log("fut");
     if (err) throw err;

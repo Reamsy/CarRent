@@ -113,7 +113,6 @@ export function Admin() {
             value,
         }).then((response) => {
             handleDrivers();
-            console.log(response);
         })
     }
 
@@ -204,7 +203,8 @@ export function Admin() {
                         <p id="adminContainer-p">{driver.name}</p>
                         <p id="adminContainer-p">{driver.sex}</p>
                         <p id="adminContainer-p">{driver.licence_category}</p>
-                        <p id="adminContainer-p"><input id="adminContainer-p-input" type="checkbox" defaultChecked={driver.available} value={driver.available} onChange={e => { e.target.value = e.target.checked; console.log(e.target.value); checkHoliday(driver.id, e.target.value) }}/></p>
+                        <p id="adminContainer-p"><input id="adminContainer-p-input" type="checkbox" defaultChecked={driver.available} value={driver.available}
+                            onChange={e => { e.target.value = e.target.checked; checkHoliday(driver.id, e.target.value) }} /></p>
                         <p><button id="deleteRent" onClick={() => { DeleteDrivers(driver.id) }}>Delete</button></p>
                     </div>
                 </div>

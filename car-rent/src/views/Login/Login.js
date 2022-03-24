@@ -70,8 +70,9 @@ export function Login() {
             }
 
             else if (response.data[0].user_id === 1) {
+                
                 setUser(response.data[0]); //ez tér fissza: id, user_id(role), username, hashedPassword, email
-
+                console.log(response.data[0]);
                 navigate('/admin')
             }
             else if (response.data[0].user_id === 2) {
@@ -90,7 +91,7 @@ export function Login() {
     return (<>
         {/*Top message*/}
         <div className="welcome">
-            <h3>Wellcome to Car Rent</h3>
+            <h3 id='login-h3'>Wellcome to Car Rent</h3>
             <p id="home-p">Easiest way to rent your car</p>
         </div>
 

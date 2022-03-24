@@ -62,7 +62,7 @@ export function Profile() {
             .then((response) => {
                 if (response) {
                     console.log(response.data);
-                    setPrersonalRents([response.data[0]])
+                    setPrersonalRents(response.data)
 
                 }
                 else {
@@ -83,7 +83,7 @@ export function Profile() {
         <div className="containerProfile">
             <div className="leftInputProfile">
                 <p>Full Name</p>
-                <input className='input' type="text" name="Fullname" placeholder={!costumers.Fullname && "Adja meg az adatot"}
+                <input className='input' type="text" name="Fullname" placeholder={!costumers.Fullname && "Fill the line"}
                     value={costumers.Fullname}
                     onChange={(e) => {
                         setCostumers({ ...costumers, [e.target.name]: e.target.value });
@@ -92,7 +92,7 @@ export function Profile() {
             </div>
             <div className="rightInputProfile">
                 <p>Phone_number</p>
-                <input className='input' type="tel" name="Phone_number" placeholder={!costumers.Phone_number && "Adja meg az adatot"}
+                <input className='input' type="tel" name="Phone_number" placeholder={!costumers.Phone_number && "Fill the line"}
                     value={costumers.Phone_number}
                     onChange={(e) => {
                         setCostumers({ ...costumers, [e.target.name]: e.target.value });
@@ -103,7 +103,7 @@ export function Profile() {
         <div className="containerProfile">
             <div className="leftInputProfile">
                 <p>License Category</p>
-                <input className='input' type="text" name="License_category" placeholder={!costumers.License_category && "Adja meg az adatot"}
+                <input className='input' type="text" name="License_category" placeholder={!costumers.License_category && "Fill the line"}
                     value={costumers.License_category}
                     onChange={(e) => {
                         setCostumers({ ...costumers, [e.target.name]: e.target.value });
@@ -112,7 +112,7 @@ export function Profile() {
             </div>
             <div className="rightInputProfile">
                 <p>License Expiration</p>
-                <input className='input' type="text" name="License_expiraton" format="YYYY-mm-dd" placeholder={!costumers.License_expiraton && "Adja meg az adatot"}
+                <input className='input' type="text" name="License_expiraton" format="YYYY-mm-dd" placeholder={!costumers.License_expiraton && "Fill the line"}
                     value={costumers.License_expiraton}
                     onChange={(e) => {
                         setCostumers({ ...costumers, [e.target.name]: e.target.value });
@@ -126,6 +126,7 @@ export function Profile() {
         </div>
 
         {/*List of rents*/}
+        <div><h3 id='profileRentsTittle'>Your Rents</h3></div>
         <div className="profileRentTitle">
             <div id='adminContainerText-p'>Start of rent</div>
             <div id='adminContainerText-p'>End of rent</div>
@@ -133,13 +134,15 @@ export function Profile() {
             <div id='adminContainerText-p'>Driver</div>
         </div>
 
-        <div className="containerAdmin">
-            <p id="adminContainer-p">{new Date(personalRents.start_date).toLocaleDateString()}</p>
-            <p id="adminContainer-p">{new Date(personalRents.end_date).toLocaleDateString()}</p>
-            <p id="adminContainer-p">{personalRents.car_id}</p>
-            <p id="adminContainer-p">{personalRents.driver_id || "----"}</p>
-        </div>
-
-
+        {personalRents.map(rents =>
+            <div key={rents.id}>
+                <div className="containerAdmin">
+                    <p id="adminContainer-p">{new Date(rents.start_date).toLocaleDateString()}</p>
+                    <p id="adminContainer-p">{new Date(rents.end_date).toLocaleDateString()}</p>
+                    <p id="adminContainer-p">{rents.car_id}</p>
+                    <p id="adminContainer-p">{rents.driver_id || "----"}</p>
+                </div>
+            </div>
+        )}
     </>)
 }

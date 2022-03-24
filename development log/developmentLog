@@ -473,3 +473,14 @@ HIBA: profile.js undefined error
       képek a DB-be
       TESZTELÉS
       DOKUMENTÁCIÓ (fejlesztői, felhasználói)    
+
+2022.03.24. {21:00 - 23:10} (Szalanics Szabolcs):
+    -profile.js undefined error(KIJAVÍTVA)
+    -Rateus.js elkészítés(cak azokata a sofőröket és autókat tudja értékelni amiket megrendelt már)
+    -DB: rate table letrehozása
+    -visszamaradt magyar text-ek átírása angolra
+    -CSS szerkesztése
+HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen értékelni
+      képek a DB-be
+      TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)         

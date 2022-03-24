@@ -26,8 +26,6 @@ export function AppRoutes() {
         setDriverID(gotId);
     }
 
-
-
     const isAdmin = UserIsAdmin();
     const isDriver = UserIsDriver();
     const isUser = UserIsUser();

@@ -34,13 +34,12 @@ export function Driver() {
     }
 
     return (<>
-        <button id='driverLogoutBTN' onClick={handleLogout}>Logout</button>
         <div>
+            <button id='driverLogoutBTN' onClick={handleLogout}>Logout</button>
             {/*Info texts*/}
             <div className="containerDriver">
-                <h4 id='driver-username'>Üdvözöljük: {user.username}</h4>
-                <h3 id="driver-h3">Check out your working days!</h3>
-                <p id="driver-p">Below you can choos your holidays.</p>
+                <h4 id='driver-username'>Wellcome: {user.username}</h4>
+                <h3 id="driver-h3">Check out your rides!</h3>
             </div>
 
             {/*Drives and holidays*/}

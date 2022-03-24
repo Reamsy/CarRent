@@ -36,7 +36,7 @@ export function AddNewCar() {
             }).then((result) => {
                 if (result) {
                     alert("Jármű hozzáava");
-                    navigate('/admin');
+                    navigate('/admin')
                 }
                 else {
                     alert("Hozzáadás sikertelen");
@@ -49,7 +49,7 @@ export function AddNewCar() {
     }
     return (<>
         <div className='addWelcomeMessage'>
-            <h1>Add New Cars</h1>
+            <h1 id='add-h1'>Add New Cars</h1>
         </div>
         <div className='addCarInput'>
             <input className='input' type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder='Enter the Brand' />

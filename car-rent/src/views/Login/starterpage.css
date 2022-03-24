@@ -53,9 +53,9 @@ body{
     padding: 0;
     margin-top: 3%;
 }
-h3{
+#login-h3{
     margin-top: 7%;
-    font-size: 25px;
+    font-size: 40px;
     color: white;
     font-weight: italic;
     padding: 0;

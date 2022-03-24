@@ -33,7 +33,7 @@ export function Drivers() {
         <Layout />
 
         {/*Page message*/}
-        <h3 id="h3Driver">Here are our Drivers</h3>
+        <h3 id="h3Drivers">Here are our Drivers</h3>
 
         {/*Culomn Signs*/}
         <div className="signsDriver">
@@ -45,7 +45,7 @@ export function Drivers() {
         {drivers.map(driver =>
             <><div className="rowDriver">
                 <div className="cardDriver">
-                    {/*Végigmegyünk a drivers-okon és minden egyed driver id-nál kiíratjuk a hozzátartozó adatot*/}
+                    {/*Végigmegyünk a drivers-eken és minden egyed driver id-nál kiíratjuk a hozzátartozó adatot*/}
 
                     <div key={driver.id}>
                         <img className="imgDriver" src={driver.image} alt="driver"></img>

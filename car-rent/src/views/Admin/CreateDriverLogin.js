@@ -41,7 +41,7 @@ export function CreateDriverLogin({ DriverId }) {
     }
     return (<>
         <div className='addWelcomeMessage'>
-            <h1>Create profile for your brand new driver</h1>
+            <h1 id='add-h1'>Create profile for your brand new driver</h1>
         </div>
 
         <div className='addCarInput'>

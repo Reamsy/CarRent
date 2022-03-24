@@ -52,7 +52,7 @@ export function Products() {
                         <div className="container">
                             <h4><b>{product.brand} - {product.model}</b></h4>
                             <p>Fuel-type: {product.fuel}</p>
-                            <p>Price / day: {product.rentprice}Huf</p>
+                            <p>Price / day: {product.rentprice}HUF</p>
                             <p>Year: {product.year}</p>
                         </div>
                     </div>

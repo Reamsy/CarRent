@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 24. 10:10
+-- Létrehozás ideje: 2022. Már 24. 23:07
 -- Kiszolgáló verziója: 10.4.22-MariaDB
 -- PHP verzió: 7.4.26
 
@@ -41,7 +41,7 @@ CREATE TABLE `costumer` (
 --
 
 INSERT INTO `costumer` (`id`, `user_id`, `Fullname`, `License_category`, `License_expiraton`, `Phone_number`) VALUES
-(38, 131, 'valaki', 'B', '2001-11-11', '06204836120');
+(49, 139, 'valaki', 'B', '2022-11-11', '+3620483612');
 
 -- --------------------------------------------------------
 
@@ -57,6 +57,13 @@ CREATE TABLE `drivers` (
   `licence_category` varchar(10) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `available` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `drivers`
+--
+
+INSERT INTO `drivers` (`id`, `user_id`, `name`, `sex`, `licence_category`, `available`) VALUES
+(20, 141, 'asdasd', 'férfi', 'B', 0);
 
 -- --------------------------------------------------------
 
@@ -76,6 +83,35 @@ CREATE TABLE `products` (
   `year` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `products`
+--
+
+INSERT INTO `products` (`id`, `brand`, `model`, `chassisNumber`, `plateNumber`, `fuel`, `color`, `rentprice`, `year`) VALUES
+(21, 'asd', 'asd', 'qwe123qweqe121', 'qwe-123', 'gas', 'red', 2000, 123);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `rate`
+--
+
+CREATE TABLE `rate` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `car_id` int(11) DEFAULT NULL,
+  `car_rate` int(3) DEFAULT NULL,
+  `driver_id` int(11) DEFAULT NULL,
+  `driver_rate` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `rate`
+--
+
+INSERT INTO `rate` (`id`, `user_id`, `car_id`, `car_rate`, `driver_id`, `driver_rate`) VALUES
+(1, 139, 21, 75, 0, 79);
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +126,14 @@ CREATE TABLE `rent` (
   `car_id` int(11) DEFAULT NULL,
   `driver_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `rent`
+--
+
+INSERT INTO `rent` (`id`, `user_rent_id`, `start_date`, `end_date`, `car_id`, `driver_id`) VALUES
+(72, 139, '2022-03-24', '2022-03-27', 21, 0),
+(73, 139, '2022-03-28', '2022-03-30', 21, 0);
 
 -- --------------------------------------------------------
 
@@ -111,10 +155,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `user_id`, `username`, `password`, `email`) VALUES
 (87, 1, 'admin', '$2b$10$R/oBtSj17FIwbncpYJrSR.v1EjAlNOMsH50VsfZZuGQiOsai5VZHG', 'admin@admin.com'),
-(127, 2, 'driver', '$2b$10$yUumEhlqS.6qKallZB/Vb.MrOABJRlr6SZWn9ugWNwVaGzOs4vdQm', 'driver@driver.com'),
-(131, 3, 'user', '$2b$10$6XFC/kXmdjfEPJFWWmGR7eNXzYiQ3iGGX3Kn1DZUaL6PuXYsvPADC', 'asd@asd.com'),
-(132, 2, 'driver2', '$2b$10$0NTtHeAA44rNJeBfNrz34.trUAD/88i0x4vT4qSSSA0MVqMCp8lN.', 'driver2@driver2.com'),
-(133, 2, 'driver', '$2b$10$RcAdC5WiAQlui3LfhYBSreJWQ0PvcLlh4TmcZJttkx0pgnUXYKozK', 'valaki@asdasd.com');
+(139, 3, 'user', '$2b$10$OiChbx7BclznDmjXwuCdsOaHxVvtT/Gtooelyam8QHIgMa3ko6pFm', 'user@user.com'),
+(141, 2, 'asd', '$2b$10$UNSktnCDDzamDr3MSXEcE.o0pnJcKkDCm2cUJ.rmE1ePz/JMwZnga', 'asd@asd.com');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -139,6 +181,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- A tábla indexei `rate`
+--
+ALTER TABLE `rate`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- A tábla indexei `rent`
 --
 ALTER TABLE `rent`
@@ -158,31 +206,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `costumer`
 --
 ALTER TABLE `costumer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT a táblához `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT a táblához `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT a táblához `rate`
+--
+ALTER TABLE `rate`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `rent`
 --
 ALTER TABLE `rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

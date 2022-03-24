@@ -51,10 +51,10 @@ export function Home() {
     return (<>
         <Layout />
 
-        <section>
-            <button onClick={checkProfile} id="homePageMidBtnHome">Rent</button>
+        <section id='homeSection'>
             <p id="home-p">At PROFILE menu option you can set your datas!</p>
             <p id="home-p">You can text us bellow</p>
+            <button onClick={checkProfile} id="homePageMidBtnHome">Rent</button>
         </section>
         <footer>
             <address>

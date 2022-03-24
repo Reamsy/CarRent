@@ -30,7 +30,7 @@ export function AddNewDriver({ pushedId }) {
             }).then((result) => {
                 if (result) {
                     alert("Success!");
-                    navigate("/admin")
+                    navigate('/admin')
                 }
                 else {
                     alert("Add went failed!");
@@ -43,19 +43,19 @@ export function AddNewDriver({ pushedId }) {
     }
     return (<>
         <div className='addWelcomeMessage'>
-            <h1>Fill the lines</h1>
+            <h1 id='add-h1'>Fill the lines</h1>
         </div>
         <div className='addCarInput'>
-            <input className="input" onChange={(e) => { setName(e.target.value) }} placeholder='Enter Fullname' />
+            <input id='addDriverInput' className="input" onChange={(e) => { setName(e.target.value) }} placeholder='Enter Fullname' />
             <select id="select" className="input"
                 onChange={(e) => {
                     const Sex = e.target.value;
                     setSex(Sex);
                 }} >
                 <option value="">Select Sex</option>
-                <option value="férfi">Férfi</option>
-                <option value="nő">Nő</option>
-                <option value="egyéb">Egyéb</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
             </select>
         </div>
         <div className='addCarInput'>

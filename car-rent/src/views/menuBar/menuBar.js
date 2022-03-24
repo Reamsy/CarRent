@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { UserContext } from '../../App';
-import { UserIsUser, userIsUser } from '../roleDecide';
+import { UserIsUser } from '../roleDecide';
 
 //Import CSS 
 import "./Menu.css";

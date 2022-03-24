@@ -18,6 +18,15 @@ body{
 
 /*Text settings*/
 #driver-h3{
+    font-size: 25px;
+    color: black;
+    font-weight: italic;
+    margin-top: 2%;
+}
+#driver-h4{
+    font-size: 15px;
+    color: black;
+    font-weight: italic;
     margin-top: 1%;
 }
 #driver-p{
