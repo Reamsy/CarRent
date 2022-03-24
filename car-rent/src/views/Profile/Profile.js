@@ -61,6 +61,7 @@ export function Profile() {
         axios.get(`http://localhost:3001/getRents/${user.id}`)
             .then((response) => {
                 if (response) {
+                    console.log(response.data);
                     setPrersonalRents([response.data[0]])
 
                 }
@@ -132,15 +133,13 @@ export function Profile() {
             <div id='adminContainerText-p'>Driver</div>
         </div>
 
-        {personalRents.map(rents =>
-            <div key={rents.id}>
-                <div className="containerAdmin">
-                    <p id="adminContainer-p">{new Date(rents.start_date).toLocaleDateString()}</p>
-                    <p id="adminContainer-p">{new Date(rents.end_date).toLocaleDateString()}</p>
-                    <p id="adminContainer-p">{rents.car_id}</p>
-                    <p id="adminContainer-p">{rents.driver_id || "----"}</p>
-                </div>
-            </div>
-        )}
+        <div className="containerAdmin">
+            <p id="adminContainer-p">{new Date(personalRents.start_date).toLocaleDateString()}</p>
+            <p id="adminContainer-p">{new Date(personalRents.end_date).toLocaleDateString()}</p>
+            <p id="adminContainer-p">{personalRents.car_id}</p>
+            <p id="adminContainer-p">{personalRents.driver_id || "----"}</p>
+        </div>
+
+
     </>)
 }
