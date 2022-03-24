@@ -465,4 +465,11 @@ HIBA: user tud az adminpage-re navigálni
 HIBA: driver holiday set
       képek a DB-be
       TESZTELÉS
-      DOKUMENTÁCIÓ (fejlesztői, felhasználói)  
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)
+
+2022.03.24. {8:35 - 11:45} (Szalanics Szabolcs):
+    -driver holiday set (KÉSZ)
+HIBA: profile.js undefined error
+      képek a DB-be
+      TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)    

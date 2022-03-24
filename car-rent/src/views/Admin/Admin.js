@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -38,6 +39,10 @@ export function Admin() {
     }, [])
 
     useEffect(() => {
+        handleDrivers();
+    }, [])
+
+    const handleDrivers = () => {
         //Sofőrők lekérése
         Axios.get("http://localhost:3001/AdminDrivers")
             .then((response) => {
@@ -47,8 +52,7 @@ export function Admin() {
                     setErrorMessage(response.data.message);
                 }
             })
-    }, [])
-
+    }
     //delete Rents
     const DeleteRents = (RentId) => {
         Axios.delete(`http://localhost:3001/rentDelete/${RentId}`)
@@ -104,6 +108,15 @@ export function Admin() {
         navigate("/")
     }
 
+    const checkHoliday = (id, value) => {
+        axios.post(`http://localhost:3001/checkHoliday/${id}`, {
+            value,
+        }).then((response) => {
+            handleDrivers();
+            console.log(response);
+        })
+    }
+
     return (<>
         <div>
             <button id='driverLogoutBTN' onClick={handleLogout}>Logout</button>
@@ -112,7 +125,7 @@ export function Admin() {
                 <h3 id='admin-h3'>Here, you can manage your busines!</h3>
             </div>
 
-            {/*Listing of rents*/}
+            {/*tittle of rents*/}
             <div>
                 <p id="rent">{!errorMessage && "Rents"}</p>
             </div>
@@ -138,7 +151,7 @@ export function Admin() {
                 </div>
             )}
 
-            {/*Listing of vehicles*/}
+            {/*tittle of vehicles*/}
             <div>
                 <p id="rent">{!errorMessage && "Vehicles"}</p>
             </div>
@@ -171,27 +184,27 @@ export function Admin() {
                 <button id="add" onClick={addNewCar}> New Car</button>
             </div>
 
-            {/*Listing of Drivers*/}
+            {/*tittle of Drivers*/}
             < div >
                 <p id="rent">{!errorMessage && "Drivers"}</p>
             </div>
             <div className="adminContainerText">
                 <div id='adminContainerText-p'>id</div>
-                <div id='adminContainerText-p'>User id</div>
                 <div id='adminContainerText-p'>Name</div>
                 <div id='adminContainerText-p'>Sex</div>
                 <div id='adminContainerText-p'>Licence cat.</div>
+                <div id='adminContainerText-p'>Available</div>
             </div>
 
             {/*Map of Drivers*/}
             {drivers.map(driver =>
                 <div key={driver.id}>
                     <div className="containerAdmin">
-                        <p id="adminContainer-p">{driver.id}</p>
                         <p id="adminContainer-p">{driver.user_id}</p>
                         <p id="adminContainer-p">{driver.name}</p>
                         <p id="adminContainer-p">{driver.sex}</p>
                         <p id="adminContainer-p">{driver.licence_category}</p>
+                        <p id="adminContainer-p"><input id="adminContainer-p-input" type="checkbox" defaultChecked={driver.available} value={driver.available} onChange={e => { e.target.value = e.target.checked; console.log(e.target.value); checkHoliday(driver.id, e.target.value) }}/></p>
                         <p><button id="deleteRent" onClick={() => { DeleteDrivers(driver.id) }}>Delete</button></p>
                     </div>
                 </div>

@@ -99,7 +99,7 @@ export function Login() {
             <div className="Login">
                 <h3 id="login-p">Login</h3>
 
-                <input className='input' type="text" id="username" placeholder="Username"
+                <input className='input' type="text" id="login-input" placeholder="Username"
                     onChange={(e) => {
                         //kiolvassuk a beírt adatokat
                         setUsernameLog(e.target.value);
@@ -108,7 +108,7 @@ export function Login() {
                     }}
                 />
 
-                <input className='input' type="password" id="password" placeholder="Password"
+                <input className='input' type="password" id="login-input" placeholder="Password"
                     onChange={(e) => {
                         setPasswordLog(e.target.value);
                         setLoginCorrect("");
@@ -123,7 +123,7 @@ export function Login() {
             <div className="Registration">
                 <h3 id='registration-p'>Registration</h3>
 
-                <input className='input' type="text" id="username" placeholder="Username"
+                <input className='input' type="text" id="login-input" placeholder="Username"
                     onChange={(e) => {
                         //kiolvassuk a beírt adatokat
                         setUsernameReg(e.target.value);
@@ -132,14 +132,14 @@ export function Login() {
                     }}
                 />
 
-                <input className='input' type="password" id="password" placeholder="Password"
+                <input className='input' type="password" id="login-input" placeholder="Password"
                     onChange={(e) => {
                         setPasswordReg(e.target.value);
                         setRegistrationCorrect("");
                     }}
                 />
 
-                <input className='input' type="email" id="email" placeholder="E-mail"
+                <input className='input' type="email" id="login-input" placeholder="E-mail"
                     onChange={(e) => {
                         setEmailReg(e.target.value);
                         setRegistrationCorrect("");

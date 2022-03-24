@@ -151,7 +151,7 @@ app.get('/rentCars', async (req, res) => {
 app.get('/rentDrivers', async (req, res) => {
 
     //adatbázis select
-    db.query("SELECT * FROM drivers", (err, result) => {
+    db.query("SELECT * FROM drivers WHERE available = 1", (err, result) => {
         if (err) {
             //itt a hibát frontenden kezeltem le
             res.send(err);
@@ -337,6 +337,20 @@ app.delete('/vehicleDelete/:CarId', (req, res) => {
 app.delete('/driverDelete/:DriverId', (req, res) => {
     db.query(`DELETE FROM drivers WHERE id = ${req.params.DriverId}`,
         (err, result) => {
+            if (result) {
+                res.send(result);
+            }
+        })
+})
+
+//changeHoliday
+app.post('/checkHoliday/:id', (req, res) => {
+    const { value: checked } = req.body;
+    let value = checked == "true" ? 1 : 0
+    console.log(value);
+    db.query(`UPDATE drivers SET available = ? WHERE id = ${req.params.id}`, [value],
+        (err, result) => {
+            if (err) throw err;
             if (result) {
                 res.send(result);
             }
