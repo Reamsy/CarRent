@@ -12,6 +12,9 @@ import driverIMG from '../../images/img_avatar.png';
 
 export function RateUs() {
 
+    //hook for disable rate input if no driver in rent
+    const [disable, setDisable] = useState(false);
+
     //user lekérése
     const { user } = useContext(UserContext);
 
@@ -25,8 +28,12 @@ export function RateUs() {
     useEffect(() => {
         axios.get(`http://localhost:3001/getCarsForRate/${user.id}`)
             .then((response) => {
-                if (response) {
-                    console.log(response.data)
+                if (response.data.driver_id === 0) {
+                    setDisable(true);
+                    sendRating(response.data)
+                }
+                else if (response) {
+                    console.log(response.data);
                     setCarsRate(response.data);
                 }
                 else {
@@ -54,6 +61,8 @@ export function RateUs() {
     }
 
 
+
+
     return (<>
 
         <Layout />
@@ -79,7 +88,7 @@ export function RateUs() {
                                         {/*ezeket adatbázisból kellene feltölteni*/}
                                         <h4><b>Car: {rateable.car_id}</b></h4>
                                         <p>Rate the Car</p>
-                                        <p><input id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
+                                        <p><input disable={disable} id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +104,8 @@ export function RateUs() {
                                         {/*ezeket adatbázisból kellene feltölteni*/}
                                         <h4><b>Driver: {rateable.driver_id || "----"}</b></h4>
                                         <p>Rate the Driver</p>
-                                        <p><input id='rateInput' type='range' onChange={(e) => { setDriverRating(e.target.value) }} defaultValue={null}></input></p>
+                                        <p><input defaultChecked={rateable.driver_id} id='rateInput' type='range'
+                                            onChange={(e) => { setDriverRating(e.target.value) }}></input></p>
                                     </div>
                                 </div>
                             </div>

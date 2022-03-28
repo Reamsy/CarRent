@@ -483,4 +483,12 @@ HIBA: profile.js undefined error
 HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen értékelni
       képek a DB-be
       TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)
+
+2022.03.28. {15:30 - 16:45} (Szalanics Szabolcs):
+    ---------------------------------
+HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen értékelni(HIBA)
+      rent.js-nél ha rendelünk és a kocsi "no car selected" akkor is felveszi db-be
+      képek a DB-be
+      TESZTELÉS
       DOKUMENTÁCIÓ (fejlesztői, felhasználói)         

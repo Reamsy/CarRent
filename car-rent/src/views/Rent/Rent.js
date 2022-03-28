@@ -23,7 +23,7 @@ export function Rent() {
     const [selectedCar, setselectedCar] = useState("");
     const [selectedDriver, setselectedDriver] = useState("");
 
-    //rent kérése elküldése(NINCS LEKEZELVE!!!)
+    //rent send
     const Rent = () => {
         let hiba = false;
         for (const item of document.getElementsByClassName("input")) {
@@ -106,9 +106,10 @@ export function Rent() {
                 <select className="input" id="cars" name="cars"
                     onChange={(e) => {
                         const selectedCar = e.target.value;
+                        console.log(selectedCar, setselectedCar)
                         setselectedCar(selectedCar);
                     }} >
-                    <option disabled selected>No car selected!</option>
+                    <option selected disabled value={null}>No car selected!</option>
                     {cars.map(car =>
                         <option key={car.id} value={car.id}>{car.brand}</option>
                     )}
