@@ -9,7 +9,7 @@ import { UserContext } from '../../App';
 export function Rent() {
 
     //id from login
-    const {user} = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     //data fetching for cars and drivers
     const [cars, setCars] = useState([]);
@@ -21,16 +21,32 @@ export function Rent() {
 
     //Options
     const [selectedCar, setselectedCar] = useState("");
-    const [selectedDriver, setselectedDriver] = useState("");
+    const [selectedDriver, setselectedDriver] = useState(null);
+
+    //currentDate & rent_start_date
+    const currentDate = new Date(Date.now()).toLocaleDateString()
+    const rentStartDate = new Date(startDate).toLocaleDateString()
 
     //rent send
     const Rent = () => {
         let hiba = false;
+        let currentDateErr = false;
+        let starterDateError = false;
         for (const item of document.getElementsByClassName("input")) {
-            if (item.value === null || item.value === "")
+
+            if (item.value === null || item.value.trim() === "")
                 hiba = true;
+
+            if (currentDate > rentStartDate) {
+                console.log(currentDate > rentStartDate);
+                currentDateErr = true;
+                alert("Rent's end date can't be before today's date!")
+                return;
+            }
+            if (startDate > endDate)
+                starterDateError = true;
         }
-        if (!hiba) {
+        if (!hiba && !currentDateErr && !starterDateError) {
             Axios.post('http://localhost:3001/Rent', {
                 //Kiszervezés ami át fog menni backendre
                 //Ezeket használd: RentStartDate, RentEndDate...
@@ -41,7 +57,6 @@ export function Rent() {
                 RentDriver: selectedDriver,
 
             }).then((response) => {
-
                 //és a válasz ami backendről fog jönni
                 if (response.data.message) {
                     alert(response.data.message);
@@ -49,7 +64,8 @@ export function Rent() {
             });
         }
         else {
-            alert("To rent, you must choose your car, start & end date")
+            alert("To rent, you must choose your car, start & end date correctly!")
+            return
         }
     }
 
@@ -109,7 +125,7 @@ export function Rent() {
                         console.log(selectedCar, setselectedCar)
                         setselectedCar(selectedCar);
                     }} >
-                    <option selected disabled value={null}>No car selected!</option>
+                    <option selected disabled value="">No car selected!</option>
                     {cars.map(car =>
                         <option key={car.id} value={car.id}>{car.brand}</option>
                     )}
@@ -122,9 +138,9 @@ export function Rent() {
                         const selectedDriver = e.target.value;
                         setselectedDriver(selectedDriver);
                     }} >
-                    <option value="NULL">No driver selected!</option>
+                    <option value={null}>No driver selected!</option>
                     {drivers.map(driver =>
-                        <option key={driver.id} value={driver.user_id}>{driver.name}</option>
+                        <option key={driver.id} value={driver.id}>{driver.name}</option>
                     )}
                 </select>
             </div>

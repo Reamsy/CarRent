@@ -58,10 +58,10 @@ export function Admin() {
         Axios.delete(`http://localhost:3001/rentDelete/${RentId}`)
             .then((response) => {
                 if (response) {
-                    alert("Sikeres Törlés")
+                    alert("Deleted!")
                     window.location.reload(false)
                 } else {
-                    alert("törlési hiba")
+                    alert("Delete Error")
                 }
             }).catch(console.log)
     }
@@ -71,10 +71,10 @@ export function Admin() {
         Axios.delete(`http://localhost:3001/vehicleDelete/${CarId}`)
             .then((response) => {
                 if (response) {
-                    alert("Sikeres törlés")
+                    alert("Deleted!")
                     window.location.reload(false)
                 } else {
-                    alert("törlési hiba")
+                    alert("Delete Error")
                 }
             }).catch(console.log);
     }
@@ -84,11 +84,11 @@ export function Admin() {
         Axios.delete(`http://localhost:3001/driverDelete/${DriverId}`)
             .then((response) => {
                 if (response) {
-                    alert("Sikeres Törlés")
+                    alert("Deleted!")
                     window.location.reload(false)
                 }
                 else {
-                    alert("törlési hiba")
+                    alert("Delete Error")
                 }
             }).catch(console.log);
     }
@@ -133,6 +133,7 @@ export function Admin() {
                 <div id='adminContainerText-p'>Start of rent</div>
                 <div id='adminContainerText-p'>End of rent</div>
                 <div id='adminContainerText-p'>Car</div>
+                <div id='adminContainerText-p'>Model</div>
                 <div id='adminContainerText-p'>Driver</div>
             </div>
 
@@ -143,8 +144,9 @@ export function Admin() {
                         <p id="adminContainer-p">{rent.id}</p>
                         <p id="adminContainer-p">{new Date(rent.start_date).toLocaleDateString()}</p>
                         <p id="adminContainer-p">{new Date(rent.end_date).toLocaleDateString()}</p>
-                        <p id="adminContainer-p">{rent.car_id}</p>
-                        <p id="adminContainer-p">{rent.driver_id || "----"}</p>
+                        <p id="adminContainer-p">{rent.brand}</p>
+                        <p id="adminContainer-p">{rent.model}</p>
+                        <p id="adminContainer-p">{rent.name || "----"}</p>
                         <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
                     </div>
                 </div>

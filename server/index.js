@@ -163,7 +163,6 @@ app.get('/rentDrivers', async (req, res) => {
     });
 });
 
-//LE KELL MÉG KEZELNI AZ EGYEZÉSEKET!!!!!!!!!!!!!!!!!!!!!!!
 app.post('/Rent', (req, res) => {
 
     //frontendről érkező adat
@@ -279,7 +278,7 @@ app.put('/save/:id', async (req, res) => {
 
 //Admin rents request
 app.get('/AdminRents', (req, res) => {
-    db.query("SELECT * FROM rent", (err, result) => {
+    db.query("SELECT *, rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id", (err, result) => {
         if (result) {
             res.send(result);
         }

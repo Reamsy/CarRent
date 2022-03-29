@@ -491,4 +491,12 @@ HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen ért
       rent.js-nél ha rendelünk és a kocsi "no car selected" akkor is felveszi db-be
       képek a DB-be
       TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)
+
+2022.03.29. {10:30 - 12:00} (Szalanics Szabolcs):
+    -Rent date egyezések lekezelése, ha a kezdő dátum > mint a vegzés dátuma, ha a kezdő dátum < mint a mai dátum(KÉSZ)
+    -rent.js-nél ha rendelünk és a kocsi "no car selected" akkor is felveszi db-be
+HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen értékelni(HIBA)    
+      képek a DB-be
+      TESZTELÉS
       DOKUMENTÁCIÓ (fejlesztői, felhasználói)         

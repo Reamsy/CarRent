@@ -28,11 +28,7 @@ export function RateUs() {
     useEffect(() => {
         axios.get(`http://localhost:3001/getCarsForRate/${user.id}`)
             .then((response) => {
-                if (response.data.driver_id === 0) {
-                    setDisable(true);
-                    sendRating(response.data)
-                }
-                else if (response) {
+                if (response) {
                     console.log(response.data);
                     setCarsRate(response.data);
                 }
@@ -60,6 +56,10 @@ export function RateUs() {
         })
     }
 
+    const handleSubmit = (e) => { 
+        console.log(e);
+    }
+
 
 
 
@@ -72,48 +72,52 @@ export function RateUs() {
 
         {ProductsRate.map(rateable =>
             <div key={rateable.id}>
-                <section id='ratrSection'>
-                    {/*Cards for the rate us*/}
-                    {/*vehicle1*/}
-                    <div className='rateDates'>
-                        <p>Start Date: {new Date(rateable.start_date).toLocaleDateString()}</p>
-                        <p>End Date: {new Date(rateable.end_date).toLocaleDateString()}</p>
-                    </div>
-                    <div className="container">
-                        <div className="row">
-                            <div className=" justify-content-center">
-                                <div className="card" id="car">
-                                    {/*IMAGE*/}<img className="img" src={carIMG} alt="car" />
-                                    <div className="container">
-                                        {/*ezeket adatbázisból kellene feltölteni*/}
-                                        <h4><b>Car: {rateable.car_id}</b></h4>
-                                        <p>Rate the Car</p>
-                                        <p><input disable={disable} id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
+                <form onSubmit={e => handleSubmit(e)}>
+                    <section id='ratrSection'>
+                        {/*Cards for the rate us*/}
+                        {/*vehicle1*/}
+                        <div className='rateDates'>
+                            <p>Start Date: {new Date(rateable.start_date).toLocaleDateString()}</p>
+                            <p>End Date: {new Date(rateable.end_date).toLocaleDateString()}</p>
+                        </div>
+                        <div className="container">
+                            <div className="row">
+                                <div className=" justify-content-center">
+                                    <div className="card" id="car">
+                                        {/*IMAGE*/}<img className="img" src={carIMG} alt="car" />
+                                        <div className="container">
+                                            {/*ezeket adatbázisból kellene feltölteni*/}
+                                            <h4><b>Car: {rateable.car_id}</b></h4>
+                                            <p>Rate the Car</p>
+                                            <p><input disable={disable} id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/*rate button*/}
-                            <p id='rate-p'><button id='rateBTN' onClick={() => { sendRating(rateable.car_id, rateable.driver_id) }}>Send</button></p>
+                                {/*rate button*/}
+                                <p id='rate-p'><button id='rateBTN' onClick={() => { sendRating(rateable.car_id, rateable.driver_id) }}>Send</button></p>
 
-                            {/*driver1*/}
-                            <div className=" justify-content-center">
-                                <div className="card" id="people">
-                                    <img className="img" src={driverIMG} alt="Avatar" />
-                                    <div className="container">
-                                        {/*ezeket adatbázisból kellene feltölteni*/}
-                                        <h4><b>Driver: {rateable.driver_id || "----"}</b></h4>
-                                        <p>Rate the Driver</p>
-                                        <p><input defaultChecked={rateable.driver_id} id='rateInput' type='range'
-                                            onChange={(e) => { setDriverRating(e.target.value) }}></input></p>
+                                {/*driver1*/}
+                                {rateable.driver_id &&
+                                    <div className=" justify-content-center">
+                                        <div className="card" id="people">
+                                            <img className="img" src={driverIMG} alt="Avatar" />
+                                            <div className="container">
+                                                {/*ezeket adatbázisból kellene feltölteni*/}
+                                                <h4><b>Driver: {rateable.driver_id || "----"}</b></h4>
+                                                <p>Rate the Driver</p>
+                                                <p><input id='rateInput' type='range'
+                                                    onChange={(e) => { setDriverRating(e.target.value) }}></input></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         </div>
-                    </div>
 
-                    <hr className="rounded" />
-                </section>
+                        <hr className="rounded" />
+                    </section>
+                </form>
             </div>
         )}
 

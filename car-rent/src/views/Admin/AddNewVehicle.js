@@ -35,11 +35,11 @@ export function AddNewCar() {
                 Color
             }).then((result) => {
                 if (result) {
-                    alert("Jármű hozzáava");
+                    alert("Succes");
                     navigate('/admin')
                 }
                 else {
-                    alert("Hozzáadás sikertelen");
+                    alert("ADD Failed");
                 }
             }).catch(console.error);
         }
