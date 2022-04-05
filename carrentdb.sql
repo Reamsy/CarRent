@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 24. 23:07
+-- Létrehozás ideje: 2022. Ápr 05. 08:13
 -- Kiszolgáló verziója: 10.4.22-MariaDB
 -- PHP verzió: 7.4.26
 
@@ -41,7 +41,8 @@ CREATE TABLE `costumer` (
 --
 
 INSERT INTO `costumer` (`id`, `user_id`, `Fullname`, `License_category`, `License_expiraton`, `Phone_number`) VALUES
-(49, 139, 'valaki', 'B', '2022-11-11', '+3620483612');
+(49, 139, 'valaki', 'B', '2022-11-11', '+3620483612'),
+(50, 131, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,7 @@ CREATE TABLE `drivers` (
 --
 
 INSERT INTO `drivers` (`id`, `user_id`, `name`, `sex`, `licence_category`, `available`) VALUES
-(20, 141, 'asdasd', 'férfi', 'B', 0);
+(20, 141, 'asdasd', 'férfi', 'B', 1);
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `brand`, `model`, `chassisNumber`, `plateNumber`, `fuel`, `color`, `rentprice`, `year`) VALUES
-(21, 'asd', 'asd', 'qwe123qweqe121', 'qwe-123', 'gas', 'red', 2000, 123);
+(21, 'asd', 'asd', 'qwe123qweqe121', 'qwe-123', 'gas', 'red', 2000, 123),
+(22, 'qweqwewe', 'qweqwewqe', '123qweqwe21321321321', 'qwe-123', 'qwe', 'ewq', 32222, 123213);
 
 -- --------------------------------------------------------
 
@@ -132,8 +134,7 @@ CREATE TABLE `rent` (
 --
 
 INSERT INTO `rent` (`id`, `user_rent_id`, `start_date`, `end_date`, `car_id`, `driver_id`) VALUES
-(72, 139, '2022-03-24', '2022-03-27', 21, 0),
-(73, 139, '2022-03-28', '2022-03-30', 21, 0);
+(97, 139, '2022-03-31', '2022-03-31', 21, NULL);
 
 -- --------------------------------------------------------
 
@@ -206,7 +207,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `costumer`
 --
 ALTER TABLE `costumer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT a táblához `drivers`
@@ -218,7 +219,7 @@ ALTER TABLE `drivers`
 -- AUTO_INCREMENT a táblához `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT a táblához `rate`
@@ -230,7 +231,7 @@ ALTER TABLE `rate`
 -- AUTO_INCREMENT a táblához `rent`
 --
 ALTER TABLE `rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT a táblához `users`
