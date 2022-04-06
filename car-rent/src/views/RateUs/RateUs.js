@@ -56,7 +56,7 @@ export function RateUs() {
         })
     }
 
-    const handleSubmit = (e) => { 
+    const handleSubmit = (e) => {
         console.log(e);
     }
 
@@ -87,15 +87,12 @@ export function RateUs() {
                                         {/*IMAGE*/}<img className="img" src={carIMG} alt="car" />
                                         <div className="container">
                                             {/*ezeket adatbázisból kellene feltölteni*/}
-                                            <h4><b>Car: {rateable.car_id}</b></h4>
+                                            <h4><b>Car: {rateable.brand}</b></h4>
                                             <p>Rate the Car</p>
                                             <p><input disable={disable} id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
                                         </div>
                                     </div>
                                 </div>
-
-                                {/*rate button*/}
-                                <p id='rate-p'><button id='rateBTN' onClick={() => { sendRating(rateable.car_id, rateable.driver_id) }}>Send</button></p>
 
                                 {/*driver1*/}
                                 {rateable.driver_id &&
@@ -104,7 +101,7 @@ export function RateUs() {
                                             <img className="img" src={driverIMG} alt="Avatar" />
                                             <div className="container">
                                                 {/*ezeket adatbázisból kellene feltölteni*/}
-                                                <h4><b>Driver: {rateable.driver_id || "----"}</b></h4>
+                                                <h4><b>Driver: {rateable.name || "----"}</b></h4>
                                                 <p>Rate the Driver</p>
                                                 <p><input id='rateInput' type='range'
                                                     onChange={(e) => { setDriverRating(e.target.value) }}></input></p>
@@ -113,6 +110,11 @@ export function RateUs() {
                                     </div>
                                 }
                             </div>
+                        </div>
+
+                        <div>
+                            {/*rate button*/}
+                            <p id='rate-p'><button id='rateBTN' onClick={() => { sendRating(rateable.car_id, rateable.driver_id) }}>Send</button></p>
                         </div>
 
                         <hr className="rounded" />

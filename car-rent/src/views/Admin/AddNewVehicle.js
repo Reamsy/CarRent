@@ -16,6 +16,13 @@ export function AddNewCar() {
     const [Fule, setFule] = useState("");
     const [PlateNumber, setPlateNumber] = useState("");
     const [Color, setColor] = useState("");
+    const [Image, setImage] = useState("");
+
+
+    const handleImageUpload = (e) => {
+        setImage(e.target.files[0])
+        console.log(e.target.files[0].name)
+    }
 
     const addCar = () => {
         let hiba = false;
@@ -47,6 +54,7 @@ export function AddNewCar() {
             alert("Fill all the lines!")
         }
     }
+
     return (<>
         <div className='addWelcomeMessage'>
             <h1 id='add-h1'>Add New Cars</h1>
@@ -66,6 +74,9 @@ export function AddNewCar() {
         <div className='addCarInput'>
             <input className='input' type="text" onChange={(e) => { setPlateNumber(e.target.value) }} placeholder='Enter the Plate number' />
             <input className='input' type="text" onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
+        </div>
+        <div className='addCarInput' >
+            <input type="file" placeholder='Upload an Image!' onChange={handleImageUpload} />
         </div>
 
         <div className='RentButton'>

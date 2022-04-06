@@ -417,7 +417,7 @@ app.get('/getDriverRents/:id', (req, res) => {
 })
 
 app.get('/getCarsForRate/:id', (req, res) => {
-    db.query(`SELECT * FROM rent WHERE user_rent_id = ${req.params.id}`,
+    db.query(`SELECT *, rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id WHERE user_rent_id = ${req.params.id}`,
         (err, result) => {
             if (err) throw err;
             if (result) {

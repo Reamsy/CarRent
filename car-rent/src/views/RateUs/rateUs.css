@@ -74,12 +74,10 @@
 }
 
 #car{
-  margin-left: 5%;
   float: left;
 }
 
 #people{
-  margin-right: 5%;
   float: right;
 }
 #rateInput{
@@ -96,7 +94,6 @@
   }
 
   #rateBTN{
-    margin-top: 450%;
     font-size: 20px;
     display: inline-block;
     text-decoration: none;

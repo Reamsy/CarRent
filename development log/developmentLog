@@ -495,7 +495,7 @@ HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen ért
 
 2022.03.29. {10:30 - 12:00} (Szalanics Szabolcs):
     -Rent date egyezések lekezelése, ha a kezdő dátum > mint a vegzés dátuma, ha a kezdő dátum < mint a mai dátum(KÉSZ)
-    -rent.js-nél ha rendelünk és a kocsi "no car selected" akkor is felveszi db-be
+    -rent.js-nél ha rendelünk és a kocsi "no car selected" akkor is felveszi db-be(KIJAVÍTVA)
 HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen értékelni(HIBA)    
       képek a DB-be
       TESZTELÉS
@@ -505,5 +505,12 @@ HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen ért
     -Multer modul használata
 HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen értékelni(HIBA)    
       képek a DB-be
+      TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)
+
+2022.04.06. {14:35 - 16:00} (Szalanics Szabolcs):
+    -rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen értékelni(KIJAVÍTVA + reszponzivitási hiba javítva)
+    -rateUs.js-nél csak az id jelenik meg a sofőr neve nem(KIJAVÍTVA)
+HIBA: képek DB-be
       TESZTELÉS
       DOKUMENTÁCIÓ (fejlesztői, felhasználói)

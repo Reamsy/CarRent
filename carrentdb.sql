@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Ápr 05. 08:13
+-- Létrehozás ideje: 2022. Ápr 06. 16:54
 -- Kiszolgáló verziója: 10.4.22-MariaDB
 -- PHP verzió: 7.4.26
 
@@ -81,16 +81,17 @@ CREATE TABLE `products` (
   `fuel` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `color` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `rentprice` int(255) NOT NULL,
-  `year` int(255) NOT NULL
+  `year` int(255) NOT NULL,
+  `image` longtext COLLATE utf8mb4_hungarian_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `products`
 --
 
-INSERT INTO `products` (`id`, `brand`, `model`, `chassisNumber`, `plateNumber`, `fuel`, `color`, `rentprice`, `year`) VALUES
-(21, 'asd', 'asd', 'qwe123qweqe121', 'qwe-123', 'gas', 'red', 2000, 123),
-(22, 'qweqwewe', 'qweqwewqe', '123qweqwe21321321321', 'qwe-123', 'qwe', 'ewq', 32222, 123213);
+INSERT INTO `products` (`id`, `brand`, `model`, `chassisNumber`, `plateNumber`, `fuel`, `color`, `rentprice`, `year`, `image`) VALUES
+(21, 'asd', 'asd', 'qwe123qweqe121', 'qwe-123', 'gas', 'red', 2000, 123, ''),
+(22, 'qweqwewe', 'qweqwewqe', '123qweqwe21321321321', 'qwe-123', 'qwe', 'ewq', 32222, 123213, '');
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,8 @@ CREATE TABLE `rent` (
 --
 
 INSERT INTO `rent` (`id`, `user_rent_id`, `start_date`, `end_date`, `car_id`, `driver_id`) VALUES
-(97, 139, '2022-03-31', '2022-03-31', 21, NULL);
+(97, 139, '2022-03-31', '2022-03-31', 21, NULL),
+(98, 139, '2022-04-06', '2022-04-07', 21, 20);
 
 -- --------------------------------------------------------
 
@@ -231,7 +233,7 @@ ALTER TABLE `rate`
 -- AUTO_INCREMENT a táblához `rent`
 --
 ALTER TABLE `rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT a táblához `users`
