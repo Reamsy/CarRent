@@ -358,9 +358,9 @@ app.post('/checkHoliday/:id', (req, res) => {
 
 //add new car
 app.post('/addNewCar', (req, res) => {
-    const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color } = req.body;
-    db.query("INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color) VALUES (?,?,?,?,?,?,?,?)",
-        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color],
+    const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color, img } = req.body;
+    db.query("INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color, image) VALUES (?,?,?,?,?,?,?,?,?)",
+        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color, img],
         (err, result) => {
             if (err) throw err;
             if (result) {

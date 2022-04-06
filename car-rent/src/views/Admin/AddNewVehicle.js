@@ -16,15 +16,12 @@ export function AddNewCar() {
     const [Fule, setFule] = useState("");
     const [PlateNumber, setPlateNumber] = useState("");
     const [Color, setColor] = useState("");
-    const [Image, setImage] = useState("");
-
-
-    const handleImageUpload = (e) => {
-        setImage(e.target.files[0])
-        console.log(e.target.files[0].name)
-    }
+    const [Image, setImage] = useState(null);
 
     const addCar = () => {
+
+        const img = URL.createObjectURL(Image);
+
         let hiba = false;
         for (const item of document.getElementsByClassName("input")) {
             if (item.value.trim() === "")
@@ -39,7 +36,8 @@ export function AddNewCar() {
                 Price,
                 Fule,
                 PlateNumber,
-                Color
+                Color,
+                img
             }).then((result) => {
                 if (result) {
                     alert("Succes");
@@ -54,6 +52,8 @@ export function AddNewCar() {
             alert("Fill all the lines!")
         }
     }
+
+
 
     return (<>
         <div className='addWelcomeMessage'>
@@ -76,7 +76,7 @@ export function AddNewCar() {
             <input className='input' type="text" onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
         </div>
         <div className='addCarInput' >
-            <input type="file" placeholder='Upload an Image!' onChange={handleImageUpload} />
+            <input type="file" placeholder='Upload an Image!' onChange={(e) => { setImage(e.target.files[0]) }} />
         </div>
 
         <div className='RentButton'>
