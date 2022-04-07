@@ -4,10 +4,23 @@ const cors = require('cors');
 const app = express();
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
+const multer = require('multer');
 
-//autómatikusan átküldi a frontend adatait
+//helps to get frontend data
 app.use(express.json());
 app.use(cors());
+
+//storage for the image upload from frontend(AddNewVehicle.js)
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'images/')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.filename)
+    },
+});
+
+const upload = multer({ storage: storage });
 
 //Creatind DB connection
 const db = mysql.createConnection({
@@ -357,10 +370,10 @@ app.post('/checkHoliday/:id', (req, res) => {
 })
 
 //add new car
-app.post('/addNewCar', (req, res) => {
-    const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color, img } = req.body;
-    db.query("INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color, image) VALUES (?,?,?,?,?,?,?,?,?)",
-        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color, img],
+app.post('/addNewCar', upload.single('file'), (req, res) => {
+    const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color, formData } = req.body;
+    db.query(`INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color, img) VALUES (?,?,?,?,?,?,?,?,?)`,
+        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color, formData],
         (err, result) => {
             if (err) throw err;
             if (result) {
@@ -432,11 +445,11 @@ app.post('/sendRating', (req, res) => {
         [userId, carId, carRating, driverId, driverRating],
         (err, result) => {
             if (err) throw err;
-            if(result){
+            if (result) {
                 res.send(result);
             }
-            else{
-                res.send({message: "Rating went fail!"})
+            else {
+                res.send({ message: "Rating went fail!" })
             }
         })
 })

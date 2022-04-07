@@ -76,7 +76,7 @@ export function Profile() {
         <Layout />
         {/*Avatar Picture */}
         <div className="container-baseProfile">
-            <img src={driverIMG} alt="img_avatar" id="profileImageProfile" />
+            <img id='profile-img' src={driverIMG} alt="img_avatar" />
         </div>
 
         {/*Info Section*/}

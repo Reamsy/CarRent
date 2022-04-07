@@ -16,11 +16,14 @@ export function AddNewCar() {
     const [Fule, setFule] = useState("");
     const [PlateNumber, setPlateNumber] = useState("");
     const [Color, setColor] = useState("");
-    const [Image, setImage] = useState(null);
+    const [image, setImage] = useState({ preview: '', data: '' });
 
-    const addCar = () => {
+    const addCar = (e) => {
 
-        const img = URL.createObjectURL(Image);
+        //formData dor the image
+        e.preventDefault()
+        let formData = new FormData()
+        formData.append('file', image.data);
 
         let hiba = false;
         for (const item of document.getElementsByClassName("input")) {
@@ -37,7 +40,7 @@ export function AddNewCar() {
                 Fule,
                 PlateNumber,
                 Color,
-                img
+                formData
             }).then((result) => {
                 if (result) {
                     alert("Succes");
@@ -53,6 +56,14 @@ export function AddNewCar() {
         }
     }
 
+    //image upload handler
+    const handleFileChange = (e) => {
+        const img = {
+            preview: URL.createObjectURL(e.target.files[0]),
+            data: e.target.files[0],
+        }
+        setImage(img)
+    }
 
 
     return (<>
@@ -75,10 +86,12 @@ export function AddNewCar() {
             <input className='input' type="text" onChange={(e) => { setPlateNumber(e.target.value) }} placeholder='Enter the Plate number' />
             <input className='input' type="text" onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
         </div>
+        <form className='addCarInput' >
+            <input type="file" name='file' onChange={handleFileChange} />
+        </form>
         <div className='addCarInput' >
-            <input type="file" placeholder='Upload an Image!' onChange={(e) => { setImage(e.target.files[0]) }} />
+            {image.preview && <img id='addCar-img' src={image.preview} />}
         </div>
-
         <div className='RentButton'>
             <button id='RentButton' onClick={addCar}>Add</button>
         </div>

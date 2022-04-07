@@ -514,3 +514,9 @@ HIBA: rateus.js-ben ha egy egy rendeléshez nem tartozik sofőr ne lehessen ért
 HIBA: képek DB-be
       TESZTELÉS
       DOKUMENTÁCIÓ (fejlesztői, felhasználói)
+
+2022.04.06. {14:35 - 16:00} (Szalanics Szabolcs):
+    -képek DB-be(HIBA)
+HIBA: képek feltöltésénél undefined az index.js request
+      TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)

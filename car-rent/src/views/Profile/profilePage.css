@@ -24,7 +24,7 @@ body{
  }
 
 /*Image settings*/
- img{
+ #profile-img{
     width: 10%;
 
     border-radius: 50%;
