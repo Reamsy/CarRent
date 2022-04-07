@@ -18,18 +18,8 @@ export function AddNewCar() {
     const [Color, setColor] = useState("");
     const [image, setImage] = useState({ preview: '', data: '' });
 
-    const addCar = (e) => {
+    const addCar = () => {
 
-        //formData dor the image
-        e.preventDefault()
-        let formData = new FormData()
-        formData.append('file', image.data);
-
-        let hiba = false;
-        for (const item of document.getElementsByClassName("input")) {
-            if (item.value.trim() === "")
-                hiba = true;
-        }
         if (!hiba) {
             axios.post("http://localhost:3001/addNewCar", {
                 Brand,
