@@ -10,6 +10,15 @@ const multer = require('multer');
 app.use(express.json());
 app.use(cors());
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads')
+    },
+    filename: function (req, res, cb) {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+})
+
 //Creatind DB connection
 const db = mysql.createConnection({
     user: "root",
@@ -359,9 +368,11 @@ app.post('/checkHoliday/:id', (req, res) => {
 
 //add new car
 app.post('/addNewCar', (req, res) => {
-    const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color} = req.body;
-    db.query(`INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color) VALUES (?,?,?,?,?,?,?,?)`,
-        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color],
+    let upload = multer({ storage: storage }).single('image');
+    const image = req.file.filename;
+    const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color } = req.body;
+    db.query(`INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color, image) VALUES (?,?,?,?,?,?,?,?,?)`,
+        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color, image],
         (err, result) => {
             if (err) throw err;
             if (result) {
