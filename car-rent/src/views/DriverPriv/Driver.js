@@ -20,6 +20,7 @@ export function Driver() {
         axios.get(`http://localhost:3001/getDriverRents/${user.id}`)
             .then((response) => {
                 if (response) {
+                    console.log(response.data);
                     setJobs(response.data);
                 }
                 else {
@@ -53,7 +54,7 @@ export function Driver() {
                 <div className="jobsContainer" key={rent.id}>
                     <div id='jobsContainer-p'>{new Date(rent.start_date).toLocaleDateString()}</div>
                     <div id='jobsContainer-p'>{new Date(rent.end_date).toLocaleDateString()}</div>
-                    <div id='jobsContainer-p'>{rent.car_id}</div>
+                    <div id='jobsContainer-p'>{rent.brand.toString().toUpperCase()}</div>
                 </div>
             )}
         </div>

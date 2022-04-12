@@ -63,6 +63,7 @@ body {
 }
 
 .containerAdmin {
+    margin-left: 1%;
     display: flex;
     justify-content: center;
     margin-bottom: 1%;
@@ -75,13 +76,14 @@ body {
     border-top: 1px solid var(--clr-border);
     border-right: 1px solid var(--clr-border);
     border-left: 1px solid var(--clr-border);
-    width: 7%;
+    width: 7.2%;
     text-align: center;
     background-color: #bdbdbd;
 }
 
 /*Delete button settings*/
 #deleteRent {
+    margin-top: 24%;
     float: right;
     text-decoration: none;
     color: var(--clr-neon);

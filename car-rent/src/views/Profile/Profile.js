@@ -57,6 +57,7 @@ export function Profile() {
         }
     }
 
+    //request for personal rents
     useEffect(() => {
         axios.get(`http://localhost:3001/getRents/${user.id}`)
             .then((response) => {
@@ -70,6 +71,19 @@ export function Profile() {
                 }
             })
     }, [])
+
+    //rend delete
+    const DeleteRents = (RentId) => {
+        axios.delete(`http://localhost:3001/rentDelete/${RentId}`)
+            .then((response) => {
+                if (response) {
+                    alert("Deleted!")
+                    window.location.reload(false)
+                } else {
+                    alert("Delete Error")
+                }
+            }).catch(console.log)
+    }
 
 
     return (<>
@@ -128,19 +142,20 @@ export function Profile() {
         {/*List of rents*/}
         <div><h3 id='profileRentsTittle'>Your Rents</h3></div>
         <div className="profileRentTitle">
-            <div id='adminContainerText-p'>Start of rent</div>
-            <div id='adminContainerText-p'>End of rent</div>
-            <div id='adminContainerText-p'>Car</div>
-            <div id='adminContainerText-p'>Driver</div>
+            <div id='UserContainerText-p'>Start of rent</div>
+            <div id='UserContainerText-p'>End of rent</div>
+            <div id='UserContainerText-p'>Car</div>
+            <div id='UserContainerText-p'>Driver</div>
         </div>
 
         {personalRents.map(rents =>
             <div key={rents.id}>
-                <div className="containerAdmin">
-                    <p id="adminContainer-p">{new Date(rents.start_date).toLocaleDateString()}</p>
-                    <p id="adminContainer-p">{new Date(rents.end_date).toLocaleDateString()}</p>
-                    <p id="adminContainer-p">{rents.car_id}</p>
-                    <p id="adminContainer-p">{rents.driver_id || "----"}</p>
+                <div className="containerUser">
+                    <p id="UserContainer-p">{new Date(rents.start_date).toLocaleDateString()}</p>
+                    <p id="UserContainer-p">{new Date(rents.end_date).toLocaleDateString()}</p>
+                    <p id="UserContainer-p">{rents.brand}</p>
+                    <p id="UserContainer-p">{rents.name || "----"}</p>
+                    <p><button id="deleteRents" onClick={() => { DeleteRents(rents.id) }}>Delete</button></p>
                 </div>
             </div>
         )}

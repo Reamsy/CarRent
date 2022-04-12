@@ -16,21 +16,15 @@ export function AddNewCar() {
     const [Fule, setFule] = useState("");
     const [PlateNumber, setPlateNumber] = useState("");
     const [Color, setColor] = useState("");
-    const [image, setImage] = useState({ file: [], });
 
     const addCar = () => {
-
-        const formData = new FormData();
-        formData.append('image', image.file);
-
         let hiba = false;
         for (const item of document.getElementsByClassName("input")) {
             if (item.value.trim() === "")
                 hiba = true;
         }
         if (!hiba) {
-            axios.post("http://localhost:3001/addNewCar", formData, {
-                headers: { "Content-Type": "multipart/form-data" },
+            axios.post("http://localhost:3001/addNewCar", {
                 Brand,
                 Model,
                 Year,
@@ -41,11 +35,11 @@ export function AddNewCar() {
                 Color
             }).then((result) => {
                 if (result) {
-                    alert("Succes");
-                    navigate('/admin')
+                    alert("Vehicle Added");
+                    navigate('/admin');
                 }
                 else {
-                    alert("ADD Failed");
+                    alert("Add failed");
                 }
             }).catch(console.error);
         }
@@ -53,51 +47,29 @@ export function AddNewCar() {
             alert("Fill all the lines!")
         }
     }
-
-    //image upload handler
-    const handleFileChange = (e) => {
-        const img = {
-            preview: URL.createObjectURL(e.target.files[0]),
-            data: e.target.files[0],
-        }
-        setImage(img)
-    }
-
-
     return (<>
-        <form>
-            <div className='addWelcomeMessage'>
-                <h1 id='add-h1'>Add New Cars</h1>
-            </div>
-            <div className='addCarInput'>
-                <input className='input' type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder='Enter the Brand' />
-                <input className='input' type="text" onChange={(e) => { setModel(e.target.value) }} placeholder='Enter the Model' />
-            </div>
-            <div className='addCarInput'>
-                <input className='input' type="number" onChange={(e) => { setYear(e.target.value) }} placeholder='Enter the Year' />
-                <input className='input' type="text" onChange={(e) => { setChassisNumber(e.target.value) }} placeholder='Enter the ChassisNumber' />
-            </div>
-            <div className='addCarInput'>
-                <input className='input' type="number" onChange={(e) => { setPrice(e.target.value) }} placeholder='Enter the Price/day' />
-                <input className='input' type="text" onChange={(e) => { setFule(e.target.value) }} placeholder='Enter the Fuel type' />
-            </div>
-            <div className='addCarInput'>
-                <input className='input' type="text" onChange={(e) => { setPlateNumber(e.target.value) }} placeholder='Enter the Plate number' />
-                <input className='input' type="text" onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
-            </div>
+        <div className='addWelcomeMessage'>
+            <h1>Add New Cars</h1>
+        </div>
+        <div className='addCarInput'>
+            <input className='input' type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder='Enter the Brand' />
+            <input className='input' type="text" onChange={(e) => { setModel(e.target.value) }} placeholder='Enter the Model' />
+        </div>
+        <div className='addCarInput'>
+            <input className='input' type="number" onChange={(e) => { setYear(e.target.value) }} placeholder='Enter the Year' />
+            <input className='input' type="text" onChange={(e) => { setChassisNumber(e.target.value) }} placeholder='Enter the ChassisNumber' />
+        </div>
+        <div className='addCarInput'>
+            <input className='input' type="number" onChange={(e) => { setPrice(e.target.value) }} placeholder='Enter the Price/day' />
+            <input className='input' type="text" onChange={(e) => { setFule(e.target.value) }} placeholder='Enter the Fuel type' />
+        </div>
+        <div className='addCarInput'>
+            <input className='input' type="text" onChange={(e) => { setPlateNumber(e.target.value) }} placeholder='Enter the Plate number' />
+            <input className='input' type="text" onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
+        </div>
 
-
-            <div className='addCarInput' >
-                <input type="file" name='file' onChange={handleFileChange} />
-            </div>
-            <div className='addCarInput' >
-                {image.preview && <img id='addCar-img' src={image.preview} />}
-            </div>
-
-
-            <div className='RentButton'>
-                <button id='RentButton' onSubmit={addCar}>Add</button>
-            </div>
-        </form>
+        <div className='RentButton'>
+            <button id='RentButton' onClick={addCar}>Add</button>
+        </div>
     </>)
 }

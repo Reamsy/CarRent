@@ -144,9 +144,9 @@ export function Admin() {
                         <p id="adminContainer-p">{rent.id}</p>
                         <p id="adminContainer-p">{new Date(rent.start_date).toLocaleDateString()}</p>
                         <p id="adminContainer-p">{new Date(rent.end_date).toLocaleDateString()}</p>
-                        <p id="adminContainer-p">{rent.brand}</p>
-                        <p id="adminContainer-p">{rent.model}</p>
-                        <p id="adminContainer-p">{rent.name || "----"}</p>
+                        <p id="adminContainer-p">{rent.brand.toString().toUpperCase()}</p>
+                        <p id="adminContainer-p">{rent.model.toString().toUpperCase()}</p>
+                        <p id="adminContainer-p">{rent.name.toString().toUpperCase() || "----"}</p>
                         <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
                     </div>
                 </div>
@@ -170,9 +170,9 @@ export function Admin() {
                 <div key={vehicle.id}>
                     <div className="containerAdmin">
                         <p id="adminContainer-p">{vehicle.id}</p>
-                        <p id="adminContainer-p">{vehicle.brand}</p>
-                        <p id="adminContainer-p">{vehicle.model}</p>
-                        <p id="adminContainer-p">{vehicle.plateNumber}</p>
+                        <p id="adminContainer-p">{vehicle.brand.toString().toUpperCase()}</p>
+                        <p id="adminContainer-p">{vehicle.model.toString().toUpperCase()}</p>
+                        <p id="adminContainer-p">{vehicle.plateNumber.toString().toUpperCase()}</p>
                         <p id="adminContainer-p">{vehicle.rentprice}</p>
                         <p id="adminContainer-p">{vehicle.year}</p>
                         <p><button id="deleteRent" onClick={() => { DeleteVehicles(vehicle.id) }}>Delete</button></p>
@@ -202,9 +202,9 @@ export function Admin() {
                 <div key={driver.id}>
                     <div className="containerAdmin">
                         <p id="adminContainer-p">{driver.user_id}</p>
-                        <p id="adminContainer-p">{driver.name}</p>
-                        <p id="adminContainer-p">{driver.sex}</p>
-                        <p id="adminContainer-p">{driver.licence_category}</p>
+                        <p id="adminContainer-p">{driver.name.toString().toUpperCase()}</p>
+                        <p id="adminContainer-p">{driver.sex.toString().toUpperCase()}</p>
+                        <p id="adminContainer-p">{driver.licence_category.toString().toUpperCase()}</p>
                         <p id="adminContainer-p"><input id="adminContainer-p-input" type="checkbox" defaultChecked={driver.available} value={driver.available}
                             onChange={e => { e.target.value = e.target.checked; checkHoliday(driver.id, e.target.value) }} /></p>
                         <p><button id="deleteRent" onClick={() => { DeleteDrivers(driver.id) }}>Delete</button></p>

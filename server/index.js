@@ -4,20 +4,10 @@ const cors = require('cors');
 const app = express();
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
-const multer = require('multer');
 
 //helps to get frontend data
 app.use(express.json());
 app.use(cors());
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads')
-    },
-    filename: function (req, res, cb) {
-        cb(null, Date.now() + '-' + file.originalname)
-    }
-})
 
 //Creatind DB connection
 const db = mysql.createConnection({
@@ -217,7 +207,7 @@ app.get('/profile/:id', (req, res) => {
 
 //rent-ek lekérése a profilnál
 app.get('/getRents/:id', (req, res) => {
-    db.query("SELECT * FROM rent WHERE user_rent_id = ?", req.params.id, (err, result) => {
+    db.query("SELECT *, rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id WHERE user_rent_id = ?", req.params.id, (err, result) => {
         if (err) throw err;
         res.send(result);
     })
@@ -368,11 +358,9 @@ app.post('/checkHoliday/:id', (req, res) => {
 
 //add new car
 app.post('/addNewCar', (req, res) => {
-    let upload = multer({ storage: storage }).single('image');
-    const image = req.file.filename;
     const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color } = req.body;
-    db.query(`INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color, image) VALUES (?,?,?,?,?,?,?,?,?)`,
-        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color, image],
+    db.query(`INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color) VALUES (?,?,?,?,?,?,?,?)`,
+        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color],
         (err, result) => {
             if (err) throw err;
             if (result) {
@@ -416,7 +404,7 @@ app.post('/driverLogin', async (req, res) => {
 })
 
 app.get('/getDriverRents/:id', (req, res) => {
-    db.query(`SELECT * FROM rent WHERE driver_id = ${req.params.id}`,
+    db.query("SELECT * , rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id",
         (err, result) => {
             if (result) {
                 console.log(result)

@@ -526,3 +526,9 @@ HIBA: képek feltöltésénél undefined az index.js request
 HIBA: képek feltöltésénél visszadob az AddNewVehicle.js-re de nem insertál az adatbázisba
       TESZTELÉS
       DOKUMENTÁCIÓ (fejlesztői, felhasználói)
+
+2022.04.12. {10:30 - 11:20} (Szalanics Szabolcs):
+    -to.UpperCase (admi.js, profile.js, driverPriv.js)
+HIBA: képek feltöltésénél visszadob az AddNewVehicle.js-re de nem insertál az adatbázisba
+      TESZTELÉS
+      DOKUMENTÁCIÓ (fejlesztői, felhasználói)
