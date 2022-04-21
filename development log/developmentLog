@@ -538,10 +538,12 @@ HIBA: képek feltöltésénél visszadob az AddNewVehicle.js-re de nem insertál
     -Dokumentációk elkészítése
 HIBA: képek feltöltésénél visszadob az AddNewVehicle.js-re de nem insertál az adatbázisba
       TESZTELÉS
-      DOKUMENTÁCIÓ (fejlesztői, felhasználói)
 
 2022.04.21. {10:00 - 10:15} (Szalanics Szabolcs):
     -Login page Render test(KÉSZ)
 HIBA: képek feltöltésénél visszadob az AddNewVehicle.js-re de nem insertál az adatbázisba
       TESZTELÉS
-      DOKUMENTÁCIÓ (fejlesztői, felhasználói)
+
+2022.04.21. {15:45 - 18:40} (Szalanics Szabolcs):
+    -TESZTELÉS (HIBA)(jest, react-testing-library)
+HIBA: kép feltöltése (nem működik)
