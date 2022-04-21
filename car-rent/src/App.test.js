@@ -1,8 +1,18 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import { createMemoryHistory } from 'history';
+import { AppRoutes } from './views/AppRoutes';
+import { Login } from './views/Login/Login';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('Render Login Component', () => {
+  const history = createMemoryHistory();
+  history.push('/')
+  render(
+    <AppRoutes history={history}>
+      <Login />
+    </AppRoutes>
+  );
+
+  //screenen megkeresni szöveget
+  const loginTest = screen.getByText(/Easiest/);
+  expect(loginTest).toBeInTheDocument();
 });
