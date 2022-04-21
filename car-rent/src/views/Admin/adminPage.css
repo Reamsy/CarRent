@@ -57,13 +57,13 @@ body {
     border-top: 2px solid var(--clr-border);
     border-right: 2px solid var(--clr-border);
     border-left: 2px solid var(--clr-border);
-    width: 7.2%;
+    width: 7.4%;
     text-align: center;
     background-color: #bdbdbd;
 }
 
 .containerAdmin {
-    margin-left: 1%;
+    margin-left: 0.5%;
     display: flex;
     justify-content: center;
     margin-bottom: 1%;
@@ -79,6 +79,10 @@ body {
     width: 7.2%;
     text-align: center;
     background-color: #bdbdbd;
+}
+#adminContainer-p-input{
+    margin-left: 40%;
+    
 }
 
 /*Delete button settings*/

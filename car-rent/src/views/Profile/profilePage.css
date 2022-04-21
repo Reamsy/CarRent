@@ -83,7 +83,7 @@ body{
 }
 
 .containerUser {
-    padding-left: 4%;
+    padding-left: 3.1%;
     display: flex;
     justify-content: center;
     margin-bottom: 1%;
@@ -96,7 +96,7 @@ body{
     border-top: 1px solid var(--clr-border);
     border-right: 1px solid var(--clr-border);
     border-left: 1px solid var(--clr-border);
-    width: 7.4%;
+    width: 7.35%;
     text-align: center;
     background-color: #bdbdbd;
 }
