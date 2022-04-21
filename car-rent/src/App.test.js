@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { AppRoutes } from './views/AppRoutes';
 import { Login } from './views/Login/Login';
+import { login } from './views/Login/Login';
 
 test('Render Login Component', () => {
   const history = createMemoryHistory();
@@ -16,3 +17,6 @@ test('Render Login Component', () => {
   const loginTest = screen.getByText(/Easiest/);
   expect(loginTest).toBeInTheDocument();
 });
+
+
+//AXIOS TEST
