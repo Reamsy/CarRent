@@ -16,8 +16,13 @@ export function AddNewCar() {
     const [Fule, setFule] = useState("");
     const [PlateNumber, setPlateNumber] = useState("");
     const [Color, setColor] = useState("");
+    //const [image, setImage] = useState({ file: [], });
 
     const addCar = () => {
+
+        {/*const formData = new FormData();
+        formData.append('image', image.file);*/}
+        
         let hiba = false;
         for (const item of document.getElementsByClassName("input")) {
             if (item.value.trim() === "")
@@ -68,6 +73,13 @@ export function AddNewCar() {
             <input className='input' type="text" onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
         </div>
 
+        {/*<div className='addCarInput' >
+                <input type="file" name='file' onChange={handleFileChange} />
+            </div>
+            <div className='addCarInput' >
+                {image.preview && <img id='addCar-img' src={image.preview} />}
+        </div>*/}
+        
         <div className='RentButton'>
             <button id='RentButton' onClick={addCar}>Add</button>
         </div>

@@ -151,7 +151,7 @@ export function Admin() {
                         <p id="adminContainer-p">{new Date(rent.end_date).toLocaleDateString()}</p>
                         <p id="adminContainer-p">{rent.brand.toUpperCase()}</p>
                         <p id="adminContainer-p">{rent.model.toUpperCase()}</p>
-                        <p id="adminContainer-p">{rent.name.toUpperCase() || "----"}</p>
+                        <p id="adminContainer-p">{rent.name || "------"}</p>
                         <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
                     </div>
                 </div>

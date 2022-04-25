@@ -555,8 +555,31 @@ HIBA: Aadmin.js ha a driver_id = null akkor hibát dob
       TESZTELÉS (HIBA)(jest, react-testing-library)
 
 2022.04.25. {18:30 - 19:30} (Szalanics Szabolcs):
+    -Postman Backend üzleti logikához tartozó request-ek tesztelése
+HIBA: Aadmin.js ha a driver_id = null akkor hibát dob
+      kép feltöltése (nem működik)
+      TESZTELÉS (HIBA)(jest, react-testing-library)
+
+2022.04.25. {18:30 - 19:30} (Szalanics Szabolcs):
     -PPT elkészítése
 HIBA: Admin.js ha a driver_id = null akkor hibát dob
       Driver private, minden rendelést kilistáz
       kép feltöltése (nem működik)
       TESZTELÉS (HIBA)(jest, react-testing-library)
+
+2022.04.25. {18:30 - 19:30} (Szalanics Szabolcs):
+    -Driver private, minden rendelést kilistáz(KIJAVÍTVA - SQL lekérdezési hiba)
+    -Admin.js ha a driver_id = null akkor hibát dob(DB driver_id(int) helyett (text) szöveget küld fel így a lekérdezésnél Admin.js-nél stringre nem dob hibát)
+    -TESZTELÉS(
+        Üzleti logika tesztelve:
+        Backend - Postman - teszt mellékelve
+        Frontend - teszt megtalálható a Test mappában
+        )
+HIBA: kép feltöltése (nem működik - észrevétel: a formba zavar be valami amire nem tudtunk rájönni, hogy mi)
+      Feature-két felvettük a listára időhiány miatt
+
+
+
+
+
+PROJEKT LEZÁRÁSA VISZGÁRA!

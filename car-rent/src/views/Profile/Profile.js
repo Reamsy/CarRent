@@ -154,7 +154,7 @@ export function Profile() {
                     <p id="UserContainer-p">{new Date(rents.start_date).toLocaleDateString()}</p>
                     <p id="UserContainer-p">{new Date(rents.end_date).toLocaleDateString()}</p>
                     <p id="UserContainer-p">{rents.brand}</p>
-                    <p id="UserContainer-p">{rents.name || "----"}</p>
+                    <p id="UserContainer-p">{rents.name || "------"}</p>
                     <p><button id="deleteRents" onClick={() => { DeleteRents(rents.id) }}>Delete</button></p>
                 </div>
             </div>

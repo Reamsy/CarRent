@@ -21,7 +21,7 @@ export function Rent() {
 
     //Options
     const [selectedCar, setselectedCar] = useState("");
-    const [selectedDriver, setselectedDriver] = useState(null);
+    const [selectedDriver, setselectedDriver] = useState("");
 
     //currentDate & rent_start_date
     const currentDate = new Date(Date.now()).toLocaleDateString()
@@ -33,6 +33,7 @@ export function Rent() {
         let hiba = false;
         let currentDateErr = false;
         let starterDateError = false;
+        let driverHandler = false;
 
         for (const item of document.getElementsByClassName("input")) {
 
@@ -47,8 +48,15 @@ export function Rent() {
             }
             if (startDate > endDate)
                 starterDateError = true;
+
         }
-        if (!hiba && !currentDateErr && !starterDateError) {
+
+        if (selectedDriver === null || selectedDriver === "" || selectedDriver === undefined) {
+            setselectedDriver("Nincs sofőr!")
+            driverHandler = true;
+        }
+
+        if (!hiba && !currentDateErr && !starterDateError && !driverHandler) {
             Axios.post('http://localhost:3001/Rent', {
                 //Kiszervezés ami át fog menni backendre
                 //Ezeket használd: RentStartDate, RentEndDate...

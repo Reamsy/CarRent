@@ -278,7 +278,7 @@ app.put('/save/:id', async (req, res) => {
 
 //Admin rents request
 app.get('/AdminRents', (req, res) => {
-    db.query("SELECT *, rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id", (err, result) => {
+    db.query("SELECT * , rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id", (err, result) => {
         if (result) {
             res.send(result);
         }
@@ -404,10 +404,9 @@ app.post('/driverLogin', async (req, res) => {
 })
 
 app.get('/getDriverRents/:id', (req, res) => {
-    db.query("SELECT * , rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id",
+    db.query(`SELECT * FROM rent INNER JOIN products ON products.id = rent.car_id LEFT JOIN drivers ON drivers.id = rent.driver_id WHERE drivers.user_id = ${req.params.id}`,
         (err, result) => {
             if (result) {
-                console.log(result)
                 res.send(result);
             }
             else {
