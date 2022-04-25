@@ -20,7 +20,8 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     setRents(response.data);
-                } else {
+                }
+                else {
                     setErrorMessage(response.data.message);
                 }
             })
@@ -32,7 +33,8 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     setVehicles(response.data);
-                } else {
+                }
+                else {
                     setErrorMessage(response.data.message);
                 }
             })
@@ -48,7 +50,8 @@ export function Admin() {
             .then((response) => {
                 if (response) {
                     setDrivers(response.data);
-                } else {
+                }
+                else {
                     setErrorMessage(response.data.message);
                 }
             })
@@ -60,7 +63,8 @@ export function Admin() {
                 if (response) {
                     alert("Deleted!")
                     window.location.reload(false)
-                } else {
+                }
+                else {
                     alert("Delete Error")
                 }
             }).catch(console.log)
@@ -73,7 +77,8 @@ export function Admin() {
                 if (response) {
                     alert("Deleted!")
                     window.location.reload(false)
-                } else {
+                }
+                else {
                     alert("Delete Error")
                 }
             }).catch(console.log);
@@ -144,9 +149,9 @@ export function Admin() {
                         <p id="adminContainer-p">{rent.id}</p>
                         <p id="adminContainer-p">{new Date(rent.start_date).toLocaleDateString()}</p>
                         <p id="adminContainer-p">{new Date(rent.end_date).toLocaleDateString()}</p>
-                        <p id="adminContainer-p">{rent.brand.toString().toUpperCase()}</p>
-                        <p id="adminContainer-p">{rent.model.toString().toUpperCase()}</p>
-                        <p id="adminContainer-p">{rent.name.toString().toUpperCase() || "----"}</p>
+                        <p id="adminContainer-p">{rent.brand.toUpperCase()}</p>
+                        <p id="adminContainer-p">{rent.model.toUpperCase()}</p>
+                        <p id="adminContainer-p">{rent.name.toUpperCase() || "----"}</p>
                         <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
                     </div>
                 </div>

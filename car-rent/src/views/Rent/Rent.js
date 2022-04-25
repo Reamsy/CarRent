@@ -29,9 +29,11 @@ export function Rent() {
 
     //rent send
     const Rent = () => {
+
         let hiba = false;
         let currentDateErr = false;
         let starterDateError = false;
+
         for (const item of document.getElementsByClassName("input")) {
 
             if (item.value === null || item.value.trim() === "")
@@ -167,7 +169,6 @@ export function Rent() {
 
             {/*Rent button*/}
             <div className="container_button" >
-                <p id="rent-p">Before you rent, check again!</p>
                 <button type="submit" id="finalRentBTN" onClick={Rent}>Rent</button>
             </div>
         </div>
