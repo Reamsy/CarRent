@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
+import { encode } from 'base-64';
 
 import './add.css';
 
@@ -16,18 +17,20 @@ export function AddNewCar() {
     const [Fule, setFule] = useState("");
     const [PlateNumber, setPlateNumber] = useState("");
     const [Color, setColor] = useState("");
-    //const [image, setImage] = useState({ file: [], });
+    const [image, setImage] = useState("");
+
+
 
     const addCar = () => {
 
-        {/*const formData = new FormData();
-        formData.append('image', image.file);*/}
-        
+
+
         let hiba = false;
         for (const item of document.getElementsByClassName("input")) {
             if (item.value.trim() === "")
                 hiba = true;
         }
+
         if (!hiba) {
             axios.post("http://localhost:3001/addNewCar", {
                 Brand,
@@ -37,7 +40,8 @@ export function AddNewCar() {
                 Price,
                 Fule,
                 PlateNumber,
-                Color
+                Color,
+                image
             }).then((result) => {
                 if (result) {
                     alert("Vehicle Added");
@@ -52,9 +56,22 @@ export function AddNewCar() {
             alert("Fill all the lines!")
         }
     }
+
+
+    //image upload handler
+    const handleFileChange = (e) => {
+        const img = {
+            preview: URL.createObjectURL(e.target.files[0]),
+            data: e.target.files[0],
+        }
+        console.log(e.target.files[0]);
+        setImage(img)
+    }
+
+
     return (<>
         <div className='addWelcomeMessage'>
-            <h1>Add New Cars</h1>
+            <h1 id='add-h1'>Add New Cars</h1>
         </div>
         <div className='addCarInput'>
             <input className='input' type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder='Enter the Brand' />
@@ -73,13 +90,10 @@ export function AddNewCar() {
             <input className='input' type="text" onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
         </div>
 
-        {/*<div className='addCarInput' >
-                <input type="file" name='file' onChange={handleFileChange} />
-            </div>
-            <div className='addCarInput' >
-                {image.preview && <img id='addCar-img' src={image.preview} />}
-        </div>*/}
-        
+        <div className='addCarInput' >
+            <input type="file" name='file' onChange={handleFileChange} />
+        </div>
+
         <div className='RentButton'>
             <button id='RentButton' onClick={addCar}>Add</button>
         </div>

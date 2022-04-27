@@ -29,7 +29,6 @@ export function RateUs() {
         axios.get(`http://localhost:3001/getCarsForRate/${user.id}`)
             .then((response) => {
                 if (response) {
-                    console.log(response.data);
                     setCarsRate(response.data);
                 }
                 else {
@@ -40,20 +39,35 @@ export function RateUs() {
 
 
     const sendRating = (carId, driverId) => {
-        axios.post("http://localhost:3001/sendRating", {
-            userId: user.id,
-            carId: carId,
-            carRating: CarRating,
-            driverId: driverId,
-            driverRating: DriverRating
-        }).then((response) => {
-            if (response) {
-                alert("Thank you for Rating!");
-            }
-            else {
-                alert(response.data.message);
-            }
-        })
+
+        let hiba = false;
+        if (CarRating === undefined) {
+            hiba = true;
+        }
+        if (DriverRating === undefined) {
+            hiba = true;
+        }
+
+        if (!hiba) {
+            axios.post("http://localhost:3001/sendRating", {
+                userId: user.id,
+                carId: carId,
+                carRating: CarRating,
+                driverId: driverId,
+                driverRating: DriverRating
+            }).then((response) => {
+                if (response) {
+
+                    alert("Thank you for Rating!");
+                }
+                else {
+                    alert(response.data.message);
+                }
+            })
+        }
+        else {
+            alert("You must rate before sending!");
+        }
     }
 
     const handleSubmit = (e) => {
