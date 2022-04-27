@@ -100,7 +100,7 @@ export function Login() {
             <div className="Login">
                 <h3 id="login-p">Login</h3>
 
-                <input className='input' type="text" id="login-input" placeholder="Username"
+                <input className='input' type="text" data-testid='UsernameTest' id="login-input" placeholder="Username"
                     onChange={(e) => {
                         //kiolvassuk a beírt adatokat
                         setUsernameLog(e.target.value);
@@ -109,7 +109,7 @@ export function Login() {
                     }}
                 />
 
-                <input className='input' type="password" id="login-input" placeholder="Password"
+                <input className='input' type="password" data-testid='PasswordTest' id="login-input" placeholder="Password"
                     onChange={(e) => {
                         setPasswordLog(e.target.value);
                         setLoginCorrect("");
@@ -148,7 +148,7 @@ export function Login() {
                 />
 
                 <p id="loginErr">{registrationCorrect}</p>
-                <button id="submit-btn-for-register" type="submit" onClick={registration}>Registration</button>
+                <button id="submit-btn-for-register" data-testid="testBTN" type="submit" onClick={registration}>Registration</button>
             </div>
         </div>
     </>)

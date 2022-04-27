@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
-import { encode } from 'base-64';
+//import base64 from 'base-64';
 
 import './add.css';
 
@@ -17,13 +17,10 @@ export function AddNewCar() {
     const [Fule, setFule] = useState("");
     const [PlateNumber, setPlateNumber] = useState("");
     const [Color, setColor] = useState("");
-    const [image, setImage] = useState("");
-
+    //const [image, setImage] = useState("");
 
 
     const addCar = () => {
-
-
 
         let hiba = false;
         for (const item of document.getElementsByClassName("input")) {
@@ -40,8 +37,8 @@ export function AddNewCar() {
                 Price,
                 Fule,
                 PlateNumber,
-                Color,
-                image
+                Color
+                //,image
             }).then((result) => {
                 if (result) {
                     alert("Vehicle Added");
@@ -57,16 +54,12 @@ export function AddNewCar() {
         }
     }
 
-
-    //image upload handler
+    /*image upload handler
     const handleFileChange = (e) => {
-        const img = {
-            preview: URL.createObjectURL(e.target.files[0]),
-            data: e.target.files[0],
-        }
-        console.log(e.target.files[0]);
+        const img = base64.encode(e.target.files[0]);
+        
         setImage(img)
-    }
+    }*/
 
 
     return (<>
@@ -91,7 +84,7 @@ export function AddNewCar() {
         </div>
 
         <div className='addCarInput' >
-            <input type="file" name='file' onChange={handleFileChange} />
+            <input type="file" name='file' /*onChange={handleFileChange}*/ />
         </div>
 
         <div className='RentButton'>
