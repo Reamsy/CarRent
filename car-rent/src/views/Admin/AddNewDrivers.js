@@ -37,10 +37,11 @@ export function AddNewDriver({ pushedId }) {
                 }
             }).catch(console.error);
         }
-        else{
+        else {
             alert("Fill all the lines!")
         }
     }
+
     return (<>
         <div className='addWelcomeMessage'>
             <h1 id='add-h1'>Fill the lines</h1>
@@ -52,7 +53,7 @@ export function AddNewDriver({ pushedId }) {
                     const Sex = e.target.value;
                     setSex(Sex);
                 }} >
-                <option value="">Select Sex</option>
+                <option selected disabled value="">Select Sex</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
@@ -64,7 +65,7 @@ export function AddNewDriver({ pushedId }) {
                     const LicenseCategory = e.target.value;
                     setLicenseCategory(LicenseCategory);
                 }} >
-                <option value="">Select License Category</option>
+                <option selected disabled value="">Select License Category</option>
                 <option value="B">B</option>
                 <option value="D1">D1</option>
                 <option value="BE">BE</option>

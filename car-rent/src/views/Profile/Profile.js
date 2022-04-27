@@ -48,7 +48,7 @@ export function Profile() {
                     alert(response.data.message);
                 }
                 else {
-                    alert("Mentés sikeresen megtörtént!");
+                    alert("Save Succes");
                 }
             })
         }
@@ -62,7 +62,6 @@ export function Profile() {
         axios.get(`http://localhost:3001/getRents/${user.id}`)
             .then((response) => {
                 if (response) {
-                    console.log(response.data);
                     setPrersonalRents(response.data)
 
                 }

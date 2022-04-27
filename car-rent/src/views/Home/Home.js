@@ -20,10 +20,7 @@ export function Home() {
                 sendId: user.id,
             }).then((response) => {
                 if (response) {
-                    console.log("siker")
-                }
-                else {
-                    console.log("hiba")
+                    console.log(".");
                 }
             });
         }

@@ -12,9 +12,6 @@ import driverIMG from '../../images/img_avatar.png';
 
 export function RateUs() {
 
-    //hook for disable rate input if no driver in rent
-    const [disable, setDisable] = useState(false);
-
     //user lekérése
     const { user } = useContext(UserContext);
 
@@ -103,7 +100,7 @@ export function RateUs() {
                                             {/*ezeket adatbázisból kellene feltölteni*/}
                                             <h4><b>Car: {rateable.brand}</b></h4>
                                             <p>Rate the Car</p>
-                                            <p><input disable={disable} id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
+                                            <p><input id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
                                         </div>
                                     </div>
                                 </div>

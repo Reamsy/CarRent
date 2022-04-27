@@ -1,10 +1,10 @@
 import { MenuBar } from "../menuBar/menuBar";
 
 
-export function Layout({children}) {
+export function Layout({ children }) {
     return (
         <div>
-            <MenuBar/>
+            <MenuBar />
             {children}
         </div>
     )

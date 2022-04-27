@@ -260,14 +260,12 @@ app.get('/checkProfile/:id', (req, res) => {
 //profil save request
 app.put('/save/:id', async (req, res) => {
     const { Fullname, License_category, License_expiraton, Phone_number, findId } = req.body;
-    console.log(req.body)
     db.query("UPDATE costumer SET Fullname = ?, License_category = ?, License_expiraton = ?, Phone_number = ?  WHERE user_id = ?",
         [Fullname, License_category, License_expiraton, Phone_number, findId],
         (err, result) => {
             if (err) throw err;
             if (result) {
-                console.log(result)
-                res.send({ message: "Sikeres mentés!" })
+                res.send({ message: "Save Succes!" })
             }
             else {
                 res.send({ message: "Mentés seikertelen!" })
@@ -346,7 +344,6 @@ app.delete('/driverDelete/:DriverId', (req, res) => {
 app.post('/checkHoliday/:id', (req, res) => {
     const { value: checked } = req.body;
     let value = checked == "true" ? 1 : 0
-    console.log(value);
     db.query(`UPDATE drivers SET available = ? WHERE id = ${req.params.id}`, [value],
         (err, result) => {
             if (err) throw err;

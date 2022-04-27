@@ -21,7 +21,7 @@ export function Rent() {
 
     //Options
     const [selectedCar, setselectedCar] = useState("");
-    const [selectedDriver, setselectedDriver] = useState("");
+    const [selectedDriver, setselectedDriver] = useState(null);
 
     //currentDate & rent_start_date
     const currentDate = new Date(Date.now()).toLocaleDateString()
@@ -33,7 +33,6 @@ export function Rent() {
         let hiba = false;
         let currentDateErr = false;
         let starterDateError = false;
-        let driverHandler = false;
 
         for (const item of document.getElementsByClassName("input")) {
 
@@ -41,22 +40,16 @@ export function Rent() {
                 hiba = true;
 
             if (currentDate > rentStartDate) {
-                console.log(currentDate > rentStartDate);
                 currentDateErr = true;
                 alert("Rent's end date can't be before today's date!")
                 return;
             }
+
             if (startDate > endDate)
                 starterDateError = true;
-
         }
 
-        if (selectedDriver === null || selectedDriver === "" || selectedDriver === undefined) {
-            setselectedDriver("Nincs sofőr!")
-            driverHandler = true;
-        }
-
-        if (!hiba && !currentDateErr && !starterDateError && !driverHandler) {
+        if (!hiba && !currentDateErr && !starterDateError) {
             Axios.post('http://localhost:3001/Rent', {
                 //Kiszervezés ami át fog menni backendre
                 //Ezeket használd: RentStartDate, RentEndDate...
@@ -132,7 +125,6 @@ export function Rent() {
                 <select className="input" id="cars" name="cars"
                     onChange={(e) => {
                         const selectedCar = e.target.value;
-                        console.log(selectedCar, setselectedCar)
                         setselectedCar(selectedCar);
                     }} >
                     <option selected disabled value="">No car selected!</option>
@@ -140,7 +132,6 @@ export function Rent() {
                         <option key={car.id} value={car.id}>{car.brand}</option>
                     )}
                 </select>
-
 
                 {/*Drivers*/}
                 <select id="cars" name="cars"
@@ -157,8 +148,8 @@ export function Rent() {
 
             {/*Start/End date choosing*/}
             <p id="date-p" >Choose your Start and End date</p>
-
             <div className="dateChooseRent">
+
                 {/*Start date*/}
                 <input className="input" type="date"
                     onChange={(e) => {
@@ -177,6 +168,7 @@ export function Rent() {
 
             {/*Rent button*/}
             <div className="container_button" >
+                <p id="rent-p">Before you rent, check again!</p>
                 <button type="submit" id="finalRentBTN" onClick={Rent}>Rent</button>
             </div>
         </div>

@@ -13,14 +13,11 @@ export function Driver() {
     const navigate = useNavigate();
     const [driverPrivjobs, setJobs] = useState([]);
 
-    console.log("hook: " + driverPrivjobs)
-
     useEffect(() => {
         //Rendelések lekérése
         axios.get(`http://localhost:3001/getDriverRents/${user.id}`)
             .then((response) => {
                 if (response) {
-                    console.log(response.data);
                     setJobs(response.data);
                 }
                 else {
