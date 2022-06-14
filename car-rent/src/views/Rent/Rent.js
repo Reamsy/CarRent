@@ -2,8 +2,6 @@ import { React, useContext, useEffect, useState } from 'react';
 import Layout from '../layOut/layOut'
 import Axios from 'axios';
 
-//Import CSS & Images
-import './Rent.css';
 import { UserContext } from '../../App';
 
 export function Rent() {
@@ -23,6 +21,9 @@ export function Rent() {
     const [selectedCar, setselectedCar] = useState("");
     const [selectedDriver, setselectedDriver] = useState(null);
 
+    //errors
+    const [errorMessage, setErrorMessage] = useState("");
+
     //currentDate & rent_start_date
     const currentDate = new Date(Date.now()).toLocaleDateString()
     const rentStartDate = new Date(startDate).toLocaleDateString()
@@ -41,7 +42,7 @@ export function Rent() {
 
             if (currentDate > rentStartDate) {
                 currentDateErr = true;
-                alert("Rent's end date can't be before today's date!")
+                setErrorMessage("Rent's end date can't be before today's date!")
                 return;
             }
 
@@ -67,7 +68,7 @@ export function Rent() {
             });
         }
         else {
-            alert("To rent, you must choose your car, start & end date correctly!")
+            setErrorMessage("To rent, you must choose your car, start & end date correctly!")
             return
         }
     }
@@ -83,7 +84,7 @@ export function Rent() {
                 }
                 //alertbe kezeljük ha hiba történt
                 else {
-                    alert("Vehicles currently unavailable!");
+                    setErrorMessage("Vehicles currently unavailable!");
                 }
             });
     }, []);
@@ -100,7 +101,7 @@ export function Rent() {
                 }
                 //alertbe kezeljük ha hiba történt
                 else {
-                    alert("Drivers currently unavailable!");
+                    setErrorMessage("Drivers currently unavailable!");
                 }
             });
     }, []);
@@ -110,67 +111,84 @@ export function Rent() {
 
         <Layout />
 
-        <div>
+        <div className='container'>
+
             {/*Title for rent*/}
-            <div className="containerRent">
-                <h3 >Now, choose your vehicle, than choose your rent's start & end time
-                </h3>
-                <p id="rentUpper-p"> You only able to choose whole days</p>
+            <div className='row text-center pt-5'>
+                <h3 >Now, choose your vehicle, than choose your rent's start & end time</h3>
+            </div>
+            <div className='row text-center pt-5'>
+                <p> You only able to choose whole days</p>
             </div>
 
             {/*Form to choose date, car, driver*/}
-            <div className="container_chooseRent" >
+            <div className='row text-center pb-5'>
 
                 {/*Cars*/}
-                <select className="input" id="cars" name="cars"
-                    onChange={(e) => {
-                        const selectedCar = e.target.value;
-                        setselectedCar(selectedCar);
-                    }} >
-                    <option selected disabled value="">No car selected!</option>
-                    {cars.map(car =>
-                        <option key={car.id} value={car.id}>{car.brand}</option>
-                    )}
-                </select>
+                <div className='container col-lg-6 col-md-6 col-sm-12'>
+                    <select className="form-control" id="cars" name="cars"
+                        onChange={(e) => {
+                            const selectedCar = e.target.value;
+                            setselectedCar(selectedCar);
+                            setErrorMessage("Before you rent, check again!")
+                        }} >
+                        <option selected disabled value="">No car selected!</option>
+                        {cars.map(car =>
+                            <option key={car.id} value={car.id}>{car.brand.toUpperCase()}</option>
+                        )}
+                    </select>
+                </div>
 
                 {/*Drivers*/}
-                <select id="cars" name="cars"
-                    onChange={(e) => {
-                        const selectedDriver = e.target.value;
-                        setselectedDriver(selectedDriver);
-                    }} >
-                    <option value={null}>No driver selected!</option>
-                    {drivers.map(driver =>
-                        <option key={driver.id} value={driver.id}>{driver.name}</option>
-                    )}
-                </select>
+                <div className='container col-lg-6 col-md-6 col-sm-12'>
+                    <select className='form-control' id="cars" name="cars"
+                        onChange={(e) => {
+                            const selectedDriver = e.target.value;
+                            setselectedDriver(selectedDriver);
+                            setErrorMessage("Before you rent, check again!")
+                        }} >
+                        <option value={null}>No driver selected!</option>
+                        {drivers.map(driver =>
+                            <option key={driver.id} value={driver.id}>{driver.name.toUpperCase()}</option>
+                        )}
+                    </select>
+                </div>
             </div>
 
             {/*Start/End date choosing*/}
-            <p id="date-p" >Choose your Start and End date</p>
-            <div className="dateChooseRent">
+            <div className='row text-center pt-5'>
+                <p id="date-p" >Choose your Start and End date</p>
+            </div>
 
-                {/*Start date*/}
-                <input className="input" type="date"
-                    onChange={(e) => {
-                        setStartDate(e.target.value);
-                    }}
-                />
+            {/*Start date*/}
+            <div className='row text-center'>
+                <div className='container col-lg-6 col-md-6 col-sm-12'>
+                    <input className="input" type="date"
+                        onChange={(e) => {
+                            setStartDate(e.target.value);
+                            setErrorMessage("Before you rent, check again!")
+                        }}
+                    />
+                </div>
 
                 {/*End date*/}
-                <input className="input" type="date"
-                    id="enddate"
-                    onChange={(e) => {
-                        setEndDate(e.target.value);
-                    }}
-                />
+                <div className='container col-lg-6 col-md-6 col-sm-12'>
+                    <input className="input" type="date"
+                        onChange={(e) => {
+                            setEndDate(e.target.value);
+                            setErrorMessage("Before you rent, check again!")
+                        }}
+                    />
+                </div>
+
             </div>
 
-            {/*Rent button*/}
-            <div className="container_button" >
-                <p id="rent-p">Before you rent, check again!</p>
-                <button type="submit" id="finalRentBTN" onClick={Rent}>Rent</button>
-            </div>
+        </div>
+
+        {/*Rent button*/}
+        <div className="row text-center d-flex justify-content-center pt-5" >
+            <p className='text-danger'>{errorMessage ? errorMessage : "Before you rent, check again!"}</p>
+            <button className='btn btn-primary mt-5 mb-5' id='btn' type="submit" onClick={Rent}>Rent</button>
         </div>
     </>)
 }

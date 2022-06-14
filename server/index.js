@@ -4,6 +4,8 @@ const cors = require('cors');
 const app = express();
 const bcrypt = require('bcrypt');
 const emailValidator = require('email-validator');
+const multer = require('multer');
+const mime = require("mime-types");
 
 //helps to get frontend data
 app.use(express.json());
@@ -16,6 +18,46 @@ const db = mysql.createConnection({
     password: "",
     database: "carrentdb",
 });
+
+//image storage
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "./images");
+    },
+    filename: function (req, file, cb) {
+        let id = Date.now();
+        let exp = mime.extension(file.mimetype);
+        cb(null, `${id}, ${exp}`);
+    }
+})
+
+const upload = multer({ storage: storage });
+
+app.use(express.static('./images'));
+
+//add new car
+app.post('/addNewCar', upload.single("file"), (req, res) => {
+    const brand = req.body.brand;
+    const model = req.body.model;
+    const plateNumber = req.body.plateNumber;
+    const price = req.body.price;
+    const year = req.body.year;
+    const fuel = req.body.fuel;
+    const color = req.body.color;
+    const chasissNumber = req.body.chasissNumber;
+    const image = req.file.filename;
+
+    db.query("INSERT INTO products (brand, model, plateNumber, price, year, fuel, color, chasissNumber, image) VALUES (?,?,?,?,?,?,?,?,?)",
+        [brand, model, plateNumber, price, year, fuel, color, chasissNumber, image],
+        (err, result) => {
+            if (err) throw err;
+            if (result) {
+                res.send(result);
+            }
+        }
+    )
+})
+
 
 //Requests for registration
 app.post('/registration', async (req, res) => {
@@ -207,7 +249,7 @@ app.get('/profile/:id', (req, res) => {
 
 //rent-ek lekérése a profilnál
 app.get('/getRents/:id', (req, res) => {
-    db.query("SELECT *, rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id WHERE user_rent_id = ?", req.params.id, (err, result) => {
+    db.query("SELECT *, rent.id FROM rent INNER JOIN products ON rent.car_id = products.id LEFT JOIN drivers ON rent.driver_id = drivers.id WHERE user_rent_id = ? GROUP BY start_date DESC", req.params.id, (err, result) => {
         if (err) throw err;
         res.send(result);
     })
@@ -353,18 +395,6 @@ app.post('/checkHoliday/:id', (req, res) => {
         })
 })
 
-//add new car
-app.post('/addNewCar', (req, res) => {
-    const { Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color } = req.body;
-    db.query(`INSERT INTO products (brand, model, year, chassisNumber, rentprice, fuel, plateNumber, color) VALUES (?,?,?,?,?,?,?,?)`,
-        [Brand, Model, Year, ChassisNumber, Price, Fule, PlateNumber, Color],
-        (err, result) => {
-            if (err) throw err;
-            if (result) {
-                res.send(result);
-            }
-        })
-})
 
 //add new driver
 app.post('/addNewDriver', (req, res) => {

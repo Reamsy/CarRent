@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AppRoutes } from './views/AppRoutes';
-
+import './bootstrap.css'
+import './carRent.css'
 //context létrehozása
 export const UserContext = React.createContext({});
 

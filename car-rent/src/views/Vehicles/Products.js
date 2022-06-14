@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Layout } from '../layOut/layOut';
 import Axios from 'axios';
 
-//import CSS & Images
-import './Products.css';
-
 
 export function Products() {
 
@@ -27,39 +24,47 @@ export function Products() {
     }, []);
 
 
-
     return (<>
 
         <Layout />
 
-        {/*Page message*/}
-        <h3 id="h3">Here are our Vehicles you can choose from!</h3>
+        <div className='container'>
 
-        {/*Culomn Signs*/}
-        <div className="signs">
-            <p id="culVehicle">Vehicles</p>
-        </div>
+            {/*Page messages*/}
+            <div className='row text-center pt-5'>
+                <h3>Here are our Vehicles you can choose from!</h3>
+            </div>
 
-        {/*Cards for the Products*/}
-        {/*vehicle1*/}
-        {products.map(product =>
-            <><div className="row">
-                <div className="cardCar">
-                    {/*Végigmegyünk a products-okon és minden egyed product id-nál kiíratjuk a hozzátartozó adatot*/}
+            <div className='row text-center'>
+                <p className='mt-5 mb-5'>Vehicles</p>
+            </div>
 
-                    <div key={product.id}>
-                        <img className="img" src={product.image} alt="car"></img>
-                        <div className="container">
-                            <h4><b>{product.brand} - {product.model}</b></h4>
-                            <p>Fuel-type: {product.fuel}</p>
-                            <p>Price / day: {product.rentprice}HUF</p>
-                            <p>Year: {product.year}</p>
+            {/*vehicles*/}
+            {products.map(product => <>
+                <div className="row col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center ps-4 pe-4">
+                    <div className="cardCar">
+                        {/*Végigmegyünk a products-okon és minden egyed product id-nál kiíratjuk a hozzátartozó adatot*/}
+                        <div className="d-flex justify-content-center" key={product.id}>
+                            <img id='img' src={`http://localhost:3001/${product.image}`} alt="car"></img>
+                            <div className="container text-light">
+                                <div className='row text-center'>
+                                    <p className='textSetting'><b>{product.brand.toUpperCase()} - {product.model.toUpperCase()}</b></p>
+                                </div>
+                                <div className='row text-center'>
+                                    <p className='textSetting'>Fuel-type: {product.fuel.toUpperCase()}</p>
+                                </div>
+                                <div className='row text-center'>
+                                    <p className='textSetting'>Price / day: {product.price}HUF</p>
+                                </div>
+                                <div className='row text-center'>
+                                    <p className='textSetting'>Year: {product.year}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-            </div><hr className="rounded"></hr></>
-        )}
-
+                <hr className="rounded mt-4 mb-4"></hr>
+            </>)}
+        </div>
     </>);
 }

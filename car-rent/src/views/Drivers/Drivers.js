@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Layout } from '../layOut/layOut';
 import Axios from 'axios';
 
-//import CSS & Images
-import './Drivers.css';
 
 
 export function Drivers() {
@@ -32,32 +30,36 @@ export function Drivers() {
 
         <Layout />
 
-        {/*Page message*/}
-        <h3 id="h3Drivers">Here are our Drivers</h3>
+        <div className='container'>
 
-        {/*Culomn Signs*/}
-        <div className="signsDriver">
-            <p id="culDrivers">Drivers</p>
-        </div>
+            {/*Page messages*/}
+            <div className='row text-center pt-5'>
+                <h3>Here are our Drivers</h3>
+            </div>
 
-        {/*Cards for the drivers*/}
-        {/*Driver1*/}
-        {drivers.map(driver =>
-            <><div className="rowDriver">
-                <div className="cardDriver">
-                    {/*Végigmegyünk a drivers-eken és minden egyed driver id-nál kiíratjuk a hozzátartozó adatot*/}
+            <div className='row text-center'>
+                <p className='mt-5 mb-5'>Drivers</p>
+            </div>
 
-                    <div key={driver.id}>
-                        <img className="imgDriver" src={driver.image} alt="driver"></img>
-                        <div className="containerDriver">
-                            <h4><b>{driver.name}</b></h4>
-                            <p>License category: {driver.licence_category}</p>
+            {/*vehicles*/}
+            {drivers.map(driver => <>
+                <div className="row col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">
+                    <div className="cardCar">
+                        <div className="d-flex justify-content-center" key={driver.id}>
+                            <img id='img' src={`http://localhost:3001/${driver.image}`} alt="car"></img>
+                            <div className="container text-light">
+                                <div className='row text-center'>
+                                    <p className='textSetting'><b>{driver.name}</b></p>
+                                </div>
+                                <div className='row text-center'>
+                                    <p className='textSetting'>Licence Category: {driver.licence_category}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-            </div><hr className="roundedDriver"></hr></>
-        )}
-
+                <hr className="rounded mt-4 mb-4"></hr>
+            </>)}
+        </div>
     </>);
 }

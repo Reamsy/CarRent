@@ -1,94 +1,160 @@
 import React, { useState } from 'react'
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
-//import base64 from 'base-64';
+import axios from "axios"
 
-import './add.css';
+const INIT_FORM = {
+    brand: "",
+    model: "",
+    plateNumber: "",
+    price: "",
+    year: "",
+    fuel: "",
+    color: "",
+    chasissNumber: ""
+};
 
 export function AddNewCar() {
 
+    const [formData, setFormData] = useState(INIT_FORM);
+
     const navigate = useNavigate();
 
-    const [Brand, setBrand] = useState("");
-    const [Model, setModel] = useState("");
-    const [Year, setYear] = useState("");
-    const [ChassisNumber, setChassisNumber] = useState("");
-    const [Price, setPrice] = useState("");
-    const [Fule, setFule] = useState("");
-    const [PlateNumber, setPlateNumber] = useState("");
-    const [Color, setColor] = useState("");
-    //const [image, setImage] = useState("");
-
-
-    const addCar = () => {
-
+    function addCar(e) {
         let hiba = false;
-        for (const item of document.getElementsByClassName("input")) {
+        for (const item of document.getElementsByClassName("form-control")) {
             if (item.value.trim() === "")
                 hiba = true;
         }
 
+
+        e.preventDefault();
+        const form_data = new FormData();
+        form_data.append("brand", formData.brand);
+        form_data.append("model", formData.model);
+        form_data.append("plateNumber", formData.plateNumber);
+        form_data.append("price", formData.price);
+        form_data.append("year", formData.year);
+        form_data.append("fuel", formData.fuel);
+        form_data.append("color", formData.color);
+        form_data.append("chasissNumber", formData.chassisNumber);
+        form_data.append("file", formData.file);
+
+
         if (!hiba) {
-            axios.post("http://localhost:3001/addNewCar", {
-                Brand,
-                Model,
-                Year,
-                ChassisNumber,
-                Price,
-                Fule,
-                PlateNumber,
-                Color
-                //,image
-            }).then((result) => {
-                if (result) {
-                    alert("Vehicle Added");
-                    navigate('/admin');
+            axios.post("http://localhost:3001/addNewCar", form_data, {
+                headers: {
+                    "content-type": "multipart/form-data"
                 }
-                else {
-                    alert("Add failed");
-                }
-            }).catch(console.error);
-        }
-        else {
-            alert("Fill all the lines!")
+            })
+                .then((result) => {
+                    if (result) {
+                        alert("Vehicle Added");
+                        navigate('/admin');
+                    }
+                    else {
+                        alert("Add failed");
+                    }
+                }).catch(console.error);
         }
     }
 
-    /*image upload handler
-    const handleFileChange = (e) => {
-        const img = base64.encode(e.target.files[0]);
-        
-        setImage(img)
-    }*/
+    const updateForm = (key) => (e) => {
+        setFormData({ ...formData, [key]: e.target.value })
+    }
+
+    const updateFormFile = (key) => (e) => {
+        setFormData({ ...formData, [key]: e.target.files[0] })
+    }
 
 
-    return (<>
-        <div className='addWelcomeMessage'>
-            <h1 id='add-h1'>Add New Cars</h1>
-        </div>
-        <div className='addCarInput'>
-            <input className='input' type="text" onChange={(e) => { setBrand(e.target.value) }} placeholder='Enter the Brand' />
-            <input className='input' type="text" onChange={(e) => { setModel(e.target.value) }} placeholder='Enter the Model' />
-        </div>
-        <div className='addCarInput'>
-            <input className='input' type="number" onChange={(e) => { setYear(e.target.value) }} placeholder='Enter the Year' />
-            <input className='input' type="text" onChange={(e) => { setChassisNumber(e.target.value) }} placeholder='Enter the ChassisNumber' />
-        </div>
-        <div className='addCarInput'>
-            <input className='input' type="number" onChange={(e) => { setPrice(e.target.value) }} placeholder='Enter the Price/day' />
-            <input className='input' type="text" onChange={(e) => { setFule(e.target.value) }} placeholder='Enter the Fuel type' />
-        </div>
-        <div className='addCarInput'>
-            <input className='input' type="text" onChange={(e) => { setPlateNumber(e.target.value) }} placeholder='Enter the Plate number' />
-            <input className='input' type="text" onChange={(e) => { setColor(e.target.value) }} placeholder='Enter the Color' />
+    return (
+        <div className='container'>
+            <div className='row text-center'>
+                <h3>Add New Cars</h3>
+            </div>
+
+            {/*Form*/}
+            <form>
+
+                <div className='row center'>
+
+                    {/*Brand input*/}
+                    <div className='container col-lg-6 col-md-6 col-sm-12'>
+                        <input className='form-control' id='brand' name='brand' type="text" placeholder="Enter the Brand" value={formData.brand}
+                            onChange={updateForm("brand")} />
+                    </div>
+
+                    {/*Model input*/}
+                    <div className='container col-lg-6 col-md-6 col-sm-12'>
+                        <input className='form-control' id='model' name='model' type="text" placeholder="Enter the Model" value={formData.model}
+                            onChange={updateForm("model")} />
+                    </div>
+
+                </div>
+
+                <div className='row center'>
+
+                    {/*PlateNum input*/}
+                    <div className='container col-lg-6 col-md-6 col-sm-12'>
+                        <input className='form-control' id='plateNumber' name='plateNumber' type="text" placeholder="Enter the Platenumber" value={formData.plateNumber}
+                            onChange={updateForm("plateNumber")} />
+                    </div>
+
+                    {/*Price input*/}
+                    <div className='container col-lg-6 col-md-6 col-sm-12'>
+                        <input className='form-control' id='price' name='price' type="text" placeholder="Enter the Price" value={formData.price}
+                            onChange={updateForm("price")} />
+                    </div>
+
+                </div>
+
+                <div className='row center'>
+
+                    {/*Year input*/}
+                    <div className='container col-lg-6 col-md-6 col-sm-12'>
+                        <input className='form-control' id='year' name='year' type="text" placeholder="Enter the Year" value={formData.year}
+                            onChange={updateForm("year")} />
+                    </div>
+
+                    {/*fuel input*/}
+                    <div className='container col-lg-6 col-md-6 col-sm-12'>
+                        <input className='form-control' id='fuel' name='fuel' type="text" placeholder="Enter the fuel" value={formData.fuel}
+                            onChange={updateForm("fuel")} />
+                    </div>
+
+                </div>
+
+                <div className='row center'>
+
+                    {/*color input*/}
+                    <div className='container col-lg-6 col-md-6 col-sm-12'>
+                        <input className='form-control' id='color' name='color' type="text" placeholder="Enter the color" value={formData.color}
+                            onChange={updateForm("color")} />
+                    </div>
+
+                    {/*chassisNum input*/}
+                    <div className='container col-lg-6 col-md-6 col-sm-12'>
+                        <input className='form-control' id='chasissNumber' name='chasissNumber' type="text" placeholder="Enter the Chasiss Number" value={formData.chasissNumber}
+                            onChange={updateForm("chasissNumber")} />
+                    </div>
+
+                </div>
+
+                {/*Image input*/}
+                <div className='row d-flex justify-content-center'>
+                    <input className='form-control' id='img' type="file" name='file' placeholder='Add an Image'
+                        onChange={updateFormFile("file")} />
+                </div>
+
+            </form>
+            {/*Button*/}
+            <div className='row d-flex justify-content-center mt-5'>
+                <button id='btn' className='btn btn-success'
+                    onClick={addCar}>Add Car</button>
+            </div>
+
         </div>
 
-        <div className='addCarInput' >
-            <input type="file" name='file' /*onChange={handleFileChange}*/ />
-        </div>
 
-        <div className='RentButton'>
-            <button id='RentButton' onClick={addCar}>Add</button>
-        </div>
-    </>)
+    )
 }

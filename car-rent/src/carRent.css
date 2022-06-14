@@ -1,0 +1,66 @@
+body, html{
+    background-image: url("./images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+.form-control{
+    margin-top: 5%;
+}
+
+.container{
+    margin-top: 7%;
+}
+
+h3{
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+p{
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li{
+    font-size: 19px;
+    padding-left: 4%;
+}
+
+
+.cardCar{
+    background-color: grey;
+    border-radius: 30px;
+    width: fit-content;
+    opacity: 0.8;
+}
+
+#btn{
+    width: 20%;
+}
+
+.card{
+    background-color: rgb(165, 164, 164);
+}
+
+#avatar{
+    width: 150px;
+    height: 130px;
+}
+
+.adminTable{
+    background-color: rgb(82, 82, 82);
+    opacity: 0.9;
+}
+
+#img{
+    width: 40%;
+}
+
+.textSetting{
+    font-size: 22px;
+}

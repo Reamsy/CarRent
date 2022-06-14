@@ -2,9 +2,8 @@ import axios from 'axios';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Table } from 'semantic-ui-react';
 
-//Import CSS
-import './adminPage.css';
 
 export function Admin() {
 
@@ -122,106 +121,127 @@ export function Admin() {
     }
 
     return (<>
-        <div>
-            <button id='driverLogoutBTN' onClick={handleLogout}>Logout</button>
+
+        <div className='container'>
+
+            <div className='d-flex flex-row-reverse text-center'>
+                <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
+            </div>
+
+
             {/*Welcome message*/}
-            <div className="containerAdmin">
-                <h3 id='admin-h3'>Here, you can manage your busines!</h3>
+            <div className='row text-center'>
+                <h3 className='pb-5'>Here, you can manage your busines!</h3>
             </div>
 
             {/*tittle of rents*/}
-            <div>
-                <p id="rent">{!errorMessage && "Rents"}</p>
-            </div>
-            <div className="adminContainerText">
-                <div id='adminContainerText-p'>Rent num.</div>
-                <div id='adminContainerText-p'>Start of rent</div>
-                <div id='adminContainerText-p'>End of rent</div>
-                <div id='adminContainerText-p'>Car</div>
-                <div id='adminContainerText-p'>Model</div>
-                <div id='adminContainerText-p'>Driver</div>
+            <div className='row text-center'>
+                <p className='text-danger'>{!errorMessage && "Rents"}</p>
             </div>
 
-            {/*Map of rents*/}
-            {rents.map(rent =>
-                <div key={rent.id}>
-                    <div className="containerAdmin">
-                        <p id="adminContainer-p">{rent.id}</p>
-                        <p id="adminContainer-p">{new Date(rent.start_date).toLocaleDateString()}</p>
-                        <p id="adminContainer-p">{new Date(rent.end_date).toLocaleDateString()}</p>
-                        <p id="adminContainer-p">{rent.brand.toUpperCase()}</p>
-                        <p id="adminContainer-p">{rent.model.toUpperCase()}</p>
-                        <p id="adminContainer-p">{rent.name || "------"}</p>
-                        <p><button id="deleteRent" onClick={() => { DeleteRents(rent.id) }}>Delete</button></p>
-                    </div>
-                </div>
-            )}
+            <Table striped bordered hover className="adminTable">
+                <thead>
+                    <tr className='text-light text-center'>
+                        <th>Rent number</th>
+                        <th>Start of rent</th>
+                        <th>End of rent</th>
+                        <th>Car</th>
+                        <th>Model</th>
+                        <th>Driver</th>
+                        <th className='text-danger'>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/*Map of rents*/}
+                    {rents.map(rent =>
+                        <tr className='text-light text-center' key={rent.id}>
+                            <td>{rent.id}</td>
+                            <td>{new Date(rent.start_date).toLocaleDateString()}</td>
+                            <td>{new Date(rent.end_date).toLocaleDateString()}</td>
+                            <td>{rent.brand.toUpperCase()}</td>
+                            <td>{rent.model.toUpperCase()}</td>
+                            <td>{rent.name || "------"}</td>
+                            <td><button className='btn btn-danger' onClick={() => { DeleteRents(rents.id) }}>Delete</button></td>
+                        </tr>
+                    )
+                    }
+                </tbody>
+            </Table>
 
             {/*tittle of vehicles*/}
-            <div>
-                <p id="rent">{!errorMessage && "Vehicles"}</p>
-            </div>
-            <div className="adminContainerText">
-                <div id='adminContainerText-p'>id</div>
-                <div id='adminContainerText-p'>Brand</div>
-                <div id='adminContainerText-p'>Model</div>
-                <div id='adminContainerText-p'>Plate num.</div>
-                <div id='adminContainerText-p'>Price / day</div>
-                <div id='adminContainerText-p'>Year</div>
+            <div className='row text-center'>
+                <p className='text-danger'>{!errorMessage && "Vehicles"}</p>
             </div>
 
-            {/*Map of vehicles*/}
-            {vehicles.map(vehicle =>
-                <div key={vehicle.id}>
-                    <div className="containerAdmin">
-                        <p id="adminContainer-p">{vehicle.id}</p>
-                        <p id="adminContainer-p">{vehicle.brand.toString().toUpperCase()}</p>
-                        <p id="adminContainer-p">{vehicle.model.toString().toUpperCase()}</p>
-                        <p id="adminContainer-p">{vehicle.plateNumber.toString().toUpperCase()}</p>
-                        <p id="adminContainer-p">{vehicle.rentprice}</p>
-                        <p id="adminContainer-p">{vehicle.year}</p>
-                        <p><button id="deleteRent" onClick={() => { DeleteVehicles(vehicle.id) }}>Delete</button></p>
-                    </div>
-                </div>
-            )}
+            <Table striped bordered hover className="adminTable">
+                <thead>
+                    <tr className='text-light text-center'>
+                        <th>Id</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Plate number</th>
+                        <th>Price / day</th>
+                        <th>Year</th>
+                        <th className='text-danger'>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/*Map of rents*/}
+                    {vehicles.map(vehicle =>
+                        <tr className='text-light text-center' key={vehicle.id}>
+                            <td>{vehicle.id}</td>
+                            <td>{vehicle.brand.toUpperCase()}</td>
+                            <td>{vehicle.model.toUpperCase()}</td>
+                            <td>{vehicle.plateNumber.toUpperCase()}</td>
+                            <td>{vehicle.price} - HUF</td>
+                            <td>{vehicle.year}</td>
+                            <td><button className='btn btn-danger' onClick={() => { DeleteVehicles(vehicle.id) }}>Delete</button></td>
+                        </tr>
+                    )
+                    }
+                </tbody>
+                {/*Add new Vehicle button*/}
+                <button className='btn btn-success d-flex justify-content-end' onClick={addNewCar}> New Vehicle</button>
+            </Table>
 
-            {/*Add new vehicle button*/}
-            <div>
-                <button id="add" onClick={addNewCar}> New Car</button>
+            {/*tittle of drivers*/}
+            <div className='row text-center'>
+                <p className='text-danger'>{!errorMessage && "Drivers"}</p>
             </div>
 
-            {/*tittle of Drivers*/}
-            < div >
-                <p id="rent">{!errorMessage && "Drivers"}</p>
-            </div>
-            <div className="adminContainerText">
-                <div id='adminContainerText-p'>id</div>
-                <div id='adminContainerText-p'>Name</div>
-                <div id='adminContainerText-p'>Sex</div>
-                <div id='adminContainerText-p'>Licence cat.</div>
-                <div id='adminContainerText-p'>Available</div>
-            </div>
+            <Table striped bordered hover className="adminTable">
+                <thead>
+                    <tr className='text-light text-center'>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Sex</th>
+                        <th>License category</th>
+                        <th>Available</th>
+                        <th className='text-danger'>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/*Map of drivers*/}
+                    {drivers.map(driver =>
+                        <tr className='text-light text-center' key={driver.id}>
+                            <td>{driver.user_id}</td>
+                            <td>{driver.name.toString().toUpperCase()}</td>
+                            <td>{driver.sex.toString().toUpperCase()}</td>
+                            <td>{driver.licence_category.toString().toUpperCase()}</td>
+                            <td>
+                                <input className='mt-3' type="checkbox"
+                                    defaultChecked={driver.available} value={driver.available}
+                                    onChange={e => { e.target.value = e.target.checked; checkHoliday(driver.id, e.target.value) }} />
+                            </td>
+                            <td><button className='btn btn-danger' onClick={() => { DeleteDrivers(driver.id) }}>Delete</button></td>
+                        </tr>
+                    )
+                    }
+                </tbody>
 
-            {/*Map of Drivers*/}
-            {drivers.map(driver =>
-                <div key={driver.id}>
-                    <div className="containerAdmin">
-                        <p id="adminContainer-p">{driver.user_id}</p>
-                        <p id="adminContainer-p">{driver.name.toString().toUpperCase()}</p>
-                        <p id="adminContainer-p">{driver.sex.toString().toUpperCase()}</p>
-                        <p id="adminContainer-p">{driver.licence_category.toString().toUpperCase()}</p>
-                        <p id="adminContainer-p"><input id="adminContainer-p-input" type="checkbox" defaultChecked={driver.available} value={driver.available}
-                            onChange={e => { e.target.value = e.target.checked; checkHoliday(driver.id, e.target.value) }} /></p>
-                        <p><button id="deleteRent" onClick={() => { DeleteDrivers(driver.id) }}>Delete</button></p>
-                    </div>
-                </div>
-            )
-            }
-
-            {/*Add new Drivers button*/}
-            <div className="drivers">
-                <button id="add" onClick={addNewDriver}> New Driver</button>
-            </div>
+                {/*Add new Drivers button*/}
+                <button className='btn btn-success d-flex justify-content-end' onClick={addNewDriver}> New Driver</button>
+            </Table>
         </div >
     </>)
 }

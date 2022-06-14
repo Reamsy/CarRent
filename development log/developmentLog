@@ -583,3 +583,17 @@ HIBA: kép feltöltése (nem működik - észrevétel: a formba zavar be valami 
 
 
 PROJEKT LEZÁRÁSA VISZGÁRA!
+
+
+
+
+
+PROJEKT VIZSGA UTÁNI HIBAJAVÍTÁS!
+
+2022.04.25. {18:30 - 19:30} (Szalanics Szabolcs):
+    -Hiba javítva miszerint nem volt lehetőség lép feltöltésére
+    -Teljes design megváltoztatása
+    -CSS-ek egybevonása és minimalizálása
+    -Bootstrap többszöri használata (Teljse reszponzivitás létrehozása)
+
+HIBA: adatbázis táblák még nincsenek kezelve

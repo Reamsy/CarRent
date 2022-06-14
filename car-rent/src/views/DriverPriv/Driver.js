@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Table } from 'semantic-ui-react';
 import { UserContext } from '../../App';
 
-//Import CSS
-import './driverPage.css';
+
 
 export function Driver() {
 
@@ -31,29 +31,42 @@ export function Driver() {
         navigate("/")
     }
 
-    return (<>
-        <div>
-            <button id='driverLogoutBTN' onClick={handleLogout}>Logout</button>
+    return (
+        <div className='container'>
+
+            <div className='d-flex flex-row-reverse text-center '>
+                <button className='btn btn-primary mt-3' onClick={handleLogout}>Logout</button>
+            </div>
+
             {/*Info texts*/}
-            <div className="containerDriver">
-                <h4 id='driver-username'>Wellcome: {user.username}</h4>
-                <h3 id="driver-h3">Check out your rides!</h3>
+            <div className='row text-center'>
+                <p className='mt-3'>Wellcome: {user.username}</p>
             </div>
 
-            {/*Drives and holidays*/}
-            <div className="jobsContainerText">
-                <div id='jobsContainerText-p'>Start of driver</div>
-                <div id='jobsContainerText-p'>End of drive</div>
-                <div id='jobsContainerText-p'>Car</div>
-            </div>
-
-            {driverPrivjobs.map(rent =>
-                <div className="jobsContainer" key={rent.id}>
-                    <div id='jobsContainer-p'>{new Date(rent.start_date).toLocaleDateString()}</div>
-                    <div id='jobsContainer-p'>{new Date(rent.end_date).toLocaleDateString()}</div>
-                    <div id='jobsContainer-p'>{rent.brand.toString().toUpperCase()}</div>
-                </div>
-            )}
+            <Table striped bordered hover className="adminTable">
+                <thead>
+                    <tr className='text-light text-center'>
+                        <th>Start of driver</th>
+                        <th>End of driver</th>
+                        <th>Car</th>
+                        <th>Model</th>
+                        <th>Plate Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/*Map of rents*/}
+                    {driverPrivjobs.map(rent =>
+                        <tr className='text-light text-center' key={rent.id}>
+                            <td>{new Date(rent.start_date).toLocaleDateString()}</td>
+                            <td>{new Date(rent.end_date).toLocaleDateString()}</td>
+                            <td>{rent.brand.toUpperCase()}</td>
+                            <td>{rent.model.toUpperCase()}</td>
+                            <td>{rent.plateNumber.toUpperCase()}</td>
+                        </tr>
+                    )
+                    }
+                </tbody>
+            </Table>
         </div>
-    </>)
+    )
 }

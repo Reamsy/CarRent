@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Layout } from '../layOut/layOut';
 import axios from 'axios';
-
-
-//Import CSS & Images
-import './profilePage.css';
-import driverIMG from '../../images/img_avatar.png';
 import { UserContext } from '../../App';
 
+import avatar from "../../images/img_avatar.png"
+import { Table } from 'semantic-ui-react';
+
 export function Profile() {
+
+    //avatar
+
 
     //user lekérése
     const { user } = useContext(UserContext);
@@ -87,76 +88,96 @@ export function Profile() {
 
     return (<>
         <Layout />
-        {/*Avatar Picture */}
-        <div className="container-baseProfile">
-            <img id='profile-img' src={driverIMG} alt="img_avatar" />
-        </div>
 
-        {/*Info Section*/}
-        <div className="containerProfile">
-            <div className="leftInputProfile">
-                <p>Full Name</p>
-                <input className='input' type="text" name="Fullname" placeholder={!costumers.Fullname && "Fill the line"}
-                    value={costumers.Fullname}
-                    onChange={(e) => {
-                        setCostumers({ ...costumers, [e.target.name]: e.target.value });
-                    }}
-                />
-            </div>
-            <div className="rightInputProfile">
-                <p>Phone_number</p>
-                <input className='input' type="tel" name="Phone_number" placeholder={!costumers.Phone_number && "Fill the line"}
-                    value={costumers.Phone_number}
-                    onChange={(e) => {
-                        setCostumers({ ...costumers, [e.target.name]: e.target.value });
-                    }}
-                />
-            </div>
-        </div>
-        <div className="containerProfile">
-            <div className="leftInputProfile">
-                <p>License Category</p>
-                <input className='input' type="text" name="License_category" placeholder={!costumers.License_category && "Fill the line"}
-                    value={costumers.License_category}
-                    onChange={(e) => {
-                        setCostumers({ ...costumers, [e.target.name]: e.target.value });
-                    }}
-                />
-            </div>
-            <div className="rightInputProfile">
-                <p>License Expiration</p>
-                <input className='input' type="text" name="License_expiraton" format="YYYY-mm-dd" placeholder={!costumers.License_expiraton && "Fill the line"}
-                    value={costumers.License_expiraton}
-                    onChange={(e) => {
-                        setCostumers({ ...costumers, [e.target.name]: e.target.value });
-                    }}
-                />
-            </div>
-        </div>
 
-        <div className="BTNProfile">
-            <button id="saveBTNProfile" onClick={save}>Save</button>
-        </div>
+        <div className='container'>
+            {/*Avatar Picture & Title*/}
+            <div className='row d-flex justify-content-center pt-5'>
+                <img className='roundedCircle' id='avatar' src={avatar} alt="img_avatar" />
+            </div>
 
-        {/*List of rents*/}
-        <div><h3 id='profileRentsTittle'>Your Rents</h3></div>
-        <div className="profileRentTitle">
-            <div id='UserContainerText-p'>Start of rent</div>
-            <div id='UserContainerText-p'>End of rent</div>
-            <div id='UserContainerText-p'>Car</div>
-            <div id='UserContainerText-p'>Driver</div>
-        </div>
 
-        {personalRents.map(rents =>
-            <div key={rents.id}>
-                <div className="containerUser">
-                    <p id="UserContainer-p">{new Date(rents.start_date).toLocaleDateString()}</p>
-                    <p id="UserContainer-p">{new Date(rents.end_date).toLocaleDateString()}</p>
-                    <p id="UserContainer-p">{rents.brand}</p>
-                    <p id="UserContainer-p">{rents.name || "------"}</p>
-                    <p><button id="deleteRents" onClick={() => { DeleteRents(rents.id) }}>Delete</button></p>
+
+
+            {/*Info Section*/}
+            <div className='row text-center'>
+                <div className="container col-lg-6 col-md-6 col-sm-12">
+                    <p className='text-center'>Full Name</p>
+                    <input className='form-control' type="text" name="Fullname" placeholder={!costumers.Fullname && "Fill the line"}
+                        value={costumers.Fullname}
+                        onChange={(e) => {
+                            setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                        }}
+                    />
+                </div>
+                <div className="container col-lg-6 col-md-6 col-sm-12">
+                    <p className='text-center'>Phone_number</p>
+                    <input className='form-control' type="tel" name="Phone_number" placeholder={!costumers.Phone_number && "Fill the line"}
+                        value={costumers.Phone_number}
+                        onChange={(e) => {
+                            setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                        }}
+                    />
                 </div>
             </div>
-        )}
+
+            <div className="row text-center">
+                <div className="container col-lg-6 col-md-6 col-sm-12">
+                    <p>License Category</p>
+                    <input className='form-control' type="text" name="License_category" placeholder={!costumers.License_category && "Fill the line"}
+                        value={costumers.License_category}
+                        onChange={(e) => {
+                            setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                        }}
+                    />
+                </div>
+                <div className="container col-lg-6 col-md-6 col-sm-12">
+                    <p>License Expiration</p>
+                    <input className='form-control' type="text" name="License_expiraton" format="YYYY-mm-dd" placeholder={!costumers.License_expiraton && "Fill the line"}
+                        value={costumers.License_expiraton}
+                        onChange={(e) => {
+                            setCostumers({ ...costumers, [e.target.name]: e.target.value });
+                        }}
+                    />
+                </div>
+            </div>
+
+            <div className="row mt-5 d-flex justify-content-center">
+                <button className='btn btn-primary' id="btn" onClick={save}>Save</button>
+            </div>
+
+
+
+            {/*List of rents*/}
+
+            <div className='row text-center'>
+                <h3 className='mt-5'>Your Rents</h3>
+            </div>
+
+            <Table striped bordered hover>
+                <thead>
+                    <tr className='text-light text-center'>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Car</th>
+                        <th>Driver</th>
+                        <th className='text-danger'>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        personalRents.map(rents =>
+                            <tr className='text-light text-center' key={rents.id}>
+                                <td>{new Date(rents.start_date).toLocaleDateString()}</td>
+                                <td>{new Date(rents.end_date).toLocaleDateString()}</td>
+                                <td>{rents.brand}</td>
+                                <td>{rents.name || "------"}</td>
+                                <td><button className='btn btn-danger' onClick={() => { DeleteRents(rents.id) }}>Delete</button></td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </Table>
+        </div>
     </>)
 }

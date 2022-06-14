@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 
-import './add.css';
+
 
 export function CreateDriverLogin({ DriverId }) {
 
@@ -15,7 +15,7 @@ export function CreateDriverLogin({ DriverId }) {
     const addDriverLogin = () => {
         //ellenőrizzük azt hogy minen inputba került e adat
         let hiba = false;
-        for (const item of document.getElementsByClassName("input")) {
+        for (const item of document.getElementsByClassName("form-control")) {
             if (item.value.trim() === "")
                 hiba = true;
         }
@@ -39,20 +39,28 @@ export function CreateDriverLogin({ DriverId }) {
             alert("Fill all the lines!")
         }
     }
-    return (<>
-        <div className='addWelcomeMessage'>
-            <h1 id='add-h1'>Create profile for your brand new driver</h1>
-        </div>
+    return (
 
-        <div className='addCarInput'>
-            <input className="input" onChange={(e) => { setDriverUsername(e.target.value) }} placeholder='Enter the Username' />
-            <input className="input" onChange={(e) => { setDriverPassword(e.target.value) }} placeholder='Enter the Password' />
+        <div className="container">
+            <div className='row text-center'>
+                <h3 className='mt-5'>Create profile for your brand new driver</h3>
+            </div>
+
+            <div className='row text-center'>
+                <div className='container col-lg-6 col-md-6 col-sm-12'>
+                    <input className="form-control" onChange={(e) => { setDriverUsername(e.target.value) }} placeholder='Enter the Username' />
+                </div>
+                <div className='container col-lg-6 col-md-6 col-sm-12'>
+                    <input className="form-control" onChange={(e) => { setDriverPassword(e.target.value) }} placeholder='Enter the Password' />
+                </div>
+            </div>
+
+            <div className='row d-flex justify-content-center mb-5 pb-5'>
+                <input id="img" className="form-control" onChange={(e) => { setDriverEmail(e.target.value) }} placeholder='Enter the Email' />
+            </div>
+            <div className='container d-flex justify-content-center mt-5 '>
+                <button id='btn' className='btn btn-primary' onClick={addDriverLogin}>Add</button>
+            </div>
         </div>
-        <div className='addCarInput'>
-            <input className="input" onChange={(e) => { setDriverEmail(e.target.value) }} placeholder='Enter the Email' />
-        </div>
-        <div className='RentButton'>
-            <button id='RentButton' onClick={addDriverLogin}>Add</button>
-        </div>
-    </>)
+    )
 }

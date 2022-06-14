@@ -3,13 +3,6 @@ import { Layout } from '../layOut/layOut';
 import axios from 'axios';
 import { UserContext } from '../../App';
 
-//Import CSS & Images
-import './rateUs.css';
-import carIMG from '../../images/img_car.png';
-import driverIMG from '../../images/img_avatar.png';
-
-
-
 export function RateUs() {
 
     //user lekérése
@@ -78,61 +71,73 @@ export function RateUs() {
 
         <Layout />
 
-        {/*Page message*/}
-        <h3 id="h3rate">Here you can rate our vehicles and drivers!</h3>
+        <div className='container'>
 
-        {ProductsRate.map(rateable =>
-            <div key={rateable.id}>
-                <form onSubmit={e => handleSubmit(e)}>
-                    <section id='ratrSection'>
-                        {/*Cards for the rate us*/}
-                        {/*vehicle1*/}
-                        <div className='rateDates'>
-                            <p>Start Date: {new Date(rateable.start_date).toLocaleDateString()}</p>
-                            <p>End Date: {new Date(rateable.end_date).toLocaleDateString()}</p>
-                        </div>
-                        <div className="container">
-                            <div className="row">
-                                <div className=" justify-content-center">
-                                    <div className="card" id="car">
-                                        {/*IMAGE*/}<img className="img" src={carIMG} alt="car" />
-                                        <div className="container">
-                                            {/*ezeket adatbázisból kellene feltölteni*/}
-                                            <h4><b>Car: {rateable.brand}</b></h4>
-                                            <p>Rate the Car</p>
-                                            <p><input id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
-                                        </div>
+            <div className='row text-center pt-5'>
+                <h3 className='mb-5'>Here you can rate our vehicles and drivers!</h3>
+            </div>
+
+            {/*Rate */}
+            <div className='row text-center'>
+                {ProductsRate.map(rateable =>
+                    <div key={rateable.id}>
+                        <form onSubmit={e => handleSubmit(e)}>
+                            <section>
+                                {/*Cards for the rate us*/}
+
+                                {/*vehicle1*/}
+                                <div className='row center'>
+                                    <div className="container col-lg-6 col-md-6 col-sm-12">
+                                        <p>Start Date: {new Date(rateable.start_date).toLocaleDateString()}</p>
+                                    </div>
+                                    <div className="container col-lg-6 col-md-6 col-sm-12">
+                                        <p>End Date: {new Date(rateable.end_date).toLocaleDateString()}</p>
                                     </div>
                                 </div>
 
-                                {/*driver1*/}
-                                {rateable.driver_id &&
-                                    <div className=" justify-content-center">
-                                        <div className="card" id="people">
-                                            <img className="img" src={driverIMG} alt="Avatar" />
+                                <div className="row center">
+                                    <div className="container col-lg-6 col-md-6 col-sm-12">
+                                        <div className="card" id="car">
+                                            {/*IMAGE*/}<img className="img" alt="car" />
                                             <div className="container">
                                                 {/*ezeket adatbázisból kellene feltölteni*/}
-                                                <h4><b>Driver: {rateable.name || "----"}</b></h4>
-                                                <p>Rate the Driver</p>
-                                                <p><input id='rateInput' type='range'
-                                                    onChange={(e) => { setDriverRating(e.target.value) }}></input></p>
+                                                <h4><b>Car: {rateable.brand}</b></h4>
+                                                <p>Rate the Car</p>
+                                                <p><input id='rateInput' type='range' onChange={(e) => { setCarRating(e.target.value) }} defaultValue={null}></input></p>
                                             </div>
                                         </div>
                                     </div>
-                                }
-                            </div>
-                        </div>
 
-                        <div>
-                            {/*rate button*/}
-                            <p id='rate-p'><button id='rateBTN' onClick={() => { sendRating(rateable.car_id, rateable.driver_id) }}>Send</button></p>
-                        </div>
+                                    <div className="container col-lg-6 col-md-6 col-sm-12">
+                                        {/*driver1*/}
+                                        {rateable.driver_id &&
+                                            <div className="row">
+                                                <div className="card" id="people">
+                                                    <img className="img" alt="Avatar" />
+                                                    <div className="container">
+                                                        {/*ezeket adatbázisból kellene feltölteni*/}
+                                                        <h4><b>Driver: {rateable.name || "----"}</b></h4>
+                                                        <p>Rate the Driver</p>
+                                                        <p><input id='rateInput' type='range'
+                                                            onChange={(e) => { setDriverRating(e.target.value) }}></input></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
 
-                        <hr className="rounded" />
-                    </section>
-                </form>
+                                <div className='row center mt-5 d-flex justify-content-center'>
+                                    {/*rate button*/}
+                                    <button className='btn btn-primary' id='btn' onClick={() => { sendRating(rateable.car_id, rateable.driver_id) }}>Send</button>
+                                </div>
+
+                                <hr className="rounded" />
+                            </section>
+                        </form>
+                    </div>
+                )}
             </div>
-        )}
-
+        </div>
     </>)
 }

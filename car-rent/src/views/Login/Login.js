@@ -4,9 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../App';
 
 //Import CSS & Images
-import './starterpage.css';
-
-
 
 export function Login() {
 
@@ -87,68 +84,79 @@ export function Login() {
     };
 
 
-    return (<>
-        {/*Top message*/}
-        <div className="welcome">
-            <h3 id='login-h3'>Wellcome to Car Rent</h3>
-            <p id="home-p">Easiest way to rent your car</p>
-        </div>
+    return (
+        <div className='container'>
 
-        {/*Login*/}
-        <div className='loginContainer'>
-            <div className="Login">
-                <h3 id="login-p">Login</h3>
+            {/*Top message*/}
+            <div className='row text-center'>
+                <h3 className='col-12'>Wellcome to Car Rent</h3>
 
-                <input className='input' type="text" data-testid='UsernameTest' id="login-input" placeholder="Username"
-                    onChange={(e) => {
-                        //kiolvassuk a beírt adatokat
-                        setUsernameLog(e.target.value);
-                        //ha hibás a felhasználónév akkor ha a user elkezd gépelni, kitörli a hibaüzenetet
-                        setLoginCorrect("");
-                    }}
-                />
-
-                <input className='input' type="password" data-testid='PasswordTest' id="login-input" placeholder="Password"
-                    onChange={(e) => {
-                        setPasswordLog(e.target.value);
-                        setLoginCorrect("");
-                    }}
-                />
-
-                <p id="loginErr">{loginCorrect}</p>
-                <button id="submit-btn-for-login" onClick={login} >Login</button>
+                <p className='col-12'>Easiest way to rent your car</p>
             </div>
 
-            {/*Registration*/}
-            <div className="Registration">
-                <h3 id='registration-p'>Registration</h3>
+            {/*inputs*/}
+            <div className='row center'>
 
-                <input className='input' type="text" id="login-input" placeholder="Username"
-                    onChange={(e) => {
-                        //kiolvassuk a beírt adatokat
-                        setUsernameReg(e.target.value);
-                        //ha hiba jön vissza backendről, ha a user elkezd gépelni kitöli a hibaüzenetet
-                        setRegistrationCorrect("");
-                    }}
-                />
+                {/*Login*/}
+                <div className='container col-lg-6 col-md-6 col-sm-12 text-center'>
+                    <h3>Login</h3>
 
-                <input className='input' type="password" id="login-input" placeholder="Password"
-                    onChange={(e) => {
-                        setPasswordReg(e.target.value);
-                        setRegistrationCorrect("");
-                    }}
-                />
 
-                <input className='input' type="email" id="login-input" placeholder="E-mail"
-                    onChange={(e) => {
-                        setEmailReg(e.target.value);
-                        setRegistrationCorrect("");
-                    }}
-                />
+                    <input className='form-control' type="text" data-testid='UsernameTest' placeholder="Username"
+                        onChange={(e) => {
+                            //kiolvassuk a beírt adatokat
+                            setUsernameLog(e.target.value);
+                            //ha hibás a felhasználónév akkor ha a user elkezd gépelni, kitörli a hibaüzenetet
+                            setLoginCorrect("");
+                        }}
+                    />
 
-                <p id="loginErr">{registrationCorrect}</p>
-                <button id="submit-btn-for-register" data-testid="testBTN" type="submit" onClick={registration}>Registration</button>
+                    <input className='form-control' type="password" data-testid='PasswordTest' placeholder="Password"
+                        onChange={(e) => {
+                            setPasswordLog(e.target.value);
+                            setLoginCorrect("");
+                        }}
+                    />
+
+
+                    <p className='text-danger'>{loginCorrect}</p>
+                    <button className='btn btn-primary' onClick={login} >Login</button>
+                </div>
+
+
+
+                {/*Register*/}
+                <div className='container col-lg-6 col-md-6 col-sm-12 text-center'>
+                    <h3>Registration</h3>
+
+                    <input className='form-control' type="text" placeholder="Username"
+                        onChange={(e) => {
+                            //kiolvassuk a beírt adatokat
+                            setUsernameReg(e.target.value);
+                            //ha hiba jön vissza backendről, ha a user elkezd gépelni kitöli a hibaüzenetet
+                            setRegistrationCorrect("");
+                        }}
+                    />
+
+                    <input className='form-control' type="email" placeholder="E-mail"
+                        onChange={(e) => {
+                            setEmailReg(e.target.value);
+                            setRegistrationCorrect("");
+                        }}
+                    />
+
+                    <input className='form-control' type="password" placeholder="Password"
+                        onChange={(e) => {
+                            setPasswordReg(e.target.value);
+                            setRegistrationCorrect("");
+                        }}
+                    />
+
+                    <p className='text-danger'>{registrationCorrect}</p>
+                    <button className='btn btn-primary' data-testid="testBTN" type="submit" onClick={registration}>Registration</button>
+                </div>
+
             </div>
         </div>
-    </>)
+    )
 }
